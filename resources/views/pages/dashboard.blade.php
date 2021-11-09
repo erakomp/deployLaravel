@@ -42,13 +42,13 @@
                         {
                             element: ".col-lg-12",
                             title: "{{trans("Dashboard")}}",
-                            content: "{{trans("")}}",
+                            content: "{{trans("WELCOME!!")}}",
                             placement: 'top'
                         },
                         {
                             element: "#myNavmenu",
                             title: "{{trans("Navigation")}}",
-                            content: "{{trans("")}}"
+                            content: "{{trans("Your Navigation menu")}}"
                         }
                     ]
                 });
