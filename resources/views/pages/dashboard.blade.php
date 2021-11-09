@@ -42,13 +42,13 @@
                         {
                             element: ".col-lg-12",
                             title: "{{trans("Dashboard")}}",
-                            content: "{{trans("This is your dashboard, which you can use to get a fast and nice overview, of all your tasks, leads, etc.")}}",
+                            content: "{{trans("")}}",
                             placement: 'top'
                         },
                         {
                             element: "#myNavmenu",
                             title: "{{trans("Navigation")}}",
-                            content: "{{trans("This is your primary navigation bar, which you can use to get around Daybyday CRM")}}"
+                            content: "{{trans("")}}"
                         }
                     ]
                 });
@@ -59,7 +59,7 @@
                         {
                             element: "#newClient",
                             title: "{{trans("Create New Client")}}",
-                            content: "{{trans("Let's take our first step, by creating a new client")}}"
+                            content: "{{trans("")}}"
                         },
                         {
                             path: '/clients/create'

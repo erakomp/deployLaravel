@@ -34,7 +34,7 @@
                                   </div>
                                   <div class="project-board-card-footer">
                                     <ul class="list-inline" style="padding: 8px; min-height: 3.3em;">
-                                        <li class="project-board-card-list">20, February 2019</li>
+                                        <li class="project-board-card-list">{{date('l, d-m-Y H:m:s', strtotime($task->created_at))}}</li>
                                         <li class="project-board-card-thumbnail text-right" style="float:right;">
                                         <a href="{{route('users.show', $task->user->external_id)}}" ><img src="{{$task->user->avatar}}" class="project-board-card-thumbnail-image" title="{{$task->user->name}}"/></a>
                                         </li>
@@ -53,17 +53,15 @@
 </div>
 
 <div class="row movedown">
-    <div class="col-lg-8">
-        <div class="tablet">
+    <div class="col-lg-8" >
+        <div class="tablet" style="display: none;">
             <div class="tablet__body">
-                <h3 class="tablet__head-title">@lang('Project completion progress')</h3>
-                <div class="progress">
-                  <div class="progress-bar" role="progressbar" style="width: {{$completionPercentage}}%;" aria-valuenow="{{$completionPercentage}}" aria-valuemin="0" aria-valuemax="{{$completionPercentage}}">{{$completionPercentage}}%</div>
-                </div>
+                <h3 class="tablet__head-title"> </h3>
+               
             </div> 
         </div>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-4" style="justify-content:right;">
         <div class="tablet">
             <div class="tablet__body">
                 <h3 class="tablet__head-title">@lang('Collaborators')</h3>

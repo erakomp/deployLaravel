@@ -37,8 +37,8 @@
     </div>
 </div>
 <div class="row margin-top-10">
-    <div class="col-md-3">{{ __('Deadline') }}</div>
-    <div class="col-md-9">
+    <div class="col-md-3" style="display: none;">{{ __('Deadline') }}</div>
+    <div class="col-md-9" style="display: none;">
                     <span {{Entrust::can('task-update-deadline') ? 'data-toggle=modal data-target=#ModalUpdateDeadline' : ''}}  class="siderbar-list-value {{$project->isCloseToDeadline() ? 'text-danger' : ''}}">{{date(carbonDate(), strTotime($project->deadline))}}
                         @if($project->isCloseToDeadline())
                             <span class="small text-black">({!! $project->days_until_deadline !!})</span>

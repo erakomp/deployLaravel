@@ -66,7 +66,7 @@
                                 </select>
                             @endif
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" style="display:none;">
                             <label for="deadline" class="control-label thin-weight">@lang('Deadline')</label>
                             <input type="text" id="deadline" name="deadline" data-value="{{now()->addDays(3)}}" class="form-control">
                         </div>

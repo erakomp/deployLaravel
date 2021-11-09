@@ -127,12 +127,12 @@
 <div class="col-sm-3">
     <label for="name" class="base-input-label">@lang('Settings')</label>
 </div>
-<div class="col-sm-9">
+<div class="col-sm-9" style="display:none;">
     <div class="form-group col-sm-8">
         <label for="language" class="control-label thin-weight">@lang('Language')</label> <br>
-        <label class="radio-inline">
+        <!--<label class="radio-inline">
             <input value="dk" type="radio" name="language" {{isset($user) && strtolower($user->language) == "dk" ? 'checked': ''}}>@lang('Danish')
-        </label>
+        </label>-->
         <label class="radio-inline">
             <input value="en" type="radio" name="language" {{isset($user) && strtolower($user->language) == "en" ? 'checked': ''}}>@lang('English')
         </label>
