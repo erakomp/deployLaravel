@@ -10,7 +10,7 @@
     <div class="col-lg-12">
         <div class="project-board-ui">
             <nav class="navbar board text-black ">
-                <a href="{{URL::previous()}}" class="btn btn-md btn-brand" style="margin:1em; font-size:14px;">Back</a>
+                <a href="/projects" class="btn btn-md btn-brand" style="margin:1em; font-size:14px;">Back</a>
 
                 @if(!$project->isClosed())
                 
