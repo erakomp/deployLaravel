@@ -53,15 +53,17 @@
 </div>
 
 <div class="row movedown">
-    <div class="col-lg-8" >
-        <div class="tablet" style="display: none;">
+    <div class="col-lg-8">
+        <div class="tablet" style="display:none;">
             <div class="tablet__body">
-                <h3 class="tablet__head-title"> </h3>
-               
+                <h3 class="tablet__head-title">@lang('Project completion progress')</h3>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" style="width: {{$completionPercentage}}%;" aria-valuenow="{{$completionPercentage}}" aria-valuemin="0" aria-valuemax="{{$completionPercentage}}">{{$completionPercentage}}%</div>
+                </div>
             </div> 
         </div>
     </div>
-    <div class="col-lg-4" style="justify-content:right;">
+    <div class="col-lg-4">
         <div class="tablet">
             <div class="tablet__body">
                 <h3 class="tablet__head-title">@lang('Collaborators')</h3>

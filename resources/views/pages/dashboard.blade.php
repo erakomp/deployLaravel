@@ -9,7 +9,7 @@
     </div>
     
 </div>
-
+<!--
 
 @push('scripts')
     <script>
@@ -42,13 +42,13 @@
                         {
                             element: ".col-lg-12",
                             title: "{{trans("Dashboard")}}",
-                            content: "{{trans("WELCOME!!")}}",
+                            content: "{{trans("Welcome folks!")}}",
                             placement: 'top'
                         },
                         {
                             element: "#myNavmenu",
                             title: "{{trans("Navigation")}}",
-                            content: "{{trans("Your Navigation menu")}}"
+                            content: "{{trans("This is your side navbar")}}"
                         }
                     ]
                 });
@@ -59,7 +59,7 @@
                         {
                             element: "#newClient",
                             title: "{{trans("Create New Client")}}",
-                            content: "{{trans("")}}"
+                            content: "{{trans("Let's take our first step, by creating a new client")}}"
                         },
                         {
                             path: '/clients/create'
@@ -85,7 +85,7 @@
             }
         });
     </script>
-@endpush
+@endpush-->
         <!-- Small boxes (Stat box) -->
         @if(isDemo())
             <div class="alert alert-info">
