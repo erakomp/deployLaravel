@@ -34,7 +34,6 @@
                                   </div>
                                   <div class="project-board-card-footer">
                                     <ul class="list-inline" style="padding: 8px; min-height: 3.3em;">
-                                        <li class="project-board-card-list">{{date('l, d-m-Y H:m:s', strtotime($task->created_at))}}</li>
                                         <li class="project-board-card-thumbnail text-right" style="float:right;">
                                         <a href="{{route('users.show', $task->user->external_id)}}" ><img src="{{$task->user->avatar}}" class="project-board-card-thumbnail-image" title="{{$task->user->name}}"/></a>
                                         </li>

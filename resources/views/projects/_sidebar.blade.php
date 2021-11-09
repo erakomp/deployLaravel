@@ -52,8 +52,8 @@
     </div>
 </div>
 <div class="row margin-top-10">
-    <div class="col-md-3">{{ __('Status') }}</div>
-    <div class="col-md-9">
+    <div class="col-md-3" style="display: none;">{{ __('Status') }}</div>
+    <div class="col-md-9" style="display:none;">
                     <span id="status-text" class="siderbar-list-value">
                     {{ $project->status->title }}
                         @if(Entrust::can('task-update-status'))
