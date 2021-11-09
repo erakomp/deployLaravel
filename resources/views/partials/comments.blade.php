@@ -1,14 +1,14 @@
 <div class="tablet">
     <div class="tablet__head tablet__head__color-brand">
         <div class="tablet__head-label">
-            <h3 class="tablet__head-title text-white">{{$subject->title}}</h3>
+            <h3 class="tablet__head-title text-white" style="font-size: 16px!important; font-weight:bold;">{{$subject->title}}</h3>
         </div>
     </div>
-    <div class="tablet__body" style="font-size: 16px!important; max-width:300px!important;">
+    <div class="tablet__body" style="font-size: 14px!important; max-width:300px!important;">
         <p class="" style="font-size: 12px!important;">{!! $subject->description !!}</p>
     </div>
-    <div class="tablet__footer" style="font-size: 12px!important;">
-        <p class="smalltext"style="font-size: 12px!important;">{{ __('Created at') }}:
+    <div class="tablet__footer" style="font-size: 13px!important;">
+        <p class="smalltext"style="font-size: 13px!important;">{{ __('Created at') }}:
             {{date('l, d/m/y H:i:s', strtotime($subject->created_at))}}
             @if($subject->updated_at != $subject->created_at)
                 <br/>{{ __('Modified') }}: {{date('l, d/m/y H:i:s', strtotime($subject->updated_at))}}    
@@ -19,14 +19,14 @@
 <?php $count = 0;?>
 <?php $i = 1 ?>
 @foreach($subject->comments as $comment)
-    <div class="tablet tablet__shadow" style="font-size: 12px!important;">
-        <div class="tablet__body tablet__tigthen" style="font-size: 12px!important;">
+    <div class="tablet tablet__shadow" style="font-size: 14px!important;">
+        <div class="tablet__body tablet__tigthen" style="font-size: 14px!important;">
             <p style="font-size: 12px!important;">  {!! $comment->description !!}</p>
         </div>
         <div class="tablet__footer tablet__tigthen" style="font-size: 12px!important;">
-            <p class="smalltext" style="font-size: 12px!important;">{{ __('Comment by') }}: {{$comment->user->name}} 
+            <p class="smalltext" style="font-size: 14px!important;">{{ __('Comment by') }}: {{$comment->user->name}} 
             </p>
-            <p class="smalltext" style="font-size: 12px!important;">{{ __('Created at') }}:
+            <p class="smalltext" style="font-size: 14px!important;">{{ __('Created at') }}:
                 {{date('l, d/m/y H:i:s', strtotime($comment->created_at))}}
                 @if($comment->updated_at != $comment->created_at)
                     <br/>{{ __('Modified') }} : {{date(carbonFullDateWithText(), strtotime($comment->updated_at))}}

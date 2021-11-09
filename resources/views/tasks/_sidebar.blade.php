@@ -1,7 +1,7 @@
 <div class="row">
-    <div class="col-md-3">{{ __('Assigned') }}</div>
+    <div class="col-md-3" style="font-size:14px!important;">{{ __('Assigned') }}</div>
     <div class="col-md-9">
-                <span id="assignee-user" class="siderbar-list-value">{{$tasks->user->name}}
+                <span id="assignee-user" class="siderbar-list-value" style="font-size:14px!important;">{{$tasks->user->name}}
                     @if(Entrust::can('can-assign-new-user-to-task'))
                         <i class="icon ion-md-create"></i>
                     @endif
@@ -32,9 +32,9 @@
     </div>
 </div>
 <div class="row margin-top-10">
-    <div class="col-md-3">{{ __('Created at') }}</div>
-    <div class="col-md-9">
-        {{$tasks->created_at}}
+    <div class="col-md-5" style="font-size:14px!important;">Created Date</div>
+    <div class="col-md-5" style="font-size:14px!important;">
+        {{date('l, d/m/y H:i:s', strtotime($tasks->created_at))}}
     </div>
 </div>
 <div class="row margin-top-10">

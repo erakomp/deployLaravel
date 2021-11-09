@@ -29,11 +29,11 @@
                                   <div class="project-board-card">
                                     <div class="position-relative">
                                     </div>
-                                    <p class="project-board-card-title"><a href="{{route('tasks.show', $task->external_id)}}" class="link-color">{{$task->title}}</a></p>
-                                    <div class="project-board-card-description">{!! str_limit($task->description, 154, '...') !!}</div>
+                                    <p class="project-board-card-title" style="font-size:14px!important; font-weight:bold;" ><a href="{{route('tasks.show', $task->external_id)}}" class="link-color">{{$task->title}}</a></p>
+                                    <div class="project-board-card-description" style="font-size:14px!important;">{!! str_limit($task->description, 154, '...') !!}</div>
                                   </div>
                                   <div class="project-board-card-footer">
-                                    <ul class="list-inline" style="padding: 8px; min-height: 3.3em;">
+                                    <ul class="list-inline" style="padding: 8px; min-height: 3.3em; font-size:12px!important;">
                                         {{date('l, d/m/y H:i:s', strtotime($task->created_at))}}
 
                                         <li class="project-board-card-thumbnail text-right" style="float:right;">
@@ -68,7 +68,7 @@
     <div class="col-lg-5">
         <div class="tablet">
             <div class="tablet__body">
-                <h3 class="tablet__head-title">@lang('Collaborators')</h3>
+                <h3 class="tablet__head-title" style="font-size:17px!important; font-weight:bold;">Collaborator(s)</h3>
                 <ul class="list-inline">
                 @foreach($collaborators as $collaborator)
                 <li>
@@ -91,7 +91,7 @@
       <div class="tablet">
           <div class="tablet__head tablet__head__color-brand">
               <div class="tablet__head-label">
-                  <h3 class="tablet__head-title text-white">@lang('Information')</h3>
+                  <h3 class="tablet__head-title text-white" style="font-size:17px!important; font-weight:bold;">@lang('Information')</h3>
               </div>
           </div>
           <div class="tablet__body">

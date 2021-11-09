@@ -2,6 +2,10 @@
 @extends('layouts.master')
 
 <style>
+                    @import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
+*{
+    font-family: 'Baloo 2', cursive;
+}
     @media (min-weight:1200px){
         div.container{
             width: 800px!important;
