@@ -35,7 +35,7 @@
             });
         </script>
     @endpush
-    <a href="/projects" class="btn btn-md btn-brand" style="margin:1em; font-size:14px;">Back</a>
+    <a href="/projects" class="btn btn-md btn-brand" style="margin:1em; font-size:15px;">Back</a>
 
     <div class="row">
         @include('partials.clientheader')
@@ -52,12 +52,12 @@
                     <div class="tablet__head-toolbar">
                         <ul class="nav nav-tabs nav-tabs-line nav-tabs-line-brand nav-tabs-bold tablet-brand-color" role="tablist">
                             <li class="nav-item active">
-                                <a class="nav-link text-white active" data-toggle="tab" href="#tab_information" role="tab">
+                                <a class="nav-link text-white active" data-toggle="tab" href="#tab_information" role="tab" style="font-size: 15px!important; font-weight:bold!important;">
                                     @lang('Information')
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" data-toggle="tab" href="#tab_activity" role="tab">
+                                <a class="nav-link text-white" data-toggle="tab" href="#tab_activity" role="tab" style="font-size: 15px!important; font-weight:bold!important;">
                                     @lang('Activity')
                                 </a>
                             </li>

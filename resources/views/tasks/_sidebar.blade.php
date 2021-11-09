@@ -1,6 +1,6 @@
 <div class="row">
-    <div class="col-md-3" style="font-size:14px!important;">{{ __('Assigned') }}</div>
-    <div class="col-md-9">
+    <div class="col-md-4" style="font-size:14px!important;">{{ __('Assigned') }}</div>
+    <div class="col-md-8">
                 <span id="assignee-user" class="siderbar-list-value" style="font-size:14px!important;">{{$tasks->user->name}}
                     @if(Entrust::can('can-assign-new-user-to-task'))
                         <i class="icon ion-md-create"></i>
@@ -32,14 +32,14 @@
     </div>
 </div>
 <div class="row margin-top-10">
-    <div class="col-md-5" style="font-size:14px!important;">Created Date</div>
-    <div class="col-md-5" style="font-size:14px!important;">
+    <div class="col-md-4" style="font-size:14px!important;">Created Date</div>
+    <div class="col-md-8" style="font-size:14px!important;">
         {{date('l, d/m/y H:i:s', strtotime($tasks->created_at))}}
     </div>
 </div>
 <div class="row margin-top-10">
-    <div class="col-md-3">{{ __('Deadline') }}</div>
-    <div class="col-md-9">
+    <div class="col-md-4">{{ __('Deadline') }}</div>
+    <div class="col-md-8">
                     <span {{Entrust::can('task-update-deadline') ? 'data-toggle=modal data-target=#ModalUpdateDeadline' : ''}}  class="siderbar-list-value {{$tasks->isCloseToDeadline() ? 'text-danger' : ''}}">{{date(carbonDateWithText(), strTotime($tasks->deadline))}}
                         @if($tasks->isCloseToDeadline())
                             <span class="small text-black">({!! $tasks->days_until_deadline !!})</span>
@@ -53,8 +53,8 @@
     </div>
 </div>
 <div class="row margin-top-10">
-    <div class="col-md-3">{{ __('Status') }}</div>
-    <div class="col-md-9">
+    <div class="col-md-4">{{ __('Status') }}</div>
+    <div class="col-md-8">
                     <span id="status-text" class="siderbar-list-value">
                     {{ $tasks->status->title }}
                         @if(Entrust::can('task-update-status'))
@@ -85,8 +85,8 @@
 </div>
 
 <div class="row margin-top-10">
-    <div class="col-md-3">{{ __('Project') }}</div>
-    <div class="col-md-9">
+    <div class="col-md-4">{{ __('Project') }}</div>
+    <div class="col-md-8">
                     <span id="project-text" class="siderbar-list-value">
                     {{ !is_null($tasks->project) ? $tasks->project->title : __('None')  }}
                         @if(Entrust::can('task-update-status'))
