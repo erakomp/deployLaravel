@@ -43,10 +43,10 @@
     </div>
 
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-7">
             @include('partials.comments', ['subject' => $tasks])
         </div>
-        <div class="col-md-3">
+        <div class="col-md-5">
             <div class="tablet tablet--tabs tablet--height-fluid">
                 <div class="tablet__head tablet__head__color-brand padding-15-sides">
                     <div class="tablet__head-toolbar">

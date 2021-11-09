@@ -55,7 +55,7 @@
 </div>
 
 <div class="row movedown">
-    <div class="col-lg-8">
+    <div class="col-lg-7">
         <div class="tablet" style="display:none;">
             <div class="tablet__body">
                 <h3 class="tablet__head-title">@lang('Project completion progress')</h3>
@@ -65,7 +65,7 @@
             </div> 
         </div>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-5">
         <div class="tablet">
             <div class="tablet__body">
                 <h3 class="tablet__head-title">@lang('Collaborators')</h3>
@@ -84,10 +84,10 @@
 </div>
 
 <div class="row movedown">
-      <div class="col-sm-8">
+      <div class="col-sm-7">
           @include('partials.comments', ['subject' => $project])
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-5">
       <div class="tablet">
           <div class="tablet__head tablet__head__color-brand">
               <div class="tablet__head-label">
