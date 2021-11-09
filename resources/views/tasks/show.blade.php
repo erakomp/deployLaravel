@@ -35,7 +35,7 @@
             });
         </script>
     @endpush
-    <a href="{{URL::previous()}}" class="btn btn-md btn-brand" style="margin:1em; font-size:14px;">Back</a>
+    <a href="/projects" class="btn btn-md btn-brand" style="margin:1em; font-size:14px;">Back</a>
 
     <div class="row">
         @include('partials.clientheader')

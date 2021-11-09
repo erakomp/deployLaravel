@@ -34,7 +34,7 @@
 <div class="row margin-top-10">
     <div class="col-md-3">{{ __('Created at') }}</div>
     <div class="col-md-9">
-        {{date('l, d/m/y H:m', strtotime($tasks->created_at))}}
+        {{$tasks->created_at}}
     </div>
 </div>
 <div class="row margin-top-10">

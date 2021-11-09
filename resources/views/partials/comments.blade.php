@@ -9,9 +9,9 @@
     </div>
     <div class="tablet__footer" style="font-size: 12px!important;">
         <p class="smalltext"style="font-size: 12px!important;">{{ __('Created at') }}:
-            {{date('l, d/m/y H:m', strtotime($subject->created_at))}}
+            {{date('l, d/m/y H:i:s', strtotime($subject->created_at))}}
             @if($subject->updated_at != $subject->created_at)
-                <br/>{{ __('Modified') }}: {{date('l, d/m/y H:m', strtotime($subject->updated_at))}}    
+                <br/>{{ __('Modified') }}: {{date('l, d/m/y H:i:s', strtotime($subject->updated_at))}}    
             @endif</p>
     </div>
 </div>
@@ -27,7 +27,7 @@
             <p class="smalltext" style="font-size: 12px!important;">{{ __('Comment by') }}: {{$comment->user->name}} 
             </p>
             <p class="smalltext" style="font-size: 12px!important;">{{ __('Created at') }}:
-                {{date('l, d/m/y H:m', strtotime($comment->created_at))}}
+                {{date('l, d/m/y H:i:s', strtotime($comment->created_at))}}
                 @if($comment->updated_at != $comment->created_at)
                     <br/>{{ __('Modified') }} : {{date(carbonFullDateWithText(), strtotime($comment->updated_at))}}
                 @endif</p>

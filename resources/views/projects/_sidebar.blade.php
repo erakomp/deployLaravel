@@ -33,7 +33,7 @@
 <div class="row margin-top-10">
     <div class="col-md-3">{{ __('Created at') }}</div>
     <div class="col-md-9">
-        {{ date(carbonFullDateWithText(), strtotime($project->created_at))}}
+        {{$project->created_at}}
     </div>
 </div>
 <div class="row margin-top-10">
