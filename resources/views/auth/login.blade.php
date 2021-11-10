@@ -54,8 +54,7 @@
                                     </button>
                                 </div>
                                 <div class="col-md-6 col-md-offset-2" style="padding-left: 60px;">
-                                    <a class="btn btn-link" href="{{ url('/password/reset') }}" style="color:#333; margin-top:8px;">Forgot Your
-                                        Password?</a>
+                                    <a class="btn btn-link" href="{{ url('/register') }}" style="color:#333; margin-top:8px;">Don't have account?</a>
                                 </div>
                             </div>
                             <div class="col-md-12">
