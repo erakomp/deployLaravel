@@ -59,7 +59,7 @@ class RoleuserController extends Controller
         // $data->user_id = $request->user_id;
         // $data->role_id = $request->role_id;
         //$data->save();
-        return redirect()->route('productss.index')
+        return redirect()->route('roless.index')
                         ->with('success', 'Product created successfully.');
     }
    

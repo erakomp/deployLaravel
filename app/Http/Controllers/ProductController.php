@@ -52,7 +52,7 @@ class ProductController extends Controller
         $data->password = bcrypt($request->password);
         $data->save();
         return redirect()->route('productss.index')
-                        ->with('success', 'Product created successfully.');
+                        ->with('success', 'User created successfully.');
     }
    
     /**
@@ -95,7 +95,7 @@ class ProductController extends Controller
         $product->update($request->all());
   
         return redirect()->route('products.index')
-                        ->with('success', 'Product updated successfully');
+                        ->with('success', 'User updated successfully');
     }
   
     /**
