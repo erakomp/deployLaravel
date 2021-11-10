@@ -9,12 +9,17 @@
 | to using a Closure or controller method. Build something great!
 |
 */
+
 Route::auth();
 Route::get('/logout', 'Auth\LoginController@logout');
+Route::get('/register', 'Auth\RegisterController@register');
+Route::post('/registerPost', 'Auth\RegisterController@registerPost');
 Route::group(['middleware' => ['auth']], function () {
     /**
      * Main
      */
+    Route::resource('productss', 'ProductController');
+
     Route::get('/getcomm', 'CommentlogController@getComment');
     Route::get('/', 'PagesController@dashboard');
     Route::get('dashboard', 'PagesController@dashboard')->name('dashboard');

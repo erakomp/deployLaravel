@@ -67,22 +67,7 @@
             <p class=" list-group-item siderbar-top" title=""><img src="https://cdn.erakomp.co.id/kanbanaja.png" alt="" style="width: 100%; margin: 1em 0;"></p>
             <a href="{{route('dashboard')}}" class=" list-group-item" data-parent="#MainMenu"><i
                         class="fa fa-home sidebar-icon"></i><span id="menu-txt" style="font-size: 16px!important;" >{{ __('Dashboard') }} </span></a>
-           <!-- <a href="{{route('users.show', \Auth::user()->external_id)}}" class=" list-group-item"
-               data-parent="#MainMenu"><i
-                        class="fa fa-user sidebar-icon"></i><span id="menu-txt">{{ __('Profile') }}</span> </a>-->
-           <!-- <a href="#clients" class=" list-group-item" data-toggle="collapse" data-parent="#MainMenu"><i
-                        class="fa fa-user-secret sidebar-icon"></i><span id="menu-txt">{{ __('Clients') }}</span>
-                <i class="icon ion-md-arrow-dropup arrow-side sidebar-arrow"></i></a>
-            <div class="collapse" id="clients">
-
-                <a href="{{ route('clients.index')}}" class="list-group-item childlist"> <i
-                            class="bullet-point"><span></span></i> {{ __('All Clients') }}</a>
-                @if(Entrust::can('client-create'))
-                    <a href="{{ route('clients.create')}}" id="newClient"
-                       class="list-group-item childlist"> <i
-                                class="bullet-point"><span></span></i> {{ __('New Client') }}</a>
-                @endif
-            </div>-->
+           
             <a href="#projects" class="list-group-item" data-toggle="collapse" data-parent="#MainMenu"><i
                         class="fa fa-briefcase sidebar-icon "></i><span id="menu-txt" style="font-size: 16px!important;" >{{ __('Projects') }}</span>
                 <i class="icon ion-md-arrow-dropup arrow-side sidebar-arrow"></i></a>
@@ -110,10 +95,10 @@
                         class="fa fa-users sidebar-icon"></i><span id="menu-txt" style="font-size: 16px!important;" >{{ __('Users') }}</span>
                 <i class="icon ion-md-arrow-dropup arrow-side sidebar-arrow"></i></a>
             <div class="collapse" id="user">
-                <a href="{{ route('users.index')}}" class="list-group-item childlist" style="font-size: 13px!important;"> <i
+                <a href="{{ route('productss.index')}}" class="list-group-item childlist" style="font-size: 13px!important;"> <i
                             class="bullet-point"><span></span></i> {{ __('All Users') }}</a>
                 @if(Entrust::can('user-create'))
-                    <a href="{{ route('users.create')}}"
+                    <a href="{{ route('productss.create')}}"
                        class="list-group-item childlist" style="font-size: 13px!important;"> <i class="bullet-point"><span></span></i> {{ __('New User') }}
                     </a>
                 @endif

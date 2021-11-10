@@ -53,8 +53,8 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $hidden = ['id', 'password', 'password_confirmation', 'remember_token', 'image_path'];
-    protected $appends = ['avatar'];
+    // protected $hidden = ['id', 'password', 'password_confirmation', 'remember_token', 'image_path'];
+    // protected $appends = ['avatar'];
 
     protected $primaryKey = 'id';
 
@@ -100,7 +100,7 @@ class User extends Authenticatable
 
     public function canChangePasswordOn(User $user)
     {
-        if($this->id === $user->id || ( $this->roles->first()->name == Role::OWNER_ROLE || $this->roles->first()->name == Role::ADMIN_ROLE)) {
+        if ($this->id === $user->id || ($this->roles->first()->name == Role::OWNER_ROLE || $this->roles->first()->name == Role::ADMIN_ROLE)) {
             return true;
         }
 
@@ -127,8 +127,8 @@ class User extends Authenticatable
 
     public function getNameAndDepartmentEagerLoadingAttribute()
     {
-        //dd($this->name, $this->department()->toSql(), $this->department()->getBindings());
-        return $this->name . ' ' . '(' . $this->relations['department'][0]->name . ')';
+        return $this->name;
+        //return $this->name . ' ' . '(' . $this->relations['department']->name . ')';
     }
 
     public function moveTasks($user_id)

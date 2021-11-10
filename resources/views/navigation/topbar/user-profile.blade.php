@@ -1,27 +1,25 @@
 <div class="topbar-user__wrapper">
     <ul class="nav navbar-nav navbar-right">
-        <li class="">
-            <a href="#" class="dropdown-toggle topbar-user__head" data-toggle="dropdown">
-                <span>@lang('Hi'),</span>
-                <span class="topbar-user__name">{{ auth()->user()->name }}</span>
-                <img src="{{ auth()->user()->avatar }}" class="topbar-user__image">
-            </a>
+    <li class="">
+           <!-- <a href="#" class="dropdown-toggle topbar-user__head" data-toggle="dropdown">
+                <span></span>
+                <span class="topbar-user__name"></span>
+                <img src="https://www.iconpacks.net/icons/2/free-settings-icon-3110-thumb.png" class="topbar-user__image">
+            </a>-->
             <ul class="dropdown-menu topbar-user__dropdown-menu">
-                <div class="topbar-user__content-header">
+                <!--<div class="topbar-user__content-header">
                     <div class="topbar-user__card-wrapper">
                         <div class="topbar-user__card-image-wrapper">
                             <img src="{{ auth()->user()->avatar }}" class="topbar-user__card-image">
                         </div>
                         <div class="topbar-user__card-details">
                             <div class="topbar-user__card__name">
-                                {{ auth()->user()->name }}
                             </div>
                             <div class="topbar-user__card__info">
-                                {{ auth()->user()->department->first()->name }}
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>-->
                <!-- <ul class="topbar-user__list-wrapper">
                     <li class="topbar-user__list">
                         <a href="{{url('/users', auth()->user()->external_id)}}" class="topbar-user__list-link">
@@ -53,9 +51,9 @@
                             </span>
                         </a>
                     </li>-->
-                    <li class="topbar-user__list">
+                    <!--<li class="topbar-user__list">
                         <a href="{{url('/logout')}}" class="btn btn-outline-metal btn-hover-brand btn-upper btn-font-dark btn-sm btn-bold" style="margin:2%;">{{ __('Sign Out') }}</a>
-                    </li>
+                    </li>-->
                 </ul>
             </ul>
         </li>

@@ -28,12 +28,18 @@
                     </a>
                 </div>
             @endif-->
-            <div id="nav-toggle col-sm-2">
+            
+            <div id="nav-toggle col-sm-" style="margin-right:5%!important;">
                 <a id="grid-action" role="button" data-toggle="dropdown">
                     <span class="top-bar-toggler">
                     <img src="https://cdn.erakomp.co.id/bell.png" alt="" style="width:30px;">                    
                     </span>
                 </a>
+            </div>
+            <div id="nav-toggle col-sm-2" >
+                <li class="topbar-user__list">
+                    <a href="{{url('/logout')}}" class="btn btn-outline-metal btn-hover-brand btn-upper btn-font-dark btn-sm btn-bold" style="margin:2%;">Logout</a>
+                </li>
             </div>
             @include('navigation.topbar.user-profile')
 
