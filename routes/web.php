@@ -19,6 +19,7 @@ Route::group(['middleware' => ['auth']], function () {
      * Main
      */
     Route::resource('productss', 'ProductController');
+    Route::resource('roless', 'RoleuserController');
 
     Route::get('/getcomm', 'CommentlogController@getComment');
     Route::get('/', 'PagesController@dashboard');

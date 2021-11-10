@@ -35,7 +35,7 @@
             });
         </script>
     @endpush
-    <a href="/projects" class="btn btn-md btn-brand" style="margin:1em; font-size:15px;">Back</a>
+    <a href="/projects/{{$tasks->project->external_id}}" class="btn btn-md btn-brand" style="margin:1em; font-size:15px;">Back</a>
 
     <div class="row">
         @include('partials.clientheader')
