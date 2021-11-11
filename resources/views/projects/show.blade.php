@@ -30,8 +30,19 @@
                                     <div class="position-relative">
                                     </div>
                                     <p class="project-board-card-title" style="font-size:14px!important; font-weight:bold;" ><a href="{{route('tasks.show', $task->external_id)}}" class="link-color">{{$task->title}}</a></p>
-                                    <div class="project-board-card-description" style="font-size:14px!important;">{!! str_limit($task->description, 154, '...') !!}</div>
+                                    <div class="project-board-card-description" style="font-size:14px!important;">{!! str_limit($task->description, 154, '...') !!}
+                                        @if($task->task_status == 'ur')
+                                        <span class="label label-warning">Under Review</span>
+                                        @elseif($task->task_status == 'okay')
+                                        <span class="label label-success">Okay & Accepted</span>
+                                        @elseif($task->task_status == 'error')
+                                        <span class="label label-danger">High Priority / Error</span>
+                                        @else
+                                        <span class="label label-info">Need Attention</span>
+                                        @endif
+                                    </div>
                                   </div>
+                                  
                                   <div class="project-board-card-footer">
                                     <ul class="list-inline" style="padding: 8px; min-height: 3.3em; font-size:12px!important;">
                                         {{date('l, d/m/y H:i:s', strtotime($task->created_at))}}

@@ -145,7 +145,8 @@ class TasksController extends Controller
             'user_created_id' => auth()->id(),
             'external_id' => Uuid::uuid4()->toString(),
             'client_id' => $client->id,
-            'project_id' => optional($project)->id
+            'project_id' => optional($project)->id,
+            'task_status' => $request->task_status
         ]
         );
 
@@ -306,6 +307,19 @@ class TasksController extends Controller
 
         event(new \App\Events\TaskAction($task, self::UPDATED_ASSIGN));
         Session()->flash('flash_message', __('New user is assigned'));
+        return redirect()->back();
+    }
+
+    public function updateBadge(Request $request, $external_id)
+    {
+        if (!auth()->user()->can('task-update-badge')) {
+            session()->flash('flash_message_warning', __('You do not have permission to change task status'));
+            return redirect()->route('tasks.show', $external_id);
+        }
+        $task = $this->findByExternalId($external_id);
+        $task->fill(['task_status' => Carbon::parse($request->task_status)])->save();
+
+        Session()->flash('flash_message', 'Task Status is set');
         return redirect()->back();
     }
 

@@ -32,6 +32,7 @@ class Task extends Model implements Commentable
         'client_id',
         'deadline',
         'project_id',
+        'task_status'
     ];
     protected $dates = ['deadline'];
 
@@ -73,7 +74,7 @@ class Task extends Model implements Commentable
         return $this->belongsTo(Client::class, 'client_id');
     }
 
-public function creator()
+    public function creator()
     {
         return $this->belongsTo(User::class, 'user_created_id');
     }

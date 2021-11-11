@@ -85,11 +85,21 @@
                             <input type="text" id="deadline" name="deadline" data-value="{{now()->addDays(3)}}" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="status_id" class="control-label thin-weight">@lang('Status')</label>
+                            <label for="status_id" class="control-label thin-weight">Position</label>
                             <select name="status_id" id="status" class="form-control">
                                 @foreach($statuses as $status => $statusK)
                                     <option value="{{$status}}">{{$statusK}}</option>
                                 @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="task_status" class="control-label thin-weight">@lang('Status')</label>
+                            <select name="task_status" id="task_status" class="form-control">
+                                <option value="okay">Okay & Accepted</option>
+                                <option value="ur">Under Review</option>
+                                <option value="na">Need Attention</option>
+                                <option value="error">High Priority / Error</option>
+
                             </select>
                         </div>
                         {{csrf_field()}}
