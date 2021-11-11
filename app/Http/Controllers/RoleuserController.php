@@ -30,7 +30,7 @@ class RoleuserController extends Controller
         $products = DB::table('role_user')
         ->join('roles', 'role_user.role_id', '=', 'roles.id')
         ->join('users', 'role_user.user_id', '=', 'users.id')
-        ->select('role_user.user_id', 'role_user.role_id', 'roles.name as rn', 'users.name as un')
+        ->select('role_user.id', 'role_user.user_id', 'role_user.role_id', 'roles.name as rn', 'users.name as un')
         ->get();
         $roles = DB::table('roles')
         ->select('roles.*')
@@ -80,9 +80,14 @@ class RoleuserController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $product)
+    public function edit()
     {
-        return view('products.edit', compact('product'));
+        $products = DB::table('role_user')
+        ->join('roles', 'role_user.role_id', '=', 'roles.id')
+        ->join('users', 'role_user.user_id', '=', 'users.id')
+        ->select('role_user.user_id', 'role_user.role_id', 'roles.name as rn', 'users.name as un')
+        ->get();
+        return view('roless.edit', compact('products'));
     }
   
     /**
@@ -92,17 +97,17 @@ class RoleuserController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $product)
+    public function update(Request $request, RoleUser $product)
     {
         $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'sometimes',
+            'user_id' => 'required',
+            'role_id' => 'required',
+            
         ]);
   
         $product->update($request->all());
   
-        return redirect()->route('products.index')
+        return redirect()->route('roless.index')
                         ->with('success', 'User role updated successfully');
     }
   

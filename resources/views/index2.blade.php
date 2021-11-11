@@ -24,7 +24,7 @@
                 <div class="card-body" style="display: flex;
                 justify-content: center; margin-top:3%;
                 align-items: center; font-size:15px;">
-                    <form method="get" action="{{ route('exportExcel2', 'xls') }}">
+                    <form method="get" action="{{ route('exportExcel', 'xls') }}">
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">

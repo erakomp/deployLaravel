@@ -33,7 +33,6 @@ class AppServiceProvider extends ServiceProvider
         Lead::observe(LeadObserver::class);
         Project::observe(ProjectObserver::class);
         Invoice::observe(InvoiceObserver::class);
-        \Debugbar::disable();
     }
 
     /**

@@ -23,7 +23,7 @@
         </div>
     @endif
   
-    <form action="{{ route('products.update',$product->id) }}" method="POST">
+    <form action="{{ route('roless.update', $products->user_id) }}" method="POST">
         @csrf
         @method('PUT')
    
@@ -31,13 +31,13 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Name:</strong>
-                    <input type="text" name="name" value="{{ $product->name }}" class="form-control" >
+                    <input type="text" name="user_id" value="{{ $products->un }}" class="form-control" >
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Detail:</strong>
-                    <input type="text" name="email" value="{{ $product->email }}" class="form-control">
+                    <strong>Role:</strong>
+                    <input type="text" name="role_id" value="{{ $products->rn }}" class="form-control">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">

@@ -73,7 +73,7 @@ class Task extends Model implements Commentable
         return $this->belongsTo(Client::class, 'client_id');
     }
 
-    public function creator()
+public function creator()
     {
         return $this->belongsTo(User::class, 'user_created_id');
     }

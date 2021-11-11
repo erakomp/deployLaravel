@@ -29,6 +29,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('exportExcelcalc/{type}', 'ExcelController@exportExcel2')->name('exportExcel2');
     Route::get('add-to-log', 'HomeController@myTestAddToLog');
     Route::get('logActivity', 'HomeController@logActivity');
+    
+    Route::get('importExportView', 'DigitalController@importExportView')->name('importExportView');
+    // Route for export/download tabledata to .csv, .xls or .xlsx
+    Route::get('exportExcel/{type}', 'DigitalController@exportExcel')->name('exportExcel');
+    // Route for import excel data to database.
+    Route::post('importExcel', [DigitalController::class, 'importExcel'])->name('importExcel');
     /**
      * Users
      */
