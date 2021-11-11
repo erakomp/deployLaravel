@@ -50,7 +50,7 @@
                 <!--<a data-toggle="modal" data-id="{{route('projects.destroy', $item->external_id) }}" data-title="{{$item->title}}'" data-target="#deletion" class="btn btn-link"><i class="fa fa-trash" aria-hidden="true" style="color:rgb(63, 63, 63)!important; font-size:30px!important;"></i>
                 </a>
                 <a href="{{route("projects.show", $item->external_id)}}" class="btn btn-link"><i
-                    class="fa fa-arrow-circle-right" style="color:rgb(63, 63, 63)!important; font-size:30px!important;"></i></a>-->s
+                    class="fa fa-arrow-circle-right" style="color:rgb(63, 63, 63)!important; font-size:30px!important;"></i></a>-->
             </div>
             <div class="icon">
                 <i class="ion ion-ios-book-outline"></i>
