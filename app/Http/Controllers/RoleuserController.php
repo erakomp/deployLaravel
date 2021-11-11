@@ -60,7 +60,7 @@ class RoleuserController extends Controller
         // $data->role_id = $request->role_id;
         //$data->save();
         return redirect()->route('roless.index')
-                        ->with('success', 'Product created successfully.');
+                        ->with('success', 'User Role created successfully.');
     }
    
     /**
@@ -103,7 +103,7 @@ class RoleuserController extends Controller
         $product->update($request->all());
   
         return redirect()->route('products.index')
-                        ->with('success', 'Product updated successfully');
+                        ->with('success', 'User role updated successfully');
     }
   
     /**
@@ -117,6 +117,6 @@ class RoleuserController extends Controller
         $product->delete();
   
         return redirect()->route('productss.index')
-                        ->with('success', 'Product deleted successfully');
+                        ->with('success', 'User Roles deleted successfully');
     }
 }
