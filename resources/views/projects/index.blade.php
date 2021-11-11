@@ -32,8 +32,11 @@
     @endforeach
     
 </div>-->
+
 <div class="row">
     @foreach ($getProject as $item)
+    <a href="{{route("projects.show", $item->external_id)}}" class="">
+
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
         <div class="small-box " style="border-radius: 20px; background-color:rgba(255, 255, 255, 0.5);">
@@ -44,10 +47,10 @@
                 </h3>
 
                 <p style="color:rgb(63, 63, 63)!important; font-size:15px!important;"> {{date('l, d-m-Y H:i:s', strtotime($item->created_at))}}</p>
-                <a data-toggle="modal" data-id="{{route('projects.destroy', $item->external_id) }}" data-title="{{$item->title}}'" data-target="#deletion" class="btn btn-link"><i class="fa fa-trash" aria-hidden="true" style="color:rgb(63, 63, 63)!important; font-size:30px!important;"></i>
+                <!--<a data-toggle="modal" data-id="{{route('projects.destroy', $item->external_id) }}" data-title="{{$item->title}}'" data-target="#deletion" class="btn btn-link"><i class="fa fa-trash" aria-hidden="true" style="color:rgb(63, 63, 63)!important; font-size:30px!important;"></i>
                 </a>
                 <a href="{{route("projects.show", $item->external_id)}}" class="btn btn-link"><i
-                    class="fa fa-arrow-circle-right" style="color:rgb(63, 63, 63)!important; font-size:30px!important;"></i></a>
+                    class="fa fa-arrow-circle-right" style="color:rgb(63, 63, 63)!important; font-size:30px!important;"></i></a>-->s
             </div>
             <div class="icon">
                 <i class="ion ion-ios-book-outline"></i>
@@ -56,6 +59,7 @@
                         
         </div>
     </div>
+</a>
     @endforeach
     <!--<div class="col-lg-3 col-xs-6">
       small box
