@@ -101,6 +101,9 @@
                     <a href="{{ route('productss.create')}}"
                        class="list-group-item childlist" style="font-size: 13px!important;"> <i class="bullet-point"><span></span></i> {{ __('New User') }}
                     </a>
+                    <a href="{{ route('roless.index')}}"
+                    class="list-group-item childlist" style="font-size: 13px!important;"> <i class="bullet-point"><span></span></i> Register Roles
+                 </a>
                 @endif
             </div>
 
