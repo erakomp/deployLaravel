@@ -19,15 +19,15 @@
 <div class="card" style="background-color:white!important; padding:5%;">
     <div class="container">
         
-        <div class="card-body">
-            <div class="text-left" style="margin-bottom:3%;">
-                <h2>Register Roles</h2>
+        <div class="card-body" style="margin-right:15%;">
+            <div class="text-center" style="margin-bottom:3%;">
+                <h2><strong>Register Roles</strong></h2>
             </div>
                 <form action="{{ route('roless.store') }}" method="POST">
                     @csrf
                   
-                     <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12" style="margin-bottom:1%;">
+                     <div class="row text-center">
+                         <div class="col-sm-6">
                             <div class="form-group">
                                 <strong>Name:</strong>
                                 <select name="user_id" id="user_id">
@@ -38,10 +38,10 @@
                                     
                                   </select>
                             </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12" style="margin-bottom:1%;">
+                         </div>
+                         <div class="col-sm-6">
                             <div class="form-group">
-                                <strong>Name:</strong>
+                                <strong>Role:</strong>
                                 <select name="role_id" id="role_id">
                                     @foreach ($roles as $item)
                                     <option value="{{$item->id}}">{{$item->display_name}}</option>
@@ -50,6 +50,12 @@
                                     
                                   </select>
                             </div>
+                         </div>
+                        <div class="col-xs-12 col-sm-6 col-md-12" style="margin-bottom:1%;">
+                            
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-12" style="margin-bottom:1%;">
+                           
                         </div>
                         <div class="col-lg-12 margin-tb">
        
@@ -59,8 +65,8 @@
                         </div>
                         
                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                            <a class="btn btn-primary" href="{{ route('roless.index') }}" style="margin-right:1%!important;"> Back</a>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                            <a class="btn btn-warning" href="{{ route('roless.index') }}" style="margin-right:1%!important;"> Back</a>
+                                <button type="submit" class="btn btn-success">Submit</button>
                         </div>
                     </div>
                    
