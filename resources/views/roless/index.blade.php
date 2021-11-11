@@ -4,7 +4,7 @@
 <div class="container">
     <div class="card" style="background:white!important;">
         <div class="container" style="padding:5%; padding-left:5%;">
-            <div class="card-body">
+            <div class="card-body" style="margin-right:5%;">
                 <div class="row">
                     <div class="text-center">
                         <h1 style="font-size:28px;"><strong>Roles Lists</strong></h1>
@@ -23,7 +23,7 @@
                     </div>
                 @endif
                
-                <table class="table table-bordered">
+                <table class="table table-responsive">
                     <tr>
                         <th>User Name</th>
                         <th>Roles</th>
