@@ -47,9 +47,14 @@
                 </h3>
 
                 <p style="color:rgb(63, 63, 63)!important; font-size:15px!important;"> {{date('l, d-m-Y H:i:s', strtotime($item->created_at))}}</p>
-                <!--<a data-toggle="modal" data-id="{{route('projects.destroy', $item->external_id) }}" data-title="{{$item->title}}'" data-target="#deletion" class="btn btn-link"><i class="fa fa-trash" aria-hidden="true" style="color:rgb(63, 63, 63)!important; font-size:30px!important;"></i>
-                </a>
-                <a href="{{route("projects.show", $item->external_id)}}" class="btn btn-link"><i
+                <form action="{{ route('projects.destroy',$item->external_id) }}" method="POST" style="display:flex; justify-content:right; ">
+                @csrf
+                    @method('DELETE')
+      
+                    <button type="submit" class="" ><i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+                </form>
+                <!--<a href="{{route("projects.show", $item->external_id)}}" class="btn btn-link"><i
                     class="fa fa-arrow-circle-right" style="color:rgb(63, 63, 63)!important; font-size:30px!important;"></i></a>-->
             </div>
             <div class="icon">
@@ -128,7 +133,7 @@
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">@lang('Cancel')</button>
-            <input type="submit" class="btn btn-brand" value="{{__('Delete')}}">
+            <input type="submit" action="{{route('projects.destroy', $item->external_id) }}" class="btn btn-brand" value="{{__('Delete')}}">
             </div>
             </form>
         </div>

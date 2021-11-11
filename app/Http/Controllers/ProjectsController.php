@@ -68,13 +68,14 @@ class ProjectsController extends Controller
 
     public function destroy(Project $project, Request $request)
     {
-        $deleteTasks = $request->delete_tasks ? true : false;
+        /**$deleteTasks = $request->delete_tasks ? true : false;
         if ($project->tasks && $deleteTasks) {
             $project->tasks()->delete();
         } else {
             $project->tasks()->update(['project_id' => null]);
         }
-        
+
+        $project->delete();**/
         $project->delete();
         
         Session()->flash('flash_message', __('Project deleted'));
