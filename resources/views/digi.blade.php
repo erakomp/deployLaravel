@@ -4,7 +4,7 @@
     <div class="card shadow" style="background:white;">
         <div class="container" style="padding:5%; margin-right:10%;">
             <a href="{{URL::previous()}}"><div class="btn btn-primary">Back</div></a>
-            <a href="{{URL::previous()}}"><div class="btn btn-primary">Print</div></a>
+           <!-- <a href="{{URL::previous()}}"><div class="btn btn-primary">Print</div></a>-->
 
             <div class="card-header">
                 <p class="text-center" style="font-size:25px; font-weight:800;">DIGITAL REPORT RESULT</p>
