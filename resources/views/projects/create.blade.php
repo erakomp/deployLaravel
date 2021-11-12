@@ -121,7 +121,8 @@
                 [ 'view', [ 'fullscreen' ] ]
             ],
              height:300,
-             disableDragAndDrop: true
+             disableDragAndDrop: true,
+           
 
            });
             $('#deadline').pickadate({

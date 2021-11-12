@@ -4,15 +4,16 @@
             <h3 class="tablet__head-title text-white" style="font-size: 16px!important; font-weight:bold;">{{$subject->title}}</h3>
         </div>
     </div>
-    <div class="tablet__body" style="font-size: 14px!important; max-width:300px!important;">
-        <p class="" style="font-size: 12px!important;">{!! $subject->description !!}</p>
+    <div class="tablet__body tablet__tigthen" style="font-size: 14px!important; ">
+        <p style="font-size: 12px!important; max-width:300px!important;">  {!! $subject->description . ''!!}</p>
     </div>
     <div class="tablet__footer" style="font-size: 13px!important;">
-        <p class="smalltext"style="font-size: 13px!important;">{{ __('Created at') }}:
+        <p class="smalltext" style="font-size: 13px!important;">{{ __('Created at') }}:
             {{date('l, d/m/y H:i:s', strtotime($subject->created_at))}}
             @if($subject->updated_at != $subject->created_at)
                 <br/>{{ __('Modified') }}: {{date('l, d/m/y H:i:s', strtotime($subject->updated_at))}}    
             @endif</p>
+
     </div>
 </div>
 
@@ -61,6 +62,7 @@
                 disableDragAndDrop: false,
                 maximumImageFileSize: 1000*1024,
                 fontSize:12,
+                acceptedFiles: "image/*,application/pdf, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.openxmlformats-officedocument.spreadsheetml.template, application/vnd.openxmlformats-officedocument.presentationml.template, application/vnd.openxmlformats-officedocument.presentationml.slideshow, application/vnd.openxmlformats-officedocument.presentationml.presentation, application/vnd.openxmlformats-officedocument.presentationml.slide, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.openxmlformats-officedocument.wordprocessingml.template, application/vnd.ms-excel.addin.macroEnabled.12, application/vnd.ms-excel.sheet.binary.macroEnabled.12,text/rtf,text/plain,audio/*,video/*,.csv,.doc,.xls,.ppt,application/vnd.ms-powerpoint,.pptx, .pdf",
 
             });
 

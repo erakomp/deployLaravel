@@ -90,6 +90,7 @@ class ProjectsController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
+        // dd($request->all());
         if ($request->client_external_id) {
             $client = Client::whereExternalId($request->client_external_id);
         }
@@ -98,6 +99,8 @@ class ProjectsController extends Controller
             Session()->flash('flash_message', __('Could not find client'));
             return redirect()->back();
         }
+
+        // return $request->all();
 
         $project = Project::create(
             [

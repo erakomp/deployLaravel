@@ -74,7 +74,7 @@ class DigitalController extends Controller
             ->orderBy('tasks.created_at', 'ASC')
             ->get();
         }
-        return $getTaskReport;
+        return view('digi', compact('getTaskReport'));
         //   return \Excel::download(new TransactionsExport, 'transactions.'.$type);
     }
    
@@ -86,7 +86,6 @@ class DigitalController extends Controller
         \Excel::import(new TransactionsImport, $request->import_file);
 
         \Session::put('success', 'Your file is imported successfully in database.');
-           
         return back();
     }
 }

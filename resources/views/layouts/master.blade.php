@@ -104,6 +104,9 @@
                     <a href="{{ route('roless.index')}}"
                     class="list-group-item childlist" style="font-size: 13px!important;"> <i class="bullet-point"><span></span></i> Register Roles
                  </a>
+                 <a href="{{ route('roles.index')}}"
+                       class="list-group-item childlist" style="font-size: 13px!important;" > <i
+                                class="bullet-point"><span></span></i> {{ __('Role & Permissions Management') }}</a>
                 @endif
             </div>
 
@@ -161,24 +164,27 @@
         -->
             @if(Entrust::hasRole('administrator') || Entrust::hasRole('owner'))
                 <a href="#settings" class=" list-group-item" data-toggle="collapse" data-parent="#MainMenu" style="font-size: 16px!important;" ><i
-                            class="fa fa-cog sidebar-icon"></i><span id="menu-txt" >{{ __('Settings') }}</span>
+                            class="fa fa-cog sidebar-icon"></i><span id="menu-txt" >Report</span>
                     <i class="icon ion-md-arrow-dropup arrow-side sidebar-arrow"></i></a>
                 <div class="collapse" id="settings">
                    <!-- <a href="{{ route('settings.index')}}"
                        class="list-group-item childlist"> <i
                                 class="bullet-point"><span></span></i> {{ __('Overall Settings') }}</a>
                    -->
-                    <a href="{{ route('roles.index')}}"
+                    <a href="/importExportView"
                        class="list-group-item childlist" style="font-size: 13px!important;" > <i
-                                class="bullet-point"><span></span></i> {{ __('Role & Permissions Management') }}</a>
+                                class="bullet-point"><span></span></i> Digital Report</a>
+                                <a href="/report"
+                       class="list-group-item childlist" style="font-size: 13px!important;" > <i
+                                class="bullet-point"><span></span></i>Get Excel Report</a>
                     <!--<a href="{{ route('integrations.index')}}"
                        class="list-group-item childlist"> <i
                                 class="bullet-point"><span></span></i> {{ __('Integrations') }}</a>-->
                 </div>
             @endif
             @if(Entrust::hasRole('owner'))
-            <a href="/report" class=" list-group-item" data-parent="#MainMenu" style="font-size: 16px!important;"><i class="fa fa-file sidebar-icon" aria-hidden="true"></i>
-                <span id="menu-txt" >Report</span></a>
+            <!--<a href="/report" class=" list-group-item" data-parent="#MainMenu" style="font-size: 16px!important;"><i class="fa fa-file sidebar-icon" aria-hidden="true"></i>
+                <span id="menu-txt" >Report</span></a>-->
                 <div class="collapse" id="settings">
                    <!-- <a href="{{ route('settings.index')}}"
                        class="list-group-item childlist"> <i
