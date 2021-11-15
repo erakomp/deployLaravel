@@ -30,7 +30,7 @@
                                     <div class="position-relative">
                                     </div>
                                     <p class="project-board-card-title" style="font-size:14px!important; font-weight:bold;" ><a href="{{route('tasks.show', $task->external_id)}}" class="link-color">{{$task->title}}</a></p>
-                                    <div class="project-board-card-description" style="font-size:14px!important;">{!! str_limit($task->description, 154, '...') !!}
+                                    <div class="project-board-card-description" style="font-size:14px!important;">{!!$task->description!!}
                                         @if($task->task_status == 'ur')
                                         <span class="label label-warning">Under Review</span>
                                         @elseif($task->task_status == 'okay')

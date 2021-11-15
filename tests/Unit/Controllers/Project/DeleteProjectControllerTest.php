@@ -20,7 +20,7 @@ class DeleteProjectControllerTest extends TestCase
 
         $this->project = factory(Project::class)->create();
         $this->task = factory(Task::class)->create([
-            'project_id' => $this->project->id,
+        'project_id' => $this->project->id,
         ]);
         $this->withoutMiddleware(VerifyCsrfToken::class);
     }

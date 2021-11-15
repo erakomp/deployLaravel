@@ -14,12 +14,14 @@ Route::auth();
 Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/register', 'Auth\RegisterController@register');
 Route::post('/registerPost', 'Auth\RegisterController@registerPost');
+
 Route::group(['middleware' => ['auth']], function () {
     /**
      * Main
      */
     Route::resource('productss', 'ProductController');
     Route::resource('roless', 'RoleuserController');
+    Route::resource('productis', 'ProductiController');
 
     Route::get('/getcomm', 'CommentlogController@getComment');
     Route::get('/', 'PagesController@dashboard');
@@ -33,7 +35,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('importExportView', 'DigitalController@importExportView')->name('importExportView');
     // Route for export/download tabledata to .csv, .xls or .xlsx
     Route::get('exportExcel/{type}', 'DigitalController@exportExcel')->name('exportExcel');
-    // Route for import excel data to database.
+// Route for import excel data to database.
     Route::post('importExcel', [DigitalController::class, 'importExcel'])->name('importExcel');
     /**
      * Users

@@ -171,6 +171,7 @@
                 uploadMultiple: true,
                 parallelUploads: 5,
                 maxFiles: 50,
+                
                 addRemoveLinks: true,
                 previewsContainer: "#dropzone-images",
                 clickable:'#dropzone-images',

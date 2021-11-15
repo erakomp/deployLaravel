@@ -17,6 +17,8 @@
             autoProcessQueue: false,
             uploadMultiple: true,
             parallelUploads: 5,
+            maximumImageFileSize: 1000*1024,
+
             maxFiles: 50,
             addRemoveLinks: true,
             previewsContainer: "#dropzone-images",

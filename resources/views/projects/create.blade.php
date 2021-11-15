@@ -138,6 +138,7 @@
                 uploadMultiple: true,
                 parallelUploads: 5,
                 maxFiles: 50,
+                maximumImageFileSize: 1000*1024,
                 addRemoveLinks: true,
                 previewsContainer: "#dropzone-images",
                 clickable:'#dropzone-images',
