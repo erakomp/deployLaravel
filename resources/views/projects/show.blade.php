@@ -36,7 +36,7 @@
                                     <div class="position-relative">
                                     </div>
                                     <p class="project-board-card-title" style="font-size:14px!important; font-weight:bold; width:300px!important; max-width:300px!important;" ><a href="{{route('tasks.show', $task->external_id)}}" class="link-color">{{$task->title}}</a></p>
-                                    <div class="project-board-card-description" style="font-size:14px!important; width:100px!important; max-width:100px!important;"><span style="width:100px!important;">{!!$task->description!!}</span>
+                                    <div class="project-board-card-description" style="font-size:14px!important; width:100px!important; max-width:100px!important;"><span style="width:100px!important;">{!!$task->description . 'style="width:100px!important;".'!!}</span>
                                         @if($task->task_status == 'ur')
                                         <span class="label label-warning">Under Review</span>
                                         @elseif($task->task_status == 'okay')
@@ -274,6 +274,8 @@ $( ".sortable" ).sortable({
         $('#add-files-modal').modal('show');
     });
     @endif
+
+    $('div.project-board-card-description img').attr('style', 'max-width: 100px !important; ');
 </script>
 
 @endpush

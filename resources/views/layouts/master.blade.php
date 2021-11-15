@@ -261,6 +261,7 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
 <script type="text/javascript" src="{{ URL::asset('js/summernote.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('js/jquery-ui-sortable.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('js/bootstrap-tour-standalone.min.js') }}"></script>
+
 <script type="text/javascript" src="{{ URL::asset('js/picker.js') }}"></script>
 
 @if(App::getLocale() == "dk")
