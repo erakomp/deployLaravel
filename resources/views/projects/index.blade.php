@@ -4,34 +4,6 @@
 @stop
 
 @section('content')
-<style>
- 
-</style>
-<!--<div class="row">
-    @foreach ($getProject as $item)
-    <div class="col-lg-3 col-xs-6">
-         small box 
-        <div class="small-box bg-white">
-            <div class="inner" style="min-height: 100px">
-                <h3>
-                    {{$item->title}}
-                </h3>
-
-                <p>{{$item->created_at}}</p>
-                
-                
-            </div>
-            <div class="icon">
-                <i class="ion ion-ios-book-outline"></i>
-            </div>
-            <a href="/projects/{{$item->external_id}}" class="small-box-footer">VIEW <i
-                        class="fa fa-arrow-circle-right"></i></a>
-        </div>
-    </div>
-
-    @endforeach
-    
-</div>-->
 
 <div class="row">
     @foreach ($getProject as $item)
