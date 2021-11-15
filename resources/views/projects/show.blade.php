@@ -2,8 +2,8 @@
 
 @section('content')
 <style>
-   div.project-board-card-description img{
-        text-decoration: none!important;
+   div.project-board-card-description p img{
+        
         width:100px!important;
     }
 </style>
