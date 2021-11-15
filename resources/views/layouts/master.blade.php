@@ -247,8 +247,8 @@
 
     <!-- /#page-content-wrapper -->
 </div>
-<script src="/js/manifest.js"></script>
-<script src="/js/vendor.js"></script>
+<script src="{{ URL::asset('js/manifest.js') }}"></script>
+<script src="{{ URL::asset('js/vendor.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('js/dropzone.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('js/jquery.dataTables.min.js') }}"></script>
