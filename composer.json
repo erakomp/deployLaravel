@@ -1,14 +1,14 @@
 {
-    "name": "projectman",
+    "name": "bottelet/daybyday-crm",
     "description": "",
     "keywords": [
         "laravel",
-        "project management",
+        "CRM",
         "Lead management"
     ],
     "authors": [
         {
-            "name": "projectman",
+            "name": "Jojo",
             "email": "jojo@jojo.com"
         }
     ],
