@@ -12,9 +12,6 @@
 
 Route::auth();
 
-Route::get('/subs', function () {
-    return view('subjects.index');
-});
 
 Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/register', 'Auth\RegisterController@register');
