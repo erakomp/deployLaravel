@@ -74,7 +74,7 @@ class DigitalController extends Controller
             ->orderBy('tasks.created_at', 'ASC')
             ->get();
         }
-        return view('digi', compact('getTaskReport', 'startDate', 'endDate'));
+        return view('digi', compact('getTaskReport', 'startDate', 'endDate', 'status'));
         //   return \Excel::download(new TransactionsExport, 'transactions.'.$type);
     }
    

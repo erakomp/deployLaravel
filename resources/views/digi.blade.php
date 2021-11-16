@@ -9,7 +9,16 @@
             <div class="card-header">
                 <p class="text-center" style="font-size:25px; font-weight:800;">DIGITAL REPORT RESULT</p>
             </div>
-            <p class="text-center">from <strong>{{$startDate}}</strong> until <strong>{{$endDate}}</strong></p>
+            <p class="text-center">from <strong>{{$startDate}}</strong> until <strong>{{$endDate}}</strong> with status <strong>
+              @if($status == 0) all
+            @elseif($status == '1') Resources
+            @elseif($status == '2') To Do List / Backlog
+            @elseif($status == '3') On Hold
+            @elseif($status == '4') Progressing
+            @elseif($status == '5') QC
+            @elseif($status == '6') Error / Must Be Fixed
+            @elseif($status == '7') Done KPI
+          @endif</strong></p>
             <div class="card-body">
                 <table class="table table-responsive">
                     <thead>
