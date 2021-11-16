@@ -43,8 +43,10 @@
                                         <span class="label label-success">Okay & Accepted</span>
                                         @elseif($task->task_status == 'error')
                                         <span class="label label-danger">High Priority / Error</span>
-                                        @else
+                                        @elseif($task->task_status == 'na')
                                         <span class="label label-info">Need Attention</span>
+                                        @else 
+                                        <span></span>
                                         @endif
                                     </div>
                                   </div>

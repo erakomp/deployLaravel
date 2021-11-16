@@ -95,6 +95,7 @@
                         <div class="form-group">
                             <label for="task_status" class="control-label thin-weight">@lang('Status')</label>
                             <select name="task_status" id="task_status" class="form-control">
+                                <option value="">Select if any</option>
                                 <option value="okay">Okay & Accepted</option>
                                 <option value="ur">Under Review</option>
                                 <option value="na">Need Attention</option>

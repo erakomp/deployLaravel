@@ -250,12 +250,14 @@ class TasksController extends Controller
      * If Auth and user_id allow complete else redirect back if all allowed excute
      * else stmt
      */
-    public function updateStatus($external_id, Request $request)
+    public function updateStatus($external_id, Request $request, Task $tasks)
     {
         if (!auth()->user()->can('task-update-status')) {
             session()->flash('flash_message_warning', __('You do not have permission to change task status'));
             return redirect()->route('tasks.show', $external_id);
         }
+        
+        
         $input = $request->all();
 
         if ($request->ajax() && isset($input["statusExternalId"])) {

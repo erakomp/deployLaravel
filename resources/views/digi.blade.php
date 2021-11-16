@@ -9,6 +9,7 @@
             <div class="card-header">
                 <p class="text-center" style="font-size:25px; font-weight:800;">DIGITAL REPORT RESULT</p>
             </div>
+            <p class="text-center">from <strong>{{$startDate}}</strong> until <strong>{{$endDate}}</strong></p>
             <div class="card-body">
                 <table class="table table-responsive">
                     <thead>
