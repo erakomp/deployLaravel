@@ -10,7 +10,7 @@
                 <p class="text-center" style="font-size:25px; font-weight:800;">DIGITAL REPORT RESULT</p>
             </div>
             <p class="text-center">from <strong>{{$startDate}}</strong> until <strong>{{$endDate}}</strong> with status <strong>
-              @if($status == 0) all
+              @if($status == 0) All Categories
             @elseif($status == '1') Resources
             @elseif($status == '2') To Do List / Backlog
             @elseif($status == '3') On Hold
