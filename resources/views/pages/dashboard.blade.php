@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="card" style="background-color:rgba(255, 255, 255, 0.637);">
+<div class="card" style="background-color:transparent;">
     <div class="card-body">
         <h1 style="font-family: 'Fredericka the Great', cursive; font-size:70px; text-align:center; margin:15%;
         ">ERAKOMP PROJECT MANAGEMENT</h1>
