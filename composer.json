@@ -1,14 +1,14 @@
 {
-    "name": "",
+    "name": "projectman",
     "description": "",
     "keywords": [
         "laravel",
         "project management",
-        "Lead management",
+        "Lead management"
     ],
     "authors": [
         {
-            "name": "",
+            "name": "projectman",
             "email": ""
         }
     ],
