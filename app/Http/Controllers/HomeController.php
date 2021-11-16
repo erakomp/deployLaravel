@@ -23,7 +23,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $getUser = DB::table('users')->get();
+        $getProjects = DB::table('projects')->get();
+        $getTasks = DB::table('tasks')->get();
+        return view('home', compact('getUser', 'getProjects', 'getTasks'));
     }
     public function myTestAddToLog()
     {

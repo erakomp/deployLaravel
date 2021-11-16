@@ -11,7 +11,7 @@
 
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
-        <div class="small-box " style="border-radius: 20px; background-color:rgba(255, 255, 255, 0.5);">
+        <div class="small-box " style="border-radius: 20px; background-color:rgba(255, 255, 255, 0.5); padding:5%;">
             <div class="inner" style="min-height: 100px">
                 
                 <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important;">
@@ -23,7 +23,7 @@
                 @csrf
                     @method('DELETE')
       
-                    <button type="submit" class="" ><i class="fa fa-trash" aria-hidden="true"></i>
+                    <button type="submit" class="btn btn-danger" ><i class="fa fa-trash" aria-hidden="true"></i>
                     </button>
                 </form>
                 <!--<a href="{{route("projects.show", $item->external_id)}}" class="btn btn-link"><i

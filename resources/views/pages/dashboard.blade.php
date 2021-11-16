@@ -9,6 +9,26 @@
     </div>
     
 </div>
+<div class="row" style="display:flex; justify-content:center; margin-top:-10%">
+    <div class="card col-sm-3" style="margin-right:3%;background-color:rgba(255, 255, 255, 0.637); border-radius:15px;">
+        <div class="card-body" style="margin:5%; text-align:center;">
+            <p>Total Projects</p>
+            <h1>{{$totalProjects}}
+            </h1>
+        </div>
+    </div>
+
+    <div class="card col-sm-3" style="margin-right:3%; background-color:rgba(255, 255, 255, 0.637); border-radius:15px;">
+        <div class="card-body" style="margin:5%; text-align:center;">
+            <p>Total Tasks</p>
+            <h1>                            {{$totalTasks}}
+            </h1>
+        </div>
+    </div>
+
+   
+</div>
+
 <!--
 
 @push('scripts')

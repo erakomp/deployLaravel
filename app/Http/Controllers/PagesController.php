@@ -20,6 +20,10 @@ class PagesController extends Controller
      */
     public function dashboard()
     {
+        $getUser = DB::table('users')->get();
+        $getProjects = DB::table('projects')->get();
+        $getTasks = DB::table('tasks')->get();
+   
         $today = today();
         $startDate = today()->subdays(14);
         $period = CarbonPeriod::create($startDate, $today);
