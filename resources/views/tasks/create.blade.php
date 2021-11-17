@@ -82,7 +82,7 @@
                         @endif
                         <div class="form-group">
                             <label for="deadline" class="control-label thin-weight">@lang('Deadline')</label>
-                            <input type="text" id="deadline" name="deadline" data-value="{{now()->addDays(3)}}" class="form-control">
+                            <input type="text" id="deadline" name="deadline" data-value="{{Carbon\Carbon::today()->toDateString()}}" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="status_id" class="control-label thin-weight">Position</label>
@@ -93,6 +93,15 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label for="task_status" class="control-label thin-weight">Label Status</label>
+                            <select name="getlabel" id="getlabel" class="form-control">
+                                <option value="">Select if any</option>
+                                @foreach($getLabel as $get)
+                                <option value="{{$get->id}}">{{$get->nama}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group" style="display:none;">
                             <label for="task_status" class="control-label thin-weight">@lang('Status')</label>
                             <select name="task_status" id="task_status" class="form-control">
                                 <option value="">Select if any</option>

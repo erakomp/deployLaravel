@@ -20,6 +20,7 @@ use Ramsey\Uuid\Uuid;
 use App\Models\Invoice;
 use App\Models\InvoiceLine;
 use App\Models\Project;
+use App\Pegawai;
 
 class TasksController extends Controller
 {
@@ -105,8 +106,8 @@ class TasksController extends Controller
                 return $q->where('title', '!=', 'Closed');
             })->pluck('title', 'external_id');
         }
-
-        return view('tasks.create')
+        $getLabel = Pegawai::all();
+        return view('tasks.create', compact('getLabel'))
             ->withUsers(User::with(['department'])->get()->pluck('nameAndDepartmentEagerLoading', 'id'))
             ->withClients(Client::pluck('company_name', 'external_id'))
             ->withClient($client ?: null)
@@ -134,7 +135,7 @@ class TasksController extends Controller
             $request->all(),
             []
         );
-
+       
         $task = Task::create(
             [
             'title' => $request->title,
@@ -146,7 +147,8 @@ class TasksController extends Controller
             'external_id' => Uuid::uuid4()->toString(),
             'client_id' => $client->id,
             'project_id' => optional($project)->id,
-            'task_status' => $request->task_status
+            'task_status' => $request->task_status,
+            'getlabel' => $request->getlabel,
         ]
         );
 

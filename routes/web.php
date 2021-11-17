@@ -21,7 +21,13 @@ Route::group(['middleware' => ['auth']], function () {
     /**
      * Main
      */
-
+    
+    Route::get('/pegawai', 'PegawaiController@index');
+    Route::get('/pegawai/tambah', 'PegawaiController@tambah');
+    Route::post('/pegawai/store', 'PegawaiController@store');
+    Route::get('/pegawai/edit/{id}', 'PegawaiController@edit');
+    Route::put('/pegawai/update/{id}', 'PegawaiController@update');
+    Route::get('/pegawai/hapus/{id}', 'PegawaiController@delete');
     ## View
     Route::get('/subjects', 'SubjectsController@index')->name('subjects');
     ## Create
