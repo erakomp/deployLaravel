@@ -187,6 +187,7 @@ class ProjectsController extends Controller
 
     public function show(Project $project)
     {
+        $getLabel = DB::table('pegawai')->get();
         $tasks = $project->tasks->count();
         if ($tasks === 0) {
             $completionPercentage = 0;
@@ -208,7 +209,7 @@ class ProjectsController extends Controller
 
         \LogActivity::addToLog('just visited ');
 
-        return view('projects.show')
+        return view('projects.show', compact('getLabel'))
             ->withProject($project)
             ->withStatuses(Status::typeOfTask()->get())
             ->withTasks($project->tasks)
