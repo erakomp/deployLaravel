@@ -167,7 +167,7 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
                             class="bullet-point"><span></span></i> {{ __('Departments') }}</a>
             </div>
         -->
-            @if(Entrust::hasRole('administrator') || Entrust::hasRole('owner'))
+            
                 <a href="#settings" class=" list-group-item" data-toggle="collapse" data-parent="#MainMenu" style="font-size: 16px!important;" ><i
                             class="fa fa-cog sidebar-icon"></i><span id="menu-txt" >Report</span>
                     <i class="icon ion-md-arrow-dropup arrow-side sidebar-arrow"></i></a>
@@ -186,7 +186,7 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
                        class="list-group-item childlist"> <i
                                 class="bullet-point"><span></span></i> {{ __('Integrations') }}</a>-->
                 </div>
-            @endif
+            
             @if(Entrust::hasRole('owner'))
             <!--<a href="/report" class=" list-group-item" data-parent="#MainMenu" style="font-size: 16px!important;"><i class="fa fa-file sidebar-icon" aria-hidden="true"></i>
                 <span id="menu-txt" >Report</span></a>-->
