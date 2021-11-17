@@ -82,7 +82,7 @@
                         @endif
                         <div class="form-group">
                             <label for="deadline" class="control-label thin-weight">@lang('Deadline') <small>Not necessary</small></label>
-                            <input type="datetime-local"  name="deadline" data-value="{{Carbon\Carbon::now()->toDateTimeLocalString()}}" class="form-control">
+                            <input type="datetime-local" id="cal" name="deadline" data-value="{{Carbon\Carbon::now()->toDateTimeLocalString()}}" class="form-control">
                         </div>
                       
                         <div class="form-group">
@@ -248,6 +248,24 @@
 
 
         });
+        window.addEventListener("load", function() {
+    var now = new Date();
+    var utcString = now.toISOString().substring(0,19);
+    var year = now.getFullYear();
+    var month = now.getMonth() + 1;
+    var day = now.getDate();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
+    var second = now.getSeconds();
+    var localDatetime = year + "-" +
+                      (month < 10 ? "0" + month.toString() : month) + "-" +
+                      (day < 10 ? "0" + day.toString() : day) + "T" +
+                      (hour < 10 ? "0" + hour.toString() : hour) + ":" +
+                      (minute < 10 ? "0" + minute.toString() : minute) +
+                      utcString.substring(16,19);
+    var datetimeField = document.getElementById("cal");
+    datetimeField.value = localDatetime;
+});
 
 
     </script>

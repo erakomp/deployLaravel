@@ -203,7 +203,8 @@
                             @csrf
                             <div class="form-group">
                                 <label for="deadline_date" class="control-label thin-weight">@lang('Change deadline')</label>
-                                <input type="datetime-local" name="deadline_date" data-value="{{Carbon\Carbon::now()->toDateTimeLocalString()}}" class="form-control">
+                                <input type="datetime-local" 
+                                id="cal" name="deadline_date" data-value="{{Carbon\Carbon::now()->toDateTimeLocalString()}}" class="form-control">
                             </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default col-lg-6"
@@ -261,6 +262,23 @@
                 return true;
             }
         });
-
+        window.addEventListener("load", function() {
+    var now = new Date();
+    var utcString = now.toISOString().substring(0,19);
+    var year = now.getFullYear();
+    var month = now.getMonth() + 1;
+    var day = now.getDate();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
+    var second = now.getSeconds();
+    var localDatetime = year + "-" +
+                      (month < 10 ? "0" + month.toString() : month) + "-" +
+                      (day < 10 ? "0" + day.toString() : day) + "T" +
+                      (hour < 10 ? "0" + hour.toString() : hour) + ":" +
+                      (minute < 10 ? "0" + minute.toString() : minute) +
+                      utcString.substring(16,19);
+    var datetimeField = document.getElementById("cal");
+    datetimeField.value = localDatetime;
+});
     </script>
 @endpush
