@@ -15,17 +15,17 @@
                         <br/>
                         <table class="table table-responsive  table-striped" style="max-width: 100%;">
                             <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Color</th>
-                                    <th>Action</th>
+                                <tr style="text-align: center;">
+                                    <th style="text-align: center;">Title</th>
+                                    <th style="text-align: center;">Color</th>
+                                    <th style="text-align: center;">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($pegawai as $p)
-                                <tr>
+                                <tr style="text-align: center;">
                                     <td>{{ $p->nama }}</td>
-                                    <td>{{ $p->alamat }}</td>
+                                    <td><button class="btn" style="background-color: {{ $p->alamat }}; width:100px; pointer-events: none!important; "></button></td>
                                     <td>
                                        
                                         <a href="/pegawai/hapus/{{ $p->id }}" class="btn btn-danger">Hapus</a>

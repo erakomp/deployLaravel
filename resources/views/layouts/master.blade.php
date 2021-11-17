@@ -72,6 +72,8 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
 
             <a href="{{route('dashboard')}}" class=" list-group-item" data-parent="#MainMenu"><i
                         class="fa fa-home sidebar-icon"></i><span id="menu-txt" style="font-size: 16px!important;" >{{ __('Dashboard') }} </span></a>
+                        <a href="/pegawai" class=" list-group-item" data-parent="#MainMenu"><i
+                            class="fa fa-home sidebar-icon"></i><span id="menu-txt" style="font-size: 16px!important;" >Tags </span></a>
            
             <a href="#projects" class="list-group-item" data-toggle="collapse" data-parent="#MainMenu"><i
                         class="fa fa-briefcase sidebar-icon "></i><span id="menu-txt" style="font-size: 16px!important;" >{{ __('Projects') }}</span>
@@ -186,6 +188,7 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
                        class="list-group-item childlist"> <i
                                 class="bullet-point"><span></span></i> {{ __('Integrations') }}</a>-->
                 </div>
+                
             
             @if(Entrust::hasRole('owner'))
             <!--<a href="/report" class=" list-group-item" data-parent="#MainMenu" style="font-size: 16px!important;"><i class="fa fa-file sidebar-icon" aria-hidden="true"></i>

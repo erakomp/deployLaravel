@@ -97,7 +97,7 @@
                             <select name="getlabel" id="getlabel" class="form-control">
                                 <option value="">Select if any</option>
                                 @foreach($getLabel as $get)
-                                <option value="{{$get->id}}">{{$get->nama}}</option>
+                                <option value="{{$get->alamat}}">{{$get->nama}}</option>
                                 @endforeach
                             </select>
                         </div>

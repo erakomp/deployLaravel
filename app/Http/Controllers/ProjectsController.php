@@ -11,7 +11,9 @@ use App\Models\Document;
 use App\Services\Storage\GetStorageProvider;
 use Illuminate\Http\Request;
 use Datatables;
+use App\Pegawai;
 use Carbon\Carbon;
+use DB;
 use App\Http\Requests\Project\StoreProjectRequest;
 use Ramsey\Uuid\Uuid;
 use App\Repositories\FilesystemIntegration\FilesystemIntegration;
@@ -65,7 +67,7 @@ class ProjectsController extends Controller
         return view('projects.index', compact('getProject'))
         ->withStatuses(Status::typeOfProject()->get());
     }
-
+    
     public function destroy(Project $project, Request $request)
     {
         /**$deleteTasks = $request->delete_tasks ? true : false;
