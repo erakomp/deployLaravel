@@ -81,9 +81,10 @@
                         </div>
                         @endif
                         <div class="form-group">
-                            <label for="deadline" class="control-label thin-weight">@lang('Deadline')</label>
-                            <input type="text" id="deadline" name="deadline" data-value="{{Carbon\Carbon::today()->toDateString()}}" class="form-control">
+                            <label for="deadline" class="control-label thin-weight">@lang('Deadline') <small>Not necessary</small></label>
+                            <input type="datetime-local"  name="deadline" data-value="{{Carbon\Carbon::now()->toDateTimeLocalString()}}" class="form-control">
                         </div>
+                      
                         <div class="form-group">
                             <label for="status_id" class="control-label thin-weight">Position</label>
                             <select name="status_id" id="status" class="form-control">

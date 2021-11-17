@@ -71,7 +71,7 @@ class RoleuserController extends Controller
      */
     public function show(User $product)
     {
-        return view('products.show', compact('product'));
+        return view('roless.show', compact('product'));
     }
    
     /**
