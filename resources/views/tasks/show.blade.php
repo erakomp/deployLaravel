@@ -203,7 +203,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="deadline_date" class="control-label thin-weight">@lang('Change deadline')</label>
-                                <input type="text" id="deadline_date" name="deadline_date" data-value="{{now()->addDays(3)}}" class="form-control">
+                                <input type="datetime-local" name="deadline_date" data-value="{{Carbon\Carbon::now()->toDateTimeLocalString()}}" class="form-control">
                             </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default col-lg-6"
