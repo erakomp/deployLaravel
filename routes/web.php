@@ -21,7 +21,12 @@ Route::group(['middleware' => ['auth']], function () {
     /**
      * Main
      */
-    
+
+    Route::get('/pegawa', 'PegawaController@index');
+    Route::get('/pegawa/tambah', 'PegawaController@tambah');
+    Route::post('/pegawa/store', 'PegawaController@store');
+    Route::get('/pegawa/edit/{user_id}', 'PegawaController@edit');
+    Route::get('/pegawa/hapus/{user_id}', 'PegawaController@delete');
     Route::get('/pegawai', 'PegawaiController@index');
     Route::get('/pegawai/tambah', 'PegawaiController@tambah');
     Route::post('/pegawai/store', 'PegawaiController@store');

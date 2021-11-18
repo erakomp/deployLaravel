@@ -265,7 +265,7 @@ class TasksController extends Controller
         if ($request->ajax() && isset($input["statusExternalId"])) {
             $input["status_id"] = Status::whereExternalId($input["statusExternalId"])->first()->id;
         }
-
+        
         $task = $this->findByExternalId($external_id);
         $task->fill($input)->save();
         event(new \App\Events\TaskAction($task, self::UPDATED_STATUS));
