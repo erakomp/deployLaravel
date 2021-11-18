@@ -1,4 +1,3 @@
-
 @extends('layouts.master')
 
 <style>
@@ -10,9 +9,7 @@
         div.container{
             width: 800px!important;
         }
-
     }
-
 </style>
 @section('content')
 <div class="container" >

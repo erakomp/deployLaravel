@@ -7,13 +7,15 @@ use App\Models\Task;
 use App\Exports\TransactionsExport;
 use App\Imports\TransactionsImport;
 use DB;
+use App\User;
 use Carbon\Carbon;
 
 class DigitalController extends Controller
 {
     public function importExportView()
     {
-        return view('index2');
+        $user = DB::table('users')->get();
+        return view('index2', compact('user'));
     }
    
     /**
@@ -27,7 +29,7 @@ class DigitalController extends Controller
         if ($status == 0 && $startDate == Carbon::today()->toDateString() && $endDate == Carbon::today()->toDateString()) {
             $getTaskReport =DB::table('tasks')
             ->join('projects', 'tasks.project_id', '=', 'projects.id')
-            ->join('users', 'tasks.user_created_id', '=', 'users.id')
+            ->join('users', 'tasks.user_assigned_id', '=', 'users.id')
             ->join('statuses', 'tasks.status_id', '=', 'statuses.id')
         ->select('tasks.created_at as task_created_at', 'tasks.updated_at as task_update_at', 'tasks.title AS task_title', 'users.name as username', 'projects.title AS project_title', DB::raw('TIMESTAMPDIFF(MINUTE, tasks.created_at, tasks.updated_at) as duration_in_mins'), 'statuses.title as status_title')
         ->WhereBetween('tasks.created_at', [ ($startDate = Carbon::today()->toDateString()) . ' 00:00:00', ($endDate = Carbon::today()->toDateString()).' 23:59:59' ])
@@ -37,7 +39,7 @@ class DigitalController extends Controller
         if ($status != 0 && $startDate == Carbon::today()->toDateString() && $endDate == Carbon::today()->toDateString()) {
             $getTaskReport =DB::table('tasks')
             ->join('projects', 'tasks.project_id', '=', 'projects.id')
-            ->join('users', 'tasks.user_created_id', '=', 'users.id')
+            ->join('users', 'tasks.user_assigned_id', '=', 'users.id')
             ->join('statuses', 'tasks.status_id', '=', 'statuses.id')
         ->select('tasks.created_at as task_created_at', 'tasks.updated_at as task_update_at', 'tasks.title AS task_title', 'users.name as username', 'projects.title AS project_title', DB::raw('TIMESTAMPDIFF(MINUTE, tasks.created_at, tasks.updated_at) as duration_in_mins'), 'statuses.title as status_title')
         ->WhereBetween('tasks.created_at', [ ($startDate = Carbon::today()->toDateString()). ' 00:00:00', ($endDate = Carbon::today()->toDateString()).' 23:59:59' ])
@@ -48,7 +50,7 @@ class DigitalController extends Controller
         if ($status != 0) {
             $getTaskReport =DB::table('tasks')
             ->join('projects', 'tasks.project_id', '=', 'projects.id')
-            ->join('users', 'tasks.user_created_id', '=', 'users.id')
+            ->join('users', 'tasks.user_assigned_id', '=', 'users.id')
             ->join('statuses', 'tasks.status_id', '=', 'statuses.id')
         ->select('tasks.created_at as task_created_at', 'tasks.updated_at as task_update_at', 'tasks.title AS task_title', 'users.name as username', 'projects.title AS project_title', DB::raw('TIMESTAMPDIFF(MINUTE, tasks.created_at, tasks.updated_at) as duration_in_mins'), 'statuses.title as status_title')
         ->WhereBetween('tasks.created_at', [ $startDate .'00:00:00', $endDate .' 23:59:59' ])
@@ -78,6 +80,7 @@ class DigitalController extends Controller
         return view('digi', compact('getTaskReport', 'startDate', 'endDate', 'status'));
         //   return \Excel::download(new TransactionsExport, 'transactions.'.$type);
     }
+   
    
     /**
     * @return \Illuminate\Support\Collection
