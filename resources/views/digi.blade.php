@@ -25,7 +25,7 @@
                       <tr>
                         <th scope="col">Task Title</th>
                         <th scope="col">Project Title</th>
-                        <th scope="col">Created By</th>
+                        <th scope="col">Assigned User</th>
                         <th scope="col">Created Date</th>
                         <th scope="col">Updated Date</th>
                         <th scope="col">Duration (in minutes)</th>
