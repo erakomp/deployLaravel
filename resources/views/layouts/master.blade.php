@@ -17,7 +17,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="shortcut icon" href="https://www.cloudapper.com/wp-content/uploads/custom_images/projects/projects-logo.png">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset(elixir('css/bootstrap-select.min.css')) }}">
     <link href="{{ URL::asset('css/summernote.css') }}" rel="stylesheet">
     <style>
@@ -108,7 +108,7 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
                     <a href="{{ route('productss.create')}}"
                        class="list-group-item childlist" style="font-size: 13px!important;"> <i class="bullet-point"><span></span></i> {{ __('New User') }}
                     </a>
-                    <a href="{{ route('roless.index')}}"
+                    <a href="/pegawa"
                     class="list-group-item childlist" style="font-size: 13px!important;"> <i class="bullet-point"><span></span></i> Register Roles
                  </a>
                  <a href="{{ route('roles.index')}}"

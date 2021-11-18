@@ -1,10 +1,10 @@
 @extends('layouts.master')
 @section('content')
         <div class="container">
-            <div class="card mt-5">
-               
-                <div class="card-body">
-                    <a href="/pegawa" class="btn btn-primary">Kembali</a>
+            <div class="card mt-5" style="background: white;">
+               <div class="container">
+                <div class="card-body" style="padding:2%;">
+                    
                     <br/>
                     <br/>
                     
@@ -47,12 +47,15 @@
                         </div>
  
                         <div class="form-group">
-                            <input type="submit" class="btn btn-success" value="Simpan">
+                            <a href="/pegawa" class="btn btn-primary">Back</a>
+                            <input type="submit" class="btn btn-success" value="Submit">
                         </div>
  
                     </form>
  
                 </div>
+               </div>
+                
             </div>
         </div>
     @endsection

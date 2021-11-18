@@ -2,10 +2,11 @@
 @section('content')
     <body>
         <div class="container">
-            <div class="card mt-5">
-               
-                <div class="card-body">
-                    <a href="/pegawa/tambah" class="btn btn-primary">Input Pegawa Baru</a>
+            <div class="card mt-5 shadow" style="background: white;">
+               <div class="container">
+                <div class="card-body" style="padding:5%; margin-left:-2%;">
+                    <h1 style="text-align: center;">ROLE LIST <a href="/pegawa/tambah" class="btn btn-success" style="margin-left:2%;" ><i class="fas fa-plus"></i></a></h1>
+                    
                     <br/>
                     <br/>
                     <table class="table table-bordered table-hover table-striped">
@@ -26,6 +27,8 @@
                         </tbody>
                     </table>
                 </div>
+               </div>
+             
             </div>
         </div>
   @endsection
