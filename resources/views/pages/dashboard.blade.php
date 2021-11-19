@@ -13,7 +13,7 @@
     
     <div class="card col-sm-3" style="margin-right:3%;background-color:rgba(255, 255, 255, 0.637); border-radius:15px;">
         <a href="/projects">
-            <div class="card-body" style="margin:5%; text-align:center; ">
+            <div class="card-body" style="margin:5%; text-align:center; color:black; ">
                 <p>Total Projects</p>
                 <h1>{{$totalProjects}}
                 </h1>
@@ -23,10 +23,12 @@
     </div>
 
     <div class="card col-sm-3" style="margin-right:3%; background-color:rgba(255, 255, 255, 0.637); border-radius:15px;">
-        <div class="card-body" style="margin:5%; text-align:center;">
+        <div class="card-body" style="margin:5%; text-align:center; color:black!important;">
+            <a href="/importExportView" style="color:black!important;">
             <p>Total Tasks</p>
             <h1>                            {{$totalTasks}}
             </h1>
+        </a>
         </div>
     </div>
 

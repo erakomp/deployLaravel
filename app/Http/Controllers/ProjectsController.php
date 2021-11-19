@@ -188,6 +188,10 @@ class ProjectsController extends Controller
     public function show(Project $project)
     {
         $getLabel = DB::table('pegawai')->get();
+        $getImage = DB::table('cruds')
+        ->join('tasks', 'cruds.user_id', '=', 'tasks.user_created_id')
+        ->select('cruds.*')
+        ->get();
         $tasks = $project->tasks->count();
         if ($tasks === 0) {
             $completionPercentage = 0;
@@ -209,7 +213,7 @@ class ProjectsController extends Controller
 
         \LogActivity::addToLog('just visited ');
 
-        return view('projects.show', compact('getLabel'))
+        return view('projects.show', compact('getLabel', 'getImage'))
             ->withProject($project)
             ->withStatuses(Status::typeOfTask()->get())
             ->withTasks($project->tasks)

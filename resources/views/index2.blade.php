@@ -16,7 +16,7 @@
     <div class="card shadow" style="background-color:white;" >
         <div class="container"style="">
             <div class="card-header">
-                <p style="text-align: center;  margin-top:5%;font-size:30px; font-weight:bold;">GET THE REPORT</p>
+                <p style="text-align: center;  margin-top:5%;font-size:30px; font-weight:bold;">GET THE DIGITAL REPORT</p>
             </div>
                 <div class="card-body" style="display: flex;
                 justify-content: center; margin-top:3%;

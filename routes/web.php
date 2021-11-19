@@ -21,6 +21,7 @@ Route::group(['middleware' => ['auth']], function () {
     /**
      * Main
      */
+    Route::resource('crud', 'CrudsController');
 
     Route::get('/pegawa', 'PegawaController@index');
     Route::get('/pegawa/tambah', 'PegawaController@tambah');

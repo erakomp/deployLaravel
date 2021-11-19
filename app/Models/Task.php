@@ -69,6 +69,10 @@ class Task extends Model implements Commentable
     {
         return $this->belongsTo(User::class, 'user_assigned_id');
     }
+    public function crud()
+    {
+        return $this->belongsTo(Crud::class, 'user_created_id');
+    }
 
     public function invoice()
     {

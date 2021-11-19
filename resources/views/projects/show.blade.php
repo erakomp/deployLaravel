@@ -32,6 +32,9 @@
                 <div class="project-board-list">
                     <header>{{ __($status->title)}}</header>
                     <ul class="sortable" id="{{$status->title}}" data-status-external-id="{{$status->external_id}}" style="min-height: 32em;">
+                        
+                            
+                    
                         @foreach($tasks as $task)
                         <li data-task-id="{{$task->external_id}}">
                             @if($task->status_id == $status->id)
@@ -57,17 +60,19 @@
                                         {{date('l, d/m/y H:i:s', strtotime($task->created_at))}}
 
                                         <li class="project-board-card-thumbnail text-right" style="float:right;">
-                                        
-                                            <!--<a href="{{route('users.show', $task->user->external_id)}}" >--><img src="{{$task->user->avatar}}" class="project-board-card-thumbnail-image" title="{{$task->user->name}}"/><!--</a>-->
+                                            <button class="btn" style="pointer-events:none; background-color:turquoise; color:white; font-weight:bold;border-radius:50px; font-size:12px; padding:2px;">{{$task->user->name}}</button>
+                                            <!--<a href="{{route('users.show', $task->user->external_id)}}" ><img src="{{$task->user->avatar}}" class="project-board-card-thumbnail-image" title="{{$task->user->name}}"/></a>-->
                                         </li>
                                     </ul>
                                   </div>
                                 </div> 
                             @endif
                         @endforeach
+
                         </li>
                     </ul>
                 </div>
+                
                     @endforeach  
             </div>
         </div>
@@ -90,11 +95,13 @@
             <div class="tablet__body">
                 <h3 class="tablet__head-title" style="font-size:17px!important; font-weight:bold;">Collaborator(s)</h3>
                 <ul class="list-inline">
+                    
                 @foreach($collaborators as $collaborator)
                 <li>
-                     <a href="{{route('users.show', $collaborator->external_id)}}" >
+                    <button class="btn" style="pointer-events:none; background-color:turquoise; color:white; font-weight:bold;border-radius:50px;">{{$collaborator->name}}</button>
+                    <!-- <a href="{{route('users.show', $collaborator->external_id)}}" >
                         <img src="{{$collaborator->avatar}}" class="project-board-card-thumbnail-image" title="{{$collaborator->name}}"/>
-                    </a>
+                    </a>-->
                 </li>
                 @endforeach
                 </ul>
