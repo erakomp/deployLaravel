@@ -9,7 +9,7 @@
     
             <div class="col-md-5 col-md-offset-4">
                 
-                <div class="tablet" style="margin-top:-25%!important; background-color:rgba(255, 255, 255, 0.685);">
+                <div class="tablet" style="margin-top:-35%!important; background-color:rgba(255, 255, 255, 0.685);">
                     
                         @if (count($errors) > 0)
                 
