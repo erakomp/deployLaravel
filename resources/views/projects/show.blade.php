@@ -293,7 +293,7 @@ $( ".sortable" ).sortable({
     });
     @endif
 
-    $('div.project-board-card-description img').attr('style', 'max-width: 100px !important; ');
+    $('div.tablet__body.tablet__tigthen img').attr('style', 'max-width: 100px !important; ');
 </script>
 
 @endpush
