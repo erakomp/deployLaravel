@@ -21,6 +21,14 @@ Route::group(['middleware' => ['auth']], function () {
     /**
      * Main
      */
+
+    Route::get('/div', 'DivController@index');
+    Route::get('/div/tambah', 'DivController@tambah');
+    Route::post('/div/store', 'DivController@store');
+    Route::post('/div/update', 'DivController@update');
+
+    Route::get('/div/edit/{id}', 'DivController@edit');
+    Route::get('/div/hapus/{id}', 'DivController@delete');
     Route::resource('crud', 'CrudsController');
 
     Route::get('/pegawa', 'PegawaController@index');
@@ -161,6 +169,7 @@ Route::group(['middleware' => ['auth']], function () {
      */
     Route::group(['prefix' => 'projects'], function () {
         Route::get('/data', 'ProjectsController@indexData')->name('projects.index.data');
+        
         Route::patch('/updatestatus/{external_id}', 'ProjectsController@updateStatus')->name('project.update.status');
         Route::patch('/updateassign/{external_id}', 'ProjectsController@updateAssign')->name('project.update.assignee');
         Route::post('/updatestatus/{external_id}', 'ProjectsController@updateStatus');

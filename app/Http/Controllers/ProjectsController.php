@@ -14,6 +14,7 @@ use Datatables;
 use App\Pegawai;
 use Carbon\Carbon;
 use DB;
+use App\Div;
 use App\Http\Requests\Project\StoreProjectRequest;
 use Ramsey\Uuid\Uuid;
 use App\Repositories\FilesystemIntegration\FilesystemIntegration;
@@ -62,7 +63,13 @@ class ProjectsController extends Controller
 
     public function index()
     {
-        $getProject = Project::all();
+        $getProject = DB::table('projects')
+        
+        ->where('projects.deleted_at', '=', null)
+        ->select('projects.*')
+        ->get();
+       
+
 
         return view('projects.index', compact('getProject'))
         ->withStatuses(Status::typeOfProject()->get());
@@ -114,6 +121,8 @@ class ProjectsController extends Controller
                 'user_created_id' => auth()->id(),
                 'external_id' => Uuid::uuid4()->toString(),
                 'client_id' => $client ? $client->id : null,
+                'flag' => $request->flag,
+
             ]
         );
 
@@ -176,8 +185,8 @@ class ProjectsController extends Controller
     public function create($client_external_id = null)
     {
         $client =  Client::whereExternalId($client_external_id);
-
-        return view('projects.create')
+        $getDiv = Div::all();
+        return view('projects.create', compact('getDiv'))
             ->withUsers(User::with(['department'])->get()->pluck('nameAndDepartmentEagerLoading', 'id'))
             ->withClients(Client::pluck('company_name', 'external_id'))
             ->withClient($client ?: null)

@@ -23,6 +23,16 @@
                             <input type="password" class="form-control" id="password" name="password">
                         </div>
                         
+                        <div class="form-group">
+                            <label for="flag">Division:</label>
+                            <select name="flag" id="flag">
+                                @foreach($getDiv as $i)
+                                <option value="{{$i->id}}">{{$i->division}}</option>
+                                @endforeach
+                            </select>
+ 
+                        </div>
+                        
                       <div class="row">
                         
                         <div class="form-group" style="margin-bottom:10%;">

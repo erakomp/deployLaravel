@@ -35,11 +35,19 @@
             <div class="col-sm-4">
                 <div class="tablet">
                     <div class="tablet__body">
-                        <div class="form-group">
+                        <div class="form-group" style="display:none;">
                             <label for="user_assigned_id" class="control-label thin-weight">@lang('Assign user')</label>
                             <select name="user_assigned_id" id="user_assigned_id" class="form-control">
                                 @foreach($users as $user => $userK)
                                     <option value="{{$user}}">{{$userK}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="flag" class="control-label thin-weight">Division</label>
+                            <select name="flag" id="flag" class="form-control">
+                                @foreach($getDiv as $i)
+                                    <option value="{{$i->id}}">{{$i->division}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -66,9 +74,10 @@
                                 </select>
                             @endif
                         </div>
+                        
                         <div class="form-group" style="display:none;">
                             <label for="deadline" class="control-label thin-weight">@lang('Deadline')</label>
-                            <input type="text" id="deadline" name="deadline" data-value="{{now()->addDays(3)}}" class="form-control">
+                            <input type="text" id="deadline" name="deadline"  class="form-control">
                         </div>
                         <div class="form-group" style="display:none;">
                             <label for="status" class="control-label thin-weight">@lang('Status')</label>

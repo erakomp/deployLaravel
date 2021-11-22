@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use DB;
 
 use App\Http\Controllers\Controller;
 
@@ -11,7 +12,8 @@ class RegisterController extends Controller
 {
     public function register(Request $request)
     {
-        return view('register');
+        $getDiv = DB::table('divs')->get();
+        return view('register', compact('getDiv'));
     }
 
     public function registerPost(Request $request)
@@ -20,13 +22,17 @@ class RegisterController extends Controller
             'name' => 'required|min:4',
             'email' => 'required|min:4|email|unique:users',
             'password' => 'required',
+            'flag' => 'required',
+
         ]);
 
         $data =  new User();
         $data->name = $request->name;
         $data->email = $request->email;
+        $data->flag = $request->flag;
+
         $data->password = bcrypt($request->password);
         $data->save();
-        return redirect('login')->with('alert-success', 'Kamu berhasil Register');
+        return redirect('login')->with('alert-success', 'You have been enrolled');
     }
 }
