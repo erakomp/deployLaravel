@@ -1,12 +1,50 @@
 
 @extends('layouts.app')
 @section('content')
-    <!-- Main Section -->
-    <div class="container" >
+
+
+   
         <div class="row">
+             <!-- Main Section -->
+    
             <div class="col-md-5 col-md-offset-4">
+                
                 <div class="tablet" style="margin-top:-25%!important; background-color:rgba(255, 255, 255, 0.685);">
+                    
+                        @if (count($errors) > 0)
+                
+                        <div class="alert alert-danger">
+                
+                
+                
+                          
+                        
+                                
+                        
+                                <p>Error! Can't register</p>
+                        
+                                
+                        
+                            
+                        </div>
+                        
+                        
+                        
+                        @endif
+                        
+                        
+                        
+                        @if ($message = Session::get('success'))
+                        
+                            <div class="alert alert-success">
+                        
+                                <p>{{ $message }}</p>
+                        
+                            </div>
+                        
+                        @endif
                     <h1 class="text-center" style="font-size:50px; font-family: 'Fredericka the Great', cursive!important;">Era Project Management</h1>
+                    
 
                     <form action="{{ url('/registerPost') }}" method="post" style="margin-top:10%;">
                         {{ csrf_field() }}
