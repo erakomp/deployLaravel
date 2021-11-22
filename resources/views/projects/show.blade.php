@@ -43,7 +43,9 @@
                                     <div class="position-relative">
                                     </div>
                                     <p class="project-board-card-title" style="font-size:14px!important; font-weight:bold; width:300px!important; max-width:300px!important;" ><a href="{{route('tasks.show', $task->external_id)}}" class="link-color">{{$task->title}}</a>
-                                        {!! $task->description . ''!!}
+                                        <div class="tablet__body tablet__tigthen" style="font-size: 14px!important; ">
+                                            <p style="font-size: 12px!important; max-width:300px!important;">  {!! $task->description . ''!!}</p>
+                                        </div>
                                     </p>
                                     
                                     <div class="project-board-card-description" style="font-size:14px!important; width:100px!important; max-width:100px!important;">
