@@ -28,6 +28,7 @@ class Project extends model implements Commentable
         'user_created_id',
         'client_id',
         'deadline',
+        'flag'
     ];
 
     protected $dates = ['deadline'];
