@@ -15,14 +15,14 @@
                     <br/>
                     
  
-                    <form method="post" action="/div/update">
+                    <form method="post" action="/div/update/{{ $div->id }}">
  
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
  
                         <div class="form-group">
                             <label>Division</label>
-                            <input type="text" name="division" class="form-control" placeholder="Division" value=" {{ $div->division }}">
+                            <input type="text" name="division" class="form-control" placeholder="Division" value=" {{ $div->id }}">
  
                             @if($errors->has('division'))
                                 <div class="text-danger">

@@ -41,17 +41,15 @@ class DivController extends Controller
         $div = Div::find($id);
         return view('div_edit', ['div' => $div]);
     }
-    public function update($id, Request $request)
+    public function update(Request $request)
     {
-        $this->validate($request, [
-       'division' => 'sometimes',
-       'description' => 'sometimes'
+        // update data pegawai
+        DB::table('divs')->where('id', $request->id)->update([
+        'division' => $request->division,
+        'description' => $request->description,
+        
     ]);
- 
-        $div = Div::find($id);
-        $div->division = $request->division;
-        $div->description = $request->description;
-        $div->save();
+        // alihkan halaman ke halaman pegawai
         return redirect('/div');
     }
     public function delete($id)

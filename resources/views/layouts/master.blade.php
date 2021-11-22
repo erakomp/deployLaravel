@@ -113,6 +113,9 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
                  <a href="{{ route('roles.index')}}"
                        class="list-group-item childlist" style="font-size: 13px!important;" > <i
                                 class="bullet-point"><span></span></i> {{ __('Role & Permissions Management') }}</a>
+                                <a href="/div"
+                    class="list-group-item childlist" style="font-size: 13px!important;"> <i class="bullet-point"><span></span></i> Add Division
+                 </a>
                 @endif
             </div>
 
