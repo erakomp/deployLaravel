@@ -6,6 +6,9 @@
         
         width:100px!important;
     }
+    div.tablet__body.tablet__tigthen img{
+        max-width: 100px!important;
+    }
 </style>
 <div class="row">
     @include('partials.clientheader')
