@@ -61,7 +61,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <div class="input-group ">
-                                        <button type="submit" class="btn btn-primary" style="border-radius:50px; margin-top:10px; font-size:15px!important;">Get The Report</button>
+                                        <button type="submit" class="btn btn-md btn-brand movedown" style="margin-top:10px; font-size:15px!important;">Get The Report</button>
                                         
                                     </div>
                                     <div>

@@ -50,8 +50,8 @@
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                            <a class="btn btn-warning" href="{{ route('productss.index') }}"> Back</a>
-                                <button type="submit" class="btn btn-success">Submit</button>
+                            <a class="btn btn-md btn-brand movedown" style="font-size: 14px; margin-right:5px;" href="{{ route('productss.index') }}"> Back</a>
+                                <button type="submit" class="btn btn-md btn-brand movedown" style="font-size: 14px; margin-right:5px;">Submit</button>
                         </div>
                     </div>
                    
