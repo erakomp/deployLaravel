@@ -33,7 +33,7 @@
                 <tr>
                     <td>{{ ++$i }}</td>
                     <td>{{ $product->name }}</td>
-                    <td>{{ $product->display_name }}</td>
+                    <td>{{ $product->email }}</td>
                     <!--<td>
                         <form action="{{ route('products.destroy',$product->id) }}" method="POST">
            

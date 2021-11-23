@@ -15,11 +15,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = User::join('role_user', 'users.id', '=', 'role_user.user_id')
-        ->join('roles', 'role_user.role_id', '=', 'roles.id')
-        -select('users.name', 'users.email', 'roles.display_name')
-        ->get();
-        
+        $products = DB::table('users')->get();
+  
         return view('products.index', compact('products'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
