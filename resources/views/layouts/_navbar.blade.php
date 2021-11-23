@@ -31,20 +31,22 @@
                 </div>
             @endif-->
             
-            <div id="nav-toggle col-sm-" style="margin-right:5%!important;">
+            <div id="nav-toggle col-sm-6" >
                 <a id="grid-action" role="button" data-toggle="dropdown">
                     <span class="top-bar-toggler">
-                    <img src="https://cdn.erakomp.co.id/bell.png" alt="" style="width:30px;">   
-                    @if($notifications->isEmpty())
-                    <ul>
-                        <div class="action-content">
-                            <span class="btn btn-danger" style="width:50px; height: 30px;margin-right:30%; margin-top:20px;">0</span>
-                        </div>
-                    </ul>
+                        <button type="button" class="btn btn-danger" style="margin-right:100px;margin-top:-5px;">
+                            Notif 
+                            @if($notifications->isEmpty())
+                            <span class="badge badge-light">0</span>
                 @else
-                <span class="btn btn-danger" style="width:50px; height: 30px;margin-right:30%; margin-top:20px;">{{Auth::user()->unreadNotifications->count()}}</span>
+                <span class="badge badge-light"> {{Auth::user()->unreadNotifications->count()}}</span>
+               
                 @endif
-                
+                            
+                            
+                          </button>
+                     
+                    
                     </span>
                 </a>
             </div>
