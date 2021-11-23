@@ -48,8 +48,8 @@
  </div>
                         
                         <div class="form-group" style="display:flex; justify-content:center; margin-top:2%;">
-                            <a href="/pegawai" class="btn btn-primary" style="margin-right:5px; font-size:16px;">Kembali</a>
-                            <input type="submit" class="btn btn-success" style="font-size:16px;" value="Simpan">
+                            <a href="/pegawai" class="btn btn-md btn-brand movedown" style="margin-right:5px; font-size:16px;">Kembali</a>
+                            <input type="submit" class="btn btn-md btn-brand movedown" style="font-size:16px;" value="Simpan">
                         </div>
  
                     </form>
