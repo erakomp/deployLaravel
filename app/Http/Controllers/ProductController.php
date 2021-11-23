@@ -16,7 +16,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = DB::table('users')->get();
-  
+    
         return view('products.index', compact('products'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }

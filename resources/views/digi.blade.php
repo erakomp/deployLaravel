@@ -9,7 +9,7 @@
             <div class="card-header">
                 <p class="text-center" style="font-size:25px; font-weight:800;">DIGITAL REPORT RESULT</p>
             </div>
-            <p class="text-center">from <strong>{{$startDate}}</strong> until <strong>{{$endDate}}</strong> with status <strong>
+            <p class="text-center">from <strong>{{date('l, d-m-Y H:i:s', strtotime($startDate))}}</strong> until <strong>{{date('l, d-m-Y H:i:s', strtotime($endDate))}}</strong> with status <strong>
               @if($status == 0) All Categories
             @elseif($status == '1') Resources
             @elseif($status == '2') To Do List / Backlog
@@ -40,8 +40,8 @@
                         <td>{{$i->task_title}}</td>
                         <td>{{$i->project_title}}</td>
                         <td>{{$i->username}}</td>
-                        <td>{{$i->task_created_at}}</td>
-                        <td>{{$i->task_update_at}}</td>
+                        <td>{{date('l, d-m-Y H:i:s', strtotime($i->task_created_at))}}</td>
+                        <td>{{date('l, d-m-Y H:i:s', strtotime($i->task_update_at))}}</td>
                         <td>{{$i->duration_in_mins}}</td>
                         <td>{{$i->status_title}}</td>
                       </tr>
