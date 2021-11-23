@@ -1,3 +1,5 @@
+<?php $notifications = auth()->user()->unreadNotifications; ?>
+
 <!-- DESKTOP NAV --->
 <button type="button" class="navbar-toggle menu-txt-toggle" style="">
     <span class="icon-bar"></span>
@@ -32,7 +34,17 @@
             <div id="nav-toggle col-sm-" style="margin-right:5%!important;">
                 <a id="grid-action" role="button" data-toggle="dropdown">
                     <span class="top-bar-toggler">
-                    <img src="https://cdn.erakomp.co.id/bell.png" alt="" style="width:30px;">                    
+                    <img src="https://cdn.erakomp.co.id/bell.png" alt="" style="width:30px;">   
+                    @if($notifications->isEmpty())
+                    <ul>
+                        <div class="action-content">
+                            <span class="btn btn-danger" style="width:50px; height: 30px;margin-right:30%; margin-top:20px;">0</span>
+                        </div>
+                    </ul>
+                @else
+                <span class="btn btn-danger" style="width:50px; height: 30px;margin-right:30%; margin-top:20px;">{{Auth::user()->unreadNotifications->count()}}</span>
+                @endif
+                
                     </span>
                 </a>
             </div>
