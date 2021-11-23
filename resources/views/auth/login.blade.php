@@ -38,7 +38,9 @@
                             <div class="inner-addon right-addon">
                                 <div class="col-md-12 input-group-lg">
                                 <i class="fa fa-lock" aria-hidden="true"></i>
-                                    <input type="password" class="form-control" value=""  style="border-radius: 4px; box-shadow:0px 2px 4px rgba(0,0,0,0.18);" name="password" placeholder="Password">
+                                    <input type="password" class="form-control" value=""  id="password"  style="border-radius: 4px; box-shadow:0px 2px 4px rgba(0,0,0,0.18);" name="password" placeholder="Password">
+                                    <input type="checkbox" onclick="myFunction()">Show Password
+
                                     @if($errors->has('password'))
                                     <div class="text-danger">
                                         Please enter the right password
@@ -83,4 +85,14 @@
             </div>
         </div>
     </div>
+    <script>
+        function myFunction() {
+  var x = document.getElementById("password");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+    </script>
 @endsection

@@ -49,6 +49,8 @@
                         <div class="form-group">
                             <label for="alamat">Password:</label>
                             <input type="password" class="form-control" id="password" name="password">
+                            <input type="checkbox" onclick="myFunction()">Show Password
+
                             @if($errors->has('password'))
                         <div class="text-danger">
                             <p>Please enter at least 8 characters</p>
@@ -90,4 +92,14 @@
             </div>
         </div>
     </div>
+    <script>
+        function myFunction() {
+  var x = document.getElementById("password");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+    </script>
 @endsection
