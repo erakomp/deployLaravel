@@ -21,6 +21,7 @@ use App\Models\Invoice;
 use App\Models\InvoiceLine;
 use App\Models\Project;
 use App\Pegawai;
+use DB;
 
 class TasksController extends Controller
 {
@@ -107,7 +108,8 @@ class TasksController extends Controller
             })->pluck('title', 'external_id');
         }
         $getLabel = Pegawai::all();
-        return view('tasks.create', compact('getLabel'))
+        $getUsers = DB::table('users')->get();
+        return view('tasks.create', compact('getLabel', 'getUsers'))
             ->withUsers(User::with(['department'])->get()->pluck('nameAndDepartmentEagerLoading', 'id'))
             ->withClients(Client::pluck('company_name', 'external_id'))
             ->withClient($client ?: null)

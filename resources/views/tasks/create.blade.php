@@ -38,9 +38,44 @@
                         <div class="form-group">
                             <label for="user_assigned_id" class="control-label thin-weight">@lang('Assign user')</label>
                             <select name="user_assigned_id" id="user_assigned_id" class="form-control">
-                                @foreach($users as $user => $userK)
-                                    <option value="{{$user}}">{{$userK}}</option>
+                                
+                                @if(Auth::check() && Auth::user()->flag == 1)
+
+                                @foreach($getUsers->where('flag', 1) as $user )
+                                    <option value="{{$user->id}}">{{$user->name}}</option>
+
                                 @endforeach
+                                @elseif(Auth::check() && Auth::user()->flag == 2)
+
+                                @foreach($getUsers->where('flag',2) as $user )
+                                    <option value="{{$user->id}}">{{$user->name}}</option>
+
+                                @endforeach
+                                @elseif(Auth::check() && Auth::user()->flag == 3)
+
+                                @foreach($getUsers->where('flag',3) as $user )
+                                    <option value="{{$user->id}}">{{$user->name}}</option>
+
+                                @endforeach
+                                @elseif(Auth::check() && Auth::user()->flag == 4)
+
+                                @foreach($getUsers->where('flag',4) as $user )
+                                    <option value="{{$user->id}}">{{$user->name}}</option>
+
+                                @endforeach
+                                @elseif(Auth::check() && Auth::user()->flag == 5)
+
+                                @foreach($getUsers->where('flag',5) as $user )
+                                    <option value="{{$user->id}}">{{$user->name}}</option>
+
+                                @endforeach
+                                @else 
+
+                                @foreach($getUsers->where('flag', 6) as $user )
+                                    <option value="{{$user->id}}">{{$user->name}}</option>
+
+                                @endforeach
+                                @endif
                             </select>
                         </div>
                         <div class="form-group">
