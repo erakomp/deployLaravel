@@ -26,7 +26,7 @@
                 <tr>
                     <th>No</th>
                     <th>Name</th>
-                    <th>Details</th>
+                    <th>Email</th>
                    
                 </tr>
                 @foreach ($products as $product)
