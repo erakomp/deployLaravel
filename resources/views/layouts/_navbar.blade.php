@@ -34,15 +34,15 @@
             <div id="nav-toggle col-sm-6" >
                 <a id="grid-action" role="button" data-toggle="dropdown">
                     <span class="top-bar-toggler">
-                        <button type="button" class="btn btn-danger" style="margin-right:100px;margin-top:-5px;">
+                        <button type="button" class="btn btn-danger" style="margin-right:80px;margin-top:-5px;">
                             Notif 
                             @if($notifications->isEmpty())
-                            <span class="badge badge-light">0</span>
+                            <span class="badge badge-pill badge-danger">0</span>
                 @else
-                <span class="badge badge-light"> {{Auth::user()->unreadNotifications->count()}}</span>
+                <span class="badge badge-pill badge-danger"> {{Auth::user()->unreadNotifications->count()}}</span>
                
                 @endif
-                            
+                
                             
                           </button>
                      
