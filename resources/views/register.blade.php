@@ -12,36 +12,14 @@
                 <div class="tablet" style="margin-top:-35%!important; background-color:rgba(255, 255, 255, 0.685);">
                     
                         @if (count($errors) > 0)
-                
                         <div class="alert alert-danger">
-                
-                
-                
-                          
-                        
-                                
-                        
-                                <p>Error! Can't register</p>
-                        
-                                
-                        
-                            
-                        </div>
-                        
-                        
-                        
+                                <p>Error! Can't register</p>     
+                        </div>  
                         @endif
-                        
-                        
-                        
                         @if ($message = Session::get('success'))
-                        
                             <div class="alert alert-success">
-                        
                                 <p>{{ $message }}</p>
-                        
                             </div>
-                        
                         @endif
                     <h1 class="text-center" style="font-size:50px; font-family: 'Fredericka the Great', cursive!important;">Era Project Management</h1>
                     
@@ -51,15 +29,34 @@
                         <div class="form-group">
                             <label for="alamat">Full Name:</label>
                             <input type="text"  class="form-control" id="name" name="name" >
+                            @if($errors->has('name'))
+                        <div class="text-danger">
+                            {{ $errors->first('name')}}
                         </div>
+                    @endif
+                        </div>
+                        
+
                         <div class="form-group">
                             <label for="email">Email:</label>
                             <input type="email" class="form-control" id="email" name="email">
+                            @if($errors->has('email'))
+                        <div class="text-danger">
+                            {{ $errors->first('email')}}
+                        </div>
+                    @endif
                         </div>
                         <div class="form-group">
                             <label for="alamat">Password:</label>
                             <input type="password" class="form-control" id="password" name="password">
+                            @if($errors->has('password'))
+                        <div class="text-danger">
+                            <p>Please enter at least 8 characters</p>
                         </div>
+                    @endif
+                        </div>
+                        
+
                         
                         <div class="form-group">
                             <label for="flag">Division:</label>
@@ -70,6 +67,8 @@
                             </select>
  
                         </div>
+                       
+
                         
                       <div class="row">
                         

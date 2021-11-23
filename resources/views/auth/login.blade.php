@@ -22,19 +22,31 @@
                             <div class="inner-addon right-addon">
                                 <div class="col-md-12 input-group-lg">
                                     <i class="fa fa-user" aria-hidden="true"></i>
-                                    <input type="email" value="{{isDemo() ? 'email@email.com' : ''}}" class="form-control" style="border-radius: 4px; box-shadow:0px 2px 4px rgba(0,0,0,0.18); padding-right:40px; " name="email" value="{{ old('email') }}" placeholder="E-mail address">
+                                    <input type="email" value="" class="form-control" style="border-radius: 4px; box-shadow:0px 2px 4px rgba(0,0,0,0.18); padding-right:40px; " name="email" value="{{ old('email') }}" placeholder="john@doe.com">
+                                    @if($errors->has('email'))
+                        <div class="text-danger">
+                            Please enter the right email
+                        </div>
+                    @endif
 
                                 </div>
                                 </div>
+                                
                             </div>
                             <br>
                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <div class="inner-addon right-addon">
                                 <div class="col-md-12 input-group-lg">
                                 <i class="fa fa-lock" aria-hidden="true"></i>
-                                    <input type="password" class="form-control" value="{{isDemo() ? 'Daybydaycrm123' : ''}}"  style="border-radius: 4px; box-shadow:0px 2px 4px rgba(0,0,0,0.18);" name="password" placeholder="Password">
+                                    <input type="password" class="form-control" value=""  style="border-radius: 4px; box-shadow:0px 2px 4px rgba(0,0,0,0.18);" name="password" placeholder="Password">
+                                    @if($errors->has('password'))
+                                    <div class="text-danger">
+                                        Please enter the right password
+                                    </div>
+                                @endif
                                 </div>
                             </div>
+                           
                         </div>
                             <div class="form-group">
                                 <div class="col-md-12">
@@ -59,16 +71,7 @@
                             </div>
                             <div class="col-md-12">
                                
-                                 @if ($errors->has('email'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                    @endif
-                                 @if ($errors->has('password'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
+                                
                                 @if (Session::has('message'))
                                         <span class="help-block">
                                         <strong>{{ Session::get('message') }}</strong>
