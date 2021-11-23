@@ -42,10 +42,11 @@
                         <li data-task-id="{{$task->external_id}}">
                             @if($task->status_id == $status->id)
                                 <div class="project-board-card-wrapper">
+                                    <a href="{{route('tasks.show', $task->external_id)}}" class="" style="text-decoration: none;">
                                   <div class="project-board-card">
                                     <div class="position-relative">
                                     </div>
-                                    <p class="project-board-card-title" style="font-size:14px!important; font-weight:bold; width:300px!important; max-width:300px!important;" ><a href="{{route('tasks.show', $task->external_id)}}" class="link-color">{{$task->title}}</a>
+                                    <p class="project-board-card-title" style="font-size:14px!important; font-weight:bold; width:300px!important; max-width:300px!important;" >{{$task->title}}
                                         <div class="tablet__body tablet__tigthen" style="font-size: 14px!important; ">
                                             <p style="font-size: 12px!important; max-width:300px!important;">  {!! $task->description . ''!!}</p>
                                         </div>
@@ -73,6 +74,7 @@
                                         </li>
                                     </ul>
                                   </div>
+                                </a>
                                 </div> 
                             @endif
                         @endforeach
