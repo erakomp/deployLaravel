@@ -12,7 +12,9 @@
 
 Route::auth();
 
-
+Route::get('/profile_user', function () {
+    return view('prof');
+});
 Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/register', 'Auth\RegisterController@register');
 Route::post('/registerPost', 'Auth\RegisterController@registerPost');

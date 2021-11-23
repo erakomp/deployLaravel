@@ -50,11 +50,12 @@
                     </span>
                 </a>
             </div>
-            <div id="nav-toggle col-sm-2" >
+            
+            <!--<div id="nav-toggle col-sm-2" >
                 <li class="topbar-user__list">
                     <a href="{{url('/logout')}}" class="btn btn-outline-metal btn-hover-brand btn-upper btn-font-dark btn-sm btn-bold" style="margin:2%;">Logout</a>
                 </li>
-            </div>
+            </div>-->
             @include('navigation.topbar.user-profile')
 
         </div>
