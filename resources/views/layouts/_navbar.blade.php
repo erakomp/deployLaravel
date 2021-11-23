@@ -33,8 +33,8 @@
             
             <div id="nav-toggle col-sm-6" >
                 <a id="grid-action" role="button" data-toggle="dropdown">
-                    <span class="top-bar-toggler">
-                        <button type="button" class="btn btn-danger" style="margin-right:80px;margin-top:-5px;">
+                    <span class="top-bar-toggler" style="background-color: transparent;">
+                        <button type="button" class="btn btn-danger" style="margin-right:80px;margin-top:-5px; text-decoration:none!important;">
                             Notif 
                             @if($notifications->isEmpty())
                             <span class="badge badge-pill badge-danger">0</span>
