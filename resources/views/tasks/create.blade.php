@@ -103,7 +103,7 @@
                             @endif
                         </div>
                         @if($projects)
-                        <div class="form-group">
+                        <div class="form-group" style="display:none!important;">
                             <label for="project_external_id" class="control-label thin-weight">@lang('Assign project')</label>
                             <select name="project_external_id" id="project_external_id" class="form-control">
                                 <option value=""></option>
