@@ -139,15 +139,7 @@ class Task extends Model implements Commentable
         return $this->morphMany(Document::class, 'source');
     }
 
-    public function canUpdateInvoice()
-    {
-        //If there is no invoice, it should be possible, because it also creates
-        if (!$this->invoice) {
-            return true;
-        }
-        return $this->invoice->canUpdateInvoice();
-    }
-
+   
     public function isClosed()
     {
         return $this->status == self::TASK_STATUS_CLOSED;

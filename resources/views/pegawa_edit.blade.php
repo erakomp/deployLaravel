@@ -15,11 +15,10 @@
                     <br/>
                     
  
-                    <form method="post" action="/pegawa/update/{{ $pegawa->user_id }}">
- 
-                        {{ csrf_field() }}
-                        {{ method_field('PUT') }}
- 
+                    <form action="{{ route('pegawa.update',$pegawa->id) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        
                         <div class="form-group">
                             <label>Nama</label>
                             <input type="text" name="nama" class="form-control" placeholder="Nama pegawai .." value=" {{ $pegawa->user_id }}">

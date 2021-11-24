@@ -10,6 +10,7 @@ use File;
 use App\Models\Task;
 use App\Models\Client;
 use App\Models\User;
+use App\Label;
 use App\Models\Setting;
 use App\Http\Requests;
 use App\Models\Status;
@@ -107,7 +108,7 @@ class TasksController extends Controller
                 return $q->where('title', '!=', 'Closed');
             })->pluck('title', 'external_id');
         }
-        $getLabel = Pegawai::all();
+        $getLabel = Label::all();
         $getUsers = DB::table('users')->get();
         return view('tasks.create', compact('getLabel', 'getUsers'))
             ->withUsers(User::with(['department'])->get()->pluck('nameAndDepartmentEagerLoading', 'id'))

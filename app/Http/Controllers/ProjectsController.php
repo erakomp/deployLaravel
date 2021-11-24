@@ -196,7 +196,7 @@ class ProjectsController extends Controller
 
     public function show(Project $project)
     {
-        $getLabel = DB::table('pegawai')->get();
+        $getLabel = DB::table('labels')->get();
         $getImage = DB::table('cruds')
         ->join('tasks', 'cruds.user_id', '=', 'tasks.user_created_id')
         ->select('cruds.*')

@@ -32,6 +32,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/div/edit/{id}', 'DivController@edit');
     Route::get('/div/hapus/{id}', 'DivController@delete');
     Route::resource('crud', 'CrudsController');
+    Route::resource('labels','LabelController');
 
     Route::get('/pegawa', 'PegawaController@index');
     Route::get('/pegawa/tambah', 'PegawaController@tambah');
