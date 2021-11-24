@@ -42,7 +42,7 @@
                         <td>{{$i->username}}</td>
                         <td>{{date('l, d-m-Y H:i:s', strtotime($i->task_created_at))}}</td>
                         <td>{{date('l, d-m-Y H:i:s', strtotime($i->task_update_at))}}</td>
-                        <td>{{$i->duration_in_mins}}</td>
+                        <td>{{number_format(($i->duration_in_mins),0)}}</td>
                         <td>{{$i->status_title}}</td>
                       </tr>
                       @endforeach
