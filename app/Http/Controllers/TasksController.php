@@ -172,16 +172,9 @@ class TasksController extends Controller
 
     public function destroy(Task $task, Request $request)
     {
-        $deleteInvoice = $request->delete_invoice ? true : false;
-
-        if ($task->invoice && $deleteInvoice) {
-            $task->invoice()->delete();
-        } elseif ($task->invoice) {
-            $task->invoice->removeReference();
-        }
         $task->delete();
         
-        Session()->flash('flash_message', __('Task deleted'));
+        Session()->flash('flash_message', __('Project deleted'));
         return redirect()->back();
     }
 
