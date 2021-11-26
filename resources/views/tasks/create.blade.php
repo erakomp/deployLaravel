@@ -206,7 +206,9 @@
                 [ 'view', [ 'fullscreen' ] ]
             ],
              height:300,
-             disableDragAndDrop: true
+             disableDragAndDrop: true,
+             maximumImageFileSize: 1000*1024,
+
 
            });
 

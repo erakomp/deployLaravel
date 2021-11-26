@@ -220,6 +220,7 @@ class TasksController extends Controller
             'integration_type' => get_class($fileSystem)
         ]);
     }
+    
 
     /**
      * @param Request $request
@@ -233,9 +234,10 @@ class TasksController extends Controller
         if (!$task) {
             abort(404);
         }
+        $label = DB::table('labels')->get();
         \LogActivity::addToLog('just visited');
 
-        return view('tasks.show')
+        return view('tasks.show', compact('label'))
             ->withTasks($task)
             ->withUsers(User::with(['department'])->get()->pluck('nameAndDepartmentEagerLoading', 'id'))
             ->with('company_name', Setting::first()->company)
@@ -349,6 +351,27 @@ class TasksController extends Controller
         Session()->flash('flash_message', 'New deadline is set');
         return redirect()->back();
     }
+
+
+    /**public function updateLabels(Request $request, $external_id)
+    {
+        $task = $this->findByExternalId($external_id);
+        $getLab = null;
+
+        if ($request->getlabel) {
+            $getLab = Label::whereExternalId($request->getlabel)->first()->id;
+        }
+
+        $task->fill([
+            'getLab' => $getLab
+        ])->save();
+
+
+        //event(new \App\Events\TaskAction($task, self::UPDATED_STATUS));
+        Session()->flash('flash_message', __('Task project is updated'));
+
+        return redirect()->back();
+    }**/
 
     /**
      * @param $id

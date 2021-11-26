@@ -114,6 +114,30 @@
         @endif
     </div>
 </div>
+<div class="row margin-top-10">
+    <div class="col-md-4">Label</div>
+    <div class="col-md-8">
+        <button class="btn" style="background-color: {{$tasks->getlabel}}; color:white; border-radius:50px; width:120px; font-weight:800; height:20px; padding:1px; margin-right:5px;pointer-events:none; "></button>
+        @if(Entrust::can('task-update-linked-project'))
+                <span id="project-picker" class="hidden">
+                    <form method="POST" action="{{route('tasks.update.project', $tasks->external_id)}}">
+                        {{csrf_field()}}
+                        <select name="project_external_id"
+                                class="small-form-control bootstrap-select project-selectpicker dropdown-user-selecter pull-right"
+                                id="project-search-select"
+                                data-style="btn btn-sm dropdown-toggle btn-light"
+                                data-container="body"
+                                onchange="this.form.submit()">
+                                <option value=""></option>
+                            @foreach($label as $key )
+                               <option value="{{$key->price}}">{{$key->name}}</option>
+                            @endforeach
+                        </select>
+                    </form>
+                </span>
+        @endif
+    </div>
+</div>
 
 @push('scripts')
     <script>
