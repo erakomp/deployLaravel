@@ -175,7 +175,7 @@ class TasksController extends Controller
         $task->delete();
         
         Session()->flash('flash_message', __('Project deleted'));
-        return redirect()->back();
+        return view('/projects');
     }
 
     private function upload($image, $task)
