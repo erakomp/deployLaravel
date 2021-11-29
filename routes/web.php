@@ -12,7 +12,7 @@
 
 Route::auth();
 
-Route::post('/home', 'HomeController@upload');
+Route::post('/home', 'HomeController@upload')->name('avatar.upload');
 Route::get('images/{filename}', 'HomeController@displayImage')->name('image.displayImage');
 
 

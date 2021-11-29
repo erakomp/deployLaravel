@@ -27,17 +27,17 @@
                                 @endif Hello <strong>{{Auth::user()->name}}</strong>, <br>Welcome to your dashboard</h1>
                            
 
-                            <form action="{{route('home')}}" method="POST" enctype="multipart/form-data">
+                            <form action="{{route('avatar.upload')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row" style="display:flex!important; justify-content:center!important;">
                                     <div class="col-sm-6" style="display:flex!important; justify-content:center!important;">
-                                        <input  type="file" name="image" >
+                                        <input  type="file" name="imageAvatar" accept="img/*">
                                         
                                            
                                     </div>
                                     
                                     <div class="col-sm-6" style="display:flex!important; justify-content:center!important;">
-                                        <input type="submit" value="Upload">
+                                        <input type="submit" value="Upload" >
 
                                     </div>
                                 </div>

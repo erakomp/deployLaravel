@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'cloud' => 's3',
+    'cloud' => env('FILESYSTEM_CLOUD', 's3'),
 
     /*
     |--------------------------------------------------------------------------
@@ -69,46 +69,38 @@ return [
             // 'timeout'  => 30,
         ],
 
+        // 's3' => [
+        //     'driver' => 's3',
+        //     'key'    => null,
+        //     'secret' => null,
+        //     'region' => 'eu-west-1',
+        //     'bucket' => env('S3_STORAGE_PATH', null),
+        //     'cache' => [
+        //         'store' => 'redis',
+        //         'expire' => 600,
+        //         'prefix' => '',
+        //     ],
+        // ],
         's3' => [
             'driver' => 's3',
-            'key'    => null,
-            'secret' => null,
-            'region' => 'eu-west-1',
-            'bucket' => env('S3_STORAGE_PATH', null),
-            'cache' => [
-                'store' => 'redis',
-                'expire' => 600,
-                'prefix' => '',
-            ],
+            'key' => env('AWS_ACCESS_KEY_ID'),
+            'secret' => env('AWS_SECRET_ACCESS_KEY'),
+            'region' => env('AWS_DEFAULT_REGION'),
+            'bucket' => env('AWS_BUCKET'),
+            'url' => env('AWS_URL'),
+            'endpoint' => env('AWS_ENDPOINT'),
         ],
 
-        'rackspace' => [
-            'driver'    => 'rackspace',
-            'username'  => 'your-username',
-            'key'       => 'your-key',
-            'container' => 'your-container',
-            'endpoint'  => 'https://identity.api.rackspacecloud.com/v2.0/',
-            'region'    => 'IAD',
-            'url_type'  => 'publicURL',
-        ],
-        'dropbox' => [
-            'driver' => 'dropbox'
-        ],
-        'google' => [
-            'driver' => 'google',
-            'folderId' => env('GOOGLE_DRIVE_FOLDER_ID', null),
-        ],
         'oss' => [
             'driver' => 's3',
-            'key' => env('LTAI4GEBBJYKtgwbQwAzqph1'),
-            'secret' => env('ZqYTl7TgHVzwMwaSOzQcCvMjBZKD17'),
-            'region' => env('ap-southeast-5'),
-            'bucket' => env('erakomp'),
-            'endpoint' => env('https://oss-ap-southeast-5.aliyuncs.com'),
-            'url' => env('https://erakomp.oss-ap-southeast-5.aliyuncs.com'),
-            'visibility' => 'public', // Default visibility
+            'key' => env('OSS_ACCESS_KEY_ID'),
+            'secret' => env('OSS_SECRET_ACCESS_KEY'),
+            'region' => env('OSS_DEFAULT_REGION'),
+            'bucket' => env('OSS_BUCKET'),
+            // 'url' => env('OSS_URL'),
+            'endpoint' => env('OSS_ENDPOINT'),
+            'visibility' => 'public',
         ],
-        
 
     ],
 
