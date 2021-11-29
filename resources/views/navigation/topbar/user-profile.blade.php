@@ -29,7 +29,7 @@
                         <a href="/home" class="topbar-user__list-link">
                             
                             <span class="user__list-icon">
-                               <img src="/storage/images/{{Auth::user()->image}}" class="thumbnail" alt="" srcset="" style="max-width: 70px!important; border-radius:100px; margin-right:12px;">
+                               <img src="{{asset('storage/images/'.Auth::user()->image)}}" class="thumbnail" alt="" srcset="" style="max-width: 70px!important; border-radius:100px; margin-right:12px;">
                             </span>
                             <span class="user__list-text">
                                 @lang('Profile')

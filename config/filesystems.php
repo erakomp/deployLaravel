@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => 's3',
+    'default' => env('FILESYSTEM_DRIVER', 'oss'),
 
     /*
     |--------------------------------------------------------------------------
@@ -97,7 +97,18 @@ return [
         'google' => [
             'driver' => 'google',
             'folderId' => env('GOOGLE_DRIVE_FOLDER_ID', null),
-        ]
+        ],
+        'oss' => [
+            'driver' => 's3',
+            'key' => env('LTAI4GEBBJYKtgwbQwAzqph1'),
+            'secret' => env('ZqYTl7TgHVzwMwaSOzQcCvMjBZKD17'),
+            'region' => env('ap-southeast-5'),
+            'bucket' => env('erakomp'),
+            'endpoint' => env('https://oss-ap-southeast-5.aliyuncs.com'),
+            'url' => env('https://erakomp.oss-ap-southeast-5.aliyuncs.com'),
+            'visibility' => 'public', // Default visibility
+        ],
+        
 
     ],
 
