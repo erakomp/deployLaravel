@@ -23,6 +23,8 @@ class CreateUsersTable extends Migration
             $table->string('primary_number')->nullable();
             $table->string('secondary_number')->nullable();
             $table->string('image_path')->nullable();
+            $table->string('image')->default('user.png');
+
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();

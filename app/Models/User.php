@@ -46,7 +46,8 @@ class User extends Authenticatable
         'secondary_number',
         'image_path',
         'language',
-        'flag'
+        'flag',
+        'image'
     ];
 
     /**

@@ -12,9 +12,11 @@
 
 Route::auth();
 
-Route::get('/profile_user', function () {
-    return view('prof');
-});
+Route::post('/home', 'HomeController@upload');
+Route::get('images/{filename}', 'HomeController@displayImage')->name('image.displayImage');
+
+
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/register', 'Auth\RegisterController@register');
 Route::post('/registerPost', 'Auth\RegisterController@registerPost');

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use DB;
 
 class HomeController extends Controller
 {
@@ -23,10 +25,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $getUser = DB::table('users')->get();
-        $getProjects = DB::table('projects')->get();
-        $getTasks = DB::table('tasks')->get();
-        return view('home', compact('getUser', 'getProjects', 'getTasks'));
+        
+        //$getUser = DB::table('users')->get();
+        //$getProjects = DB::table('projects')->get();
+        //$getTasks = DB::table('tasks')->get();
+        return view('home');
     }
     public function myTestAddToLog()
     {
@@ -44,5 +47,40 @@ class HomeController extends Controller
     {
         $logs = \LogActivity::logActivityLists();
         return view('logActivity', compact('logs'));
+    }
+    public function upload(Request $request)
+    {
+        if ($request->hasFile('image')) {
+            $filename = $request->image->getClientOriginalName();
+            $request->image->storeAs('images', $filename, 'public');
+            Auth()->user()->update(['image'=>$filename]);
+        }
+        return redirect()->refresh();
+    }
+    public function displayImage($filename)
+    {
+        $path = storage_path('images/' . $filename);
+
+   
+
+        if (!File::exists($path)) {
+            abort(404);
+        }
+
+  
+
+        $file = File::get($path);
+
+        $type = File::mimeType($path);
+
+  
+
+        $response = Response::make($file, 200);
+
+        $response->header("Content-Type", $type);
+
+ 
+
+        return $response;
     }
 }
