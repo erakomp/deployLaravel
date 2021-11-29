@@ -73,9 +73,10 @@
                                   <div class="project-board-card-footer">
                                     <ul class="list-inline" style="padding: 8px; min-height: 3.3em; font-size:12px!important;">
                                         {{date('l, d/m/y H:i:s', strtotime($task->created_at))}}
-
+                                        
                                         <li class="project-board-card-thumbnail text-right" style="float:right;">
-                                            <button class="btn" style="pointer-events:none; background-color:turquoise; color:white; font-weight:bold;border-radius:50px; font-size:12px; padding:2px;">{{$task->user->name}}</button>
+                                            <img class="thumbnail" src="/storage/images/{{$task->user->image}}" alt="" style="max-width:50px;" title="{{$task->user->name}}">
+                                            <!--<button class="btn" style="pointer-events:none; background-color:turquoise; color:white; font-weight:bold;border-radius:50px; font-size:12px; padding:2px;">{{$task->user->name}}</button>-->
                                             <!--<a href="{{route('users.show', $task->user->external_id)}}" ><img src="{{$task->user->avatar}}" class="project-board-card-thumbnail-image" title="{{$task->user->name}}"/></a>-->
                                         </li>
                                     </ul>

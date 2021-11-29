@@ -26,10 +26,10 @@
                     </h3>
                 </li>
                     <li class="topbar-user__list">
-                        <a href="{{url('/profile_user')}}" class="topbar-user__list-link">
+                        <a href="/home" class="topbar-user__list-link">
                             
                             <span class="user__list-icon">
-                                 <i class="fa fa-user"></i>
+                               <img src="/storage/images/{{Auth::user()->image}}" class="thumbnail" alt="" srcset="" style="max-width: 70px!important; border-radius:100px; margin-right:12px;">
                             </span>
                             <span class="user__list-text">
                                 @lang('Profile')

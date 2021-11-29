@@ -71,7 +71,7 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
             <a href="#" class=" list-group-item" data-parent="#MainMenu" disabled="disabled" style="pointer-events: none!important; text-align:center;"><span id="menu-txt" style="font-size: 16px!important; font-size:21px!important;color:white; font-weight:400;" >             
                 Hi, {{Auth::user()->name}} </span></a>
 
-            <a href="/home" class=" list-group-item" data-parent="#MainMenu"><i
+            <a href="/" class=" list-group-item" data-parent="#MainMenu"><i
                         class="fa fa-home sidebar-icon"></i><span id="menu-txt" style="font-size: 16px!important;" >{{ __('Dashboard') }} </span></a>
                         <a href="/labels" class=" list-group-item" data-parent="#MainMenu"><i class="fas fa-tags sidebar-icon"></i><span id="menu-txt" style="font-size: 16px!important;" >Tags </span></a>
            
