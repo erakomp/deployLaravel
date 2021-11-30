@@ -19,10 +19,16 @@
 
 <?php $count = 0;?>
 <?php $i = 1 ?>
-@foreach($subject->comments as $comment)
+{!! Form::open(array('url' => $subject->getCreateCommentEndpoint())) !!}
+    <div class="form-group">
+        {!! Form::textarea('description', null, ['class' => 'form-control', 'id' => 'comment-field']) !!}
+        {!! Form::submit( __('Add Comment') , ['class' => 'btn btn-brand btn-md btn-upper movedown']) !!}
+    </div>
+    {!! Form::close() !!}
+@foreach($subject->comments->sortByDesc('created_at') as $comment)
     <div class="tablet tablet__shadow" style="font-size: 14px!important;">
         <div class="tablet__body tablet__tigthen" style="font-size: 14px!important;">
-            <p style="font-size: 12px!important;">  {!! $comment->description !!}</p>
+            <p style="font-size: 12px!important;">  {!! $comment->description !!} </p>
         </div>
         <div class="tablet__footer tablet__tigthen" style="font-size: 12px!important;">
             <p class="smalltext" style="font-size: 14px!important;">{{ __('Comment by') }}: {{$comment->user->name}} 
@@ -37,12 +43,7 @@
 
 @endforeach
 <br/>
-    {!! Form::open(array('url' => $subject->getCreateCommentEndpoint())) !!}
-    <div class="form-group">
-        {!! Form::textarea('description', null, ['class' => 'form-control', 'id' => 'comment-field']) !!}
-        {!! Form::submit( __('Add Comment') , ['class' => 'btn btn-brand btn-md btn-upper movedown']) !!}
-    </div>
-    {!! Form::close() !!}
+    
 
 @push('scripts')
     <script>
