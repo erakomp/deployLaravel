@@ -66,7 +66,7 @@ class HomeController extends Controller
         $timestamp = Carbon::now()->timestamp;
         $extension = $fileUpload->clientExtension();
         $name = "assets/files/uploaded-$timestamp.$extension";
-
+        $fileUpload->save();
         Storage::disk('oss')->put($name, file_get_contents($fileUpload));
 
         if (Storage::disk('oss')->exists($name)) {
