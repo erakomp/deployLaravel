@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('heading')
-    {{__('Create task')}} 
+    <strong>CREATE TASK</strong>
 @stop
 
 @section('content')
@@ -12,7 +12,7 @@
                     <div class="tablet__body">
                             <div class="form-group">
                                 <label for="title" class="control-label thin-weight">@lang('Title')</label>
-                                <input type="text" name="title" id="title" class="form-control">
+                                <input type="text" name="title" id="title" class="form-control" placeholder="ex. whatever you want to put">
                             </div>
                             <div class="form-group">
                                 <label for="description" class="control-label thin-weight">@lang('Description')</label>
@@ -128,14 +128,14 @@
                                 @endforeach
                             </select>
                         </div>
+                       
                         <div class="form-group">
-                            <label for="task_status" class="control-label thin-weight">Label Status</label>
-                            <select name="getlabel" id="getlabel" class="form-control">
-                                <option value="">Select if any</option>
-                                @foreach($getLabel as $get)
-                                <option value="{{$get->price}}">{{$get->name}}</option>
-                                @endforeach
-                            </select>
+                            <label for="title" class="control-label thin-weight">Label Title</label>
+                            <input type="text" name="getlabel" id="getlabel" class="form-control" placeholder="Ex. Important">
+                        </div>
+                        <div class="form-group">
+                            <label for="getcolor" class="control-label thin-weight">Label Color</label>
+                            <input type="color" name="getcolor" id="getcolor" class="form-control">
                         </div>
                         <div class="form-group" style="display:none;">
                             <label for="task_status" class="control-label thin-weight">@lang('Status')</label>

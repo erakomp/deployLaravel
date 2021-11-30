@@ -25,9 +25,7 @@
                 
                 <a href="{{route('client.project.task.create', [$client->external_id, $project->external_id])}}" class="btn btn-md btn-brand" style="margin:1em; font-size:14px;">@lang('New task')</a>
             @endif
-            @foreach ($getLabel as $item)
-                    <button class="btn" style="background-color: {{$item->price}}; color:white; border-radius:50px; width:120px; font-weight:800; height:20px; padding:1px; margin-right:5px;pointer-events:none; ">{{$item->name}}</button>
-                @endforeach
+            
         </nav>
             <div class="project-board-lists">
                 
@@ -60,7 +58,8 @@
                                     
                                     <div class="project-board-card-description" style="font-size:14px!important; width:100px!important; max-width:100px!important;">
                                         @if(($task->getlabel) != '')
-                                        <button class="btn" style="background-color: {{$task->getlabel}}; width:70px; border-radius:30px; ">
+                                        <p style="background-color: {{$task->getcolor}}; text-align:center; border-radius:50px; pointer-events:none!important; color:white;">{{$task->getlabel}}</p>
+                                       
                                         @else
                                         <span></span>
                                         @endif  

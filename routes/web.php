@@ -30,6 +30,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/div/tambah', 'DivController@tambah');
     Route::post('/div/store', 'DivController@store');
     Route::post('/div/update', 'DivController@update');
+    Route::get('/tasks/edit/{id}', 'DivController@edit');
+
+    Route::post('/labels/update', 'TasksController@update')-> name('tasks.update');
 
     Route::get('/div/edit/{id}', 'DivController@edit');
     Route::get('/div/hapus/{id}', 'DivController@delete');
@@ -128,7 +131,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => 'tasks'], function () {
         Route::get('/data', 'TasksController@anyData')->name('tasks.data');
         Route::patch('/updatestatus/{external_id}', 'TasksController@updateStatus')->name('task.update.status');
+        Route::patch('/updatelabel/{external_id}', 'TasksController@updateLabel')->name('task.update.label');
         Route::patch('/updateassign/{external_id}', 'TasksController@updateAssign')->name('task.update.assignee');
+        Route::post('/updatelabel/{external_id}', 'TasksController@updateLabel');
         Route::post('/updatestatus/{external_id}', 'TasksController@updateStatus');
         Route::post('/updateassign/{external_id}', 'TasksController@updateAssign');
         Route::post('/invoice/{external_id}', 'TasksController@invoice')->name('task.invoice');

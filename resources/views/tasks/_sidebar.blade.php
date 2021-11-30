@@ -117,7 +117,7 @@
 <div class="row margin-top-10">
     <div class="col-md-4">Label</div>
     <div class="col-md-8">
-        <button class="btn" style="background-color: {{$tasks->getlabel}}; color:white; border-radius:50px; width:120px; font-weight:800; height:20px; padding:1px; margin-right:5px;pointer-events:none; "></button>
+        <button class="btn" style="background-color: {{$tasks->getcolor}}; color:white; border-radius:50px; width:120px; font-weight:800; height:20px; padding:1px; margin-right:5px;pointer-events:none; ">{{$tasks->getlabel}}</button>
         @if(Entrust::can('task-update-linked-project'))
                 <span id="project-picker" class="hidden">
                     <form method="POST" action="{{route('tasks.update.project', $tasks->external_id)}}">

@@ -62,7 +62,7 @@ class HomeController extends Controller
 
     public function upload(Request $request)
     {
-        $fileUpload = $request->file('imageAvatar');
+        $fileUpload = $request->file('image');
         $timestamp = Carbon::now()->timestamp;
         $extension = $fileUpload->clientExtension();
         $name = "assets/files/uploaded-$timestamp.$extension";

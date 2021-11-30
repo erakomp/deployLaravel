@@ -152,6 +152,7 @@ class TasksController extends Controller
             'project_id' => optional($project)->id,
             'task_status' => $request->task_status,
             'getlabel' => $request->getlabel,
+            'getcolor' => $request->getcolor,
         ]
         );
 
@@ -344,6 +345,15 @@ class TasksController extends Controller
         Session()->flash('flash_message', 'New deadline is set');
         return redirect()->back();
     }
+    public function updateLabel(Request $request, $external_id)
+    {
+        $task = $this->findByExternalId($external_id);
+        $task->fill(['getlabel' => $request->getlabel], ['getcolor' => $request->getcolor])->save();
+
+        
+        return redirect()->refresh();
+    }
+
 
 
     /**public function updateLabels(Request $request, $external_id)
