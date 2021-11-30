@@ -31,7 +31,7 @@
                                 @csrf
                                 <div class="row" style="display:flex!important; justify-content:center!important;">
                                     <div class="col-sm-6" style="display:flex!important; justify-content:center!important;">
-                                        <input  type="file" name="imageAvatar" accept="img/*">
+                                        <input  type="file" name="image" accept="img/*">
                                         
                                            
                                     </div>
