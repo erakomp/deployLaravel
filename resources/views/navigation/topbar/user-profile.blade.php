@@ -50,9 +50,7 @@
                 </a>                 
                 
                 @endif     
-                            <span class="user__list-text">
-                                @lang('Profile')
-                            </span>
+                           
                         </a>
                     </li>
                     <!--<li class="topbar-user__list">

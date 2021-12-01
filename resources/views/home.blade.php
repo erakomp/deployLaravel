@@ -18,13 +18,28 @@
                         <div class="card-body text-center" >
                             
                             <h1 style="margin-bottom:5%;">
-                                @if(Auth::user()->image != NULL)
-                                <img src="/storage/images/{{Auth::user()->image}} " alt="" class="img-thumbnail" style="max-width: 200px!important;" >
-                                
-                                    
-                                @else
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Picture_icon_BLACK.svg/1156px-Picture_icon_BLACK.svg.png" alt="" srcset="" style="max-width: 200px!important;"s>
-                                @endif Hello <strong>{{Auth::user()->name}}</strong>, <br>Welcome to your dashboard</h1>
+                                @if(Auth::user()->image !== NULL)  
+                            <a href="/home" class="topbar-user__list-link">
+                            
+                                <span class="user__list-icon">
+                                   <img src="{{Auth::user()->image}}" class="thumbnail" alt="" srcset="" style="max-width: 70px!important; border-radius:100px; margin-right:12px;">
+                                </span>
+                                <span class="user__list-text">
+                                    @lang('Profile')
+                                </span>
+                            </a>
+                @else
+                <a href="/home" class="topbar-user__list-link">
+                            
+                    <span class="user__list-icon">
+                       <img src="https://p.kindpng.com/picc/s/451-4517876_default-profile-hd-png-download.png" class="thumbnail" alt="" srcset="" style="max-width: 70px!important; border-radius:100px; margin-right:12px;">
+                    </span>
+                    <span class="user__list-text">
+                        @lang('Profile')
+                    </span>
+                </a>                 
+                
+                @endif     Hello <strong>{{Auth::user()->name}}</strong>, <br>Welcome to your dashboard</h1>
                            
 
                             <form action="{{route('avatar.upload')}}" method="POST" enctype="multipart/form-data">
