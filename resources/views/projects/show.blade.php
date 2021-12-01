@@ -78,7 +78,7 @@
                                             <a href="/home" class="topbar-user__list-link">
                                             
                                                 <span class="user__list-icon">
-                                                   <img src="{{$task->user->image}}" class="thumbnail" alt="" srcset="" style="max-width: 30px!important; border-radius:100px; " title="{{$task->user->name}}">
+                                                   <img src="{{$task->user->image}}" class="thumbnail" alt="" srcset="" style="max-width: 30px!important; border-radius:100px; margin-right:-10%;" title="{{$task->user->name}}">
                                                 </span>
                                                
                                             </a>
@@ -86,7 +86,7 @@
                                 <a href="/home" class="topbar-user__list-link">
                                             
                                     <span class="user__list-icon">
-                                       <img src="https://p.kindpng.com/picc/s/451-4517876_default-profile-hd-png-download.png" class="thumbnail" alt="" srcset="" style="max-width: 30px!important; border-radius:100px; " title="{{$task->user->name}}">
+                                       <img src="https://p.kindpng.com/picc/s/451-4517876_default-profile-hd-png-download.png" class="thumbnail" alt="" srcset="" style="max-width: 30px!important; border-radius:100px; margin-right:-10%;" title="{{$task->user->name}}">
                                     </span>
                                    
                                 </a>                 
