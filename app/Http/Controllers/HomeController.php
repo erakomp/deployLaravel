@@ -8,7 +8,7 @@ use DB;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 use App\Models\User;
-
+use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     /**
@@ -73,7 +73,7 @@ class HomeController extends Controller
 
         if (Storage::disk('oss')->exists($name)) {
             $fileUrl = "https://cdn.erakomp.co.id/$name";
-            User::Where('id', auth()->id)->update([
+            User::Where('id',Auth::id())->update([
                 'image' => $fileUrl
             ]);
             // return response()->json([
