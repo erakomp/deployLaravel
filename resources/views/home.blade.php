@@ -19,25 +19,18 @@
                             
                             <h1 style="margin-bottom:5%;">
                                 @if(Auth::user()->image !== NULL)  
-                            <a href="/home" class="topbar-user__list-link">
                             
-                                <span class="user__list-icon">
+                                <span class="user__list-icon" style="display:flex; justify-content:center;">
                                    <img src="{{Auth::user()->image}}" class="thumbnail" alt="" srcset="" style="max-width: 70px!important; border-radius:100px; margin-right:12px;">
                                 </span>
-                                <span class="user__list-text">
-                                    @lang('Profile')
-                                </span>
-                            </a>
-                @else
-                <a href="/home" class="topbar-user__list-link">
+                                
                             
-                    <span class="user__list-icon">
+                @else
+                            
+                    <span class="user__list-icon" style="display:flex; justify-content:center;">
                        <img src="https://p.kindpng.com/picc/s/451-4517876_default-profile-hd-png-download.png" class="thumbnail" alt="" srcset="" style="max-width: 70px!important; border-radius:100px; margin-right:12px;">
                     </span>
-                    <span class="user__list-text">
-                        @lang('Profile')
-                    </span>
-                </a>                 
+                    
                 
                 @endif     Hello <strong>{{Auth::user()->name}}</strong>, <br>Welcome to your dashboard</h1>
                            
