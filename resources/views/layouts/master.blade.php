@@ -68,7 +68,12 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
     <nav id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas-sm" role="navigation" style="font-size: 21px!important;">
         <div class="list-group panel">
             <p class=" list-group-item siderbar-top" title=""><img src="https://cdn.erakomp.co.id/kanbanaja.png" alt="" style="width: 100%; margin: 1em 0;"></p>
-            <a href="#" class=" list-group-item" data-parent="#MainMenu" disabled="disabled" style="pointer-events: none!important; text-align:center;"><span id="menu-txt" style="font-size: 16px!important; font-size:21px!important;color:white; font-weight:400;" >             
+            <a href="#" class=" list-group-item" data-parent="#MainMenu" disabled="disabled" style="pointer-events: none!important; text-align:center;"><span id="menu-txt" style="font-size: 16px!important; font-size:21px!important;color:white; font-weight:400;" >     
+                @if(Auth::user()->image != NULL)  
+                <img src="{{Auth::user()->img}}" alt="">
+                @else
+                <img src="" alt=""> 
+                @endif     
                 Hi, {{Auth::user()->name}} </span></a>
                 @if(Entrust::hasRole('owner'))
             <a href="/" class=" list-group-item" data-parent="#MainMenu"><i
