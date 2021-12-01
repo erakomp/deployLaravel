@@ -138,14 +138,14 @@
                     @if($collaborator->image !== NULL)  
                             
                     <span class="user__list-icon" style="display:flex; justify-content:center;">
-                       <img src="{{$collaborator->image}}" class="thumbnail" alt="" srcset="" style="max-width: 70px!important; border-radius:100px; margin-right:12px;">
+                       <img src="{{$collaborator->image}}" class="thumbnail" title="{{$collaborator->name}}" alt="" srcset="" style="max-width: 50px!important; border-radius:100px; margin-right:12px;">
                     </span>
                     
                 
     @else
                 
         <span class="user__list-icon" style="display:flex; justify-content:center;">
-           <img src="https://p.kindpng.com/picc/s/451-4517876_default-profile-hd-png-download.png" class="thumbnail" alt="" srcset="" style="max-width: 70px!important; border-radius:100px; margin-right:12px;">
+           <img src="https://p.kindpng.com/picc/s/451-4517876_default-profile-hd-png-download.png" class="thumbnail" title="{{$collaborator->name}}" alt="" srcset="" style="max-width: 50px!important; border-radius:100px; margin-right:12px;">
         </span>
         
     
