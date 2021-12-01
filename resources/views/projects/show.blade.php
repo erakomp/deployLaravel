@@ -135,7 +135,22 @@
                     
                 @foreach($collaborators as $collaborator)
                 <li>
-                    <button class="btn" style="pointer-events:none; background-color:turquoise; color:white; font-weight:bold;border-radius:50px;">{{$collaborator->name}}</button>
+                    @if(Auth::user()->image !== NULL)  
+                            
+                    <span class="user__list-icon" style="display:flex; justify-content:center;">
+                       <img src="{{$collaborator->image}}" class="thumbnail" alt="" srcset="" style="max-width: 70px!important; border-radius:100px; margin-right:12px;">
+                    </span>
+                    
+                
+    @else
+                
+        <span class="user__list-icon" style="display:flex; justify-content:center;">
+           <img src="https://p.kindpng.com/picc/s/451-4517876_default-profile-hd-png-download.png" class="thumbnail" alt="" srcset="" style="max-width: 70px!important; border-radius:100px; margin-right:12px;">
+        </span>
+        
+    
+    @endif  
+                   
                     <!-- <a href="{{route('users.show', $collaborator->external_id)}}" >
                         <img src="{{$collaborator->avatar}}" class="project-board-card-thumbnail-image" title="{{$collaborator->name}}"/>
                     </a>-->
