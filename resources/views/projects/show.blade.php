@@ -135,7 +135,7 @@
                     
                 @foreach($collaborators as $collaborator)
                 <li>
-                    @if(Auth::user()->image !== NULL)  
+                    @if($collaborator->image !== NULL)  
                             
                     <span class="user__list-icon" style="display:flex; justify-content:center;">
                        <img src="{{$collaborator->image}}" class="thumbnail" alt="" srcset="" style="max-width: 70px!important; border-radius:100px; margin-right:12px;">
