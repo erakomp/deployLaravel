@@ -73,7 +73,7 @@ class HomeController extends Controller
 
         if (Storage::disk('oss')->exists($name)) {
             $fileUrl = "https://cdn.erakomp.co.id/$name";
-            User::Where('id', Auth::user()->id)->update([
+            User::Where('id', auth()->id)->update([
                 'image' => $fileUrl
             ]);
             // return response()->json([
