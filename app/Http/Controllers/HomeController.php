@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\File;
 use DB;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
-use App\User;
+use App\Models\User;
 
 class HomeController extends Controller
 {
