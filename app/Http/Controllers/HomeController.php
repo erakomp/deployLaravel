@@ -68,14 +68,16 @@ class HomeController extends Controller
         $name = "assets/files/uploaded-$timestamp.$extension";
         
         Storage::disk('oss')->put($name, file_get_contents($fileUpload));
-        $request->image->storeAs('images', $name, 'public');
 
         if (Storage::disk('oss')->exists($name)) {
             $fileUrl = "https://cdn.erakomp.co.id/$name";
-
-            return response()->json([
-                'url' => $fileUrl,
+            User::Where('id', Auth::user()->id)->update([
+                'image' => $fileUrl
             ]);
+            // return response()->json([
+            //     'url' => $fileUrl,
+            // ]);
+            return redirect()->route('home');
         }
 
         return response()->json([
