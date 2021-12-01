@@ -28,9 +28,11 @@
                     <li class="topbar-user__list">
                         <a href="/home" class="topbar-user__list-link">
                             
-                            <span class="user__list-icon">
-                               <img src="{{asset('storage/images/'.Auth::user()->image)}}" class="thumbnail" alt="" srcset="" style="max-width: 70px!important; border-radius:100px; margin-right:12px;">
-                            </span>
+                            @if(Auth::user()->image !== NULL)  
+                <img src="{{Auth::user()->img}}" alt="">
+                @else
+                <img src="https://p.kindpng.com/picc/s/451-4517876_default-profile-hd-png-download.png" alt=""> 
+                @endif     
                             <span class="user__list-text">
                                 @lang('Profile')
                             </span>
