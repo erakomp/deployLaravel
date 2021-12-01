@@ -29,7 +29,7 @@
                         <a href="/home" class="topbar-user__list-link">
                             
                             @if(Auth::user()->image !== NULL)  
-                <img src="{{Auth::user()->img}}" alt="">
+                <img src="{{Auth::user()->image}}" alt="">
                 @else
                 <img src="https://p.kindpng.com/picc/s/451-4517876_default-profile-hd-png-download.png" alt=""> 
                 @endif     
