@@ -29,9 +29,26 @@
                         <a href="/home" class="topbar-user__list-link">
                             
                             @if(Auth::user()->image !== NULL)  
-                <img src="{{Auth::user()->image}}" alt="">
+                            <a href="/home" class="topbar-user__list-link">
+                            
+                                <span class="user__list-icon">
+                                   <img src="{{Auth::user()->image}}" class="thumbnail" alt="" srcset="" style="max-width: 70px!important; border-radius:100px; margin-right:12px;">
+                                </span>
+                                <span class="user__list-text">
+                                    @lang('Profile')
+                                </span>
+                            </a>
                 @else
-                <img src="https://p.kindpng.com/picc/s/451-4517876_default-profile-hd-png-download.png" alt=""> 
+                <a href="/home" class="topbar-user__list-link">
+                            
+                    <span class="user__list-icon">
+                       <img src="https://p.kindpng.com/picc/s/451-4517876_default-profile-hd-png-download.png" class="thumbnail" alt="" srcset="" style="max-width: 70px!important; border-radius:100px; margin-right:12px;">
+                    </span>
+                    <span class="user__list-text">
+                        @lang('Profile')
+                    </span>
+                </a>                 
+                
                 @endif     
                             <span class="user__list-text">
                                 @lang('Profile')
