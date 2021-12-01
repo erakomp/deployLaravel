@@ -74,7 +74,24 @@
                                         {{date('l, d/m/y H:i:s', strtotime($task->created_at))}}
                                         
                                         <li class="project-board-card-thumbnail text-right" style="float:right;">
-                                            <img class="thumbnail" src="/storage/images/{{$task->user->image}}" alt="" style="max-width:50px;" title="{{$task->user->name}}">
+                                            @if($task->user->image !== NULL)  
+                                            <a href="/home" class="topbar-user__list-link">
+                                            
+                                                <span class="user__list-icon">
+                                                   <img src="{{$task->user->image}}" class="thumbnail" alt="" srcset="" style="max-width: 70px!important; border-radius:100px; margin-right:12px;">
+                                                </span>
+                                               
+                                            </a>
+                                @else
+                                <a href="/home" class="topbar-user__list-link">
+                                            
+                                    <span class="user__list-icon">
+                                       <img src="https://p.kindpng.com/picc/s/451-4517876_default-profile-hd-png-download.png" class="thumbnail" alt="" srcset="" style="max-width: 70px!important; border-radius:100px; margin-right:12px;">
+                                    </span>
+                                   
+                                </a>                 
+                                
+                                @endif     
                                             <!--<button class="btn" style="pointer-events:none; background-color:turquoise; color:white; font-weight:bold;border-radius:50px; font-size:12px; padding:2px;">{{$task->user->name}}</button>-->
                                             <!--<a href="{{route('users.show', $task->user->external_id)}}" ><img src="{{$task->user->avatar}}" class="project-board-card-thumbnail-image" title="{{$task->user->name}}"/></a>-->
                                         </li>
