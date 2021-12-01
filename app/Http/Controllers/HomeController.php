@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\File;
 use DB;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -63,6 +64,7 @@ class HomeController extends Controller
     public function upload(Request $request)
     {
         $fileUpload = $request->file('image');
+        // dd($fileUpload->clientExtension());
         $timestamp = Carbon::now()->timestamp;
         $extension = $fileUpload->clientExtension();
         $name = "assets/files/uploaded-$timestamp.$extension";

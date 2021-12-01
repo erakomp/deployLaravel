@@ -97,9 +97,10 @@ return [
             'secret' => env('OSS_SECRET_ACCESS_KEY'),
             'region' => env('OSS_DEFAULT_REGION'),
             'bucket' => env('OSS_BUCKET'),
-            // 'url' => env('OSS_URL'),
+            'url' => env('OSS_URL'),
             'endpoint' => env('OSS_ENDPOINT'),
             'visibility' => 'public',
+            'scheme' => 'http',
         ],
 
     ],
