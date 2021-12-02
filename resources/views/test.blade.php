@@ -10,7 +10,7 @@
                         <div class="card-header"></div>
         
                         <form action="{{ route('filter') }}" method="GET" style="margin-top: 5%; margin-bottom:5%; display:flex; justify-content:center;">
-                        <select name="price_id" id="input" style="margin-right:2%;" >
+                        <select name="price_id" id="input" style="margin-right:2%;"  >
                             <option value="0">Select Task</option>
                             @foreach (DB::table('tasks')->select('id', 'title')->where('tasks.deleted_at','!=','NULL')->orderBy('id')->get() as $price)
                                 <option value="{{ $price->id }}" {{ $price->id == $selected_id['source_id'] ? 'selected' : '' }}>
