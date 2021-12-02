@@ -51,7 +51,7 @@
         
                                 </tr>
                                 @empty
-                                <p> No data Found </p>
+                                <p> There is no data shown </p>
                                 @endforelse
         
                             </tbody>

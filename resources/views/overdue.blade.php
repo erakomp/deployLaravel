@@ -45,7 +45,7 @@
                                     @endif
                                 </tr>
                                 @empty
-                                <p> No data Found </p>
+                                <p>There is no dtaa shown </p>
                                 @endforelse
         
                             </tbody>
