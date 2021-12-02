@@ -61,7 +61,6 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
 
 <div id="wrapper">
 
-@include('layouts._navbar')
 <!-- /#sidebar-wrapper -->
     <!-- Sidebar menu -->
 
@@ -70,7 +69,7 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
             <p class=" list-group-item siderbar-top" title=""><img src="https://cdn.erakomp.co.id/kanbanaja.png" alt="" style="width: 100%; margin: 1em 0;"></p>
             <a href="#" class=" list-group-item" data-parent="#MainMenu" disabled="disabled" style="pointer-events: none!important; text-align:center;"><span id="menu-txt" style="font-size: 16px!important; font-size:21px!important;color:white; font-weight:400;" >     
                 
-                Hi, {{Auth::user()->name}} </span></a>
+                REPORT</span></a>
                 @if(Entrust::hasRole('owner'))
             <a href="/" class=" list-group-item" data-parent="#MainMenu"><i
                         class="fa fa-home sidebar-icon"></i><span id="menu-txt" style="font-size: 16px!important;" >{{ __('Dashboard') }} </span></a>
@@ -188,9 +187,6 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
                                 <a href="/report"
                        class="list-group-item childlist" style="font-size: 13px!important;" > <i
                                 class="bullet-point"><span></span></i>Get Excel Report</a>
-                                <a href="/test"
-                                class="list-group-item childlist" style="font-size: 13px!important;" > <i
-                                         class="bullet-point"><span></span></i>Get QC & Done KPI Report</a>
                     <!--<a href="{{ route('integrations.index')}}"
                        class="list-group-item childlist"> <i
                                 class="bullet-point"><span></span></i> {{ __('Integrations') }}</a>-->

@@ -8,9 +8,12 @@
 | by your application. Just tell Laravel the URIs it should respond
 | to using a Closure or controller method. Build something great!
 |
-*/
+*/use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 
 Route::auth();
+
 
 Route::post('/home', 'HomeController@upload')->name('avatar.upload');
 Route::get('images/{filename}', 'HomeController@displayImage')->name('image.displayImage');
@@ -25,6 +28,25 @@ Route::group(['middleware' => ['auth']], function () {
     /**
      * Main
      */
+    Route::get('/test', function (Request $request) {
+    
+        $product = DB::table('activities')->where( function($query) use($request){
+                         return $request->price_id ?
+                                $query->from('activities')->where('source_id', $request->price_id) : '';
+                    })->where(function($query) use($request){
+                         return $request->color_id ?
+                                $query->from('activities')->where('text', 'like', '%' . $request->color_id . '%') : '';
+                    })
+                    //->with('prices','colors')
+                    ->get();
+         
+        $selected_id = [];
+        $selected_id['source_id'] = $request->price_id;
+        $selected_id['causer_id'] = $request->color_id;
+    
+        return view('test',compact('product','selected_id'));
+    
+    })->name('filter');
 
     Route::get('/div', 'DivController@index');
     Route::get('/div/tambah', 'DivController@tambah');
