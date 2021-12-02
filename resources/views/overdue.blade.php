@@ -27,6 +27,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                
                                 @forelse($product->sortByDesc('id') as $product )
                                 <tr>
                                     @if($product->deadline < Carbon::today()->toDateString())
@@ -45,7 +46,7 @@
                                     @endif
                                 </tr>
                                 @empty
-                                <p>There is no dtaa shown </p>
+                                <p>There is no data for this actual date </p>
                                 @endforelse
         
                             </tbody>
