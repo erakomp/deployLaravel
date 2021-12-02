@@ -191,6 +191,10 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
                                 <a href="/test"
                                 class="list-group-item childlist" style="font-size: 13px!important;" > <i
                                          class="bullet-point"><span></span></i>Get QC & Done KPI Report</a>
+
+                                         <a href="/overdue"
+                                         class="list-group-item childlist" style="font-size: 13px!important;" > <i
+                                                  class="bullet-point"><span></span></i>Get Deadline Tasks Report</a>
                     <!--<a href="{{ route('integrations.index')}}"
                        class="list-group-item childlist"> <i
                                 class="bullet-point"><span></span></i> {{ __('Integrations') }}</a>-->
