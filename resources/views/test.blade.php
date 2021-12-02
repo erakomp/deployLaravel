@@ -51,7 +51,7 @@
         
                                 </tr>
                                 @empty
-                                <p> There is no data shown </p>
+                                <p> There is no data to be shown </p>
                                 @endforelse
         
                             </tbody>
