@@ -48,6 +48,9 @@
                             </option>
                             @endforeach --}}
                         </select>
+                        <input type="datetime-local" name="from" id="input" style="margin-right:2%;">
+                        <input type="datetime-local" name="to" id="input" style="margin-right:2%;">
+        
                         <input type="submit" class="btn btn-md btn-brand movedown" value="Filter" style="font-size: 16px; ">
                         </form>
                     
@@ -96,7 +99,7 @@
                 url: '{{ route('getStates') }}?country_id='+countryId,
                 type: 'get',
                 success: function (res) {
-                    $('#state').html('<option value="">Select State</option>');
+                    $('#state').html('<option value="">Select Task</option>');
                     $.each(res, function (key, value) {
                         $('#state').append('<option value="' + value
                             .id + '">' + value.title + '</option>');

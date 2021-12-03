@@ -49,13 +49,18 @@ Route::get('get-states', 'DropdownController@getStates')->name('getStates');
                          return $request->color_id ?
                                 $query->from('activities')->where('text', 'like', '%' . $request->color_id . '%') : '';
                     })
+                    ->where(function($query) use($request){
+                        return $request->from ?
+                        $query->from('activities')->whereBetween('created_at', [$request->from, $request->to]) : '';
+                   })
                     //->with('prices','colors')
                     ->get();
          
         $selected_id = [];
         $selected_id['source_id'] = $request->price_id;
         $selected_id['causer_id'] = $request->color_id;
-        
+        $selected_id['created_at'] = $request->from;
+        $selected_id['created_at'] = $request->to;
         return view('test',compact('product','selected_id', 'countries'));
     
     })->name('filter');
