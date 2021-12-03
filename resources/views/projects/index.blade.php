@@ -182,7 +182,6 @@
 
     @endforeach
     @elseif(Auth::check() && Auth::user()->flag == 6)
-    
     @foreach ($getProject->where('flag', 6) as $item)
     
     <a href="{{route("projects.show", $item->external_id)}}" class="">
