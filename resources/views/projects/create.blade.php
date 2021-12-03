@@ -35,7 +35,7 @@
             <div class="col-sm-4">
                 <div class="tablet">
                     <div class="tablet__body">
-                        <div class="form-group" style="display:none;">
+                        <div class="form-group" >
                             <label for="user_assigned_id" class="control-label thin-weight">@lang('Assign user')</label>
                             <select name="user_assigned_id" id="user_assigned_id" class="form-control">
                                 @foreach($users as $user => $userK)

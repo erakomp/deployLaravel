@@ -41,6 +41,9 @@
 </a>
 
     @endforeach
+    @else
+    <p>Please create new project</p>
+    @endif
     @elseif(Auth::check() && Auth::user()->flag == 2)
     @foreach ($getProject->where('flag', 2) as $item)
     
@@ -76,6 +79,10 @@
 </a>
 
     @endforeach
+    
+    @else
+    <p>Please create new project</p>
+    @endif
     @elseif(Auth::check() && Auth::user()->flag == 3)
     @foreach ($getProject->where('flag', 3) as $item)
     
@@ -111,6 +118,9 @@
 </a>
 
     @endforeach
+    @else
+    <p>Please create new project</p>
+    @endif
     @elseif(Auth::check() && Auth::user()->flag == 4)
     @foreach ($getProject->where('flag', 4) as $item)
     
@@ -144,7 +154,9 @@
         </div>
     </div>
 </a>
-
+@else
+    <p>Please create new project</p>
+    @endif
     @endforeach
     @elseif(Auth::check() && Auth::user()->flag == 5)
     @foreach ($getProject->where('flag', 5) as $item)
@@ -181,7 +193,11 @@
 </a>
 
     @endforeach
+    @else
+    <p>Please create new project</p>
+    @endif
     @elseif(Auth::check() && Auth::user()->flag == 6)
+    @if($getProject->isNotEmpty())
     @foreach ($getProject->where('flag', 6) as $item)
     
     <a href="{{route("projects.show", $item->external_id)}}" class="">
@@ -216,6 +232,9 @@
 </a>
 
     @endforeach
+    @else
+    <p>Please create new project</p>
+    @endif
     @endif
     <!--<div class="col-lg-3 col-xs-6">
       small box

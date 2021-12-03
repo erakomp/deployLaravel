@@ -32,30 +32,32 @@
                         <input type="submit" class="btn btn-md btn-brand movedown" value="Filter" style="font-size: 16px; ">
                         </form>
                     
-                    
-                        <table class="table table-stripped">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>desc</th>
-                                    <th>created date</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @forelse($product->sortByDesc('id') as $product )
-                                <tr>
-                                    <td>{{ $loop->index+1 }}</td>
-                                    <td>{{ $product->text }}</td>
-                                    <td>{{ $product->created_at }}</td>
-        
-                                </tr>
-                                @empty
-                                <p> There is no data to be shown </p>
-                                @endforelse
-        
-                            </tbody>
-                        </table>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>desc</th>
+                                        <th>created date</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse($product->sortByDesc('id') as $product )
+                                    <tr>
+                                        <td>{{ $loop->index+1 }}</td>
+                                        <td>{{ $product->text }}</td>
+                                        <td>{{ $product->created_at }}</td>
+            
+                                    </tr>
+                                    @empty
+                                    <p> There is no data to be shown </p>
+                                    @endforelse
+            
+                                </tbody>
+                            </table>
+                        </div>
+                        
                 
                         </div>
                     </div>
