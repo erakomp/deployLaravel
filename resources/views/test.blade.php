@@ -50,8 +50,8 @@
                             </option>
                             @endforeach --}}
                         </select>
-                        <input type="datetime-local" name="from" id="input" style="margin-right:2%;">
-                        <input type="datetime-local" name="to" id="input" style="margin-right:2%;">
+                        <input type="date" name="from" id="input" style="margin-right:2%;" value="{{Carbon\Carbon::today()->toDateString()}}">
+                        <input type="date" name="to" id="input" style="margin-right:2%;" value="{{Carbon\Carbon::today()->toDateString()}}">
         
                         <input type="submit" class="btn btn-md btn-brand movedown" value="Filter" style="font-size: 16px; ">
                         </form>

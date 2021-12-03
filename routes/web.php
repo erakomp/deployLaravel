@@ -67,7 +67,7 @@ Route::get('get-states', 'DropdownController@getStates')->name('getStates');
     Route::get('/overdue', function (Request $request) {
         $product = DB::table('tasks')->where( function($query) use($request){
             return $request->from ?
-                   $query->from('tasks')->whereBetween('created_at', [$request->from, $request->to]) : '';
+                   $query->from('tasks')->whereBetween('created_at', [$request->from . ' 00:00:00', $request->to . ' 23:59:59']) : '';
        
        })
        ->get();
