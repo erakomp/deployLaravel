@@ -14,6 +14,7 @@ use Datatables;
 use App\Pegawai;
 use Carbon\Carbon;
 use DB;
+// use Illuminate\Http\Resources\DB;
 use App\Div;
 use App\Http\Requests\Project\StoreProjectRequest;
 use Ramsey\Uuid\Uuid;
@@ -184,9 +185,10 @@ class ProjectsController extends Controller
      */
     public function create($client_external_id = null)
     {
+        $users = User::all();
         $client =  Client::whereExternalId($client_external_id);
         $getDiv = Div::all();
-        return view('projects.create', compact('getDiv'))
+        return view('projects.create', compact('getDiv', 'users'))
             ->withUsers(User::with(['department'])->get()->pluck('nameAndDepartmentEagerLoading', 'id'))
             ->withClients(Client::pluck('company_name', 'external_id'))
             ->withClient($client ?: null)

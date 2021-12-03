@@ -284,7 +284,7 @@
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">@lang('Cancel')</button>
-            <input type="submit" action="{{route('projects.destroy', $item->external_id) }}" class="btn btn-brand" value="{{__('Delete')}}">
+            {{-- <input type="submit" action="{{route('projects.destroy', $getProject->external_id) }}" class="btn btn-brand" value="{{__('Delete')}}"> --}}
             </div>
             </form>
         </div>
