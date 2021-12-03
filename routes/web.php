@@ -28,7 +28,19 @@ Route::group(['middleware' => ['auth']], function () {
     /**
      * Main
      */
+    
+Route::get('get-states', 'DropdownController@getStates')->name('getStates');
+    
     Route::get('/test', function (Request $request) {
+        $countries = \DB::table('projects')
+        ->get();
+        $states = DB::table('tasks')
+        ->where('project_id', $request->country_id)
+        ->get();
+    
+    if (count($states) > 0) {
+        return response()->json($states);
+    }
     
         $product = DB::table('activities')->where( function($query) use($request){
                          return $request->price_id ?
@@ -43,8 +55,8 @@ Route::group(['middleware' => ['auth']], function () {
         $selected_id = [];
         $selected_id['source_id'] = $request->price_id;
         $selected_id['causer_id'] = $request->color_id;
-    
-        return view('test',compact('product','selected_id'));
+        
+        return view('test',compact('product','selected_id', 'countries'));
     
     })->name('filter');
     Route::get('/overdue', function (Request $request) {
@@ -59,7 +71,7 @@ Route::group(['middleware' => ['auth']], function () {
     $selected_id['deadline'] = $request->from;
     $selected_id['deadline'] = $request->to;
     
-    return view('overdue',compact('product','selected_id'));
+    return view('overdue',compact('product','selected_id', 'states'));
     
     
     })->name('filtering');
