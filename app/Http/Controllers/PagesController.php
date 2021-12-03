@@ -11,6 +11,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use DB;
+use Auth;
 
 class PagesController extends Controller
 {
@@ -55,9 +56,12 @@ class PagesController extends Controller
         return view('pages.dashboard')
             ->withUsers(User::with(['department'])->get())
             ->withDatasheet($datasheet)
-            ->withTotalTasks(Task::count())
+            ->withTotalTasks(DB::table('tasks')
+            ->join('projects', 'tasks.project_id', '=', 'projects.id')
+            ->where('projects.flag', '=', Auth::user()->flag)
+            ->count())
             ->withTotalLeads(Lead::count())
-            ->withTotalProjects(Project::count())
+            ->withTotalProjects(Project::where('projects.flag','=', Auth::user()->flag)->count())
             ->withTotalClients(Client::count())
             ->withSettings(Setting::first())
             ->withAbsencesToday($absences);
