@@ -49,20 +49,20 @@ Route::group(['middleware' => ['auth']], function () {
     })->name('filter');
     Route::get('/overdue', function (Request $request) {
         $product = DB::table('tasks')->where( function($query) use($request){
-            return $request->price_id ?
-                   $query->from('tasks')->whereBetween('created_at', [$request->price_id, $request->color_id]) : '';
+            return $request->from ?
+                   $query->from('tasks')->whereBetween('created_at', [$request->from, $request->to]) : '';
        
        })
        ->get();
     
     $selected_id = [];
-    $selected_id['deadline'] = $request->price_id;
-    $selected_id['deadline'] = $request->color_id;
+    $selected_id['deadline'] = $request->from;
+    $selected_id['deadline'] = $request->to;
     
     return view('overdue',compact('product','selected_id'));
     
     
-    })->name('filter');
+    })->name('filtering');
 
     Route::get('/div', 'DivController@index');
     Route::get('/div/tambah', 'DivController@tambah');

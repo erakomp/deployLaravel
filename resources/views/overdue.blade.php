@@ -9,9 +9,9 @@
                     <div class="card">
                         <div class="card-header" style="margin-top:5%; margin-bottom:3%; font-size:40px; text-align:center;"><strong>OVERDUE TASKS</strong></div>
         
-                        <form action="{{ route('filter') }}" method="GET" style="margin-top: 20px; text-align:center;">
-                        <input type="datetime-local" name="price_id" id="input" style="margin-right:2%;">
-                        <input type="datetime-local" name="color_id" id="input" style="margin-right:2%;">
+                        <form action="{{ route('filtering') }}" method="GET" style="margin-top: 20px; text-align:center;">
+                        <input type="datetime-local" name="from" id="input" style="margin-right:2%;">
+                        <input type="datetime-local" name="to" id="input" style="margin-right:2%;">
         
                         <input type="submit" class="btn btn-sm btn-brand movedown" value="Filter" style="margin-top:-0.2%; font-size:16px;">
                         </form>
