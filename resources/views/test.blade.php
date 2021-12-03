@@ -47,7 +47,8 @@
                                     <tr>
                                         <td>{{ $loop->index+1 }}</td>
                                         <td>{{ $product->text }}</td>
-                                        <td>{{ $product->created_at }}</td>
+                                        
+                                        <td>{{date('l, d/m/y H:i:s', strtotime( $product->created_at))}}</td>
             
                                     </tr>
                                     @empty

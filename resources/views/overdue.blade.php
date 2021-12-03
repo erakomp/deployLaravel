@@ -34,15 +34,15 @@
 
                                     <td style="color:red;"><strong>{{ $loop->index+1 }}</strong></td>
                                     <td style="color:red;"><strong>{{ $product->title }}</strong></td>
-                                    <td style="color:red;"><strong>{{ $product->deadline }}</strong></td>
                                     
-                                    <td style="color:red;"><strong>{{ $product->deadline }}</strong></td>
+                                    
+                                    <td style="color:red;"><strong>{{date('l, d/m/y H:i:s', strtotime($product->deadline))}}</strong></td>
                                     @else
                                     <td>{{ $loop->index+1 }}</td>
                                     <td>{{ $product->title }}</td>
-                                    <td >{{ $product->deadline }}</td>
                                     
-                                    <td>{{ $product->deadline }}</td>
+                                    <td >{{date('l, d/m/y H:i:s', strtotime($product->deadline))}}</td>
+                                    
                                     @endif
                                 </tr>
                                 @empty
