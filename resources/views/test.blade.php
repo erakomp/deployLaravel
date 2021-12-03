@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.masterr')
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -16,7 +16,9 @@
                                 <div class="mb-3">
                                     <select class="form-select form-select-lg mb-3" id="country">
                                         <option selected disabled>Select Project</option>
-                                        @foreach ($countries as $country)
+                                        @foreach (DB::table('projects')
+                                        ->where('flag', '=', Auth::user()->flag)
+                                        ->select('id', 'title')->orderBy('id')->get() as $country)
                                         <option value="{{ $country->id }}">{{ $country->title }}</option>
                                         @endforeach
                                     </select>
