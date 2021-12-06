@@ -7,7 +7,7 @@
 
 <div class="row">
     @if(Auth::check() && Auth::user()->flag == 1)
-    @foreach ($getProject as $item)
+    @foreach ($getProject->where('flag', 1) as $item)
     
     <a href="{{route("projects.show", $item->external_id)}}" class="">
 
