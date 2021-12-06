@@ -400,4 +400,45 @@ class TasksController extends Controller
         Notifynder::readAll(\Auth::id());
         return redirect()->back();
     }
+    // public function editTaskie($id){
+    //     $subject = Task::find($id);
+  
+    //     return view('edit.edit')->with('subject',$subject);
+    //  }
+  
+    //  public function updateTaskie(Request $request,$id){
+    //     $data = $request->except('_method','_token','submit');
+  
+    //     $validator = Validator::make($request->all(), [
+    //         'title' => 'sometimes',
+    //         'description' => 'sometimes',
+    //         'user_assigned_id' => 'sometimes',
+    //         'deadline' => 'sometimes',
+    //         'status_id' => 'sometimes',
+    //         'user_created_id' => 'sometimes',
+    //         'external_id' => 'sometimes',
+    //         'client_id' => 'sometimes',
+    //         'project_id' => 'sometimes',
+    //         'task_status' =>'sometimes',
+    //         'getlabel' => 'sometimes',
+    //         'getcolor' => 'sometimes',
+    //     ]);
+  
+    //     if ($validator->fails()) {
+    //        return redirect()->Back()->withInput()->withErrors($validator);
+    //     }
+    //     $subject = Task::find($id);
+  
+    //     if($subject->update($data)){
+  
+    //        Session::flash('message', 'Update successfully!');
+    //        Session::flash('alert-class', 'alert-success');
+    //        return redirect()->route('subjects');
+    //     }else{
+    //        Session::flash('message', 'Data not updated!');
+    //        Session::flash('alert-class', 'alert-danger');
+    //     }
+  
+    //     return Back()->withInput();
+    //  }
 }

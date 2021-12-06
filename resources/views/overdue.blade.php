@@ -10,8 +10,8 @@
                         <div class="card-header" style="margin-top:5%; margin-bottom:3%; font-size:40px; text-align:center;"><strong>OVERDUE TASKS</strong></div>
         
                         <form action="{{ route('filtering') }}" method="GET" style="margin-top: 20px; text-align:center;">
-                        <input type="datetime-local" name="from" id="input" style="margin-right:2%;">
-                        <input type="datetime-local" name="to" id="input" style="margin-right:2%;">
+                        <input type="datetime-local" name="from" id="input" value="{{Carbon\Carbon::now()->toDatetimelocalString()}}" style="margin-right:2%;">
+                        <input type="datetime-local" name="to" id="input" value="{{Carbon\Carbon::now()->toDatetimelocalString()}}" style="margin-right:2%;">
         
                         <input type="submit" class="btn btn-sm btn-brand movedown" value="Filter" style="margin-top:-0.2%; font-size:16px;">
                         </form>
@@ -28,18 +28,18 @@
                             </thead>
                             <tbody>
                                 
-                                @forelse($product->sortByDesc('id') as $product )
+                                @forelse($product->where('deleted_at', '=', NULL)->sortByDesc('id') as $product )
                                 <tr>
                                     @if($product->deadline < Carbon::today()->toDateString())
 
                                     <td style="color:red;"><strong>{{ $loop->index+1 }}</strong></td>
-                                    <td style="color:red;"><strong>{{ $product->title }}</strong></td>
+                                    <td style="color:red;"><a href="/tasks/{{$product->external_id}}" style="color:red;"><strong>{{ $product->title }}</strong></a></td>
                                     
                                     
                                     <td style="color:red;"><strong>{{date('l, d/m/y H:i:s', strtotime($product->deadline))}}</strong></td>
                                     @else
                                     <td>{{ $loop->index+1 }}</td>
-                                    <td>{{ $product->title }}</td>
+                                    <td><a href="/tasks/{{$product->external_id}}" style="color:black;">{{ $product->title }}</a></td>
                                     
                                     <td >{{date('l, d/m/y H:i:s', strtotime($product->deadline))}}</td>
                                     
