@@ -12,7 +12,7 @@
         @foreach($notifications as $notification)
             <li>
                 <div class="action-header">
-                    <img src="{{ auth()->user()->avatar }}" class="action-image"/>
+                    <img src="{{ auth()->user()->image }}" class="action-image" width="max-width:50px;"/>
                     <span class="action-date">{{$notification->created_at->diffForHumans()}}</span>
                 </div>
                 <div class="action-content">
