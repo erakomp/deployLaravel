@@ -7,6 +7,13 @@
     <div class="tablet__body tablet__tigthen" style="font-size: 14px!important; ">
         <p style="font-size: 12px!important; max-width:300px!important;">  {!! $subject->description . ''!!}</p>
     </div>
+    @if($subject->image != NULL)
+    <img src="{{$subject->image}}" alt="" class="thumbnail" style="max-width:300px; margin-left:5%;">
+    @else
+    <span>
+
+    </span>
+    @endif
     <div class="tablet__footer" style="font-size: 13px!important;">
         <p class="smalltext" style="font-size: 13px!important;">{{ __('Created at') }}:
             {{date('l, d/m/y H:i:s', strtotime($subject->created_at))}}
