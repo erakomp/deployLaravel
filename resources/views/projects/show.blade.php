@@ -30,9 +30,9 @@
             <div class="project-board-lists">
                 
                 @foreach($statuses as $status)
-                <div class="project-board-list">
-                    <header>{{ __($status->title)}}</header>
-                    <ul class="sortable" id="{{$status->title}}" data-status-external-id="{{$status->external_id}}" style="min-height: 32em;">
+                <div class="project-board-list" style="background-color:{{$status->color}};">
+                    <header style="background-color:{{$status->color}}!important;">{{ __($status->title)}}</header>
+                    <ul class="sortable" id="{{$status->title}}" data-status-external-id="{{$status->external_id}}" style="min-height: 32em;"  >
                         
                             
                     
@@ -156,7 +156,7 @@
                     @if($collaborator->image !== NULL)  
                             
                     <span class="user__list-icon" style="display:flex; justify-content:center;">
-                       <img src="{{$collaborator->image}}" class="thumbnail rounded" title="{{$collaborator->name}}" alt="" srcset="" style="max-width: 50px!important; border-radius:100px;">
+                       <img src="{{$collaborator->image}}" class="action-image" title="{{$collaborator->name}}" alt="" srcset="" style="max-width: 50px!important; border-radius:100px;">
                     </span>
                     
                 
