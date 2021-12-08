@@ -35,7 +35,8 @@ class Task extends Model implements Commentable
         'project_id',
         'task_status',
         'getlabel',
-        'getcolor'
+        'getcolor',
+        'image'
     ];
     protected $dates = ['deadline'];
 

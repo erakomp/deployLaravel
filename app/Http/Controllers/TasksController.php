@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use App\Models\Document;
 use App\Services\Storage\GetStorageProvider;
 use Gate;
-use Carbon;
 use Datatables;
 use File;
 use App\Models\Task;
@@ -22,7 +21,10 @@ use App\Models\Invoice;
 use App\Models\InvoiceLine;
 use App\Models\Project;
 use App\Pegawai;
+use Carbon\Carbon;
 use DB;
+use Illuminate\Support\Facades\Storage;
+
 
 class TasksController extends Controller
 {
@@ -124,8 +126,9 @@ class TasksController extends Controller
      * @param StoreTaskRequest $request
      * @return mixed
      */
-    public function store(StoreTaskRequest $request) // uses __contrust request
+    public function store(Request $request) // uses __contrust request
     {
+        
         $project = null;
         if ($request->client_external_id) {
             $client = Client::whereExternalId($request->client_external_id);
@@ -138,7 +141,21 @@ class TasksController extends Controller
             $request->all(),
             []
         );
-       
+
+        $name = null;
+ 
+        if($request->has('image')){
+        
+            $fileUpload = $request->file('image');
+            // dd($fileUpload->clientExtension());
+            $timestamp = Carbon::now()->timestamp;
+            $extension = $fileUpload->clientExtension();
+            $name =  "https://cdn.erakomp.co.id/assets/files/uploaded-$timestamp.$extension";
+            //dd($name);
+            Storage::disk('oss')->put($name, file_get_contents($fileUpload));
+
+        }
+
         $task = Task::create(
             [
             'title' => $request->title,
@@ -153,6 +170,8 @@ class TasksController extends Controller
             'task_status' => $request->task_status,
             'getlabel' => $request->getlabel,
             'getcolor' => $request->getcolor,
+            'image' => ($request->has('image')) ?  $name : NULL,
+
         ]
         );
 
@@ -161,11 +180,11 @@ class TasksController extends Controller
         Session()->flash('flash_message', __('Task successfully added'));
         event(new \App\Events\TaskAction($task, self::CREATED));
 
-        if (!is_null($request->images)) {
-            foreach ($request->file('images') as $image) {
-                $this->upload($image, $task);
-            }
-        }
+        // if (!is_null($request->images)) {
+        //     foreach ($request->file('images') as $image) {
+        //         $this->upload($image, $task);
+        //     }
+        // }
         //Hack to make dropzone js work, as it only called with AJAX and not form submit
         return response()->json(['task_external_id' => $task->external_id, 'project_external_id' => $project ? $project->external_id : null]);
         return redirect()->route("tasks.show", $insertedExternalId);

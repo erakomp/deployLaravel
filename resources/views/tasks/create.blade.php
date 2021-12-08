@@ -5,8 +5,9 @@
 
 @section('content')
 
-    <div class="row">
-        <form action="{{route('tasks.store')}}" method="POST" id="createTaskForm">
+    <div class ="row">
+        <form action="{{route('tasks.store')}}" method="POST" id="createTaskForm" enctype="multipart/form-data">
+            
             <div class="col-sm-8">
                 <div class="tablet">
                     <div class="tablet__body">
@@ -18,6 +19,10 @@
                                 <label for="description" class="control-label thin-weight">@lang('Description')</label>
                                 <textarea name="description" id="description" cols="50" rows="10" class="form-control"></textarea>
                             </div>
+                            {{-- <div class="form-group">
+                                <label for="image" class="control-label thin-weight">Image</label>
+                                <input type="file" name="image" id="image" class="form-control" >
+                            </div> --}}
                     </div>
                 </div>
                 @if(Entrust::can('task-upload-files') && $filesystem_integration)
@@ -117,7 +122,7 @@
                         @endif
                         <div class="form-group">
                             <label for="deadline" class="control-label thin-weight">@lang('Deadline') <small>Not necessary</small></label>
-                            <input type="datetime-local" id="cal" name="deadline" data-value="{{Carbon\Carbon::now()->toDateTimeLocalString()}}" class="form-control">
+                            <input type="datetime-local" name="deadline" data-value="{{Carbon\Carbon::now()->toDateTimeLocalString()}}" class="form-control">
                         </div>
                       
                         <div class="form-group">
@@ -136,6 +141,10 @@
                         <div class="form-group">
                             <label for="getcolor" class="control-label thin-weight">Label Color</label>
                             <input type="color" name="getcolor" id="getcolor" class="form-control">
+                        </div>
+                         <div class="form-group">
+                            <label for="image" class="control-label thin-weight">Image</label>
+                            <input type="file" name="image" id="image" class="form-control">
                         </div>
                         <div class="form-group" style="display:none;">
                             <label for="task_status" class="control-label thin-weight">@lang('Status')</label>
@@ -240,47 +249,47 @@
             });
 
             @endif
-            $('input[type="submit"]').on("click", function (e) {
-                e.preventDefault();
-                e.stopPropagation();
-                if (myDropzone != null && myDropzone.getQueuedFiles().length > 0) {
-                    myDropzone.processQueue();
+            // $('input[type="submit"]').on("click", function (e) {
+            //     e.preventDefault();
+            //     e.stopPropagation();
+            //     if (myDropzone != null && myDropzone.getQueuedFiles().length > 0) {
+            //         myDropzone.processQueue();
 
-                } else {
-                    $.ajax({
-                        type: 'post',
-                        url: '{{route('tasks.store')}}',
-                        data: $("#createTaskForm").serialize(),
-                        success: function(response){
-                            if (response.project_external_id) {
-                                window.location.href = ("/projects/"+response.project_external_id)
-                            }else {
-                                window.location.href = ("/tasks/"+response.task_external_id)
-                            }
-                        },
-                        error: function (jqXHR, textStatus, errorThrown) {
+            //     } else {
+            //         $.ajax({
+            //             type: 'post',
+            //             url: '{{route('tasks.store')}}',
+            //             data: $("#createTaskForm").serialize(),
+            //             success: function(response){
+            //                 if (response.project_external_id) {
+            //                     window.location.href = ("/projects/"+response.project_external_id)
+            //                 }else {
+            //                     window.location.href = ("/tasks/"+response.task_external_id)
+            //                 }
+            //             },
+            //             error: function (jqXHR, textStatus, errorThrown) {
                             
-                            if (jqXHR.responseJSON.errors.title != undefined) {
-                                $('.title-alert').show();
-                            } else {
-                                $('.title-alert').hide();
-                            }
-                            if (jqXHR.responseJSON.errors.description != undefined) {
-                                $('.description-alert').show();
-                            }else {
-                                $('.description-alert').hide();
-                            }
-                            if (jqXHR.responseJSON.errors.client_external_id != undefined) {
-                                $('.client-alert').show();
-                            }else {
-                                $('.client-alert').hide();
-                            }
+            //                 if (jqXHR.responseJSON.errors.title != undefined) {
+            //                     $('.title-alert').show();
+            //                 } else {
+            //                     $('.title-alert').hide();
+            //                 }
+            //                 if (jqXHR.responseJSON.errors.description != undefined) {
+            //                     $('.description-alert').show();
+            //                 }else {
+            //                     $('.description-alert').hide();
+            //                 }
+            //                 if (jqXHR.responseJSON.errors.client_external_id != undefined) {
+            //                     $('.client-alert').show();
+            //                 }else {
+            //                     $('.client-alert').hide();
+            //                 }
 
-                        }
-                    });
-                }
+            //             }
+            //         });
+            //     }
 
-            });
+            // });
 
 
 

@@ -29,93 +29,43 @@ Route::group(['middleware' => ['auth']], function () {
      * Main
      */
     /**FUCKING TASK*/
-    Route::get('/taskrep', function (Request $request) {
-        $countries = DB::table('projects')
-        ->get();
-        $states = DB::table('tasks')
-        ->where('project_id', $request->country_id)
-        ->get();
+    // Route::get('/taskrep', function (Request $request) {
+    //     $countries = DB::table('projects')
+    //     ->get();
+    //     $states = DB::table('tasks')
+    //     ->where('project_id', $request->country_id)
+    //     ->get();
     
-    if (count($states) > 0) {
-        return response()->json($states);
-    }
+    // if (count($states) > 0) {
+    //     return response()->json($states);
+    // }
     
-        $product = DB::table('tasks')->where( function($query) use($request){
-                         return $request->price_id ?
-                                $query->from('activities')->where('source_id', $request->price_id) : '';
-                    })->where(function($query) use($request){
-                         return $request->color_id ?
-                                $query->from('activities')->where('text', 'like', '%' . $request->color_id . '%') : '';
-                    })
-                    ->where(function($query) use($request){
-                        return $request->from ?
-                        $query->from('activities')->whereBetween('created_at', [$request->from, $request->to]) : '';
-                   })
-                    //->with('prices','colors')
-                    ->get();
+    //     $product = DB::table('tasks')->where( function($query) use($request){
+    //                      return $request->price_id ?
+    //                             $query->from('activities')->where('source_id', $request->price_id) : '';
+    //                 })->where(function($query) use($request){
+    //                      return $request->color_id ?
+    //                             $query->from('activities')->where('text', 'like', '%' . $request->color_id . '%') : '';
+    //                 })
+    //                 ->where(function($query) use($request){
+    //                     return $request->from ?
+    //                     $query->from('activities')->whereBetween('created_at', [$request->from, $request->to]) : '';
+    //                })
+    //                 //->with('prices','colors')
+    //                 ->get();
          
-        $selected_id = [];
-        $selected_id['source_id'] = $request->price_id;
-        $selected_id['causer_id'] = $request->color_id;
-        $selected_id['created_at'] = $request->from;
-        $selected_id['created_at'] = $request->to;
-        return view('test',compact('product','selected_id', 'countries'));
+    //     $selected_id = [];
+    //     $selected_id['source_id'] = $request->price_id;
+    //     $selected_id['causer_id'] = $request->color_id;
+    //     $selected_id['created_at'] = $request->from;
+    //     $selected_id['created_at'] = $request->to;
+    //     return view('test',compact('product','selected_id', 'countries'));
     
-    })->name('filter');
+    // })->name('filter');
 Route::get('get-states', 'DropdownController@getStates')->name('getStates');
     
-    Route::get('/test', function (Request $request) {
-        $countries = DB::table('projects')
-        ->get();
-        $states = DB::table('tasks')
-        ->where('project_id', $request->country_id)
-        ->get();
-    
-    if (count($states) > 0) {
-        return response()->json($states);
-    }
-    
-        $product = DB::table('activities')->where( function($query) use($request){
-                         return $request->price_id ?
-                                $query->from('activities')->where('source_id', $request->price_id) : '';
-                    })->where(function($query) use($request){
-                         return $request->color_id ?
-                                $query->from('activities')->where('text', 'like', '%' . $request->color_id . '%') : '';
-                    })
-                    ->where(function($query) use($request){
-                        return $request->from ?
-                        $query->from('activities')->whereBetween('created_at', [$request->from, $request->to]) : '';
-                   })
-                    //->with('prices','colors')
-                    ->get();
-         
-        $selected_id = [];
-        $selected_id['source_id'] = $request->price_id;
-        $selected_id['causer_id'] = $request->color_id;
-        $selected_id['created_at'] = $request->from;
-        $selected_id['created_at'] = $request->to;
-        return view('test',compact('product','selected_id', 'countries'));
-    
-    })->name('filter');
-    Route::get('/overdue', function (Request $request) {
-        $product = DB::table('tasks')
-        ->where('deleted_at', '=', NULL)
-        ->where( function($query) use($request){
-            return $request->from ?
-                   $query->from('tasks')->whereBetween('deadline', [$request->from . ' 00:00:00', $request->to . ' 23:59:59']) : '';
-       
-       })
-       ->select('tasks.*')
-       ->get();
-    
-    $selected_id = [];
-    $selected_id['deadline'] = $request->from;
-    $selected_id['deadline'] = $request->to;
-    
-    return view('overdue',compact('product','selected_id', ));
-    
-    
-    })->name('filtering');
+    Route::get('/test', 'OverController@test')->name('filter');
+    Route::get('/overdue', 'OverController@overdue')->name('filtering');
 
     Route::get('/div', 'DivController@index');
     Route::get('/div/tambah', 'DivController@tambah');
@@ -123,7 +73,7 @@ Route::get('get-states', 'DropdownController@getStates')->name('getStates');
     Route::post('/div/update', 'DivController@update');
     Route::get('/tasks/edit/{id}', 'DivController@edit');
 
-    Route::post('/labels/update', 'TasksController@update')-> name('tasks.update');
+    Route::post('/labels/update', 'TasksController@update')-> name('label.update');
 
     Route::get('/div/edit/{id}', 'DivController@edit');
     Route::get('/div/hapus/{id}', 'DivController@delete');
@@ -171,7 +121,8 @@ Route::get('get-states', 'DropdownController@getStates')->name('getStates');
     // Route for export/download tabledata to .csv, .xls or .xlsx
     Route::get('exportExcel/{type}', 'DigitalController@exportExcel')->name('exportExcel');
     // Route for import excel data to database.
-    Route::post('importExcel', [DigitalController::class, 'importExcel'])->name('importExcel');
+    // Route::post('importExcel', [DigitalController::class, 'importExcel'])->name('importExcel');
+    Route::post('importExcel', 'DigitalController@importExcel')->name('importExcel');
     /**
      * Users
      */
@@ -220,6 +171,7 @@ Route::get('get-states', 'DropdownController@getStates')->name('getStates');
      * Tasks
      */
     Route::group(['prefix' => 'tasks'], function () {
+        // Route::post('/tasks/store', 'TasksController@store')->name('tasks.store');
         Route::get('/data', 'TasksController@anyData')->name('tasks.data');
         Route::patch('/updatestatus/{external_id}', 'TasksController@updateStatus')->name('task.update.status');
         Route::patch('/updatelabel/{external_id}', 'TasksController@updateLabel')->name('task.update.label');
