@@ -123,7 +123,7 @@
 </div>
 
 <div class="row movedown">
-    <div class="col-lg-7">
+    {{-- <div class="col-lg-7">
         <div class="tablet" style="display:none;">
             <div class="tablet__body">
                 <h3 class="tablet__head-title">@lang('Project completion progress')</h3>
@@ -132,7 +132,19 @@
                 </div>
             </div> 
         </div>
-    </div>
+    </div> --}}
+     <div class="col-sm-7">
+      <div class="tablet">
+          <div class="tablet__head tablet__head__color-brand">
+              <div class="tablet__head-label">
+                  <h3 class="tablet__head-title text-white" style="font-size:17px!important; font-weight:bold;">@lang('Information')</h3>
+              </div>
+          </div>
+          <div class="tablet__body">
+            @include('projects._sidebar')
+          </div>
+      </div>
+  </div>
     <div class="col-lg-5">
         <div class="tablet">
             <div class="tablet__body">
@@ -169,10 +181,10 @@
 </div>
 
 <div class="row movedown">
-      <div class="col-sm-7">
+      {{-- <div class="col-sm-7">
           @include('partials.comments', ['subject' => $project])
-      </div>
-      <div class="col-sm-5">
+      </div> --}}
+      {{-- <div class="col-sm-5">
       <div class="tablet">
           <div class="tablet__head tablet__head__color-brand">
               <div class="tablet__head-label">
@@ -183,7 +195,7 @@
             @include('projects._sidebar')
           </div>
       </div>
-  </div>
+  </div> --}}
   <div class="col-sm-4">@if(Entrust::can('project-upload-files') && $filesystem_integration)
                 <div id="document" class="tab-pane">
                     <div class="tablet">

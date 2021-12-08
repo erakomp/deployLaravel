@@ -201,7 +201,7 @@ class TasksController extends Controller
     private function upload($image, $task)
     {
         if (!auth()->user()->can('task-upload-files')) {
-            session()->flash('flash_message_warning', __('You do not have permission to upload images'));
+            session()->flasha('flash_message_warning', __('You do not have permission to upload images'));
             return redirect()->route('tasks.show', $task->external_id);
         }
         $file = $image;
