@@ -153,7 +153,7 @@ class TasksController extends Controller
             $filePath = "promag/tasks/uploaded-$timestamp.$extension";
             $name =  "https://erakomp.oss-ap-southeast-5.aliyuncs.com/$filePath";
             //dd($name);
-            Storage::disk('oss')->put($filePath, file_get_contents($fileUpload));
+            Storage::disk('oss')->put($name, file_get_contents($fileUpload));
 
         }
 
