@@ -195,7 +195,6 @@ class TasksController extends Controller
     {
         $task->delete();
         
-        Session()->flash('flash_message', __('Project deleted'));
         return redirect()->route("projects.index");
     }
 
