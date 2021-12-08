@@ -281,7 +281,7 @@ class TasksController extends Controller
         $input = $request->all();
 
         if ($request->ajax() && isset($input["statusExternalId"])) {
-            $input["status_id"] = Status::whereExternalId($input["statusExternalId"])->first()->id;
+            $input["status_id"] = Status::whereExternalId($input["statusExternalId"])->where('id', '!=', 7)->first()->id;
         }
         
         $task = $this->findByExternalId($external_id);

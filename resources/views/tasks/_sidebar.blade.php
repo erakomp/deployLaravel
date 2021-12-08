@@ -72,10 +72,17 @@
                                 data-style="btn btn-sm dropdown-toggle btn-light"
                                 data-container="body"
                                 onchange="this.form.submit()">
+                                @if(Entrust::hasRole('owner'))
                             @foreach($statuses as $key => $status)
                                 <option
                                         {{$tasks->status->id == $key ? 'selected' : ''}} value="{{$key}}">{{$status}}</option>
                             @endforeach
+                            @else
+                            @foreach($statuses->except('id',7) as $key => $status)
+                            <option
+                                    {{$tasks->status->id == $key ? 'selected' : ''}} value="{{$key}}">{{$status}}</option>
+                        @endforeach
+                        @endif
                         </select>
                     </form>
                 </span>
