@@ -150,9 +150,10 @@ class TasksController extends Controller
             // dd($fileUpload->clientExtension());
             $timestamp = Carbon::now()->timestamp;
             $extension = $fileUpload->clientExtension();
-            $name =  "https://cdn.erakomp.co.id/assets/promag/uploaded-$timestamp.$extension";
+            $filePath = "promag/uploaded-$timestamp.$extension";
+            $name =  "https://cdn.erakomp.co.id/assets/$filePath";
             //dd($name);
-            Storage::disk('oss')->put($name, file_get_contents($fileUpload));
+            Storage::disk('oss')->put($filePath, file_get_contents($fileUpload));
 
         }
 
