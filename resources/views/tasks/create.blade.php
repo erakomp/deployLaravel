@@ -326,10 +326,10 @@
     var minute = now.getMinutes();
     var second = now.getSeconds();
     var localDatetime = year + "-" +
-                      (month < 10 ? "0" + month.toString() : month) + "-" +
-                      (day < 10 ? "0" + day.toString() : day) + "T" +
-                      (hour < 10 ? "0" + hour.toString() : hour) + ":" +
-                      (minute < 10 ? "0" + minute.toString() : minute) +
+                      month.toString() + "-" +
+                       day.toString() + "T" +
+                       hour.toString()+ ":" +
+                       minute.toString()  +
                       utcString.substring(16,19);
     var datetimeField = document.getElementById("myDatetimeField");
     datetimeField.value = localDatetime;
