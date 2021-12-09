@@ -204,7 +204,7 @@
                             <div class="form-group">
                                 <label for="deadline_date" class="control-label thin-weight">@lang('Change deadline')</label>
                                 <input type="datetime-local" 
-                                id="cal" name="deadline_date" data-value="{{Carbon\Carbon::now()->toDateTimeLocalString()}}" class="form-control">
+                                id="cal" name="deadline_date" data-value="{{$tasks->deadline->toDateTimeLocalString()}}" class="form-control">
                             </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default col-lg-6"

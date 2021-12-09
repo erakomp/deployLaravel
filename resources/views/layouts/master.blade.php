@@ -76,6 +76,10 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
                         class="fa fa-home sidebar-icon"></i><span id="menu-txt" style="font-size: 16px!important;" >{{ __('Dashboard') }} </span></a>
                         <a href="/labels" class=" list-group-item" data-parent="#MainMenu"><i class="fas fa-tags sidebar-icon"></i><span id="menu-txt" style="font-size: 16px!important;" >Tags </span></a>
            @endif
+           @if(Entrust::hasRole('owner'))
+           
+                       <a href="/colors" class=" list-group-item" data-parent="#MainMenu"><i class="fas fa-list sidebar-icon"></i><span id="menu-txt" style="font-size: 16px!important;" >List </span></a>
+          @endif
             <a href="#projects" class="list-group-item" data-toggle="collapse" data-parent="#MainMenu"><i
                         class="fa fa-briefcase sidebar-icon "></i><span id="menu-txt" style="font-size: 16px!important;" >{{ __('Projects') }}</span>
                 <i class="icon ion-md-arrow-dropup arrow-side sidebar-arrow"></i></a>
