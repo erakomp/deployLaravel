@@ -122,7 +122,7 @@
                         @endif
                         <div class="form-group">
                             <label for="deadline" class="control-label thin-weight">@lang('Deadline') <small>Not necessary</small></label>
-                            <input type="datetime-local" id="myDatetimeField" name="deadline" value="{{Carbon\Carbon::now()->toDateTimeLocalString()}}" class="form-control">
+                            <input type="datetime-local" id="myDatetimeField" name="deadline"  class="form-control">
                         </div>
                       
                         <div class="form-group">
