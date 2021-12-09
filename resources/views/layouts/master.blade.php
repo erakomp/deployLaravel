@@ -16,7 +16,7 @@
     <link href="https://unpkg.com/ionicons@4.5.5/dist/css/ionicons.min.css" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="shortcut icon" href="https://www.cloudapper.com/wp-content/uploads/custom_images/projects/projects-logo.png">
+    <link rel="shortcut icon" href="https://cdn.erakomp.co.id/assets/img/Logo%20Erakomp-01.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset(elixir('css/bootstrap-select.min.css')) }}">
     <link href="{{ URL::asset('css/summernote.css') }}" rel="stylesheet">
@@ -67,7 +67,7 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
 
     <nav id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas-sm" role="navigation" style="font-size: 21px!important;">
         <div class="list-group panel">
-            <p class=" list-group-item siderbar-top" title=""><img src="https://cdn.erakomp.co.id/kanbanaja.png" alt="" style="width: 100%; margin: 1em 0;"></p>
+            <p class=" list-group-item siderbar-top" title=""><img src="https://cdn.erakomp.co.id/assets/img/Logo%20Erakomp-01.png" alt="" style="width: 100%; margin: 1em 0;"></p>
             <a href="#" class=" list-group-item" data-parent="#MainMenu" disabled="disabled" style="pointer-events: none!important; text-align:center;"><span id="menu-txt" style="font-size: 16px!important; font-size:21px!important;color:white; font-weight:400;" >     
                 
                 Hi, {{Auth::user()->name}} </span></a>
