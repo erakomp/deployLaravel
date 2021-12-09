@@ -277,12 +277,19 @@ class TasksController extends Controller
             return redirect()->route('tasks.show', $external_id);
         }
         
+       
+            $input = $request->all();
+            if (!auth()->user()->hasRole('owner')) {
+                if ($request->ajax() && isset($input["statusExternalId"])) {
+                    $input["status_id"] = Status::whereExternalId($input["statusExternalId"])->where('id', '!=', 7)->where('id', '!=', 6)-> first()->id;
+                }
+            }
+            if (auth()->user()->hasRole('owner')) {
+                if ($request->ajax() && isset($input["statusExternalId"])) {
+                    $input["status_id"] = Status::whereExternalId($input["statusExternalId"])-> first()->id;
+                }
+            }
         
-        $input = $request->all();
-
-        if ($request->ajax() && isset($input["statusExternalId"])) {
-            $input["status_id"] = Status::whereExternalId($input["statusExternalId"])->where('id', '!=', 7)->first()->id;
-        }
         
         $task = $this->findByExternalId($external_id);
         $task->fill($input)->save();
