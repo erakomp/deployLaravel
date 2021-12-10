@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Builder;
 
 class Status extends Model
 {
+    protected $table='statuses';
+    protected $fillable = [
+        'title', 'color'
+    ];
     public function tasks()
     {
         return $this->hasMany(Task::class);

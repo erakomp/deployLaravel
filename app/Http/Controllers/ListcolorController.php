@@ -1,16 +1,21 @@
 <?php
-
+  
 namespace App\Http\Controllers;
 use Ramsey\Uuid\Uuid;
 
+use App\Pro;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
 class ListcolorController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-$products = DB::table('statuses')->where('source_type', 'App\Models\Task')->get();  
+$products = Pro::where('source_type', 'App\Models\Task')->get();  
         return view('colors.index',compact('products'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -40,7 +45,7 @@ $products = DB::table('statuses')->where('source_type', 'App\Models\Task')->get(
             'color' => 'required',
         ]);
   
-        DB::table('statuses')->insert([
+        Pro::insert([
             'external_id' => Uuid::uuid4()->toString(),
             'title' => $request->title,
             'source_type' => $request->source_type,
@@ -60,7 +65,7 @@ $products = DB::table('statuses')->where('source_type', 'App\Models\Task')->get(
      */
     public function show()
     {
-        $product = DB::table('statuses')->get();
+        $product = Pro::get();
 
         return view('colors.show',compact('product'));
     }
@@ -73,7 +78,7 @@ $products = DB::table('statuses')->where('source_type', 'App\Models\Task')->get(
      */
     public function edit($id)
     {
-        $product = DB::table('statuses')->find($id);
+        $product = Pro::findOrFail($id);
 
         return view('colors.edit',compact('product'));
     }
@@ -85,17 +90,16 @@ $products = DB::table('statuses')->where('source_type', 'App\Models\Task')->get(
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id )
+    public function update($product,Request $request )
     {
+        // dd($product);
+        //return $product;
         $request->validate([
-            'external_id' => 'sometimes',
             'title' => 'required',
             'source_type' => 'required',
             'color' => 'required',
         ]);
-        $query = DB::table('statuses')->where('id', '=', $id);
-        $image = $query->first();
-        $query->update($request->all());
+        Pro::findOrFail($product)->update($request->all());
   
         return redirect()->route('colors.index')
                         ->with('success','List updated successfully');
@@ -109,7 +113,7 @@ $products = DB::table('statuses')->where('source_type', 'App\Models\Task')->get(
      */
     public function destroy($id)
     {
-        $query = DB::table('statuses')->where('id', '=', $id);
+        $query = Pro::where('id', '=', $id);
         $image = $query->first();
         $query->delete();
         return redirect()->route('colors.index')

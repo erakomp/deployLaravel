@@ -1,13 +1,13 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="card shadow" style="background: white;">
+<div class="card shadow" style="background-color: white;">
     <div class="card-body">
-        <div class="container" style="padding: 3%;">
+        <div class="container" style="padding: 5%;">
             <div class="row" style="margin-bottom: 20px;">
                 <div class="col-lg-12 margin-tb">
                     <div class="">
-                        <h1 style="text-transform:uppercase; text-align:center; font-weight:bold;">Add List(s)</h1>
+                        <h1 style="text-transform: uppercase; font-weight:bold; text-align:center">Edit Label</h1>
                     </div>
                 </div>
             </div>
@@ -23,34 +23,33 @@
                 </div>
             @endif
         
-            <form action="{{ route('colors.store') }}" method="POST">
+            <form action="{{ route('colors.update',$product->id) }}" method="POST">
                 @csrf
+                @method('PUT')
         
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <strong >List Title:</strong>
-                            <input type="text" name="title" class="form-control">
+                            <strong>Title:</strong>
+                            <input type="text" name="title" value="{{ $product->title }}" class="form-control">
                         </div>
                     </div>
                     <div class="col-sm-6" style="display: none;">
                         <div class="form-group">
                             <strong>Type:</strong>
-                            <select name="source_type" id="">
-                            <option value="App\Models\Task">For Task(s)</option>    
-                            </select>                
-                    </div>
+                            <input type="text" name="source_type" value="{{ $product->source_type }}" class="form-control">
+                        </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <strong>Color:</strong>
-                            <input type="color" name="color" class="form-control">
+                            <input type="color" name="color" value="{{$product->color}}" style="width:100%;">                
                         </div>
                     </div>
-                    <div class="col-sm-12 text-center">
-                        <button onclick="history.back()" class="btn btn-md btn-brand movedown" style="font-size:14px;">Back</button>
+                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                        <button onclick="history.back()" class="btn btn-md btn-brand movedown">Back</button>
 
-                        <button type="submit" class="btn btn-md btn-brand movedown" style="font-size:14px;">Add List</button>
+                        <button type="submit" class="btn btn-md btn-brand movedown">Update</button>
                     </div>
                 </div>
         
@@ -58,5 +57,5 @@
         </div>
     </div>
 </div>
-    
+   
 @endsection
