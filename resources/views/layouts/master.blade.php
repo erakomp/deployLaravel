@@ -74,7 +74,7 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
                 @if(Entrust::hasRole('owner'))
             <a href="/" class=" list-group-item" data-parent="#MainMenu"><i
                         class="fa fa-home sidebar-icon"></i><span id="menu-txt" style="font-size: 16px!important;" >{{ __('Dashboard') }} </span></a>
-                        <a href="/labels" class=" list-group-item" data-parent="#MainMenu"><i class="fas fa-tags sidebar-icon"></i><span id="menu-txt" style="font-size: 16px!important;" >Tags </span></a>
+                        {{-- <a href="/labels" class=" list-group-item" data-parent="#MainMenu"><i class="fas fa-tags sidebar-icon"></i><span id="menu-txt" style="font-size: 16px!important;" >Tags </span></a> --}}
            @endif
            @if(Entrust::hasRole('owner'))
            
