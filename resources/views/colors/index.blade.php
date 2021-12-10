@@ -9,7 +9,7 @@
                     <div class="">
                         <h1 style="text-align: center; text-transform:uppercase; font-weight:bold;">Lists</h1 style="text-align: center;">
                     </div>
-                    <div class="pull-right">
+                    <div class="" style="display: flex; justify-content:center;">
                         <a class="btn btn-md btn-brand movedown" href="{{ route('colors.create') }}">Add New List</a>
                     </div>
                 </div>
