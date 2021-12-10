@@ -55,6 +55,6 @@ class OverController extends Controller
     $selected_id['deadline'] = $request->from;
     $selected_id['deadline'] = $request->to;
     
-    return view('overdue',compact('product','selected_id', ));
+    return view('overdue',compact('product','selected_id' ));
     }
 }
