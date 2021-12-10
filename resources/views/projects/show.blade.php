@@ -14,7 +14,7 @@
     @include('partials.clientheader')
     @include('partials.userheader', ['changeUser' => false])
 </div>
-
+<h1 style="font-size:25px; font-weight:bold;">Welcome to Board <span style="text-transform: uppercase; color:red; font-weight:bold;">'{{$project->title}}'</span></h1>
 <div class="row">
     <div class="col-lg-12">
         <div class="project-board-ui">
