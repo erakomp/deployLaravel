@@ -7,10 +7,10 @@
             <div class="row" style="margin-bottom: 20px;">
                 <div class="col-lg-12 margin-tb">
                     <div class="">
-                        <h1 style="text-align: center; text-transform:uppercase;">Lists</h1 style="text-align: center;">
+                        <h1 style="text-align: center; text-transform:uppercase; font-weight:bold;">Lists</h1 style="text-align: center;">
                     </div>
                     <div class="pull-right">
-                        <a class="btn btn-success" href="{{ route('colors.create') }}">Add New List</a>
+                        <a class="btn btn-md btn-brand movedown" href="{{ route('colors.create') }}">Add New List</a>
                     </div>
                 </div>
             </div>
