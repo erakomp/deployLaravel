@@ -14,10 +14,7 @@
                         <form action="{{ route('filter') }}" method="GET"   onchange="postdata(this.value)" style="margin-top: 5%; margin-bottom:5%; display:flex; justify-content:center;">
                             <div class="m-5 w-50">
                                 <div class="mb-3">
-                                  
-                                </div>
-                                <div class="mb-3">
-                                    <select class="form-select form-select-lg mb-3" id="state" name="price_id" >
+                                    <select class="form-select form-select-lg mb-3" id="country">
                                         <option selected disabled>Select Project</option>
                                         @foreach (DB::table('projects')
                                         ->where('flag', '=', Auth::user()->flag)
@@ -25,6 +22,9 @@
                                         <option value="{{ $country->id }}">{{ $country->title }}</option>
                                         @endforeach
                                     </select>
+                                </div>
+                                <div class="mb-3">
+                                    <select class="form-select form-select-lg mb-3" id="state" name="price_id" ></select>
                                 </div>
                                
                             </div>
@@ -41,8 +41,8 @@
                         </select> --}}
                         <select name="color_id" id="input" style="margin-right:2%;" >
                             <option value="0">Select Status</option>
-                            <option value="5">QC</option>
-                            <option value="7">Done KPI</option>
+                            <option value="QC">QC</option>
+                            <option value="Done">Done KPI</option>
         
                             {{-- @foreach (DB::table('users')->select('id', 'name')->orderBy('id')->get() as $color)
                             <option value="{{ $color->id }}" {{ $color->id == $selected_id['causer_id'] ? 'selected' : '' }}>
@@ -61,28 +61,19 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Status</th>
-
-                                        <th>Title</th>
-                                        <th>Project Title</th>
-                                        <th>Created Date</th>
-                                        <th>Updated Date</th>
+                                        <th>desc</th>
+                                        <th>created date</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @forelse($product->sortByDesc('id') as $product )
                                     <tr>
                                         <td>{{ $loop->index+1 }}</td>
-                                        @if($product->status_id == 7)
-                                        <td>DONE KPI</td>
-                                        @elseif($product->status_id == 5)
-                                        <td>QC</td>
-                                        @endif
-                                        <td>{{ $product->tt }}</td>
-                                        <td>{{$product->pt}}</td>
+                                        <td>{{ $product->text }}</td>
+                                        
                                         <td>{{date('l, d/m/y H:i:s', strtotime( $product->created_at))}}</td>
-                                        <td>{{date('l, d/m/y H:i:s', strtotime( $product->updated_at))}}</td>
-
+            
                                     </tr>
                                     @empty
                                     <p> There is no data to be shown </p>

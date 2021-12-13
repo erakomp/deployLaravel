@@ -18,28 +18,25 @@ class OverController extends Controller
         return response()->json($states);
     }
     
-        $product = DB::table('tasks')
-        ->join('projects', 'tasks.project_id', '=', 'projects.id')
-        ->select('projects.title as pt', 'tasks.project_id' ,'tasks.title as tt', 'tasks.created_at', 'tasks.status_id', 'tasks.updated_at')
-        ->where( function($query) use($request){
+        $product = DB::table('activities')->where( function($query) use($request){
                          return $request->price_id ?
-                                $query->from('tasks')->where('tasks.project_id', $request->price_id) : '';
+                                $query->from('activities')->where('source_id', $request->price_id) : '';
                     })->where(function($query) use($request){
                          return $request->color_id ?
-                                $query->from('tasks')->where('tasks.status_id',  $request->color_id ) : '';
+                                $query->from('activities')->where('text', 'like', '%' . $request->color_id . '%') : '';
                     })
                     ->where(function($query) use($request){
                         return $request->from ?
-                        $query->from('tasks')->whereBetween('tasks.updated_at', [$request->from, $request->to]) : '';
+                        $query->from('activities')->whereBetween('created_at', [$request->from, $request->to]) : '';
                    })
                     //->with('prices','colors')
                     ->get();
          
         $selected_id = [];
-        $selected_id['project_id'] = $request->price_id;
-        $selected_id['status_id'] = $request->color_id;
-        $selected_id['updated_at'] = $request->from;
-        $selected_id['updated_at'] = $request->to;
+        $selected_id['source_id'] = $request->price_id;
+        $selected_id['causer_id'] = $request->color_id;
+        $selected_id['created_at'] = $request->from;
+        $selected_id['created_at'] = $request->to;
         return view('test',compact('product','selected_id', 'countries'));
     }
 
