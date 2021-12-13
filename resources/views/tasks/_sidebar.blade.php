@@ -126,7 +126,7 @@
 <div class="row margin-top-10">
     <div class="col-md-4">Label</div>
     <div class="col-md-8">
-        @if(($tasks->getcolor == "#000000") ||($tasks->getcolor == NULL) )
+        @if(($tasks->label == ""))
         <span>no label added</span>
 
         @else
