@@ -10,7 +10,7 @@
         <p style="font-size: 12px!important; max-width:300px!important;">  {!! $subject->description . ''!!}</p>
     </div>
     @if($subject->image != NULL)
-    <img src="{{$subject->image}}" alt="" style="max-width: 200px; margin-left:3%;">
+    {{-- <img src="{{$subject->image}}" alt="" style="max-width: 200px; margin-left:3%;"> --}}
     <img id="myImg" src="{{$subject->image}}"  style="width:100%;max-width:300px">
 
 <!-- The Modal -->
