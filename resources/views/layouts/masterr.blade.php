@@ -37,12 +37,7 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
             max-width: 300px!important;
         }
     </style>
-    <script>
-        var DayByDay =  {
-            csrfToken: "{{csrf_token()}}",
-            stripeKey: "{{config('services.stripe.key')}}"
-        }
-    </script>
+    
     <?php if(isDemo()) { ?>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-152899919-3"></script>
@@ -67,7 +62,11 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
 
     <nav id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas-sm" role="navigation" style="font-size: 21px!important;">
         <div class="list-group panel">
-            <p class=" list-group-item siderbar-top" title=""><img src="https://cdn.erakomp.co.id/assets/img/Logo%20Erakomp-01.png" alt="" style="width: 70%; margin: 1em 0; margin-left:15%;"></p>
+            @if(Auth::user()->image != NULL)
+            <p class=" list-group-item siderbar-top" title=""><img src="{{Auth::user()->image}}" alt="" style="width: 70%; margin: 1em 0; margin-left:15%; border-radius:100px;" class="img-rounded"></p>
+            @elseif(Auth::user()->image == NULL)
+            <p class=" list-group-item siderbar-top" title=""><img src="https://www.baytekent.com/wp-content/uploads/2016/12/facebook-default-no-profile-pic1.jpg" alt="" style="width: 70%; margin: 1em 0; margin-left:15%; border-radius:100px;" class="img-rounded"></p>
+            @endif
             <a href="#" class=" list-group-item" data-parent="#MainMenu" disabled="disabled" style="pointer-events: none!important; text-align:center;"><span id="menu-txt" style="font-size: 16px!important; font-size:21px!important;color:white; font-weight:400;" >     
                 
                 Hi, {{Auth::user()->name}} </span></a>
