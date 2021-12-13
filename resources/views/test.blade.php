@@ -11,7 +11,7 @@
                     <div class="card">
                         <div class="card-header"></div>
         
-                        <form action="{{ route('filter') }}" method="GET" style="margin-top: 5%; margin-bottom:5%; display:flex; justify-content:center;">
+                        <form action="{{ route('filter') }}" method="GET"   onchange="postdata(this.value)" style="margin-top: 5%; margin-bottom:5%; display:flex; justify-content:center;">
                             <div class="m-5 w-50">
                                 <div class="mb-3">
                                     <select class="form-select form-select-lg mb-3" id="country">
@@ -53,7 +53,7 @@
                         <input type="datetime-local" name="from" id="input" style="margin-right:2%;" value="{{Carbon\Carbon::now()->toDatetimelocalString()}}">
                         <input type="datetime-local" name="to" id="input" style="margin-right:2%;" value="{{Carbon\Carbon::now()->toDatetimelocalString()}}">
         
-                        <input type="submit" class="btn btn-md btn-brand movedown" value="Filter" style="font-size: 16px; ">
+                        <input type="submit"  class="btn btn-md btn-brand movedown" value="Filter" style="font-size: 16px; ">
                         </form>
                     
                         <div class="table-responsive">
@@ -94,7 +94,9 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        
         $('#country').on('change', function () {
+            
             var countryId = this.value;
             $('#state').html('');
             $.ajax({
@@ -113,4 +115,11 @@
         
     });
 </script>
+{{-- <script>
+   function postdata(data) {
+       $.post("{{ URL::to('/test') }}", { input:data }, function(returned){
+       $('.products').html(returned);
+       });
+    }   
+</script> --}}
 @endsection
