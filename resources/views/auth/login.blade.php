@@ -16,7 +16,10 @@
                                 
                             </div>
                             @endif
-                            <h1 class="text-center" style="font-size:50px; font-family: 'Fredericka the Great', cursive!important;">Era Project Management</h1>
+                            
+                                    <h1 class="text-center" style="font-size:50px; font-family: 'Fredericka the Great', cursive!important;"><img src="https://cdn.erakomp.co.id/assets/img/Logo%20Erakomp-01.png" alt="" style="max-width:100px; margin-right:20px;">Era Project Management</h1>
+                                
+                            
                             <br>
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <div class="inner-addon right-addon">

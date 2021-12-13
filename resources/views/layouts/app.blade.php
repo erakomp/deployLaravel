@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
     <title>Login Erakomp Project Management</title>
-    <link rel="shortcut icon" href="https://www.cloudapper.com/wp-content/uploads/custom_images/projects/projects-logo.png">
+    <link rel="shortcut icon" href="https://cdn.erakomp.co.id/assets/img/Logo%20Erakomp-01.png">
     <!-- Fonts -->
     <script src="https://use.fontawesome.com/8301ab0e4f.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
