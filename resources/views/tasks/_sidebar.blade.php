@@ -80,7 +80,7 @@
                                         {{$tasks->status->id == $key ? 'selected' : ''}} value="{{$key}}">{{$status}}</option>
                             @endforeach
                             @else
-                            @foreach($statuses->except('id',7) as $key => $status)
+                            @foreach($statuses->except('id',7)->except('id', 6) as $key => $status)
                             <option
                                     {{$tasks->status->id == $key ? 'selected' : ''}} value="{{$key}}">{{$status}}</option>
                         @endforeach
