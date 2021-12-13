@@ -78,7 +78,7 @@
                                         @elseif($product->status_id == 5)
                                         <td>QC</td>
                                         @endif
-                                        <td>{{ $product->tt }}</td>
+                                        <td><a href="/tasks/{{$product->external_id}}">{{ $product->tt }}</a></td>
                                         <td>{{$product->pt}}</td>
                                         <td>{{date('l, d/m/y H:i:s', strtotime( $product->created_at))}}</td>
                                         <td>{{date('l, d/m/y H:i:s', strtotime( $product->updated_at))}}</td>

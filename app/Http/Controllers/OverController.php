@@ -20,8 +20,9 @@ class OverController extends Controller
     
         $product = DB::table('tasks')
         ->whereIn('tasks.status_id', [5,7])
+        ->where('tasks.deleted_at', '=', NULL)
         ->join('projects', 'tasks.project_id', '=', 'projects.id')
-        ->select('projects.title as pt', 'tasks.project_id' ,'tasks.title as tt', 'tasks.created_at', 'tasks.status_id', 'tasks.updated_at')
+        ->select('projects.title as pt', 'tasks.project_id' ,'tasks.external_id','tasks.title as tt', 'tasks.created_at', 'tasks.status_id', 'tasks.updated_at')
         
         ->where( function($query) use($request){
                          return $request->price_id ?
