@@ -78,7 +78,7 @@
                                         <th>Assigned To</th>
                                         <th>Created Date</th>
                                         <th>Updated Date</th>
-                                        <th>Total Time(in minutes)</th>
+                                        <th>Total Time(in hours)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
