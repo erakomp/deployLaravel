@@ -58,11 +58,11 @@
                         </form>
                         <div class="row" style="text-align: center;">
                             <div class="col-sm-6">
-                                <p>From : <strong>{{$from}}</strong></p>
+                                <p>From : @if($from != "")<strong>{{Carbon::now()}}</strong>@else<strong>{{$from}}</strong>@endif</p>
 
                             </div>
                             <div class="col-sm-6">
-                                <p>To : <strong>{{$to}}</strong></p>
+                                <p>To :@if($to != "")<strong>{{Carbon::now()}}</strong>@else<strong>{{$to}}</strong>@endif</p>
 
                             </div>
                         </div>
@@ -75,6 +75,7 @@
 
                                         <th>Title</th>
                                         <th>Project Title</th>
+                                        <th>Assigned To</th>
                                         <th>Created Date</th>
                                         <th>Updated Date</th>
                                         <th>Total Time(in minutes)</th>
@@ -91,10 +92,11 @@
                                         @endif
                                         <td><a href="/tasks/{{$product->external_id}}">{{ $product->tt }}</a></td>
                                         <td>{{$product->pt}}</td>
+                                        <td>{{$product->ui}}</td>
+
                                         <td>{{date('l, d/m/y H:i:s', strtotime( $product->created_at))}}</td>
                                         <td>{{date('l, d/m/y H:i:s', strtotime( $product->updated_at))}}</td>
                                         <td>{{number_format($product->timediff),0}}</td>
-
                                     </tr>
                                     @empty
                                     <p> There is no data to be shown </p>

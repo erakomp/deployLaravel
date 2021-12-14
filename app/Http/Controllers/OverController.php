@@ -13,7 +13,7 @@ class OverController extends Controller
         $states = DB::table('tasks')
         ->where('project_id', $request->country_id)
         ->get();
-    
+        
     if (count($states) > 0) {
         return response()->json($states);
     }
@@ -22,7 +22,8 @@ class OverController extends Controller
         ->whereIn('tasks.status_id', [5,7])
         ->where('tasks.deleted_at', '=', NULL)
         ->join('projects', 'tasks.project_id', '=', 'projects.id')
-        ->select('projects.title as pt', 'tasks.project_id' ,'tasks.external_id','tasks.title as tt', 'tasks.created_at', 'tasks.status_id', 'tasks.updated_at', DB::raw('TIMESTAMPDIFF(MINUTE, tasks.created_at, tasks.updated_at) AS timediff'))
+        ->join('users', 'tasks.user_assigned_id', '=', 'users.id')
+        ->select('projects.title as pt', 'tasks.project_id' ,'tasks.external_id','tasks.title as tt', 'users.name as ui', 'tasks.created_at', 'tasks.status_id', 'tasks.updated_at', DB::raw('TIMESTAMPDIFF(MINUTE, tasks.created_at, tasks.updated_at) AS timediff'))
         
         // ->select(DATEDIFF)
         
