@@ -39,13 +39,22 @@ class OverController extends Controller
                    })
                     //->with('prices','colors')
                     ->get();
-         
+                
+        $price_id = $request->price_id;        
+        $color_id = $request->color_id;
+        $from = date("Y-m-d H:i:s",strtotime($request->from));        
+        $to = date("Y-m-d H:i:s",strtotime($request->to));
+       
+
+        // $from = date("mm/dd/yyyyH:i:s",strtotime($request->from));
+        // $to = $request->to;
+        //           return $from;
         $selected_id = [];
         $selected_id['project_id'] = $request->price_id;
         $selected_id['status_id'] = $request->color_id;
         $selected_id['updated_at'] = $request->from;
         $selected_id['updated_at'] = $request->to;
-        return view('test',compact('product','selected_id', 'countries'));
+        return view('test',compact('product','selected_id', 'countries', 'color_id', 'price_id', 'from', 'to'));
     }
 
     public function overdue(Request $request){

@@ -22,7 +22,7 @@
                                         @foreach (DB::table('projects')
                                         ->where('flag', '=', Auth::user()->flag)
                                         ->select('id', 'title')->orderBy('id')->get() as $country)
-                                        <option value="{{ $country->id }}">{{ $country->title }}</option>
+                                        <option value="{{ $country->id }}" @if($country->id == $price_id) selected @endif>{{ $country->title }} </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -40,9 +40,9 @@
                             @endforeach
                         </select> --}}
                         <select name="color_id" id="input" style="margin-right:2%;" >
-                            <option value="0">Select Status</option>
-                            <option value="5">QC</option>
-                            <option value="7">Done KPI</option>
+                            <option value="0" >Select Status</option>
+                            <option value="5" @if($color_id == 5) selected @endif>QC</option>
+                            <option value="7"  @if($color_id == 7) selected @endif>Done KPI</option>
         
                             {{-- @foreach (DB::table('users')->select('id', 'name')->orderBy('id')->get() as $color)
                             <option value="{{ $color->id }}" {{ $color->id == $selected_id['causer_id'] ? 'selected' : '' }}>
@@ -51,11 +51,21 @@
                             @endforeach --}}
                         </select>
                         <input type="datetime-local" name="from" id="input" style="margin-right:2%;" value="{{Carbon\Carbon::now()->toDatetimelocalString()}}">
+
                         <input type="datetime-local" name="to" id="input" style="margin-right:2%;" value="{{Carbon\Carbon::now()->toDatetimelocalString()}}">
         
                         <input type="submit"  class="btn btn-md btn-brand movedown" value="Filter" style="font-size: 16px; ">
                         </form>
-                    
+                        <div class="row" style="text-align: center;">
+                            <div class="col-sm-6">
+                                <p>From : <strong>{{$from}}</strong></p>
+
+                            </div>
+                            <div class="col-sm-6">
+                                <p>To : <strong>{{$to}}</strong></p>
+
+                            </div>
+                        </div>
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
