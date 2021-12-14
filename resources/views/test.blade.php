@@ -67,6 +67,7 @@
                                         <th>Project Title</th>
                                         <th>Created Date</th>
                                         <th>Updated Date</th>
+                                        <th>Total Time</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -82,6 +83,7 @@
                                         <td>{{$product->pt}}</td>
                                         <td>{{date('l, d/m/y H:i:s', strtotime( $product->created_at))}}</td>
                                         <td>{{date('l, d/m/y H:i:s', strtotime( $product->updated_at))}}</td>
+                                        <td>{{$product->timediff}}</td>
 
                                     </tr>
                                     @empty
