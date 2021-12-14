@@ -15,7 +15,7 @@
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
-  <span class="close">&times;</span>
+  <span class="close" style="font-size:20px; color:black; opacity:100%;">close</span>
   <img class="modal-content" id="img01">
   <div id="caption"></div>
 </div>

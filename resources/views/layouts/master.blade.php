@@ -59,7 +59,7 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
           height: 100%; /* Full height */
           overflow: auto; /* Enable scroll if needed */
           background-color: rgb(0,0,0); /* Fallback color */
-          background-color: rgba(0, 0, 0, 0.144); /* Black w/ opacity */
+          background-color: transparent; /* Black w/ opacity */
         }
         
         /* Modal Content (image) */
@@ -104,12 +104,12 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
         .close {
           position: absolute; 
           margin-right:50%;
-          top: 15px;
-          right: 35px;
-          color: red;
+          top: 10%;
+          right: -16%;;
+          color: #000;
           font-size: 40px;
           font-weight: bold;
-          transition: 0.3s;
+          text-decoration: none;
         }
         
         .close:hover,
