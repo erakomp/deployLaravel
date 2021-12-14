@@ -83,7 +83,7 @@
                                         <td>{{$product->pt}}</td>
                                         <td>{{date('l, d/m/y H:i:s', strtotime( $product->created_at))}}</td>
                                         <td>{{date('l, d/m/y H:i:s', strtotime( $product->updated_at))}}</td>
-                                        <td>{{$product->timediff}}</td>
+                                        <td>{{number_format($product->timediff),0}}</td>
 
                                     </tr>
                                     @empty
