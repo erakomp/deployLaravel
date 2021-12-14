@@ -62,7 +62,7 @@
 
                             </div>
                             <div class="col-sm-6">
-                                <p>To :@if($to != "")<strong>{{Carbon::now()}}</strong>@else<strong>{{$to}}</strong>@endif</p>
+                                <p>To : @if($to != "")<strong>{{Carbon::now()}}</strong>@else<strong>{{$to}}</strong>@endif</p>
 
                             </div>
                         </div>
