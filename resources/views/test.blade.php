@@ -67,7 +67,7 @@
                                         <th>Project Title</th>
                                         <th>Created Date</th>
                                         <th>Updated Date</th>
-                                        <th>Total Time</th>
+                                        <th>Total Time(in minutes)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
