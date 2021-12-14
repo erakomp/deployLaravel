@@ -7,7 +7,7 @@
     <div class="container" >
         <div class="row">
             <div class="col-md-5 col-md-offset-4">
-                <div class="tablet" style="margin-top:-25%!important; background-color:rgba(255, 255, 255, 0.685);">
+                <div class="tablet" style="margin-top:-35%!important; background-color:rgba(255, 255, 255, 0.685);">
                  <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                             {!! csrf_field() !!}
 
@@ -16,8 +16,11 @@
                                 
                             </div>
                             @endif
-                            
-                                    <h1 class="text-center" style="font-size:50px; font-family: 'Fredericka the Great', cursive!important;"><img src="https://cdn.erakomp.co.id/assets/img/Logo%20Erakomp-01.png" alt="" style="max-width:100px; margin-right:20px;">Era Project Management</h1>
+                            <p style="text-align: center;">
+                                <img src="https://cdn.erakomp.co.id/assets/img/Logo%20Erakomp-01.png" alt="" style="max-width:100px;  ">
+                            </p>
+                           
+                                    <h1 class="text-center" style="font-size:50px; font-family: 'Fredericka the Great', cursive!important;">Era Project Management</h1>
                                 
                             
                             <br>
