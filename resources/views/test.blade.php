@@ -58,11 +58,11 @@
                         </form>
                         <div class="row" style="text-align: center;">
                             <div class="col-sm-6">
-                                <p>From : @if($from != "")<strong>{{Carbon::now()}}</strong>@else<strong>{{$from}}</strong>@endif</p>
+                                <p>From : @if($from == "")<strong>{{Carbon::now()}}</strong>@else<strong>{{$from}}</strong>@endif</p>
 
                             </div>
                             <div class="col-sm-6">
-                                <p>To : @if($to != "")<strong>{{Carbon::now()}}</strong>@else<strong>{{$to}}</strong>@endif</p>
+                                <p>To : @if($to == "")<strong>{{Carbon::now()}}</strong>@else<strong>{{$to}}</strong>@endif</p>
 
                             </div>
                         </div>
