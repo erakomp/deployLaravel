@@ -12,10 +12,8 @@
     @if($subject->image != NULL)
     {{-- <img src="{{$subject->image}}" alt="" style="max-width: 200px; margin-left:3%;"> --}}
     <img id="myImg" src="{{$subject->image}}"  style="width:100%;max-width:300px">
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-  <span class="close" style="font-size:20px; color:black; opacity:100%;">close</span>
+<div id="myModal" class="modals">
+  <span class="closes" style="font-size:20px; color:black; opacity:100%;">close</span>
   <img class="modal-content" id="img01">
   <div id="caption"></div>
 </div>
@@ -113,7 +111,7 @@
         }
         
         // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
+        var span = document.getElementsByClassName("closes")[0];
         
         // When the user clicks on <span> (x), close the modal
         span.onclick = function() { 

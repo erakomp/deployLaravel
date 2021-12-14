@@ -204,7 +204,7 @@
                             <div class="form-group">
                                 <label for="deadline_date" class="control-label thin-weight">@lang('Change deadline')</label>
                                 <input type="datetime-local" 
-                                id="cal" name="deadline_date" value="{{old('deadline')?? date('Y-m-d\TH:i', strtotime($tasks->deadline)) }}" class="form-control">
+                                id="cal" name="deadline_date" value="{{old('deadline')?? date('Y-m-d\TH:i:s', strtotime($tasks->deadline)) }}" class="form-control">
                             </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default col-lg-6"

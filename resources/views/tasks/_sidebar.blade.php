@@ -54,6 +54,9 @@
 
     </div>
 </div>
+
+<!--Label-->
+
 <div class="row margin-top-10">
     <div class="col-md-4">{{ __('Status') }}</div>
     <div class="col-md-8">

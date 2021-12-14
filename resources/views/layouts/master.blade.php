@@ -48,7 +48,7 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
         #myImg:hover {opacity: 0.7;}
         
         /* The Modal (background) */
-        .modal {
+        .modals {
           display: none; /* Hidden by default */
           position: fixed; /* Stay in place */
           z-index: 1; /* Sit on top */
@@ -101,19 +101,19 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
         }
         
         /* The Close Button */
-        .close {
+        .closes {
           position: absolute; 
           margin-right:50%;
           top: 10%;
-          right: -16%;;
+          right: -18%;;
           color: #000;
           font-size: 40px;
           font-weight: bold;
           text-decoration: none;
         }
         
-        .close:hover,
-        .close:focus {
+        .closes:hover,
+        .closes::after {
           color: rgb(255, 0, 0);
           text-decoration: none;
           cursor: pointer;
