@@ -52,17 +52,16 @@
                                             </button>
                                         </form>
                                         <div class="tablet__body tablet__tigthen" style="font-size: 14px!important; ">
-                                            @if($task->image != NULL)
-                                            <h1 style="text-align: ceter;"><img src="{{$task->image}}" style="width: 100%!important; " class="" alt=""></h1>
-                                            @else
-                                            <span>
-        
-                                            </span>
-                                            @endif
                                             <p style="font-size: 12px!important; max-width:300px!important;">  {!! $task->description . ''!!}</p>
                                         </div>
                                     </p>
-                                   
+                                    @if($task->image != NULL)
+                                    <h1 style="text-align: ceter;"><img src="{{$task->image}}" style="width: 100%; " class="" alt=""></h1>
+                                    @else
+                                    <span>
+
+                                    </span>
+                                    @endif
                                     <div class="project-board-card-description" style="font-size:14px!important; width:100px!important; max-width:100px!important;">
                                         @if(($task->getlabel) != '')
                                         <p style="background-color: {{$task->getcolor}}; text-align:center; border-radius:50px; pointer-events:none!important; color:white;">{{$task->getlabel}}</p>
