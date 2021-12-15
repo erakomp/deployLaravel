@@ -53,7 +53,7 @@
                                         </form>
                                         <div class="tablet__body tablet__tigthen" style="font-size: 14px!important; ">
                                             @if($task->image != NULL)
-                                            <h1 style="text-align: ceter;"><img src="{{$task->image}}" style="width: 100%; " class="" alt=""></h1>
+                                            <h1 style="text-align: ceter;"><img src="{{$task->image}}" style="width: 100%!important; " class="" alt=""></h1>
                                             @else
                                             <span>
         
