@@ -56,7 +56,7 @@
                                         </div>
                                     </p>
                                     @if($task->image != NULL)
-                                    <h1 style="text-align: ceter;"><img src="{{$task->image}}" style="max-width: 350px; " class="" alt=""></h1>
+                                    <h1 style="text-align: ceter;"><img src="{{$task->image}}" style="width: 100%; " class="" alt=""></h1>
                                     @else
                                     <span>
 
