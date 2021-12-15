@@ -56,7 +56,7 @@
                                         </div>
                                     </p>
                                     @if($task->image != NULL)
-                                    <img src="{{$task->image}}" style="max-width: 80px;" class="thumbnail" alt="">
+                                    <img src="{{$task->image}}" style="max-width: 80px; display:flex; justify-content:center;" class="thumbnail" alt="">
                                     @else
                                     <span>
 
@@ -355,7 +355,7 @@ $( ".sortable" ).sortable({
     });
     @endif
 
-    $('div.tablet__body.tablet__tigthen img').attr('style', 'max-width: 100px !important; ');
+    $('div.tablet__body.tablet__tigthen img').attr('style', 'max-width: 210px !important; display:flex!important; justify-content:center; ');
 </script>
 
 @endpush
