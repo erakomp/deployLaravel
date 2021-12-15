@@ -96,7 +96,7 @@
 
                                         <td>{{date('l, d/m/y H:i:s', strtotime( $product->created_at))}}</td>
                                         <td>{{date('l, d/m/y H:i:s', strtotime( $product->updated_at))}}</td>
-                                        <td>{{number_format($product->timediff),0}}</td>
+                                        <td>{{round(abs(strtotime( $product->updated_at) - strtotime( $product->created_at)) / 3600,1)}}</td>
                                         
                                     </tr>
                                     @empty
