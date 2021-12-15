@@ -56,7 +56,7 @@
                                         </div>
                                     </p>
                                     @if($task->image != NULL)
-                                    <img src="{{$task->image}}" style="max-width: 80px; display:flex; justify-content:center;" class="thumbnail" alt="">
+                                    <img src="{{$task->image}}" style="max-width: 210px; display:flex; justify-content:center;" class="thumbnail" alt="">
                                     @else
                                     <span>
 
