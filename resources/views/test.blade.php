@@ -52,17 +52,21 @@
                         </select>
                         <input type="datetime-local" name="from" id="input" style="margin-right:2%;" value="{{Carbon\Carbon::now()->toDatetimelocalString()}}">
 
-                        <input type="datetime-local" name="to" id="input" style="margin-right:2%;" value="{{Carbon\Carbon::now()->toDatetimelocalString()}}">
+                        <input type="datetime-local" name="to" id="input" style="margin-right:2%;" value="{{Carbon\Carbon::now()->toDatetimelocalString()}}" >
         
                         <input type="submit"  class="btn btn-md btn-brand movedown" value="Filter" style="font-size: 16px; ">
                         </form>
                         <div class="row" style="text-align: center;">
                             <div class="col-sm-6">
-                                <p>From : @if($from != "")<strong>{{Carbon::now()}}</strong>@else<strong>{{$from}}</strong>@endif</p>
+                                <p>From : 
+                                    
+                                    <strong>{{$from}}</strong></p>
 
                             </div>
                             <div class="col-sm-6">
-                                <p>To : @if($to != "")<strong>{{Carbon::now()}}</strong>@else<strong>{{$to}}</strong>@endif</p>
+                                <p>To :
+                                    
+                                <strong>{{$to}}</strong></p>
 
                             </div>
                         </div>
@@ -146,4 +150,25 @@
        });
     }   
 </script> --}}
+<script>
+    function formatDate(date) {
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var ampm = hours >= 12 ? 'pm' : 'am';
+  hours = hours % 12;
+  hours = hours ? hours : 12;
+  minutes = minutes < 10 ? '0'+minutes : minutes;
+  var year = date.getFullYear();
+  var month = date.getMonth();
+  month = month < 10 ? '0'+month : month;
+  var date = date.getDate();
+  date = date < 10 ? '0' + date : date;
+  hours = hours < 10  ? '0' + hours : hours;
+  minutes = minutes < 10  ? '0' + minutes : minutes;
+  var strTime = month + '/' + date + '/' + year + ' ' + hours + ':' + minutes + ' ' + ampm;
+  return strTime;
+}
+
+console.log(formatDate(new Date));
+</script>
 @endsection

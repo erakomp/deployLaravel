@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -55,7 +56,9 @@ class OverController extends Controller
         $selected_id['status_id'] = $request->color_id;
         $selected_id['updated_at'] = $request->from;
         $selected_id['updated_at'] = $request->to;
-        return view('test',compact('product','selected_id', 'countries', 'color_id', 'price_id', 'from', 'to'));
+
+        $startDate = Carbon::today()->toDateString();
+        return view('test',compact('product', 'startDate','selected_id', 'countries', 'color_id', 'price_id', 'from', 'to'));
     }
 
     public function overdue(Request $request){
