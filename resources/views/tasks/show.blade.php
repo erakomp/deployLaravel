@@ -41,7 +41,6 @@
         @include('partials.clientheader')
         @include('partials.userheader', ['changeUser' => false])
     </div>
-
     <div class="row">
         <div class="col-md-7">
             @include('partials.comments', ['subject' => $tasks])
