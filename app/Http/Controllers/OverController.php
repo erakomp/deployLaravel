@@ -47,6 +47,8 @@ class OverController extends Controller
         $from = date("Y-m-d H:i:s",strtotime($request->from));        
         $to = date("Y-m-d H:i:s",strtotime($request->to));
        
+        // $from = !empty($from) ? date('d-M-Y', strtotime($request->from)) : 0 ;
+        // $to = !empty($to) ? date('d-M-Y', strtotime($to)) : null;
 
         // $from = date("mm/dd/yyyyH:i:s",strtotime($request->from));
         // $to = $request->to;

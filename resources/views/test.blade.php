@@ -58,15 +58,18 @@
                         </form>
                         <div class="row" style="text-align: center;">
                             <div class="col-sm-6">
-                                <p>From : 
-                                    
-                                    <strong>{{$from}}</strong></p>
+                                <p> <strong> From :
+                                    @if($from == '1970-01-01 07:00:00') No specific date selected
+                                    @else
+                                   {{$from}}</strong>@endif
+                                    </p>
 
                             </div>
                             <div class="col-sm-6">
-                                <p>To :
-                                    
-                                <strong>{{$to}}</strong></p>
+                                <p>To :@if($to == '1970-01-01 07:00:00') <strong>No specific date selected
+                                    @else
+                                   {{$to}}</strong>@endif
+                                    </p>
 
                             </div>
                         </div>
