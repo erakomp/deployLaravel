@@ -18,7 +18,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <select class="form-select form-select-lg mb-3" id="state" name="price_id" >
-                                        <option selected disabled>Select Project</option>
+                                        <option value ="" selected>Select Project</option>
                                         @foreach (DB::table('projects')
                                         ->where('flag', '=', Auth::user()->flag)
                                         ->select('id', 'title')->orderBy('id')->get() as $country)
@@ -50,9 +50,10 @@
                             </option>
                             @endforeach --}}
                         </select>
-                        <input type="datetime-local" name="from" id="input" style="margin-right:2%;" value="{{Carbon\Carbon::now()->toDatetimelocalString()}}">
+                        
+                        <input type="datetime-local" name="from" id="input" style="margin-right:2%;" value="">
 
-                        <input type="datetime-local" name="to" id="input" style="margin-right:2%;" value="{{Carbon\Carbon::now()->toDatetimelocalString()}}" >
+                        <input type="datetime-local" name="to" id="input" style="margin-right:2%;" value="" >
         
                         <input type="submit"  class="btn btn-md btn-brand movedown" value="Filter" style="font-size: 16px; ">
                         </form>
@@ -174,4 +175,5 @@
 
 console.log(formatDate(new Date));
 </script>
+
 @endsection
