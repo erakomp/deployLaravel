@@ -101,8 +101,8 @@ $products = Task::all();
         ]);
         Task::findOrFail($product)->update(['getlabel'=>$request->getlabel, 'getcolor'=>$request->getcolor]);
   
-        return redirect()->route('taskss.index')
-                        ->with('success','Your profile has been updated successfully');
+        return redirect()->back()
+                        ->with('success','Label has been updated successfully');
     }
   
     /**
@@ -117,6 +117,6 @@ $products = Task::all();
         $image = $query->first();
         $query->delete();
         return redirect()->route('taskss.index')
-                        ->with('success','Your profile has been updated deleted successfully');
+                        ->with('success','Label has been updated deleted successfully');
     }
 }

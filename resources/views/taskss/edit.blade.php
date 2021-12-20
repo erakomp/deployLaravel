@@ -7,7 +7,7 @@
             <div class="row" style="margin-bottom: 20px;">
                 <div class="col-lg-12 margin-tb">
                     <div class="">
-                        <h1 style="text-transform: uppercase; font-weight:bold; text-align:center">Edit Profile</h1>
+                        <h1 style="text-transform: uppercase; font-weight:bold; text-align:center">Edit Label</h1>
                     </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@
                     </div>
                     
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                        <button onclick="history.back()" class="btn btn-md btn-brand movedown">Back</button>
+                        <button class="btn btn-md btn-brand movedown"><a href="/tasks/{{$product->external_id}}" style="color: white; text-decoration:none;">Back</a></button>
 
                         <button type="submit" class="btn btn-md btn-brand movedown">Update</button>
                     </div>
