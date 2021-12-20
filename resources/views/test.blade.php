@@ -53,10 +53,10 @@
                         
                         <input type="datetime-local" name="from" id="input" style="margin-right:2%;" value="">
 
-                        <input type="datetime-local" name="to" id="input" style="margin-right:2%;" value="" >
-        
+                        <input type="datetime-local" name="to" id="input" style="margin-right:2%;" value="" my-date-format="DD/MM/YYYY, hh:mm:ss" >
                         <input type="submit"  class="btn btn-md btn-brand movedown" value="Filter" style="font-size: 16px; ">
                         </form>
+                        
                         <div class="row" style="text-align: center;">
                             <div class="col-sm-6">
                                 <p> <strong> From :
@@ -74,6 +74,9 @@
 
                             </div>
                         </div>
+                        <a href="/test">
+                        <div  class="btn btn-md btn-brand movedown" value="Reset" style="font-size: 16px;  margin-left:50%;">Reset</div></a>
+
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
@@ -169,7 +172,7 @@
   date = date < 10 ? '0' + date : date;
   hours = hours < 10  ? '0' + hours : hours;
   minutes = minutes < 10  ? '0' + minutes : minutes;
-  var strTime = month + '/' + date + '/' + year + ' ' + hours + ':' + minutes + ' ' + ampm;
+  var strTime = date + '/' + month + '/' + year + ' ' + hours + ':' + minutes + ' ' + ampm;
   return strTime;
 }
 

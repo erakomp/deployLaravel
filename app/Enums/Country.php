@@ -188,7 +188,7 @@ class Country
                     "language" => "English",
                     "phoneCode" => "+1",
                     "format" => [
-                        "frontendDate" => "mm/dd/yyyy",
+                        "frontendDate" => "dd/mm/yyyy",
                         "frontendTime" => "h:i a",
                         "momentjsDayAndDateWithText" => "MMMM D ddd",
                         "momentJsTime" => "h:mm a",

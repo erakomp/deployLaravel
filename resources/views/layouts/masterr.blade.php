@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset(elixir('css/bootstrap-select.min.css')) }}">
     <link href="{{ URL::asset('css/summernote.css') }}" rel="stylesheet">
+
     <style>
                 @import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
                 @import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
@@ -38,7 +39,7 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
         }
     </style>
     
-    <?php if(isDemo()) { ?>
+    {{-- <?php if(isDemo()) { ?>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-152899919-3"></script>
         <script>
@@ -48,7 +49,7 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
 
         gtag('config', 'UA-152899919-3');
         </script>
-    <?php } ?>
+    <?php } ?> --}}
     <script src="https://js.stripe.com/v3/"></script>
     @stack('style')
 </head>
@@ -278,6 +279,8 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
 <script type="text/javascript" src="{{ URL::asset('js/bootstrap-tour-standalone.min.js') }}"></script>
 
 <script type="text/javascript" src="{{ URL::asset('js/picker.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
 
 @if(App::getLocale() == "dk")
 <script>
@@ -291,7 +294,7 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
             clear: 'slet',
             close: 'luk',
             firstDay: 1,
-            format: 'd. mmmm yyyy',
+            format: 'dd/mm/yyyy',
             formatSubmit: 'yyyy/mm/dd'
         });
     });
@@ -316,5 +319,6 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
     ?>;
 </script>
 </body>
+
 
 </html>
