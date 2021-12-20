@@ -36,7 +36,7 @@
                     </div>
                     <div class="col-sm-6" >
                         <div class="form-group">
-                            <strong>Password:</strong>
+                            <strong>Color:</strong>
                             <input type="color" name="getcolor" value="{{ $product->getcolor }}" class="form-control">
                         </div>
                     </div>
