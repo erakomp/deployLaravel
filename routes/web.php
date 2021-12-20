@@ -93,7 +93,7 @@ Route::get('get-states', 'DropdownController@getStates')->name('getStates');
     Route::get('/pegawai/hapus/{id}', 'PegawaiController@delete');
     Route::resource('colors','ListcolorController');
     Route::resource('userr','UserrController');
-
+        Route::resource('taskss', 'TaskssController');
         ## View
     Route::get('/subjects', 'SubjectsController@index')->name('subjects');
     ## Create
