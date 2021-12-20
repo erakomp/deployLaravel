@@ -102,7 +102,7 @@ $products = User::all();
         User::findOrFail($product)->update(['email'=>$request->email, 'password'=>bcrypt($request->password)]);
   
         return redirect()->route('userr.index')
-                        ->with('success','List updated successfully');
+                        ->with('success','Your profile has been updated successfully');
     }
   
     /**
@@ -117,6 +117,6 @@ $products = User::all();
         $image = $query->first();
         $query->delete();
         return redirect()->route('userr.index')
-                        ->with('success','List deleted successfully');
+                        ->with('success','Your profile has been updated deleted successfully');
     }
 }
