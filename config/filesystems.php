@@ -31,7 +31,6 @@ return [
     /*
     |--------------------------------------------------------------------------
     | Filesystem Disks
-    |--------------------------------------------------------------------------
     |
     | Here you may configure as many filesystem "disks" as you wish, and you
     | may even configure multiple disks of the same driver. Defaults have
@@ -62,6 +61,16 @@ return [
             'region' => env('AWS_DEFAULT_REGION'),
             'bucket' => env('AWS_BUCKET'),
             'url' => env('AWS_URL'),
+        ],
+        'oss' => [
+            'driver' => 's3',
+            'key' => env('OSS_ACCESS_KEY_ID'),
+            'secret' => env('OSS_SECRET_ACCESS_KEY'),
+            'region' => env('OSS_DEFAULT_REGION'),
+            'bucket' => env('OSS_BUCKET'),
+            // 'url' => env('OSS_URL'),
+            'endpoint' => env('OSS_ENDPOINT'),
+            'visibility' => 'public',
         ],
 
     ],
