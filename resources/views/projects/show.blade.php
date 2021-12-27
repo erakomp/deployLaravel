@@ -24,8 +24,9 @@
                 @if(!$project->isClosed())
                 
                 <a href="{{route('client.project.task.create', [$client->external_id, $project->external_id])}}" class="btn btn-md btn-brand" style="margin:1em; font-size:14px;">@lang('New task')</a>
+
             @endif
-            
+           
         </nav>
             <div class="project-board-lists">
                 

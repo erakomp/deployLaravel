@@ -23,8 +23,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/register', 'Auth\RegisterController@register');
 Route::post('/registerPost', 'Auth\RegisterController@registerPost');
+Route::get('/searching', 'CariController@index');
 
+Route::get('query', 'CariController@index');
+Route::get('/testt', 'CariController@index');
 Route::group(['middleware' => ['auth']], function () {
+
     /**
      * Main
      */

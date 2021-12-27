@@ -162,6 +162,8 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
                 
             <a href="/" class=" list-group-item" data-parent="#MainMenu"><i
                         class="fa fa-home sidebar-icon"></i><span id="menu-txt" style="font-size: 16px!important;" >{{ __('Dashboard') }} </span></a>
+                        <a href="/searching" class=" list-group-item" data-parent="#MainMenu"><i class="fas fa-search sidebar-icon"></i><span id="menu-txt" style="font-size: 16px!important;" >Find Tasks </span></a>
+                        
                         <a href="/userr" class=" list-group-item" data-parent="#MainMenu"><i class="fas fa-user-edit sidebar-icon"></i><span id="menu-txt" style="font-size: 16px!important;" >Edit Profile</span></a>
                     {{-- <a href="/labels" class=" list-group-item" data-parent="#MainMenu"><i class="fas fa-tags sidebar-icon"></i><span id="menu-txt" style="font-size: 16px!important;" >Tags </span></a> --}}
      

@@ -27,7 +27,20 @@ class ProjectsController extends Controller
     const UPDATED_TIME = 'updated_time';
     const UPDATED_ASSIGN = 'updated_assign';
     const UPDATED_DEADLINE = 'updated_deadline';
-    
+    public function cari(Request $request)
+    {
+        // menangkap data pencarian
+        $cari = $request->cari;
+ 
+        // mengambil data dari table pegawai sesuai pencarian data
+        $tasks = DB::table('tasks')
+        
+        ->where('title', 'like', "%".$cari."%")
+        ->paginate();
+ 
+        // mengirim data pegawai ke view index
+        return view('projects.show', ['tasks' => $tasks]);
+    }
     public function indexData()
     {
         $projects = Project::with(['assignee', 'status', 'client'])->select(
