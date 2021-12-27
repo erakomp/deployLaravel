@@ -22,8 +22,8 @@ class PagesController extends Controller
     public function dashboard()
     {
         $getUser = DB::table('users')->get();
-        $getProjects = DB::table('projects')->get();
-        $getTasks = DB::table('tasks')->get();
+        $getProjects = DB::table('projects')->count();
+        $getTasks = DB::table('tasks')->count();
    
         $today = today();
         $startDate = today()->subdays(14);
@@ -53,7 +53,7 @@ class PagesController extends Controller
             $absences = Absence::with('user')->groupBy('user_id')->where('start_at', '>=', today())->orWhere('end_at', '>', today())->get();
         }
 
-        return view('pages.dashboard')
+        return view('pages.dashboard', compact('getTasks', 'getProjects'))
             ->withUsers(User::with(['department'])->get())
             ->withDatasheet($datasheet)
             ->withTotalTasks(DB::table('tasks')
