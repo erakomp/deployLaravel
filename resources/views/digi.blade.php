@@ -35,8 +35,9 @@
                     </tr>
                     </thead>
                     <tbody>
-                        @foreach($getTaskReport->where('deleted_at', '=',NULL) as $i)
+                        @foreach($getTaskReport->where('deleted_at', '=',NULL) as $k=>$i)
                       <tr>
+                        <td>{{$k+1}}</td>
                         <td>{{$i->task_title}}</td>
                         <td>{{$i->project_title}}</td>
                         <td>{{$i->username}}</td>
