@@ -35,7 +35,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                        @foreach($getTaskReport as $i)
+                        @foreach($getTaskReport->where('deleted_at', '=',NULL) as $i)
                       <tr>
                         <td>{{$i->task_title}}</td>
                         <td>{{$i->project_title}}</td>
