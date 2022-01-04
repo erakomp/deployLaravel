@@ -21,13 +21,15 @@ class DigitalController extends Controller
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function exportExcel($type)
+    public function exportExcel($type, Task $task)
     {
         $startDate = request()->input('startDate') ;
         $endDate   = request()->input('endDate') ;
         $status = request()->input('status');
+        
         if ($status == 0 && $startDate == Carbon::today()->toDateString() && $endDate == Carbon::today()->toDateString()) {
             $getTaskReport =DB::table('tasks')
+            
             ->join('projects', 'tasks.project_id', '=', 'projects.id')
             ->join('users', 'tasks.user_assigned_id', '=', 'users.id')
             ->join('statuses', 'tasks.status_id', '=', 'statuses.id')
@@ -36,6 +38,7 @@ class DigitalController extends Controller
         ->where('tasks.deleted_at', '=', NULL)
         ->orderBy('tasks.created_at', 'ASC')
             ->get();
+            
         }
         if ($status != 0 && $startDate == Carbon::today()->toDateString() && $endDate == Carbon::today()->toDateString()) {
             $getTaskReport =DB::table('tasks')
@@ -51,6 +54,7 @@ class DigitalController extends Controller
         ->Where('tasks.status_id', '=', $status)
         ->orderBy('tasks.created_at', 'ASC')
             ->get();
+            
         }
         if ($status != 0) {
             $getTaskReport =DB::table('tasks')
@@ -66,6 +70,7 @@ class DigitalController extends Controller
         ->Where('tasks.status_id', '=', $status)
         ->orderBy('tasks.created_at', 'ASC')
             ->get();
+            
         } else {
             // return 'else';
             //     $getTaskReport =DB::table('tasks')
@@ -87,6 +92,7 @@ class DigitalController extends Controller
             ->whereBetween('tasks.created_at', [$startDate . ' 00:00:00', $endDate . ' 23:59:59'])
             ->orderBy('tasks.created_at', 'ASC')
             ->get();
+            
         }
         return view('digi', compact('getTaskReport', 'startDate', 'endDate', 'status'));
         //   return \Excel::download(new TransactionsExport, 'transactions.'.$type);

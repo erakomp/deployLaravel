@@ -42,7 +42,7 @@
                         <td>{{$i->username}}</td>
                         <td>{{date('l, d-m-Y H:i:s', strtotime($i->task_created_at))}}</td>
                         <td>{{date('l, d-m-Y H:i:s', strtotime($i->task_update_at))}}</td>
-                        <td>{{number_format(($i->duration_in_mins),0)}}</td>
+                        <td>{{(Carbon::parse($i->task_created_at)) -> diff((Carbon::parse($i->task_update_at))) -> format('%D Day(s) %H Hour(s) %I Minute(s) %S Second(s)')}}</td>
                         <td>{{$i->status_title}}</td>
                       </tr>
                       @endforeach
