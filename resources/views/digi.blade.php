@@ -9,7 +9,7 @@
             <div class="card-header">
                 <p class="text-center" style="font-size:25px; font-weight:800;">DIGITAL REPORT RESULT</p>
             </div>
-            <p class="text-center">from <strong>{{date('l, d-m-Y H:i:s', strtotime($startDate))}}</strong> until <strong>{{date('l, d-m-Y H:i:s', strtotime($endDate))}}</strong> with status <strong>
+            <p class="text-center">from <strong>{{date('l, d-m-Y  00:00:00', strtotime($startDate))}}</strong> until <strong>{{date('l, d-m-Y 23:59:59', strtotime($endDate))}}</strong> with status <strong>
               @if($status == 0) All Categories
             @elseif($status == '1') Resources
             @elseif($status == '2') To Do List / Backlog
@@ -23,6 +23,8 @@
                 <table class="table table-responsive">
                     <thead>
                       <tr>
+                        <th scope="col">No.</th>
+
                         <th scope="col">Task Title</th>
                         <th scope="col">Project Title</th>
                         <th scope="col">Assigned To</th>
