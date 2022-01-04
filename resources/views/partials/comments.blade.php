@@ -42,7 +42,7 @@
 @foreach($subject->comments->sortByDesc('created_at') as $comment)
     <div class="tablet tablet__shadow" style="font-size: 14px!important;">
         <div class="tablet__body tablet__tigthen" style="font-size: 14px!important;">
-            <p style="font-size: 12px!important;">  {!! $comment->description !!} </p>
+            <p id="myImg" style="font-size: 12px!important;">  {!! $comment->description !!} </p>
         </div>
         <div class="tablet__footer tablet__tigthen" style="font-size: 12px!important;">
             <p class="smalltext" style="font-size: 14px!important;">{{ __('Comment by') }}: {{$comment->user->name}} 
