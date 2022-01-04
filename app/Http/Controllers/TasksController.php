@@ -191,17 +191,19 @@ class TasksController extends Controller
         return redirect()->route("tasks.show", $insertedExternalId);
     }
 
-    public function destroy(Task $task, Request $request)
+    public function destroy(Task $task)
     {
-        $task->delete();
         
-        return redirect()->route("projects.index");
+        $task->delete();
+        $insertedExternalId = $task->project->external_id;
+        // dd($insertedExternalId);
+        return redirect()->route("projects.show", $insertedExternalId);
     }
 
     private function upload($image, $task)
     {
         if (!auth()->user()->can('task-upload-files')) {
-            session()->flasha('flash_message_warning', __('You do not have permission to upload images'));
+            session()->flash('flash_message_warning', __('You do not have permission to upload images'));
             return redirect()->route('tasks.show', $task->external_id);
         }
         $file = $image;
