@@ -30,7 +30,7 @@
                         <th scope="col">Assigned To</th>
                         <th scope="col">Created Date</th>
                         <th scope="col">Updated Date</th>
-                        <th scope="col">Duration (in minutes)</th>
+                        <th scope="col">Duration (in Day(s):Hour(s):Minute(s):Second(s))</th>
                         <th scope="col">Current Status</th>
                 
                 
