@@ -74,7 +74,7 @@
                 @foreach($statuses as $status)
                 <div class="project-board-list" style="background-color:{{$status->color}};">
                     <header style="background-color:{{$status->color}}!important;">{{ __($status->title)}}</header>
-                    <ul class="sortable" id="{{$status->title}}" data-status-external-id="{{$status->external_id}}" style="max-height: 25em;"  >
+                    <ul class="sortable" id="{{$status->title}}" data-status-external-id="{{$status->external_id}}" style="max-height: 25em; min-height:30em;"  >
                         
                             
                     
