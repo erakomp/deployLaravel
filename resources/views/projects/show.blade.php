@@ -53,7 +53,7 @@
                                             </button>
                                         </form>
                                         <div class="tablet__body tablet__tigthen" style="font-size: 14px!important; ">
-                                            <p style="font-size: 12px!important; max-width:300px!important;">  {!! $task->description . ''!!}</p>
+                                            <!--<p style="font-size: 12px!important; max-width:300px!important;">  {!! $task->description . ''!!}</p>-->
                                         </div>
                                     </p>
                                     @if($task->image != NULL)
