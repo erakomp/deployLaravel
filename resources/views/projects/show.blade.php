@@ -45,7 +45,7 @@
                                   <div class="project-board-card">
                                     <div class="position-relative">
                                     </div>
-                                    <p class="project-board-card-title" style="font-size:14px!important; font-weight:bold; width:300px!important; max-width:300px!important;" >{{$task->title}}  <form action="{{ route('tasks.destroy',$task->external_id) }}" method="POST" style="display:flex; justify-content:right; ">
+                                    <p class="project-board-card-title" style="font-size:14px!important; font-weight:bold; width:300px!important; max-width:300px!important;" >{!! \Illuminate\Support\Str::limit($task->title, 10,'....')  !!}  <form action="{{ route('tasks.destroy',$task->external_id) }}" method="POST" style="display:flex; justify-content:right; ">
                                         @csrf
                                             @method('DELETE')
                               
