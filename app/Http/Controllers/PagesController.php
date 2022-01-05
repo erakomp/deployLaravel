@@ -22,8 +22,8 @@ class PagesController extends Controller
     public function dashboard()
     {
         $getUser = DB::table('users')->get();
-        $getProjects = DB::table('projects')->count();
-        $getTasks = DB::table('tasks')->count();
+        $getProjects = DB::table('projects')->where('projects.deleted_at','=',NULL)->count();
+        $getTasks = DB::table('tasks')->where('tasks.deleted_at','=',NULL)->count();
    
         $today = today();
         $startDate = today()->subdays(14);
@@ -59,6 +59,8 @@ class PagesController extends Controller
             ->withTotalTasks(DB::table('tasks')
             ->join('projects', 'tasks.project_id', '=', 'projects.id')
             ->where('projects.flag', '=', Auth::user()->flag)
+            ->where('projects.deleted_at','=',NULL)
+            ->where('tasks.deleted_at','=',NULL)
             ->count())
             ->withTotalLeads(Lead::count())
             ->withTotalProjects(Project::where('projects.flag','=', Auth::user()->flag)->count())
