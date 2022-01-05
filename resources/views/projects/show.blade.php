@@ -9,7 +9,48 @@
     div.tablet__body.tablet__tigthen img{
         max-width: 100px!important;
     }
+    <style>
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
 </style>
+
 <div class="row">
     @include('partials.clientheader')
     @include('partials.userheader', ['changeUser' => false])
@@ -38,6 +79,7 @@
                             
                     
                         @foreach($tasks as $task)
+                        
                         <li data-task-id="{{$task->external_id}}">
                             @if($task->status_id == $status->id)
                                 <div class="project-board-card-wrapper">
@@ -45,13 +87,24 @@
                                   <div class="project-board-card">
                                     <div class="position-relative">
                                     </div>
-                                    <p class="project-board-card-title" style="font-size:14px!important; font-weight:bold; width:300px!important; max-width:300px!important;" >{!! \Illuminate\Support\Str::limit($task->title, 10,'....')  !!}  <form action="{{ route('tasks.destroy',$task->external_id) }}" method="POST" style="display:flex; justify-content:right; ">
+                                    <p class="project-board-card-title" style="font-size:14px!important; font-weight:bold; width:300px!important; max-width:300px!important;" >{{$task->title}}
+                                        {{-- <div class="dropdown" style="">
+                                            <button class="dropbtn"><div class="spann"></div>
+                                            </button>
+                                            <div class="dropdown-content" style="left:0;">
+                                            <a href="#">Link 1</a>
+                                            <a href="#">Link 2</a>
+                                            <a href="#">Link 3</a>
+                                            </div>
+                                          </div> --}}
+                                       
+                                        {{-- <form action="{{ route('tasks.destroy',$task->external_id) }}" method="POST" style="display:flex; justify-content:right; ">
                                         @csrf
                                             @method('DELETE')
                               
                                             <button type="submit" class="btn btn-danger" ><i class="fa fa-trash" aria-hidden="true"></i>
                                             </button>
-                                        </form>
+                                        </form> --}}
                                         <div class="tablet__body tablet__tigthen" style="font-size: 14px!important; ">
                                             <!--<p style="font-size: 12px!important; max-width:300px!important;">  {!! $task->description . ''!!}</p>-->
                                         </div>
@@ -78,7 +131,7 @@
                                   
                                   <div class="project-board-card-footer">
                                     <ul class="list-inline" style="padding: 8px; min-height: 3.3em; font-size:12px!important;">
-                                        {{date('l, d/m/y H:i:s', strtotime($task->created_at))}}
+                                        {{date('l, d/m/y H:i', strtotime($task->created_at))}}
                                         
                                         <li class="project-board-card-thumbnail text-right" style="float:right;">
                                             @if($task->user->image !== NULL)  
@@ -89,6 +142,7 @@
                                                 </span>
                                                
                                             </a>
+                                            
                                 @else
                                 <a href="/home" class="topbar-user__list-link">
                                             
@@ -96,7 +150,8 @@
                                        <img src="https://p.kindpng.com/picc/s/451-4517876_default-profile-hd-png-download.png" class="thumbnail" alt="" srcset="" style="max-width: 45px!important; border-radius:100px; margin-right:-10%;" title="{{$task->user->name}}">
                                     </span>
                                    
-                                </a>                 
+                                </a>  
+                                               
                                 
                                 @endif     
                                             <!--<button class="btn" style="pointer-events:none; background-color:turquoise; color:white; font-weight:bold;border-radius:50px; font-size:12px; padding:2px;">{{$task->user->name}}</button>-->

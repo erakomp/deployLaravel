@@ -5,9 +5,13 @@
         <div class="tablet__head-label">
             <h3 class="tablet__head-title text-white" style="font-size: 16px!important; font-weight:bold;">{{$subject->title}}</h3>
         </div>
+        
     </div>
     <div class="tablet__body tablet__tigthen" style="font-size: 14px!important; ">
-        <p style="font-size: 12px!important; max-width:300px!important;">  {!! $subject->description . ''!!}</p>
+        <p style="font-size: 12px!important; max-width:300px!important;">  {!! $subject->description . ''!!}
+           
+        </p>
+       
     </div>
     @if($subject->image != NULL)
     {{-- <img src="{{$subject->image}}" alt="" style="max-width: 200px; margin-left:3%;"> --}}
