@@ -87,7 +87,7 @@
                                   <div class="project-board-card">
                                     <div class="position-relative">
                                     </div>
-                                    <p class="project-board-card-title" style="font-size:14px!important; font-weight:bold; width:300px!important; max-width:300px!important;" >{{$task->title}}
+                                    <p class="project-board-card-title" style="font-size:14px!important; font-weight:bold; width:180px!important; max-width:180px!important;" >{{$task->title}}
                                         {{-- <div class="dropdown" style="">
                                             <button class="dropbtn"><div class="spann"></div>
                                             </button>
