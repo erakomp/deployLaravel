@@ -35,8 +35,9 @@
                                     <th>No</th>
                                     <th>Title</th>
                                     <th>Desc</th>
+                                    <th>Assigned To</th>
                                     <th>Created Date</th>
-                                    <th>Duration</th>
+                                    <th>Duration(H:M:S)</th>
         
                                 </tr>
                             </thead>
@@ -47,6 +48,7 @@
                                     <td>{{ $loop->index+1 }}</td>
                                     <td>{{ $product->log_name }}</td>
                                     <td>{{ $product->text }}</td>
+                                    <td>{{$product->name}}</td>
                                     <td>{{ $product->created_at}}</td>
                                     <td>
                                         @if( $selected_id['price_id']==0)   @else
