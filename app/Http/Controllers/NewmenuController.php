@@ -63,7 +63,7 @@ $all_pro =  Activity::where('source_type','=','App\Models\Task')->
     $selected_id = [];
     $selected_id['price_id'] = $request->price_id;
     // $selected_id['color_id'] = $request->color_id;
-                $get_task_id = DB::table('tasks')->get();
+                $get_task_id = DB::table('tasks')->where('deleted_at', '=', NULL)->get();
     return view('testingg',compact('all_pro','product','selected_id', 'get_task_id', 'duration'));
     }
     
