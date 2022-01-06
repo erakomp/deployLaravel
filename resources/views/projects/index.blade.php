@@ -426,6 +426,76 @@
 </a>
 
     @endforeach
+    @elseif(Auth::check() && Auth::user()->flag == 13)
+    @foreach ($getProject->where('flag', 13) as $item)
+    
+    <a href="{{route("projects.show", $item->external_id)}}" class="">
+
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box " style="border-radius: 20px; background-color:rgba(255, 255, 255, 0.5); padding:5%;">
+            <div class="inner" style="min-height: 100px">
+                
+                <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important;">
+                    {{$item->title}}
+                </h3>
+
+                <p style="color:rgb(63, 63, 63)!important; font-size:15px!important;"> {{date('l, d-m-Y H:i:s', strtotime($item->created_at))}}</p>
+                <form action="{{ route('projects.destroy',$item->external_id) }}" method="POST" style="display:flex; justify-content:right; ">
+                @csrf
+                    @method('DELETE')
+      
+                    <button type="submit" class="btn btn-danger" ><i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+                </form>
+                <!--<a href="{{route("projects.show", $item->external_id)}}" class="btn btn-link"><i
+                    class="fa fa-arrow-circle-right" style="color:rgb(63, 63, 63)!important; font-size:30px!important;"></i></a>-->
+            </div>
+            <div class="icon">
+                <i class="ion ion-ios-book-outline"></i>
+            </div>
+           
+                        
+        </div>
+    </div>
+</a>
+
+    @endforeach
+    @elseif(Auth::check() && Auth::user()->flag == 14)
+    @foreach ($getProject->where('flag', 14) as $item)
+    
+    <a href="{{route("projects.show", $item->external_id)}}" class="">
+
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box " style="border-radius: 20px; background-color:rgba(255, 255, 255, 0.5); padding:5%;">
+            <div class="inner" style="min-height: 100px">
+                
+                <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important;">
+                    {{$item->title}}
+                </h3>
+
+                <p style="color:rgb(63, 63, 63)!important; font-size:15px!important;"> {{date('l, d-m-Y H:i:s', strtotime($item->created_at))}}</p>
+                <form action="{{ route('projects.destroy',$item->external_id) }}" method="POST" style="display:flex; justify-content:right; ">
+                @csrf
+                    @method('DELETE')
+      
+                    <button type="submit" class="btn btn-danger" ><i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+                </form>
+                <!--<a href="{{route("projects.show", $item->external_id)}}" class="btn btn-link"><i
+                    class="fa fa-arrow-circle-right" style="color:rgb(63, 63, 63)!important; font-size:30px!important;"></i></a>-->
+            </div>
+            <div class="icon">
+                <i class="ion ion-ios-book-outline"></i>
+            </div>
+           
+                        
+        </div>
+    </div>
+</a>
+
+    @endforeach
     @endif
     <!--<div class="col-lg-3 col-xs-6">
       small box
