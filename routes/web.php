@@ -66,6 +66,7 @@ Route::group(['middleware' => ['auth']], function () {
     //     return view('test',compact('product','selected_id', 'countries'));
     
     // })->name('filter');
+    Route::get('/menuss','NewmenuController@index')->name('filteringg');
 Route::get('get-states', 'DropdownController@getStates')->name('getStates');
     
     Route::get('/test', 'OverController@test')->name('filter');
