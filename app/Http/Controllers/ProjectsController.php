@@ -44,7 +44,7 @@ class ProjectsController extends Controller
     public function indexData()
     {
         $projects = Project::with(['assignee', 'status', 'client'])->select(
-            ['external_id', 'title', 'created_at', 'deadline', 'user_assigned_id', 'status_id', 'client_id']
+            ['external_id', 'title', 'created_at', 'deadline', 'user_assigned_id','user_created_id', 'status_id', 'client_id']
         )->get();
 
         return Datatables::of($projects)
@@ -237,7 +237,7 @@ class ProjectsController extends Controller
 
         \LogActivity::addToLog('just visited ');
 
-        return view('projects.show', compact('getLabel', 'getImage'))
+        return view('projects.show', compact('getLabel', 'getImage', ))
             ->withProject($project)
             ->withStatuses(Status::typeOfTask()->get())
             ->withTasks($project->tasks)

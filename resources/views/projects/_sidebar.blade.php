@@ -1,4 +1,7 @@
 <div class="row">
+    {{-- @foreach($getinfo as$i)
+    {{$i->user_created_id}}
+    @endforeach --}}
     <div class="col-md-4" style="font-size:14px!important;">{{ __('Assigned') }}</div>
     <div class="col-md-7">
                 <span id="assignee-user" class="siderbar-list-value" style="font-size:14px!important;">{{$project->assignee->name}}
