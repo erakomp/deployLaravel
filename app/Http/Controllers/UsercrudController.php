@@ -9,7 +9,11 @@ class UsercrudController extends Controller
    
     public function index()
     {
-    $products = User::get();  
+    $products = User::join('divs', 'users.flag', '=', 'divs.id')
+    ->join('role_user','users.id','=', 'role_user.user_id')
+    ->join('roles', 'role_user.role_id', '=', 'roles.id')
+    ->select('users.id','users.name', 'users.email', 'divs.division', 'users.created_at', 'roles.name as rn')
+    ->get();  
         return view('userscrud.index',compact('products'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }

@@ -28,6 +28,11 @@
                     <th style="text-align: center;">Name</th>
                     {{-- <th style="text-align: center;">Source Type</th> --}}
                     <th style="text-align: center;">Email</th>
+                    <th style="text-align: center;">Division</th>
+                    <th style="text-align: center;">Role</th>
+
+                    <th style="text-align: center;">Created Date</th>
+
                     <th style="text-align: center;" width="280px">Actions</th>
                 </tr>
                 @foreach ($products as $index=>$product)
@@ -37,10 +42,14 @@
                         <td>{{ $product->name }}</td>
                         {{-- <td>{{ $product->source_type }}</td> --}}
                         <td>{{ $product->email }}</td>
+                        <td>{{$product->division}}</td>
+                        <td>{{$product->rn}}</td>
+
+                        <td>{{$product->created_at}}</td>
                         <td>
                             <form action="{{ route('usercrud.destroy',$product->id) }}" method="POST">
         
-                                {{-- <a class="btn btn-info" href="{{ route('userscrud.show',$product->id) }}">Show</a> --}}
+                            {{-- <a class="btn btn-info" href="{{ route('userscrud.show',$product->id) }}">Show</a> --}}
         
                                 <a class="btn btn-warning" href="{{ route('usercrud.edit',$product->id) }}"><i class="fas fa-edit"></i></a>
         
@@ -48,7 +57,7 @@
                                 @method('DELETE')
         
                                 <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
-                            </form>
+                            </form> 
                         </td>
                     </tr>
                 @endforeach
