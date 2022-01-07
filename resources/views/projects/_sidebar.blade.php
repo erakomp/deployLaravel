@@ -46,7 +46,7 @@
     </div>
 </div>
 <div class="row margin-top-10">
-    <div class="col-md-4" style="font-size:14px!important;">{{ __('Created at') }}</div>
+    <div class="col-md-4" style="font-size:14px!important;">Created Date</div>
     <div class="col-md-7" style="font-size:14px!important;">
         <b>{{date('l, d/m/y H:i:s', strtotime($project->created_at))}}</b>
     </div>
