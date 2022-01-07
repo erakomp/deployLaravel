@@ -211,6 +211,9 @@ class ProjectsController extends Controller
 
     public function show(Project $project)
     {
+        $getUser = Project::join('users', 'projects.user_created_id', '=', 'users.id')
+        ->select('projects.title', 'users.name')
+        ->get();
         $getLabel = DB::table('labels')->get();
         $getImage = DB::table('cruds')
         ->join('tasks', 'cruds.user_id', '=', 'tasks.user_created_id')
@@ -234,10 +237,9 @@ class ProjectsController extends Controller
         foreach ($project->tasks as $task) {
             $collaborators->push($task->user);
         }
-
+        
         \LogActivity::addToLog('just visited ');
-
-        return view('projects.show', compact('getLabel', 'getImage'))
+        return view('projects.show', compact('getLabel', 'getImage', 'getUser'))
             ->withProject($project)
             ->withStatuses(Status::typeOfTask()->get())
             ->withTasks($project->tasks)

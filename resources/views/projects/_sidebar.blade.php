@@ -1,19 +1,31 @@
 <div class="row">
+   
+
     {{-- @foreach($getinfo as$i)
     {{$i->user_created_id}}
     @endforeach --}}
-    <div class="col-md-4" style="font-size:14px!important;">{{ __('Assigned') }}</div>
+   
+        <div class="col-md-4" style="font-size:14px!important;">Created By</div>
+        <div class="col-md-7" style="font-size:14px!important;">
+            <b>{{$project->creator->name}}</b>
+        </div>
+      
+ 
+    
+    <div class="col-md-4" style="font-size:14px!important;">Assigned To</div>
+   
     <div class="col-md-7">
-                <span id="assignee-user" class="siderbar-list-value" style="font-size:14px!important;">{{$project->assignee->name}}
+        
+                <span id="assignee-user" class="siderbar-list-value" style="font-size:14px!important;"><b>{{$project->assignee->name}}</b>
                 @if(Entrust::can('can-assign-new-user-to-task'))
                         <i class="icon ion-md-create"></i>
                     @endif
                 </span>
-
         @if(Entrust::can('can-assign-new-user-to-task'))
                 <span id="assignee-picker" class="hidden">
                     <form method="POST" action="{{url('projects/updateassign', $project->external_id)}}">
                         {{csrf_field()}}
+                        
                         <select name="user_assigned_id"
                                 class="small-form-control bootstrap-select assignee-selectpicker dropdown-user-selecter pull-right"
                                 id="user-search-select" data-live-search="true"
@@ -36,8 +48,9 @@
 <div class="row margin-top-10">
     <div class="col-md-4" style="font-size:14px!important;">{{ __('Created at') }}</div>
     <div class="col-md-7" style="font-size:14px!important;">
-        {{date('l, d/m/y H:i:s', strtotime($project->created_at))}}
+        <b>{{date('l, d/m/y H:i:s', strtotime($project->created_at))}}</b>
     </div>
+  
 </div>
 <div class="row margin-top-10">
     <div class="col-md-3" style="display: none;">{{ __('Deadline') }}</div>
