@@ -262,7 +262,7 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
                         class="fa fa-users sidebar-icon"></i><span id="menu-txt" style="font-size: 16px!important;" >{{ __('Users') }}</span>
                 <i class="icon ion-md-arrow-dropup arrow-side sidebar-arrow"></i></a>
             <div class="collapse" id="user">
-                <a href="{{ route('productss.index')}}" class="list-group-item childlist" style="font-size: 13px!important;"> <i
+                <a href="{{ route('usercrud.index')}}" class="list-group-item childlist" style="font-size: 13px!important;"> <i
                             class="bullet-point"><span></span></i> {{ __('All Users') }}</a>
                 @if(Entrust::can('user-create'))
                     <a href="{{ route('productss.create')}}"
