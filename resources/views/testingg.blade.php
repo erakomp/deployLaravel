@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="card-shadow" style="background: white;">
-    <div class="card-body" style="margin-left:20%; ">
+    <div class="card-body" style="margin-left:15%; ">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
@@ -51,7 +51,7 @@
                                     <td>{{$product->pt}}</td>
                                     <td>{{ $product->text }}</td>
                                     <td>{{$product->name}}</td>
-                                    <td>{{ $product->created_at}}</td>
+                                    <td>{{date('l, Y-m-d H:i:s', strtotime($product->created_at)) }}</td>
                                         <td>
                                         @if( $selected_id['price_id']==0)   @else
                                         {{ $duration}} @endif</td>
