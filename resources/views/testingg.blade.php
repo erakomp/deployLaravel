@@ -34,6 +34,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Title</th>
+                                    <th>Project Title</th>
                                     <th>Desc</th>
                                     <th>Assigned To</th>
                                     <th>Created Date</th>
@@ -46,11 +47,12 @@
                                 @forelse($all_pro as $product )
                                 <tr>
                                     <td>{{ $loop->index+1 }}</td>
-                                    <td>{{ $product->log_name }}</td>
+                                    <td>{{ $product->title }}</td>
+                                    <td>{{$product->pt}}</td>
                                     <td>{{ $product->text }}</td>
                                     <td>{{$product->name}}</td>
                                     <td>{{ $product->created_at}}</td>
-                                    <td>
+                                        <td>
                                         @if( $selected_id['price_id']==0)   @else
                                         {{ $duration}} @endif</td>
                                     {{-- <td>

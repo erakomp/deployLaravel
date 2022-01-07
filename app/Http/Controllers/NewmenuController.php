@@ -11,8 +11,10 @@ use DateTime;
 class NewmenuController extends Controller
 {
     public function index(Request $request){
-$all_pro =  Activity::join('users', 'activities.causer_id', '=', 'users.id')
-        ->select('activities.id', 'activities.text', 'activities.log_name', 'activities.created_at','users.name')
+$all_pro =  Activity::join('tasks', 'activities.source_id', '=', 'tasks.id')
+    ->join('users', 'tasks.user_assigned_id', '=', 'users.id')
+    ->join('projects', 'tasks.project_id', '=', 'projects.id')
+        ->select('activities.id', 'activities.text', 'activities.log_name', 'activities.created_at','users.name', 'tasks.title', 'projects.title as pt')
         ->where('activities.source_type','=','App\Models\Task')
     ->where('activities.deleted_at','=',NULL)
     ->where('activities.text', 'like', "%".'DONE KPI'."%")
@@ -26,8 +28,11 @@ $all_pro =  Activity::join('users', 'activities.causer_id', '=', 'users.id')
                 // ->with('price','color')
                
                 ->get();
-    $product = Activity::join('users', 'activities.causer_id', '=', 'users.id')
-    ->select('activities.id', 'activities.text', 'activities.log_name', 'activities.created_at','users.name')->where('source_type','=','App\Models\Task')->
+    $product = Activity::join('tasks', 'activities.source_id', '=', 'tasks.id')
+    ->join('users', 'tasks.user_assigned_id', '=', 'users.id')
+    ->join('projects', 'tasks.project_id', '=', 'projects.id')
+        ->select('activities.id', 'activities.text', 'activities.log_name', 'activities.created_at','users.name', 'tasks.title', 'projects.title as pt')
+    ->where('source_type','=','App\Models\Task')->
     where('activities.deleted_at','=',NULL)
     ->where('activities.text', 'like', "%".'DONE KPI'."%")
     ->where( function($query) use($request){
@@ -40,8 +45,10 @@ $all_pro =  Activity::join('users', 'activities.causer_id', '=', 'users.id')
                 // ->with('price','color')
                 ->orderBy('created_at','desc')->first();
                 //  return $product;
-    $product_progressing = Activity::join('users', 'activities.causer_id', '=', 'users.id')
-    ->select('activities.id', 'activities.text', 'activities.log_name', 'activities.created_at','users.name')
+    $product_progressing = Activity::join('tasks', 'activities.source_id', '=', 'tasks.id')
+    ->join('users', 'tasks.user_assigned_id', '=', 'users.id')
+    ->join('projects', 'tasks.project_id', '=', 'projects.id')
+        ->select('activities.id', 'activities.text', 'activities.log_name', 'activities.created_at','users.name', 'tasks.title', 'projects.title as pt')
     ->where('activities.source_type','=','App\Models\Task')->
     where('activities.deleted_at','=',NULL)
     ->where('activities.text', 'like', "%".'Progressing'."%")
