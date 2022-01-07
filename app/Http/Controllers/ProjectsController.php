@@ -237,7 +237,7 @@ class ProjectsController extends Controller
 
         \LogActivity::addToLog('just visited ');
 
-        return view('projects.show', compact('getLabel', 'getImage', ))
+        return view('projects.show', compact('getLabel', 'getImage'))
             ->withProject($project)
             ->withStatuses(Status::typeOfTask()->get())
             ->withTasks($project->tasks)
