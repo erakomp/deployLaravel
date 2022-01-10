@@ -35,7 +35,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('users.index')->withUsers(User::all());
+        return view('users.index')->withUsers(User::where('deleted_at', '=', NULL)->get());
     }
 
     public function calendarUsers()
@@ -61,7 +61,7 @@ class UsersController extends Controller
         $users = User::join('divs', 'users.flag', '=', 'divs.id')
         ->join('role_user','users.id','=', 'role_user.user_id')
         ->join('roles', 'role_user.role_id', '=', 'roles.id')
-        ->select(['users.id', 'users.external_id', 'users.name', 'users.email', 'users.primary_number', 'users.created_at',  'divs.division', 'roles.display_name']);
+        ->select(['users.id', 'users.external_id', 'users.name', 'users.email', 'users.primary_number', 'users.created_at',  'divs.division', 'roles.display_name'])->where('users.deleted_at', '=', NULL);
         return Datatables::of($users)
             ->addColumn('namelink', '<a href="{{ route("users.show",[$external_id]) }}">{{$name}}</a>')
             ->addColumn('view', function ($user) {
