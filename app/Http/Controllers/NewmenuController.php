@@ -83,6 +83,8 @@ $all_pro =  Activity::join('tasks', 'activities.source_id', '=', 'tasks.id')
     // $selected_id['color_id'] = $request->color_id;
                 $get_task_id = Task::join('projects','tasks.project_id', '=', 'projects.id')
                 ->where('tasks.deleted_at', '=', NULL)
+                ->where('tasks.status_id', '=', 7)
+
                 ->where('projects.deleted_at', '=', NULL)
                 ->select('tasks.title', 'tasks.id' )
                 ->get();
