@@ -375,10 +375,10 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">User List</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Add User</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Divisions</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Roles and Permissions</a></li>
+                <li class="nav-item"> <a class="nav-link" href="#">User List</a></li>
+                <li class="nav-item"> <a class="nav-link" href="#">Add User</a></li>
+                <li class="nav-item"> <a class="nav-link" href="#">Divisions</a></li>
+                <li class="nav-item"> <a class="nav-link" href="#">Roles and Permissions</a></li>
               </ul>
             </div>
           </li>
@@ -446,7 +446,7 @@
           </li> --}}
           <li class="nav-item nav-category">Reports</li>
           <li class="nav-item">
-            <a class="nav-link" href="http://bootstrapdash.com/demo/star-admin2-free/docs/documentation.html">
+            <a class="nav-link" href="#">
               <i class="menu-icon mdi mdi-file-document"></i>
               <span class="menu-title">Reports</span>
             </a>
@@ -676,11 +676,18 @@
                                           </div>
                                         </td>
                                         <td>
-                                          <h6>{{$i->created_at}}</h6>
+                                          <h6>{{date('l, d/m/y H:i:s', strtotime($i->created_at))}}</h6>
                                           {{-- <p>company type</p> --}}
                                         </td>
                                         
-                                        <td><div class="badge badge-opacity-success">Active</div></td>
+                                        <td>
+                                          @if($i->deleted_at == NULL)
+                                          <div class="badge badge-opacity-success">Active</div>
+                                        @else
+                                        <div class="badge badge-opacity-danger">Inactive</div>
+                                        @endif
+
+                                        </td>
                                       </tr>
                                     @endforeach
                                       
