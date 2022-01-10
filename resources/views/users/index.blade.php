@@ -7,11 +7,13 @@
     <table class="table table-hover" id="users-table">
         <thead>
         <tr>
-            <th>{{ __('Name') }}</th>
-            <th>{{ __('Mail') }}</th>
-            <th>Created Date</th>
-            <th>Division</th>
-            <th>Role</th>
+            <th>{{ __('Name') }} <i class="fa fa-arrows-v" aria-hidden="true"></i>
+            </th>
+            <th>{{ __('Mail') }} <i class="fa fa-arrows-v" aria-hidden="true"></i>
+            </th>
+            <th>Created Date <i class="fa fa-arrows-v" aria-hidden="true"></i></th>
+            <th>Division <i class="fa fa-arrows-v" aria-hidden="true"></i></th>
+            <th>Role <i class="fa fa-arrows-v" aria-hidden="true"></i></th>
             <th class="action-header"></th>
             <th class="action-header"></th>
 {{--            <th class="action-header"></th>--}}
