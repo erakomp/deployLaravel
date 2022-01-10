@@ -21,8 +21,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="{{asset('dashboard//css/vertical-layout-light/style.css')}}">
   <!-- endinject -->
-  <link rel="shortcut icon" href="images/favicon.png" />
-  
+  <link rel="shortcut icon" href="https://cdn.erakomp.co.id/assets/Icon%20logo%20kanban%20board-01.png">  
 </head>
 <body>
   <div class="container-scroller"> 
