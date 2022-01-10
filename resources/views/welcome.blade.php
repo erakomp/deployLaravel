@@ -35,10 +35,11 @@
         </div>
         <div>
           <a class="navbar-brand brand-logo" href="index.html">
-            <img src="https://erakomp.oss-ap-southeast-5.aliyuncs.com/Capture.JPG" alt="logo" style="width:50px!important; height:50px!important; border-radius:50%;" />
+            <img src="https://cdn.erakomp.co.id/assets/Icon%20logo%20kanban%20board-01.png" alt="logo" style="width:50px!important; height:50px!important;" />
           </a>
+          <sub><b>V.0.0.1</b></sub>
           <a class="navbar-brand brand-logo-mini" href="index.html">
-            <img src="https://erakomp.oss-ap-southeast-5.aliyuncs.com/Capture.JPG" alt="logo" style="width:50px!important; height:50px!important;border-radius:50%;" />
+            <img src="https://cdn.erakomp.co.id/assets/Icon%20logo%20kanban%20board-01.png" alt="logo" style="width:50px!important; height:50px!important;" />
           </a>
         </div>
       </div>
