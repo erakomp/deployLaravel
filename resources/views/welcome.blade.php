@@ -905,24 +905,16 @@ showTime();
  
       //pie chart data
       var data = {
-        labels: ['IT', 'Legal', 'Sales', 'HRD', 'Sales Admin', 'Finance', 'Purchasing', 'Warehouse', 'Kurir', 'Super Admin', 'Product', 'Social Media'],
+        labels: ['IT', 'Legal', 'Sales'],
         datasets: [
           {
             label: "Users Count",
             data: cData.data,
             backgroundColor: [
-              "#CD5C5C",
-              "#F08080",
-              "#FA8072",
-              "#E9967A", 
-              "#FFA07A", 
-              "#FF7F50",
-              "#FF6347",
-              "#FF4500",
-              "#FF8C00",
-              "#FFA500",
-              "#66CDAA",
-              "#8FBC8B",              
+              "#DEB887",
+              "#A9A9A9",
+              "#DC143C",
+              
             ],
             borderColor: [
               "#CDA776",
