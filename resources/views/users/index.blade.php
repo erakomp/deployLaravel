@@ -9,6 +9,9 @@
         <tr>
             <th>{{ __('Name') }}</th>
             <th>{{ __('Mail') }}</th>
+            <th>Created Date</th>
+            <th>Division</th>
+            <th>Role</th>
             <th class="action-header"></th>
             <th class="action-header"></th>
 {{--            <th class="action-header"></th>--}}
@@ -127,6 +130,9 @@
 
                 {data: 'namelink', name: 'name'},
                 {data: 'email', name: 'email'},
+                {data: 'created_at', name: 'created_at'},
+                {data: 'division', name: 'division'},
+                {data: 'display_name', name: 'display_name'},
                 {
                     data: 'view', name: 'view', orderable: false, searchable: false, class:'fit-action-delete-th table-actions'
                 },
