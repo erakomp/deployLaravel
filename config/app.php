@@ -140,6 +140,8 @@ return [
         App\Providers\BroadcastServiceProvider::class,
         App\Providers\ViewComposerServiceProvider::class,
         App\Providers\DropboxServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
+
     ],
 
     /*

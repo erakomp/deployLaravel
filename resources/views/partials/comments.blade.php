@@ -45,8 +45,8 @@
     {!! Form::close() !!}
 @foreach($subject->comments->sortByDesc('created_at') as $comment)
     <div class="tablet tablet__shadow" style="font-size: 14px!important;">
-        <div class="tablet__body tablet__tigthen" style="font-size: 14px!important;" id="myImg">
-            <p  style="font-size: 12px!important;">  {!! $comment->description !!} </p>
+        <div class="tablet__body tablet__tigthen" style="font-size: 14px!important;">
+            <p  style="font-size: 12px!important; text-decoration:none!important;">  {!! $comment->description !!} </p>
         </div>
         <div class="tablet__footer tablet__tigthen" style="font-size: 12px!important;">
             <p class="smalltext" style="font-size: 14px!important;">{{ __('Comment by') }}: {{$comment->user->name}} 
@@ -67,6 +67,9 @@
     <script>
 
         $(document).ready(function() {
+            // $('#text').summernote({focus: true,height: 1000, width:100,
+                 
+            //     });
             $('#comment-field').summernote({
                 toolbar: [
                     [ 'fontsize', [ 'fontsize' ] ],
@@ -97,6 +100,7 @@
                     }
                 }
             })
+            
 
         });
     </script>

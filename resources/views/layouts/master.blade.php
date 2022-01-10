@@ -189,6 +189,11 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
     font-size: 0;    
     padding: 5px;
 }
+
+    #text{
+        max-width:100px!important;
+    }
+
             </style>
     
     <?php if(isDemo()) { ?>

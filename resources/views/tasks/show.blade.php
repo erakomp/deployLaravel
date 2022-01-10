@@ -1,5 +1,7 @@
 @extends('layouts.master')
+
 @section('content')
+
     @push('scripts')
         <script>
             $(document).ready(function () {

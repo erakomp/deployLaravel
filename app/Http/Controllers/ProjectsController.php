@@ -198,7 +198,7 @@ class ProjectsController extends Controller
      */
     public function create($client_external_id = null)
     {
-        $users = User::all();
+        $users = User::where('deleted_at', '=', NULL);
         $client =  Client::whereExternalId($client_external_id);
         $getDiv = Div::all();
         return view('projects.create', compact('getDiv', 'users'))

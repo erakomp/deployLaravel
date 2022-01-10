@@ -33,7 +33,7 @@
         "predis/predis": "^1.1",
         "ramsey/uuid": "^3.6",
         "spatie/flysystem-dropbox": "^1.0",
-        "yajra/laravel-datatables-oracle": "~9.0"
+        "yajra/laravel-datatables-oracle": "^9.18"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "~3.2",
