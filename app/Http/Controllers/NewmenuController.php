@@ -14,7 +14,9 @@ class NewmenuController extends Controller
 $all_pro =  Activity::join('tasks', 'activities.source_id', '=', 'tasks.id')
     ->join('users', 'tasks.user_assigned_id', '=', 'users.id')
     ->join('projects', 'tasks.project_id', '=', 'projects.id')
-        ->select('activities.id', 'activities.text', 'activities.log_name', 'activities.created_at','users.name', 'tasks.title', 'projects.title as pt')
+        ->select('activities.id', 'activities.text', 'activities.log_name', 'activities.created_at','users.name', 'tasks.title', 'projects.title as pt', 'tasks.status_id')
+        ->where('tasks.status_id', '=', 7)
+
         ->where('activities.source_type','=','App\Models\Task')
     ->where('activities.deleted_at','=',NULL)
     ->where('activities.text', 'like', "%".'DONE KPI'."%")
@@ -31,9 +33,11 @@ $all_pro =  Activity::join('tasks', 'activities.source_id', '=', 'tasks.id')
     $product = Activity::join('tasks', 'activities.source_id', '=', 'tasks.id')
     ->join('users', 'tasks.user_assigned_id', '=', 'users.id')
     ->join('projects', 'tasks.project_id', '=', 'projects.id')
-        ->select('activities.id', 'activities.text', 'activities.log_name', 'activities.created_at','users.name', 'tasks.title', 'projects.title as pt')
-    ->where('source_type','=','App\Models\Task')->
-    where('activities.deleted_at','=',NULL)
+        ->select('activities.id', 'activities.text', 'activities.log_name', 'activities.created_at','users.name', 'tasks.title', 'projects.title as pt', 'tasks.status_id')
+        ->where('tasks.status_id', '=', 7)
+
+    ->where('source_type','=','App\Models\Task')
+    ->where('activities.deleted_at','=',NULL)
     ->where('activities.text', 'like', "%".'DONE KPI'."%")
     ->where( function($query) use($request){
                      return $request->price_id ?
@@ -48,9 +52,10 @@ $all_pro =  Activity::join('tasks', 'activities.source_id', '=', 'tasks.id')
     $product_progressing = Activity::join('tasks', 'activities.source_id', '=', 'tasks.id')
     ->join('users', 'tasks.user_assigned_id', '=', 'users.id')
     ->join('projects', 'tasks.project_id', '=', 'projects.id')
-        ->select('activities.id', 'activities.text', 'activities.log_name', 'activities.created_at','users.name', 'tasks.title', 'projects.title as pt')
-    ->where('activities.source_type','=','App\Models\Task')->
-    where('activities.deleted_at','=',NULL)
+        ->select('activities.id', 'activities.text', 'activities.log_name', 'activities.created_at','users.name', 'tasks.title', 'projects.title as pt', 'tasks.status_id')
+        ->where('tasks.status_id', '=', 7)
+    ->where('activities.source_type','=','App\Models\Task')
+    ->where('activities.deleted_at','=',NULL)
     ->where('activities.text', 'like', "%".'Progressing'."%")
     ->where( function($query) use($request){
                      return $request->price_id ?
