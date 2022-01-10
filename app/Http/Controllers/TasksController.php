@@ -111,7 +111,7 @@ class TasksController extends Controller
             })->pluck('title', 'external_id');
         }
         $getLabel = Label::all();
-        $getUsers = DB::table('users')->get();
+        $getUsers = DB::table('users')->where('deleted_at', '=', NULL)->get();
         return view('tasks.create', compact('getLabel', 'getUsers'))
             ->withUsers(User::with(['department'])->get()->pluck('nameAndDepartmentEagerLoading', 'id'))
             ->withClients(Client::pluck('company_name', 'external_id'))
