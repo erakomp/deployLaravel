@@ -198,6 +198,7 @@ return [
         'ability' => App\Zizaco\Entrust\Middleware\EntrustAbility::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'LogActivity' => App\Helpers\LogActivity::class,
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
 
 
     ],

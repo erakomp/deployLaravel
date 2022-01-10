@@ -12,6 +12,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 Route::get('/dass', 'DashboardController@index');
+Route::get('usersie', ['uses'=>'UserController@index', 'as'=>'users.index']);
 
 Route::auth();
 

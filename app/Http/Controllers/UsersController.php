@@ -62,10 +62,10 @@ class UsersController extends Controller
         return Datatables::of($users)
             ->addColumn('namelink', '<a href="{{ route("users.show",[$external_id]) }}">{{$name}}</a>')
             ->addColumn('view', function ($user) {
-                return '<a href="' . route("users.show", $user->external_id) . '" class="btn btn-link">' . __('View') .'</a>';
+                return '<a href="' . route("usercrud.edit", $user->id) . '" class="btn btn-link">' . __('Edit') .'</a>';
             })
             ->addColumn('edit', function ($user) {
-                return '<a href="' . route("users.edit", $user->external_id) . '" class="btn btn-link">' . __('Edit') .'</a>';
+                return '<a href="' . route("usercrud.destroy", $user->id) . '" class="btn btn-link">' . __('Delete') .'</a>';
             })
 //            ->addColumn('delete', function ($user) {
 //                return '<button type="button" class="btn btn-link" data-client_id="' . $user->external_id . '" onClick="openModal(\'' . $user->external_id . '\')" id="myBtn">' . __('Delete') .'</button>';
