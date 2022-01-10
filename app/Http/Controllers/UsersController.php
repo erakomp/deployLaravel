@@ -70,6 +70,10 @@ class UsersController extends Controller
             ->addColumn('edit', function ($user) {
                 return '<a href="' . route("usercrud.destroy", $user->id) . '" class="btn btn-link">' . __('Delete') .'</a>';
             })
+            ->editColumn('created_at', function ($user) {
+                return $user->created_at ? with(new Carbon($user->created_at))
+                    ->format('l, d-m-Y H:i:s') : '';
+            })
 //            ->addColumn('delete', function ($user) {
 //                return '<button type="button" class="btn btn-link" data-client_id="' . $user->external_id . '" onClick="openModal(\'' . $user->external_id . '\')" id="myBtn">' . __('Delete') .'</button>';
 //            })
@@ -91,8 +95,7 @@ class UsersController extends Controller
         return Datatables::of($tasks)
             ->addColumn('titlelink', '<a href="{{ route("tasks.show",[$external_id]) }}">{{$title}}</a>')
             ->editColumn('created_at', function ($tasks) {
-                return $tasks->created_at ? with(new Carbon($tasks->created_at))
-                    ->format(carbonDate()) : '';
+                return $tasks->created_at ->format('Y-m-d');
             })
             ->editColumn('deadline', function ($tasks) {
                 return $tasks->deadline ? with(new Carbon($tasks->deadline))
