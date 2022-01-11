@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 
 use Session;
+use App\Models\User;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -49,5 +51,20 @@ class CommentController extends Controller
     {
         $logs = \LogActivity::logActivityLists();
         return view('logActivity', compact('logs'));
+    }
+    public function destroy(Comment $comment, Request $request)
+    {
+        /**$deleteTasks = $request->delete_tasks ? true : false;
+        if ($project->tasks && $deleteTasks) {
+            $project->tasks()->delete();
+        } else {
+            $project->tasks()->update(['project_id' => null]);
+        }
+
+        $project->delete();**/
+        $comment->delete();
+        
+        Session()->flash('flash_message', __('Comment deleted'));
+        return redirect()->back();
     }
 }

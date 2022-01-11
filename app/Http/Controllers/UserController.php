@@ -11,7 +11,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = User::select('*');
+            $data = User::all();
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){

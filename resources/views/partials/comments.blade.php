@@ -56,6 +56,13 @@
                 @if($comment->updated_at != $comment->created_at)
                     <br/>{{ __('Modified') }} : {{date(carbonFullDateWithText(), strtotime($comment->updated_at))}}
                 @endif</p>
+                <form action="{{ route('comments.destroy',$comment->id) }}" method="POST" style="display:flex; justify-content:right; ">
+                    @csrf
+                        @method('DELETE')
+          
+                        <button type="submit" class="btn btn-danger" ><i class="fa fa-trash" aria-hidden="true"></i>
+                        </button>
+                    </form>
         </div>
     </div>
 
