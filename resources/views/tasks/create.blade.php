@@ -147,6 +147,10 @@
                             <input type="file" name="image" id="image" class="form-control">
                         </div>
                         <div class="form-group" style="display:none;">
+                            <label for="status_id" class="control-label thin-weight">Division Assigned</label>
+                            <input type="text" value="{{Auth::user()->flag}}">
+                        </div>
+                        <div class="form-group" style="display:none;">
                             <label for="task_status" class="control-label thin-weight">@lang('Status')</label>
                             <select name="task_status" id="task_status" class="form-control">
                                 <option value="">Select if any</option>

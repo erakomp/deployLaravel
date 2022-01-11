@@ -9,6 +9,7 @@ use File;
 use App\Models\Task;
 use App\Models\Client;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use App\Label;
 use App\Models\Setting;
 use App\Http\Requests;
@@ -172,6 +173,7 @@ class TasksController extends Controller
             'getlabel' => $request->getlabel,
             'getcolor' => $request->getcolor,
             'image' => ($request->has('image')) ?  $name : NULL,
+            'flag' => Auth::user()->flag,
 
         ]
         );

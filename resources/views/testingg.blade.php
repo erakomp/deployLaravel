@@ -9,14 +9,45 @@
                     <div class="card">
                         <h1>Get Task Duration from Progressing Until Done KPI</h1>
                         <form action="{{ route('filteringg') }}" method="GET" style="margin-top: 10%; ">
-                        <select name="price_id" id="input">
-                            <option value="0">Select Task Name</option>
-                            @foreach ($get_task_id as $price)
+                        {{-- <select name="price_id" id="input">
+                            <option value="0">Select Division Assigned</option>
+                            @foreach ($getDiv as $price)
                                 <option value="{{ $price->id }}" {{ $price->id == $selected_id['price_id'] ? 'selected' : '' }}>
-                                {{ $price->title }}
+                                {{ $price->division }}
                                 </option>
                             @endforeach
-                        </select>
+                        </select> --}}
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label style="font-size: 15px!important;">Choose From:</label>
+                                <select name="price_id" id="input">
+                                    <option value="0">Select Division Assigned</option>
+                                    @foreach ($getDiv as $price)
+                                        <option value="{{ $price->id }}" {{ $price->id == $selected_id['price_id'] ? 'selected' : '' }}>
+                                        {{ $price->division }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label style="font-size: 15px!important;">Choose From:</label>
+                                    <div class="input-group mb-3">
+                                        <input id="startDate" type="date" name="from" width="300" value="{{Carbon\Carbon::today()->toDateString()}}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label style="font-size: 15px!important;">Choose To:</label>
+                                    <div class="input-group mb-3">
+                                        <input id="endDate"  type="date" name="to" width="300"  value="{{Carbon\Carbon::today()->toDateString()}}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         {{-- <select name="color_id" id="input">
                             <option value="0">Select Color</option>
                             @foreach ($get_task_id as $color)
@@ -25,8 +56,11 @@
                             </option>
                             @endforeach
                         </select> --}}
-                        <input type="submit" class="btn btn-danger btn-sm" value="Filter">
-                        <a href="/menuss"><div class="btn btn-warning btn-sm">Reset</div></a>
+                        <div style="display: flex; justify-content:center;">
+                            <input type="submit" class="btn btn-danger btn-sm " value="Filter" style="margin-right:20px;">
+                            <a href="/filtermenu"><div class="btn btn-warning btn-sm">Reset</div></a>
+                        </div>
+                       
                         </form>
                     
                     
