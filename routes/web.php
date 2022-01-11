@@ -217,7 +217,7 @@ Route::get('get-states', 'DropdownController@getStates')->name('getStates');
     });
     Route::resource('leads', 'LeadsController');
     Route::post('{type}/{external_id}', 'CommentController@store')->name('comments.create');
-    Route::delete('/{id}', 'CommentController@destroy')->name('comments.destroy');
+    Route::delete('/{comment}', 'CommentController@destroy')->name('comments.destroy');
 
 
 
