@@ -39,7 +39,8 @@
                                     <th>Desc</th>
                                     <th>Assigned To</th>
                                     <th>Created Date</th>
-                                    <th>Duration(H:M:S)</th>
+                                   @if( $selected_id['price_id']==0)  <th>Updated Date</th> @else <th>Updated Date</th>
+                                   <th> (Duration(H:M:S)</th> @endif
         
                                 </tr>
                             </thead>
@@ -52,10 +53,11 @@
                                     <td>{{$product->pt}}</td>
                                     <td>{{ $product->text }}</td>
                                     <td>{{$product->name}}</td>
-                                    <td>{{date('l, Y-m-d H:i:s', strtotime($product->created_at)) }}</td>
-                                        <td>
-                                        @if( $selected_id['price_id']==0)   @else
-                                        {{ $duration}} @endif</td>
+                                    <td>{{date('l, Y-m-d H:i:s', strtotime($product->tc)) }}</td>
+                                       
+                                        @if( $selected_id['price_id']==0) <td>{{date('l, Y-m-d H:i:s', strtotime($product->updated_at)) }} </td> @else
+                                        <td>{{date('l, Y-m-d H:i:s', strtotime($product->updated_at)) }} </td>
+                                       <td>{{ $duration}}</td> @endif
                                     {{-- <td>
                                         
                                         {{(Carbon\Carbon::parse(min($product->created_at))) -> diff((Carbon\Carbon::parse(max($product->created_at)))) -> format('%D : %H : %I : %S')}}

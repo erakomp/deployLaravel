@@ -14,7 +14,7 @@ class NewmenuController extends Controller
 $all_pro =  Activity::join('tasks', 'activities.source_id', '=', 'tasks.id')
     ->join('users', 'tasks.user_assigned_id', '=', 'users.id')
     ->join('projects', 'tasks.project_id', '=', 'projects.id')
-        ->select('activities.id', 'activities.text', 'activities.log_name', 'activities.created_at','users.name', 'tasks.title', 'projects.title as pt', 'tasks.status_id')
+        ->select('activities.id', 'activities.text', 'activities.log_name', 'activities.created_at','users.name', 'tasks.title', 'projects.title as pt', 'tasks.status_id', 'tasks.updated_at', 'tasks.created_at as tc')
         ->where('tasks.status_id', '=', 7)
 
         ->where('activities.source_type','=','App\Models\Task')
