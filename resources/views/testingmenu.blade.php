@@ -35,7 +35,7 @@
                         <div class="form-group">
                             <label style="font-size: 15px!important;">Choose From:</label>
                             <div class="input-group mb-3">
-                                <input id="startDate" type="date" name="from" width="300" value="{{Carbon\Carbon::today()->toDateString()}}" />
+                                <input id="startDate" type="date" name="from" width="300" value="" />
                             </div>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                         <div class="form-group">
                             <label style="font-size: 15px!important;">Choose To:</label>
                             <div class="input-group mb-3">
-                                <input id="endDate"  type="date" name="to" width="300"  value="{{Carbon\Carbon::today()->toDateString()}}"/>
+                                <input id="endDate"  type="date" name="to" width="300"  value=""/>
                             </div>
                         </div>
                     </div>
