@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 Route::get('/dass', 'DashboardController@index');
 // Route::get('usersie', ['uses'=>'UserController@index', 'as'=>'users.index']);
-
+Route::get('/datatable', 'AjaxController@datatable')->name('datatable');
+Route::get('/ajax', 'AjaxController@ajax')->name('ajax');
 Route::auth();
 
 
@@ -102,6 +103,8 @@ Route::get('get-states', 'DropdownController@getStates')->name('getStates');
     Route::get('/pegawai/hapus/{id}', 'PegawaiController@delete');
     Route::resource('colors','ListcolorController');
     Route::resource('usercrud','UsercrudController');
+    Route::delete('/usercrud/{id}/destroy', 'UsercrudController@destroy')->name('users.destroy');
+
 
     Route::resource('userr','UserrController');
         Route::resource('taskss', 'TaskssController');

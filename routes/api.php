@@ -18,3 +18,5 @@ Route::group(['namespace' => 'App\Api\v1\Controllers'], function () {
         Route::get('users', ['uses' => 'UserController@index']);
     });
 });
+Route::get('/api/v1/customers', 'App\Http\Controllers\ApiController@getCustomers')->name('api.customers.index');
+
