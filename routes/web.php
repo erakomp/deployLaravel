@@ -103,7 +103,7 @@ Route::get('get-states', 'DropdownController@getStates')->name('getStates');
     Route::get('/pegawai/hapus/{id}', 'PegawaiController@delete');
     Route::resource('colors','ListcolorController');
     Route::resource('usercrud','UsercrudController');
-    Route::delete('/usercrud/{id}/destroy', 'UsercrudController@destroy')->name('users.destroy');
+    // Route::delete('/usercrud/{id}/destroy', 'UsercrudController@destroy')->name('users.destroy');
 
 
     Route::resource('userr','UserrController');
