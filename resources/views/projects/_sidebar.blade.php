@@ -5,7 +5,10 @@
     {{$i->user_created_id}}
     @endforeach --}}
    
-   
+        <div class="col-md-4" style="font-size:14px!important;">Created By</div>
+        <div class="col-md-7" style="font-size:14px!important;">
+            <b>{{$project->creator->name}}</b>
+        </div>
       
  
     
