@@ -7,7 +7,7 @@
             <div class="row" style="margin-bottom: 20px;">
                 <div class="col-lg-12 margin-tb">
                     <div class="">
-                        <h1 style="text-transform: uppercase; font-weight:bold; text-align:center">Edit User</h1>
+                        <h1 style="text-transform: uppercase; font-weight:bold; text-align:center">Check This User Out</h1>
                     </div>
                 </div>
             </div>
