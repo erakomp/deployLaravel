@@ -21,6 +21,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset(elixir('css/bootstrap-select.min.css')) }}">
     <link href="{{ URL::asset('css/summernote.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<link href="{{ URL::asset('css/jasny-bootstrap.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+@yield('styles')
     <style>
                 @import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
                 @import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
@@ -268,7 +272,7 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
                         class="fa fa-users sidebar-icon"></i><span id="menu-txt" style="font-size: 16px!important;" >{{ __('Users') }}</span>
                 <i class="icon ion-md-arrow-dropup arrow-side sidebar-arrow"></i></a>
             <div class="collapse" id="user">
-                <a href="/users" class="list-group-item childlist" style="font-size: 13px!important;"> <i
+                <a href="/ajax" class="list-group-item childlist" style="font-size: 13px!important;"> <i
                             class="bullet-point"><span></span></i> {{ __('All Users') }}</a>
                 @if(Entrust::can('user-create'))
                     <a href="{{ route('productss.create')}}"
@@ -347,7 +351,7 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
                        class="list-group-item childlist"> <i
                                 class="bullet-point"><span></span></i> {{ __('Overall Settings') }}</a>
                    -->
-                    <a href="/importExportView"
+                    <a href="/digitalrep"
                        class="list-group-item childlist" style="font-size: 13px!important;" > <i
                                 class="bullet-point"><span></span></i> Digital Report</a>
                                 <a href="/report"
@@ -445,7 +449,10 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
 <script type="text/javascript" src="{{ URL::asset('js/summernote.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('js/jquery-ui-sortable.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('js/bootstrap-tour-standalone.min.js') }}"></script>
-
+   <!-- Scripts -->
+   <script src="{{ asset('js/app.js') }}"></script>
+   <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+   @yield('javascripts')
 <script type="text/javascript" src="{{ URL::asset('js/picker.js') }}"></script>
 
 @if(App::getLocale() == "dk")
