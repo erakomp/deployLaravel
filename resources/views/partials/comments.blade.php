@@ -65,7 +65,6 @@
                         </button>
                     </form>
                     @else
-                    <span></span>
                     @endif
         </div>
     </div>
