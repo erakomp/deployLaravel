@@ -15,11 +15,11 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $getDataProject = DB::table('projects')->where('deleted_at', '=', NULL)->where('flag','=', Auth::user()->flag)->count();
-        $getDataTask = DB::table('tasks')->where('deleted_at', '=', NULL)->where('flag','=', auth()->user()->flag)->count();
-        $getIncTask = DB::table('tasks')->where('deleted_at', '=', NULL)->where('status_id', '!=',7)->where('flag','=', auth()->user()->flag)->count();
-        $getCompTask = DB::table('tasks')->where('deleted_at', '=', NULL)->where('status_id', '=', 7)->where('flag','=', auth()->user()->flag)->count();
-        $getOv = DB::table('tasks')->where('deleted_at', '=', NULL)->where('deadline', '<', Carbon::today())->where('status_id', '!=', 7)->where('flag','=', auth()->user()->flag)->count();
+        $getDataProject = DB::table('projects')->join('users','projects.user_assigned_id','=','users.id')->where('projects.deleted_at', '=', NULL)->where('projects.user_assigned_id','=', Auth::user()->id)->count();
+        $getDataTask = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->where('tasks.deleted_at', '=', NULL)->where('tasks.user_assigned_id','=', Auth::user()->id)->count();
+        $getIncTask = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->where('tasks.deleted_at', '=', NULL)->where('tasks.user_assigned_id','=', Auth::user()->id)->where('tasks.status_id','!=',7)->count();
+        $getCompTask = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->where('tasks.deleted_at', '=', NULL)->where('tasks.user_assigned_id','=', Auth::user()->id)->where('tasks.status_id','=',7)->count();
+        $getOv = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->where('tasks.deleted_at', '=', NULL)->where('tasks.user_assigned_id','=', Auth::user()->id)->where('deadline', '<', Carbon::today())->where('status_id', '!=', 7)->count();
         $getUserList = DB::table('users')->count();
         $getUser = DB::table('users')->get();
         $most = DB::table('activities')
