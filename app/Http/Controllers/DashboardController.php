@@ -15,12 +15,21 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        //Users
         $getDataProject = DB::table('projects')->join('users','projects.user_assigned_id','=','users.id')->where('projects.deleted_at', '=', NULL)->where('projects.user_assigned_id','=', Auth::user()->id)->count();
         $getDataTask = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->join('projects','tasks.project_id','=','projects.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted_at', '=', NULL)->where('tasks.user_assigned_id','=', Auth::user()->id)->count();
         $getIncTask = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->join('projects','tasks.project_id','=','projects.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted_at', '=', NULL)->where('tasks.user_assigned_id','=', Auth::user()->id)->where('tasks.status_id','!=',7)->count();
         $getCompTask = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->join('projects','tasks.project_id','=','projects.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted_at', '=', NULL) ->where('tasks.user_assigned_id','=', Auth::user()->id)->where('tasks.status_id','=',7)->count();
         $getOv = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->join('projects','tasks.project_id','=','projects.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted_at', '=', NULL)->where('tasks.user_assigned_id','=', Auth::user()->id)->where('tasks.deadline', '<', Carbon::today())->where('tasks.status_id', '!=', 7)->count();
+        //EOUSERS
+        //Manager
+        $getDataProject_man = DB::table('projects')->join('users','projects.user_assigned_id','=','users.id')->where('projects.deleted_at', '=', NULL)->where('projects.flag','=', Auth::user()->flag)->count();
+        $getDataTask_man = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->join('projects','tasks.project_id','=','projects.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted_at', '=', NULL)->where('tasks.flag','=', Auth::user()->flag)->count();
+        $getIncTask_man = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->join('projects','tasks.project_id','=','projects.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted_at', '=', NULL)->where('tasks.flag','=', Auth::user()->flag)->where('tasks.status_id','!=',7)->count();
+        $getCompTask_man = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->join('projects','tasks.project_id','=','projects.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted_at', '=', NULL) ->where('tasks.flag','=', Auth::user()->flag)->where('tasks.status_id','=',7)->count();
+        $getOv_man = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->join('projects','tasks.project_id','=','projects.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted_at', '=', NULL)->where('tasks.flag','=', Auth::user()->flag)->where('tasks.deadline', '<', Carbon::today())->where('tasks.status_id', '!=', 7)->count();
         $getUserList = DB::table('users')->count();
+        //EOMAN
         $getUser = DB::table('users')->get();
         $most = DB::table('activities')
         ->join('users', 'activities.causer_id', '=', 'users.id')
@@ -31,6 +40,10 @@ class DashboardController extends Controller
         $user = [];
         foreach ($year as $key => $value) {
             $user[] = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->join('projects','tasks.project_id','=','projects.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted_at', '=', NULL) ->where('tasks.user_assigned_id','=', Auth::user()->id)->where(DB::raw("DATE_FORMAT(tasks.created_at, '%Y-%m')"),$value)->count();
+        }
+        $userss = [];
+        foreach ($year as $key => $value) {
+            $user[] = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->join('projects','tasks.project_id','=','projects.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted_at', '=', NULL) ->where('tasks.flag','=', Auth::user()->flag)->where(DB::raw("DATE_FORMAT(tasks.created_at, '%Y-%m')"),$value)->count();
         }
 
         $record = DB::table('users')->select(DB::raw("COUNT(*) as count"), DB::raw("flag as day_name"))
@@ -46,7 +59,7 @@ class DashboardController extends Controller
  
     $data['chart_data'] = json_encode($data);
     
-        return view('welcome', $data,compact('getDataProject','getDataTask','getIncTask', 'getCompTask', 'getOv', 'getUserList', 'getUser', 'most'))->with('year',json_encode($year,JSON_NUMERIC_CHECK))->with('user',json_encode($user,JSON_NUMERIC_CHECK));
+        return view('welcome', $data,compact('getDataProject','getDataTask','getIncTask', 'getCompTask', 'getOv','getDataProject_man','getDataTask_man','getIncTask_man', 'getCompTask_man', 'getOv_man', 'getUserList', 'getUser', 'most'))->with('year',json_encode($year,JSON_NUMERIC_CHECK))->with('user',json_encode($user,JSON_NUMERIC_CHECK))->with('userss',json_encode($userss,JSON_NUMERIC_CHECK));
     }
 
     /**
