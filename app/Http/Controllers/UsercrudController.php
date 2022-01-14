@@ -115,7 +115,7 @@ class UsercrudController extends Controller
         ]);
         User::findOrFail($product)->update($request->all());
   
-        return redirect()->route('usercrud.index')
+        return redirect()->route('ajax')
                         ->with('success','User updated successfully');
     }
   
