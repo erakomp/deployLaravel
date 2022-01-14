@@ -10,7 +10,7 @@ class ApiController extends Controller
 {
     public function getCustomers()
     {
-        $query = DB::table('users')->select('id','name','email');
+        $query = DB::table('users')->where('deleted_at', '=', NULL)->select('id','name','email');
         return datatables($query)->make(true);
     }
 }

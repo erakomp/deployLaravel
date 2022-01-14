@@ -50,6 +50,17 @@
                         <button onclick="history.back()" class="btn btn-md btn-brand movedown">Back</button>
 
                         <button type="submit" class="btn btn-md btn-brand movedown">Update</button>
+                        <form action="{{ route('usercrud.destroy',$product->id) }}" method="POST">
+        
+                            {{-- <a class="btn btn-info" href="{{ route('userscrud.show',$product->id) }}">Show</a> --}}
+        
+                              
+        
+                                @csrf
+                                @method('DELETE')
+        
+                                <button type="submit" class="btn  btn-md  movedown btn-danger"><i class="fas fa-trash"></i></button>
+                            </form> 
                     </div>
                 </div>
         

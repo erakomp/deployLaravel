@@ -129,7 +129,7 @@ class UsercrudController extends Controller
     {
         $query = User::where('id', '=', $id);
         $query->delete();
-        return redirect()->route('usercrud.index')
+        return redirect()->route('ajax')
                         ->with('success','User deleted successfully');
     }
 

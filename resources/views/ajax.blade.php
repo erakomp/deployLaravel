@@ -41,8 +41,9 @@
                     { "data": "name" },
                     { "data": "email" },
                     {"mRender": function ( data, type, row ) {
-                        return '<a href=/usercrud/'+row.id+'/edit>Edit </a>';}
-                }
+                        return '<a href=/usercrud/'+row.id+'/edit><i class="fas fa-eye"></i> </a>';}
+                },
+                
                 
                                     
                 ]
