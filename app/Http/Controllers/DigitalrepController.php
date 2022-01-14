@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
-class OverController extends Controller
+class DigitalrepController extends Controller
 {
     public function test(Request $request){
         $countries = DB::table('projects')
@@ -30,11 +30,9 @@ class OverController extends Controller
         
         ->where( function($query) use($request){
                          return $request->price_id ?
-                                $query->from('tasks')->where('tasks.project_id', $request->price_id) : '';
-                    })->where(function($query) use($request){
-                         return $request->color_id ?
-                                $query->from('tasks')->where('tasks.status_id',  $request->color_id ) : '';
-                    })
+                                $query->from('tasks')->where('tasks.status_id', $request->price_id) : '';
+                    // })
+                })
                     ->where(function($query) use($request){
                         return $request->from ?
                         $query->from('tasks')->whereBetween('tasks.updated_at', [$request->from, $request->to]) : '';
@@ -43,7 +41,7 @@ class OverController extends Controller
                     ->get();
                 
         $price_id = $request->price_id;        
-        $color_id = $request->color_id;
+        // $color_id = $request->color_id;
         $from = date("Y-m-d H:i:s",strtotime($request->from));        
         $to = date("Y-m-d H:i:s",strtotime($request->to));
        
@@ -55,12 +53,12 @@ class OverController extends Controller
         //           return $from;
         $selected_id = [];
         $selected_id['project_id'] = $request->price_id;
-        $selected_id['status_id'] = $request->color_id;
+        // $selected_id['status_id'] = $request->color_id;
         $selected_id['updated_at'] = $request->from;
         $selected_id['updated_at'] = $request->to;
 
         $startDate = Carbon::today()->toDateString();
-    return view('test',compact('product', 'startDate','selected_id', 'countries', 'color_id', 'price_id', 'from', 'to'));
+        return view('digitalrep',compact('product', 'startDate','selected_id', 'countries', 'price_id', 'from', 'to'));
     }
 
     public function overdue(Request $request){

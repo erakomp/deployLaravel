@@ -73,7 +73,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/menuss','NewmenuController@index')->name('filteringg');
 Route::get('get-states', 'DropdownController@getStates')->name('getStates');
-    
+Route::get('/digitalrep', 'DigitalrepController@test')->name('filterrep');
+
     Route::get('/test', 'OverController@test')->name('filter');
     Route::get('/overdue', 'OverController@overdue')->name('filtering');
 
