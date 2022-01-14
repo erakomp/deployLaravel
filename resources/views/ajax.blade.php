@@ -1,4 +1,4 @@
-@extends('layouts.ajax')
+@extends('layouts.master')
 
 @section('styles')
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
@@ -43,7 +43,6 @@
                     {"mRender": function ( data, type, row ) {
                         return '<a href=/usercrud/'+row.id+'/edit><i class="fas fa-eye"></i> </a>';}
                 },
-                
                 
                                     
                 ]

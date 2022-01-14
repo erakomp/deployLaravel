@@ -22,7 +22,7 @@
                     </a>
                 </div>
                 <div class="action-author">
-                    {{\App\Models\User::find($notification->data['created_user'])->name}}
+                    {{-- {{\App\Models\User::find($notification->data['created_user'])->name}} --}}
                 </div>
             </li>
         @endforeach
