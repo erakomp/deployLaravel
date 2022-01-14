@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 class DashboardController extends Controller
 {
     /**
@@ -14,11 +15,11 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $getDataProject = DB::table('projects')->where('deleted_at', '=', NULL)->count();
-        $getDataTask = DB::table('tasks')->where('deleted_at', '=', NULL)->count();
-        $getIncTask = DB::table('tasks')->where('deleted_at', '=', NULL)->where('status_id', '!=',7)->count();
-        $getCompTask = DB::table('tasks')->where('deleted_at', '=', NULL)->where('status_id', '=', 7)->count();
-        $getOv = DB::table('tasks')->where('deleted_at', '=', NULL)->where('deadline', '<', Carbon::today())->where('status_id', '!=', 7)->count();
+        $getDataProject = DB::table('projects')->where('deleted_at', '=', NULL)->where('flag','=', Auth::user()->flag)->count();
+        $getDataTask = DB::table('tasks')->where('deleted_at', '=', NULL)->where('flag','=', auth()->user()->flag)->count();
+        $getIncTask = DB::table('tasks')->where('deleted_at', '=', NULL)->where('status_id', '!=',7)->where('flag','=', auth()->user()->flag)->count();
+        $getCompTask = DB::table('tasks')->where('deleted_at', '=', NULL)->where('status_id', '=', 7)->where('flag','=', auth()->user()->flag)->count();
+        $getOv = DB::table('tasks')->where('deleted_at', '=', NULL)->where('deadline', '<', Carbon::today())->where('status_id', '!=', 7)->where('flag','=', auth()->user()->flag)->count();
         $getUserList = DB::table('users')->count();
         $getUser = DB::table('users')->get();
         $most = DB::table('activities')
