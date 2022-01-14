@@ -30,7 +30,7 @@ class DashboardController extends Controller
 
         $user = [];
         foreach ($year as $key => $value) {
-            $user[] = DB::table('tasks')->where(DB::raw("DATE_FORMAT(created_at, '%Y-%m')"),$value)->count();
+            $user[] = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->join('projects','tasks.project_id','=','projects.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted_at', '=', NULL) ->where('tasks.user_assigned_id','=', Auth::user()->id)->where(DB::raw("DATE_FORMAT(tasks.created_at, '%Y-%m')"),$value)->count();
         }
 
         $record = DB::table('users')->select(DB::raw("COUNT(*) as count"), DB::raw("flag as day_name"))
