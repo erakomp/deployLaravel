@@ -16,10 +16,10 @@ class DashboardController extends Controller
     public function index()
     {
         $getDataProject = DB::table('projects')->join('users','projects.user_assigned_id','=','users.id')->where('projects.deleted_at', '=', NULL)->where('projects.user_assigned_id','=', Auth::user()->id)->count();
-        $getDataTask = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->where('tasks.deleted_at', '=', NULL)->where('tasks.user_assigned_id','=', Auth::user()->id)->count();
-        $getIncTask = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->where('tasks.deleted_at', '=', NULL)->where('tasks.user_assigned_id','=', Auth::user()->id)->where('tasks.status_id','!=',7)->count();
-        $getCompTask = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->where('tasks.deleted_at', '=', NULL)->where('tasks.user_assigned_id','=', Auth::user()->id)->where('tasks.status_id','=',7)->count();
-        $getOv = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->where('tasks.deleted_at', '=', NULL)->where('tasks.user_assigned_id','=', Auth::user()->id)->where('deadline', '<', Carbon::today())->where('status_id', '!=', 7)->count();
+        $getDataTask = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->join('projects','tasks.project_id','=','projects.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted_at', '=', NULL)->where('tasks.user_assigned_id','=', Auth::user()->id)->count();
+        $getIncTask = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->join('projects','tasks.project_id','=','projects.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted_at', '=', NULL)->where('tasks.user_assigned_id','=', Auth::user()->id)->where('tasks.status_id','!=',7)->count();
+        $getCompTask = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->join('projects','tasks.project_id','=','projects.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted_at', '=', NULL) ->where('tasks.user_assigned_id','=', Auth::user()->id)->where('tasks.status_id','=',7)->count();
+        $getOv = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->join('projects','tasks.project_id','=','projects.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted_at', '=', NULL)->where('tasks.user_assigned_id','=', Auth::user()->id)->where('tasks.deadline', '<', Carbon::today())->where('tasks.status_id', '!=', 7)->count();
         $getUserList = DB::table('users')->count();
         $getUser = DB::table('users')->get();
         $most = DB::table('activities')
