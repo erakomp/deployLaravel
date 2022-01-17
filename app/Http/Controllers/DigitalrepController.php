@@ -44,9 +44,10 @@ class DigitalrepController extends Controller
                 
         $price_id = $request->price_id;        
         // $color_id = $request->color_id;
-        $from = date("Y-m-d H:i:s",strtotime($request->from));        
-        $to = date("Y-m-d H:i:s",strtotime($request->to));
-       
+        // $from = date("Y-m-d H:i:s",strtotime($request->from));        
+        // $to = date("Y-m-d H:i:s",strtotime($request->to));
+       $from = $request->from;
+       $to = $request->to;
         // $from = !empty($from) ? date('d-M-Y', strtotime($request->from)) : 0 ;
         // $to = !empty($to) ? date('d-M-Y', strtotime($to)) : null;
 
