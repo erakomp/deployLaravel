@@ -37,9 +37,9 @@
                             @endforeach --}}
                         </select>
                         
-                        <input type="datetime-local" name="from" id="input" style="margin-right:2%;" value="">
+                        <input type="date" name="from" id="input" style="margin-right:2%;" value="">
 
-                        <input type="datetime-local" name="to" id="input" style="margin-right:2%;" value="" my-date-format="DD/MM/YYYY, hh:mm:ss" >
+                        <input type="date" name="to" id="input" style="margin-right:2%;" value="" my-date-format="DD/MM/YYYY, hh:mm:ss" >
                         <input type="submit"  class="btn btn-md btn-brand movedown" value="Filter" style="font-size: 16px; ">
                         </form>
                         
@@ -82,11 +82,12 @@
                                     @forelse($product->sortByDesc('id') as $product )
                                     <tr>
                                         <td>{{ $loop->index+1 }}</td>
-                                        @if($product->status_id == 7)
+                                        <td>{{$product->jo}}</td>
+                                        {{-- @if($product->status_id == 7)
                                         <td>DONE KPI</td>
                                         @elseif($product->status_id == 5)
                                         <td>QC</td>
-                                        @endif
+                                        @endif --}}
                                         <td><a href="/tasks/{{$product->external_id}}">{{ $product->tt }}</a></td>
                                         <td>{{$product->pt}}</td>
                                         <td>{{$product->ui}}</td>

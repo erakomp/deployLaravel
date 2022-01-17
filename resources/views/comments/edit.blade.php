@@ -7,7 +7,7 @@
             <div class="row" style="margin-bottom: 20px;">
                 <div class="col-lg-12 margin-tb">
                     <div class="">
-                        <h1 style="text-transform: uppercase; font-weight:bold; text-align:center">Edit Label</h1>
+                        <h1 style="text-transform: uppercase; font-weight:bold; text-align:center">Edit Comment</h1>
                     </div>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <strong>Title:</strong>
-                            <textarea type="text" name="description" value="{!! $comment->description !!}" class="form-control" >
+                            <textarea type="text" name="description" value="{!! $comment->description !!}" class="form-control" ></textarea>
                         </div>
                     </div>
                     <div class="col-sm-6" style="display: none;">

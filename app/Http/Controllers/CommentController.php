@@ -75,6 +75,7 @@ class CommentController extends Controller
     }
     public function update($comment,Request $request )
     {
+        $getExt = Comment::join('tasks', 'comments.source_id', '=', 'tasks.id')->where('source_type','=','App\Models\Task')->select('tasks.external_id')->get();
         // dd($product);
         //return $product;
         $request->validate([
@@ -83,7 +84,8 @@ class CommentController extends Controller
         ]);
         Comment::findOrFail($comment)->update($request->all());
   
-        return redirect()->back()
+        return \Redirect::route('tasks.show', $getExt['external_id'])
+
                         ->with('success','comment updated successfully');
     }
   
