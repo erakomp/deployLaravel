@@ -74,9 +74,45 @@
                                     <option value="{{$user->id}}">{{$user->name}}</option>
 
                                 @endforeach
+                                @elseif(Auth::check() && Auth::user()->flag == 6)
+
+                                @foreach($getUsers->where('flag',6) as $user )
+                                    <option value="{{$user->id}}">{{$user->name}}</option>
+
+                                @endforeach
+                                @elseif(Auth::check() && Auth::user()->flag == 7)
+
+                                @foreach($getUsers->where('flag',7) as $user )
+                                    <option value="{{$user->id}}">{{$user->name}}</option>
+
+                                @endforeach
+                                @elseif(Auth::check() && Auth::user()->flag == 8)
+
+                                @foreach($getUsers->where('flag',8) as $user )
+                                    <option value="{{$user->id}}">{{$user->name}}</option>
+
+                                @endforeach
+                                @elseif(Auth::check() && Auth::user()->flag == 9)
+
+                                @foreach($getUsers->where('flag',9) as $user )
+                                    <option value="{{$user->id}}">{{$user->name}}</option>
+
+                                @endforeach
+                                @elseif(Auth::check() && Auth::user()->flag == 10)
+
+                                @foreach($getUsers->where('flag',10) as $user )
+                                    <option value="{{$user->id}}">{{$user->name}}</option>
+
+                                @endforeach
+                                @elseif(Auth::check() && Auth::user()->flag == 11)
+
+                                @foreach($getUsers->where('flag',11) as $user )
+                                    <option value="{{$user->id}}">{{$user->name}}</option>
+
+                                @endforeach
                                 @else 
 
-                                @foreach($getUsers->where('flag', 6) as $user )
+                                @foreach($getUsers->where('flag', 12) as $user )
                                     <option value="{{$user->id}}">{{$user->name}}</option>
 
                                 @endforeach

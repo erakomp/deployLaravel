@@ -536,12 +536,8 @@
                                   <div id="performance-line-legend"></div>
                                 </div>
                                 <div class="chartjs-wrapper mt-5" style="height:500px!important;">
-                                  @if(auth()->user()->user_flag === 0)
                                   <canvas id="canvas" ></canvas>
-                                  @else                                  <canvas id="canvas" ></canvas>
-
-                                  @endif
-                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>

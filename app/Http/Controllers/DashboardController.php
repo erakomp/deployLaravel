@@ -41,10 +41,6 @@ class DashboardController extends Controller
         foreach ($year as $key => $value) {
             $user[] = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->join('projects','tasks.project_id','=','projects.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted_at', '=', NULL) ->where('tasks.user_assigned_id','=', Auth::user()->id)->where(DB::raw("DATE_FORMAT(tasks.created_at, '%Y-%m')"),$value)->count();
         }
-        $userss = [];
-        foreach ($year as $key => $value) {
-            $user[] = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->join('projects','tasks.project_id','=','projects.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted_at', '=', NULL) ->where('tasks.flag','=', Auth::user()->flag)->where(DB::raw("DATE_FORMAT(tasks.created_at, '%Y-%m')"),$value)->count();
-        }
 
         $record = DB::table('users')->select(DB::raw("COUNT(*) as count"), DB::raw("flag as day_name"))
     ->groupBy('day_name')
@@ -59,7 +55,7 @@ class DashboardController extends Controller
  
     $data['chart_data'] = json_encode($data);
     
-        return view('welcome', $data,compact('getDataProject','getDataTask','getIncTask', 'getCompTask', 'getOv','getDataProject_man','getDataTask_man','getIncTask_man', 'getCompTask_man', 'getOv_man', 'getUserList', 'getUser', 'most'))->with('year',json_encode($year,JSON_NUMERIC_CHECK))->with('user',json_encode($user,JSON_NUMERIC_CHECK))->with('userss',json_encode($userss,JSON_NUMERIC_CHECK));
+        return view('welcome', $data,compact('getDataProject','getDataTask','getIncTask', 'getCompTask', 'getOv','getDataProject_man','getDataTask_man','getIncTask_man', 'getCompTask_man', 'getOv_man', 'getUserList', 'getUser', 'most'))->with('year',json_encode($year,JSON_NUMERIC_CHECK))->with('user',json_encode($user,JSON_NUMERIC_CHECK));
     }
 
     /**
