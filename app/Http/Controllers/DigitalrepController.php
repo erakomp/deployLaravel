@@ -37,17 +37,15 @@ class DigitalrepController extends Controller
                 })
                     ->where(function($query) use($request){
                         return $request->from ?
-                        $query->from('tasks')->whereBetween('tasks.updated_at', [$request->from.'00:00:00', $request->to.'23:59:59']) : '';
+                        $query->from('tasks')->whereBetween('tasks.updated_at', [$request->from .' 00:00:00', $request->to .' 23:59:59']) : '';
                    })
                     //->with('prices','colors')
                     ->get();
                 
         $price_id = $request->price_id;        
         // $color_id = $request->color_id;
-        // $from = date("Y-m-d H:i:s",strtotime($request->from));        
-        // $to = date("Y-m-d H:i:s",strtotime($request->to));
-       $from = $request->from;
-       $to = $request->to;
+       
+       
         // $from = !empty($from) ? date('d-M-Y', strtotime($request->from)) : 0 ;
         // $to = !empty($to) ? date('d-M-Y', strtotime($to)) : null;
 
