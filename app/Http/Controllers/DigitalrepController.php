@@ -26,6 +26,7 @@ class DigitalrepController extends Controller
         ->join('projects', 'tasks.project_id', '=', 'projects.id')
         ->join('users', 'tasks.user_assigned_id', '=', 'users.id')
         ->select('statuses.title as jo','projects.title as pt', 'tasks.project_id' ,'tasks.external_id','tasks.title as tt', 'users.name as ui', 'tasks.created_at', 'tasks.status_id', 'tasks.updated_at', 'tasks.created_at', DB::raw('TIMESTAMPDIFF(HOUR, tasks.created_at, tasks.updated_at) AS timediff'))
+        ->where('projects.deleted_at', '=', NULL)
         
         // ->select(DATEDIFF)
         
@@ -36,7 +37,7 @@ class DigitalrepController extends Controller
                 })
                     ->where(function($query) use($request){
                         return $request->from ?
-                        $query->from('tasks')->whereBetween('tasks.updated_at', [($request->from).'00:00:00', ($request->to).'23:59:59']) : '';
+                        $query->from('tasks')->whereBetween('tasks.updated_at', [$request->from.'00:00:00', $request->to.'23:59:59']) : '';
                    })
                     //->with('prices','colors')
                     ->get();
