@@ -364,12 +364,13 @@ class TasksController extends Controller
      */
     public function updateDeadline(Request $request, $external_id)
     {
+        // return $request->all();
         if (!auth()->user()->can('task-update-deadline')) {
             session()->flash('flash_message_warning', __('You do not have permission to change task deadline'));
             return redirect()->route('tasks.show', $external_id);
         }
         $task = $this->findByExternalId($external_id);
-        $task->fill(['deadline' => Carbon::parse($request->deadline_date)])->save();
+        $task->fill(['deadline' => Carbon::parse($request->deadline)])->save();
 
         event(new \App\Events\TaskAction($task, self::UPDATED_DEADLINE));
         Session()->flash('flash_message', 'New deadline is set');

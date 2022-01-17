@@ -15,7 +15,7 @@
     </div>
     <!-- Tab panes -->
     <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="notifications">
+        <div role="tabpanel" class="tab-pane active" id="notifications" >
             @include('partials.action-panel._notification-list')
         </div>
         <div role="tabpanel" class="tab-pane" id="actions">

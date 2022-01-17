@@ -64,6 +64,8 @@
                         <button type="submit" class="btn btn-danger" ><i class="fa fa-trash" aria-hidden="true"></i>
                         </button>
                     </form>
+                    <button type="submit" class="btn btn-warning" ><i class="fa fa-pen" aria-hidden="true"></i>
+                    </button>
                     @else
                     @endif
         </div>

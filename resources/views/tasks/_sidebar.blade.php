@@ -40,7 +40,7 @@
 <div class="row margin-top-10">
     <div class="col-md-4">{{ __('Deadline') }}</div>
     <div class="col-md-8">
-                    <span {{Entrust::can('task-update-deadline') ? 'data-toggle=modal data-target=#ModalUpdateDeadline' : ''}}  class="siderbar-list-value {{$tasks->isCloseToDeadline() ? 'text-danger' : ''}}">{{date('l, d/m/y H:i', strtotime($tasks->deadline))}}
+                    <span {{Entrust::can('task-update-deadline') ? 'data-toggle=modal data-target=#ModalUpdateDeadline' : ''}}  class="siderbar-list-value {{$tasks->isCloseToDeadline() ? 'text-danger' : ''}}">{{date('l, d-m-y H:i:s', strtotime($tasks->deadline))}}
                         @if($tasks->status_id != 7)
                             <span class="small text-black">({!! $tasks->days_until_deadline !!})</span>
                             @else

@@ -67,4 +67,24 @@ class CommentController extends Controller
         Session()->flash('flash_message', __('Comment deleted'));
         return redirect()->back();
     }
+    public function edit($id)
+    {
+        $comment = Comment::findOrFail($id);
+
+        return view('comments.edit',compact('comment'));
+    }
+    public function update($comment,Request $request )
+    {
+        // dd($product);
+        //return $product;
+        $request->validate([
+            'description' => 'required',
+           
+        ]);
+        Comment::findOrFail($comment)->update($request->all());
+  
+        return redirect()->back()
+                        ->with('success','comment updated successfully');
+    }
+  
 }

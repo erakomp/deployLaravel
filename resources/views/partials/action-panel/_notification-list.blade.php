@@ -1,7 +1,7 @@
 <?php $notifications = auth()->user()->unreadNotifications; ?>
-<div class="notification-wrapper">
+<div class="notification-wrapper" style="height: 200px !important; max-height: 200px !important;">
     @if($notifications->isEmpty())
-        <ul>
+        <ul style="height: 200px !important;">
             <div class="action-content">
                 <h3 style="position:  absolute; margin-top:  180px; margin-left: 10px;" class="title">@lang('No new notifications')</h3>
                 <img src="{{url('/images/undraw_empty.svg')}}" class="not_found_image_wrapper">

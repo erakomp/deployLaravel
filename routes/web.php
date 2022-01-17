@@ -105,6 +105,7 @@ Route::get('/digitalrep', 'DigitalrepController@test')->name('filterrep');
     Route::resource('colors','ListcolorController');
     Route::resource('usercrud','UsercrudController');
     // Route::delete('/usercrud/{id}/destroy', 'UsercrudController@destroy')->name('users.destroy');
+    Route::resource('comments','CommentController');
 
 
     Route::resource('userr','UserrController');
