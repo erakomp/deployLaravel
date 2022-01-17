@@ -59,7 +59,7 @@ class DigitalrepController extends Controller
         $selected_id['updated_at'] = $request->to;
 
         $startDate = Carbon::today()->toDateString();
-        return view('digitalrep',compact('product', 'startDate','selected_id', 'countries', 'price_id', 'from', 'to'));
+        return view('digitalrep',compact('product', 'startDate','selected_id', 'countries', 'price_id'));
     }
 
     public function overdue(Request $request){

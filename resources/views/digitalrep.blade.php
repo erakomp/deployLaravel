@@ -37,28 +37,27 @@
                             @endforeach --}}
                         </select>
                         
-                        <input type="date" name="from" id="input" style="margin-right:2%;" value="">
-
-                        <input type="date" name="to" id="input" style="margin-right:2%;" value="" my-date-format="DD/MM/YYYY, hh:mm:ss" >
+                        <input type="date" name="from" id="input" value="{{Carbon\Carbon::now()->toDatetimelocalString()}}" style="margin-right:2%;">
+                        <input type="date" name="to" id="input" value="{{Carbon\Carbon::now()->toDatetimelocalString()}}" style="margin-right:2%;">
                         <input type="submit"  class="btn btn-md btn-brand movedown" value="Filter" style="font-size: 16px; ">
                         </form>
                         
                         <div class="row" style="text-align: center;">
-                            <div class="col-sm-6">
+                            {{-- <div class="col-sm-6">
                                 <p> <strong> From :
                                     @if($from == '1970-01-01 07:00:00') No specific date selected
                                     @else
                                    {{$from}}</strong>@endif
                                     </p>
 
-                            </div>
-                            <div class="col-sm-6">
+                            </div> --}}
+                            {{-- <div class="col-sm-6">
                                 <p>To :@if($to == '1970-01-01 07:00:00') <strong>No specific date selected
                                     @else
                                    {{$to}}</strong>@endif
                                     </p>
 
-                            </div>
+                            </div> --}}
                         </div>
                         <a href="/digitalrep">
                         <div  class="btn btn-md btn-brand movedown" value="Reset" style="font-size: 16px;  margin-left:50%;">Reset</div></a>
