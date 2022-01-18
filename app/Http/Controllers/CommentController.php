@@ -84,9 +84,8 @@ class CommentController extends Controller
         ]);
         Comment::findOrFail($comment)->update($request->all());
   
-        return \Redirect::route('tasks.show', $getExt['external_id'])
+        return refresh();
 
-                        ->with('success','comment updated successfully');
-    }
+        }
   
 }

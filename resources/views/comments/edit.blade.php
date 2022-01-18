@@ -26,20 +26,33 @@
             <form action="{{ route('comments.update',$comment->id) }}" method="POST">
                 @csrf
                 @method('PUT')
-        
-                <div class="row">
-                    <div class="col-sm-6">
+                <div class="row" style="display: flex; justify-content:center;">
+                    <div class="col-sm-2">
                         <div class="form-group">
-                            <strong>Title:</strong>
-                            <textarea type="text" name="description" value="{!! $comment->description !!}" class="form-control" ></textarea>
+                            <strong>Comment :</strong>
+                            
                         </div>
                     </div>
-                    <div class="col-sm-6" style="display: none;">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+
+                        <textarea type="text" name="description" value="{!! $comment->description !!}" class="form-control" ></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    {{-- <div class="col-sm-6">
+                        <div class="form-group">
+                            <strong>Comment :</strong>
+                            <textarea type="text" name="description" value="{!! $comment->description !!}" class="form-control" ></textarea>
+                        </div>
+                    </div> --}}
+                    {{-- <div class="col-sm-6" style="display: none;">
                         <div class="form-group">
                             <strong>Type:</strong>
                             <input type="text" name="source_type" value="{{ $comment->source_type }}" class="form-control">
                         </div>
-                    </div>
+                    </div> --}}
                    
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                         <button onclick="history.back()" class="btn btn-md btn-brand movedown">Back</button>
