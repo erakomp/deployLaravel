@@ -84,7 +84,7 @@ class CommentController extends Controller
         ]);
         Comment::findOrFail($comment)->update($request->all());
   
-        return refresh();
+        return redirect()->back();
 
         }
   
