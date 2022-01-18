@@ -57,11 +57,11 @@
                     <br/>{{ __('Modified') }} : {{date(carbonFullDateWithText(), strtotime($comment->updated_at))}}
                 @endif</p>
                 @if(Auth::user()->id === $comment->user_id)
-                
+                <a href="/comments/{{$comment->id}}/edit"><button class="btn btn-warning" style="margin-right:5px;" ><i class="fa fa-pen" aria-hidden="true"></i></a>
                 <form action="{{ route('comments.destroy',$comment->id) }}" method="POST" style="display:flex; justify-content:right; ">
                     @csrf
                         @method('DELETE')
-                        <a href="/comments/{{$comment->id}}/edit"><button class="btn btn-warning" style="margin-right:5px;" ><i class="fa fa-pen" aria-hidden="true"></i></a>
+                       
           
                         <button type="submit" class="btn btn-danger" ><i class="fa fa-trash" aria-hidden="true"></i>
                         </button>
