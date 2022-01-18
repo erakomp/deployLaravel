@@ -223,7 +223,7 @@ Route::get('/digitalrep', 'DigitalrepController@test')->name('filterrep');
         Route::delete('/{lead}/json', 'LeadsController@destroyJson');
     });
     Route::resource('leads', 'LeadsController');
-    // Route::post('{type}/{external_id}', 'CommentController@store')->name('comments.create');
+     Route::post('{type}/{external_id}', 'CommentController@store')->name('comments.create');
     Route::delete('/{comment}', 'CommentController@destroy')->name('comments.destroy');
 
 
