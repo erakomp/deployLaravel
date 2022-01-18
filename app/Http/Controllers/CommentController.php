@@ -79,7 +79,7 @@ class CommentController extends Controller
         // dd($product);
         //return $product;
         $request->validate([
-            'description' => 'required',
+            'description' => 'sometimes',
            
         ]);
         Comment::findOrFail($comment)->update($request->all());
