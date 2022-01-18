@@ -366,28 +366,28 @@
                         <div class="statistics-details d-flex align-items-center justify-content-between">
                           <div>
                             <p class="statistics-title">Total Projects</p>
-                            <h3 class="rate-percentage">@if(Auth::user()->user_flag == 0){{$getDataProject}} @else {{$getDataProject_man}}@endif</h3>
+                            <h3 class="rate-percentage">{{$getDataProject}} </h3>
                             {{-- <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>{{$getDataProject}}</span></p> --}}
                           </div>
                           <div>
                             <p class="statistics-title">Total Task</p>
-                            <h3 class="rate-percentage">@if(auth()->user()->user_flag == 0){{$getDataTask}}
-                            @else{{$getDataTask_man}}@endif</h3>
+                            <h3 class="rate-percentage">{{$getDataTask}}
+                            </h3>
                             {{-- <p class="text-success d-flex"><i class="mdi mdi-menu-up"></i><span>+0.1%</span></p> --}}
                           </div>
                           <div>
                             <p class="statistics-title">Complete Task(s)</p>
-                            <h3 class="rate-percentage">@if(auth()->user()->user_flag == 0){{$getCompTask}} of {{$getDataTask}} ({{round(($getCompTask/$getDataTask)*100)}}%)@else {{$getCompTask_man}} of {{$getDataTask_man}} ({{round(($getCompTask_man/$getDataTask_man)*100)}}%) @endif</h3>
+                            <h3 class="rate-percentage">{{$getCompTask}} of {{$getDataTask}} ({{round(($getCompTask/$getDataTask)*100)}}%)</h3>
                             {{-- <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p> --}}
                           </div>
                           <div class="d-none d-md-block">
                             <p class="statistics-title">Incomplete Task(s)</p>
-                            <h3 class="rate-percentage">@if(auth()->user()->user_flag == 0){{$getIncTask}} of {{$getDataTask}} ({{round(($getIncTask/$getDataTask)*100)}}%) @else {{$getIncTask_man}} of {{$getDataTask_man}} ({{round(($getIncTask_man/$getDataTask_man)*100)}}%)@endif</h3>
+                            <h3 class="rate-percentage">{{$getIncTask}} of {{$getDataTask}} ({{round(($getIncTask/$getDataTask)*100)}}%)</h3>
                             {{-- <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+0.8%</span></p> --}}
                           </div>
                           <div class="d-none d-md-block">
                             <p class="statistics-title">Overdue Task(s)</p>
-                            <h3 class="rate-percentage">@if(auth()->user()->user_flag == 0){{$getOv}} of {{$getDataTask}} ({{round(($getOv/$getDataTask)*100)}}%)@else {{$getOv_man}} of {{$getDataTask_man}} ({{round(($getOv_man/$getDataTask_man)*100)}}%)@endif </h3>
+                            <h3 class="rate-percentage">{{$getOv}} of {{$getDataTask}} ({{round(($getOv/$getDataTask)*100)}}%) </h3>
                             {{-- <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p> --}}
                           </div>
                           {{-- <div class="d-none d-md-block">
