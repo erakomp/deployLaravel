@@ -400,7 +400,7 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
                                 class="bullet-point"><span></span></i> {{ __('Integrations') }}</a>-->
                 </div>
             @endif
-            @if(auth()->user->user_flag == 1)
+            @if(Auth::user()->user_flag == 1)
             <a href="/chart" class=" list-group-item" data-parent="#MainMenu"><i class="fas fa-chart-line sidebar-icon"></i><span id="menu-txt" style="font-size: 16px!important;" >Graph </span></a>
             @else
             <a href="/dass" class=" list-group-item" data-parent="#MainMenu"><i class="fas fa-chart-line sidebar-icon"></i><span id="menu-txt" style="font-size: 16px!important;" >Graph </span></a>
