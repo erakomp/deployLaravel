@@ -27,6 +27,24 @@ class ChartJsController extends Controller
 
     	return view('chartjs')->with('year',json_encode($year,JSON_NUMERIC_CHECK))->with('user',json_encode($user,JSON_NUMERIC_CHECK))->with('years',json_encode($years,JSON_NUMERIC_CHECK))->with('users',json_encode($users,JSON_NUMERIC_CHECK));
     }
+    public function index_null()
+    {
+        $year = ['2021-01','2021-02','2021-03','2021-04','2021-05','2021-06', '2021-07','2021-08','2021-09','2021-10','2021-11', '2021-12',] ;
+
+        $user = [];
+        foreach ($year as $key => $value) {
+            $user[] = DB::table('tasks')->where(DB::raw("DATE_FORMAT(created_at, '%Y-%m')"),$value)->count();
+        }
+        $years = ['2021-01','2021-02','2021-03','2021-04','2021-05','2021-06', '2021-07','2021-08','2021-09','2021-10','2021-11', '2021-12',] ;
+
+        $users = [];
+        foreach ($years as $key => $value) {
+            $users[] = DB::table('projects')->where(DB::raw("DATE_FORMAT(created_at, '%Y-%m')"),$value)->count();
+        }
+        
+
+    	return view('chartjs')->with('year',json_encode($year,JSON_NUMERIC_CHECK))->with('user',json_encode($user,JSON_NUMERIC_CHECK))->with('years',json_encode($years,JSON_NUMERIC_CHECK))->with('users',json_encode($users,JSON_NUMERIC_CHECK));
+    }
     public function index2()
     {
  

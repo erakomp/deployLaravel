@@ -411,9 +411,11 @@
                                   </div>
                                   <div id="performance-line-legend"></div>
                                 </div>
+                               
                                 <div class="chartjs-wrapper mt-5" style="height:500px!important;">
                                   <canvas id="canvas" ></canvas>
                                 </div>
+                              
                               </div>
                             </div>
                           </div>
@@ -775,6 +777,42 @@
 showTime();
 </script>
 <script>
+  <script>
+  var year = <?php echo $year; ?>;
+  var user = <?php echo $user; ?>;
+  var barChartData = {
+      labels: year,
+      datasets: [{
+          label: 'Tasks',
+          backgroundColor: "blue",
+          data: user
+      }]
+  };
+
+  window.onload = function() {
+      var ctx = document.getElementById("canvas_null").getContext("2d");
+      window.myBar = new Chart(ctx, {
+          type: 'line',
+          data: barChartData,
+          options: {
+              elements: {
+                  rectangle: {
+                      borderWidth: 2,
+                      borderColor: '#c1c1c1',
+                      borderSkipped: 'bottom'
+                  }
+              },
+              responsive: true,
+              title: {
+                  display: true,
+                  text: 'Yearly Tasks Created By Users'
+              }
+          }
+      });
+  };
+</script>
+</script>
+<script>
   $(function(){
       //get the pie chart canvas
       var cData = JSON.parse(`<?php echo $chart_data; ?>`);
@@ -846,7 +884,7 @@ showTime();
       labels: year,
       datasets: [{
           label: 'Tasks',
-          backgroundColor: "pink",
+          backgroundColor: "blue",
           data: user
       }]
   };

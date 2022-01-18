@@ -12,6 +12,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 Route::get('/dass', 'DashboardController@index');
+Route::get('chart','ChartController@index');
+
 // Route::get('usersie', ['uses'=>'UserController@index', 'as'=>'users.index']);
 Route::get('/datatable', 'AjaxController@datatable')->name('datatable');
 Route::get('/ajax', 'AjaxController@ajax')->name('ajax');
