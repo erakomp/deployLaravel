@@ -7,10 +7,10 @@
    
         <div class="col-md-4" style="font-size:14px!important;">Created By</div>
         <div class="col-md-7" style="font-size:14px!important;">
-            
+            {{$project->creator->name ?? 'Inactive User'}}
         </div>
       
- 
+ <br>
     
     <div class="col-md-4" style="font-size:14px!important;">Assigned To</div>
    
