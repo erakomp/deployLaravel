@@ -11,14 +11,14 @@
 */use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
-Route::get('/dass', 'DashboardController@index');
-Route::get('chart','ChartController@index');
+
 
 // Route::get('usersie', ['uses'=>'UserController@index', 'as'=>'users.index']);
 Route::get('/datatable', 'AjaxController@datatable')->name('datatable');
 Route::get('/ajax', 'AjaxController@ajax')->name('ajax');
 Route::auth();
-
+Route::get('/dass', 'DashboardController@index');
+Route::get('chart','ChartController@index');
 
 Route::post('/home', 'HomeController@upload')->name('avatar.upload');
 Route::get('images/{filename}', 'HomeController@displayImage')->name('image.displayImage');
