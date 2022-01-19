@@ -96,7 +96,7 @@
                         </form>
                     
                     
-                        <table class="table table-responsive" style="margin-top:5%;">
+                        <table class="table table-responsive" style="margin-top:5%; margin-left:-5%!important;">
                             <thead>
                                 <tr>
                                     <th>No</th>
