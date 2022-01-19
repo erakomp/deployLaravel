@@ -35,8 +35,8 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-
-                        <textarea type="text" name="description" value="{!! $comment->description !!}" class="form-control" ></textarea>
+                            {!! $comment->description !!}
+                        <textarea type="text" name="description" value="" class="form-control" ></textarea>
                         </div>
                     </div>
                 </div>
