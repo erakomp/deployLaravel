@@ -16,8 +16,8 @@
                         <input type="submit" class="btn btn-sm btn-brand movedown" value="Filter" style="margin-top:-0.2%; font-size:16px;">
                         </form>
                     
-                    
-                        <table class="table table-stripped col-md-7" style="padding:5%!important;">
+                    <div class="col-md-10">
+                        <table class="table table-stripped" style="padding:5%!important;">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -51,6 +51,8 @@
         
                             </tbody>
                         </table>
+                    </div>
+                        
                 
                         </div>
                     </div>
