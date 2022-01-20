@@ -71,9 +71,9 @@ class DigitalrepController extends Controller
     {
         $product = DB::table('tasks')
         ->join('projects', 'tasks.project_id', '=', 'projects.id')
-        ->where('projects.flag', '=', Auth::user()->flag)
+        ->where('projects.flag', '=', auth()->user()->flag)
         ->where('deleted_at', '=', null)
-        ->where('tasks.flag', '=', Auth::user()->flag)
+        ->where('tasks.flag', '=', auth()->user()->flag)
         ->where(function ($query) use ($request) {
             return $request->from ?
                    $query->from('tasks')->whereBetween('deadline', [$request->from . ' 00:00:00', $request->to . ' 23:59:59']) : '';
