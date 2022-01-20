@@ -17,7 +17,7 @@
                         </form>
                     
                     <div class="col-md-10">
-                        <table class="table table-stripped" style="padding:5%!important;">
+                        <table class="table table-stripped" style="">
                             <thead>
                                 <tr>
                                     <th>No</th>
