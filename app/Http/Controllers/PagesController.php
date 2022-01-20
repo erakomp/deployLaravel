@@ -10,8 +10,8 @@ use App\Models\Task;
 use App\Models\User;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
-use DB;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PagesController extends Controller
 {
@@ -22,8 +22,12 @@ class PagesController extends Controller
     public function dashboard()
     {
         $getUser = DB::table('users')->get();
-        $getProjects = DB::table('projects')->where('projects.deleted_at','=',NULL)->count();
-        $getTasks = DB::table('tasks')->where('tasks.deleted_at','=',NULL)->count();
+        $getProjects = DB::table('projects')->where('deleted_at','=',NULL)
+        ->where('flag', '=', Auth::user()->flag)
+        ->count();
+        $getTasks = DB::table('tasks')->where('deleted_at','=',NULL)
+        ->where('flag', '=', Auth::user()->flag)
+        ->count();
    
         $today = today();
         $startDate = today()->subdays(14);
