@@ -63,7 +63,7 @@
                         <div  class="btn btn-md btn-brand movedown" value="Reset" style="font-size: 16px;  margin-left:20%;">Reset</div></a>
 
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table" style="margin-left:5%;">
                                 <thead>
                                     <tr>
                                         <th>No</th>
