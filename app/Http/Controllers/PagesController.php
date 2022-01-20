@@ -62,7 +62,8 @@ class PagesController extends Controller
             ->withDatasheet($datasheet)
             ->withTotalTasks(DB::table('tasks')
             ->join('projects', 'tasks.project_id', '=', 'projects.id')
-            ->where('projects.flag', '=', Auth::user()->flag)
+            ->where('tasks.flag', '=', Auth::user()->flag)
+            
             ->where('projects.deleted_at','=',NULL)
             ->where('tasks.deleted_at','=',NULL)
             ->count())
