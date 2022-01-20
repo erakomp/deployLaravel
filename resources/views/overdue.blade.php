@@ -22,6 +22,9 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Task Title</th>
+                                    <th>Project Title</th>
+                                    <th>Assigned To</th>
+                                    <th>Task Status</th>
                                     <th>Deadline</th>
         
                                 </tr>
@@ -33,14 +36,21 @@
                                     @if($product->deadline < Carbon::today()->toDateString())
 
                                     <td style="color:red;"><strong>{{ $loop->index+1 }}</strong></td>
-                                    <td style="color:red;"><a href="/tasks/{{$product->external_id}}" style="color:red;"><strong>{{ $product->title }}</strong></a></td>
+
+                                    <td style="color:red;"><a href="/tasks/{{$product->external_id}}" style="color:red;"><strong>{{ $product->tt }}</strong></a></td>
+                                    <td style="color:red; font-weight:bold;">{{$product->pt}}</td>
+                                    <td style="color:red; font-weight:bold;">{{$product->name}}</td>
                                     
-                                    
-                                    <td style="color:red;"><strong>{{date('l, d/m/y H:i:s', strtotime($product->deadline))}}</strong></td>
+                                    <td style="color:red; font-weight:bold;">{{$product->st}}</td>
+
+                                    <td style="color:red; font-weight:bold;"><strong>{{date('l, d/m/y H:i:s', strtotime($product->deadline))}}</strong></td>
                                     @else
-                                    <td>{{ $loop->index+1 }}</td>
-                                    <td><a href="/tasks/{{$product->external_id}}" style="color:black;">{{ $product->title }}</a></td>
+                                    <td style="color:red;">{{ $loop->index+1 }}</td>
+                                    <td ><a href="/tasks/{{$product->external_id}}" style="color:black;">{{ $product->tt }}</a></td>
+                                    <td>{{$product->pt}}</td>
+                                    <td>{{$product->name}}</td>
                                     
+                                    <td>{{$product->st}}</td>
                                     <td >{{date('l, d/m/y H:i:s', strtotime($product->deadline))}}</td>
                                     
                                     @endif

@@ -70,17 +70,19 @@ class OverController extends Controller
     public function overdue(Request $request){
         $product = DB::table('tasks')
         ->join('projects', 'tasks.project_id', '=', 'projects.id')
-
+        ->join('statuses','tasks.status_id', '=', 'statuses.id')
+        ->join('users', 'tasks.user_assigned_id', '=', 'users.id')
         ->where('tasks.deleted_at', '=', NULL)
         ->where('projects.deleted_at', '=', NULL)
         ->where('tasks.flag', '=', Auth::user()->flag)
         ->where('projects.flag', '=', Auth::user()->flag)
+        
         ->where( function($query) use($request){
             return $request->from ?
                    $query->from('tasks')->whereBetween('deadline', [$request->from . ' 00:00:00', $request->to . ' 23:59:59']) : '';
        
        })
-       ->select('tasks.*')
+       ->select('tasks.title as tt', 'projects.title as pt', 'users.name','tasks.deadline', 'tasks.external_id','statuses.title as st')
        ->get();
     
     $selected_id = [];
