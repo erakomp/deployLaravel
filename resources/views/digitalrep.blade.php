@@ -60,7 +60,7 @@
                             </div> --}}
                         </div>
                         <a href="/digitalrep">
-                        <div  class="btn btn-md btn-brand movedown" value="Reset" style="font-size: 16px;  margin-left:50%;">Reset</div></a>
+                        <div  class="btn btn-md btn-brand movedown" value="Reset" style="font-size: 16px;  margin-left:40%;">Reset</div></a>
 
                         <div class="table-responsive">
                             <table class="table">
