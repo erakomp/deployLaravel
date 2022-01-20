@@ -72,7 +72,9 @@ class DigitalrepController extends Controller
         $product = DB::table('tasks')
         ->join('projects', 'tasks.project_id', '=', 'projects.id')
         ->where('projects.flag', '=', auth()->user()->flag)
-        ->where('deleted_at', '=', null)
+        ->where('projects.deleted_at', '=', null)
+        ->where('tasks.deleted_at', '=', null)
+
         ->where('tasks.flag', '=', auth()->user()->flag)
         ->where(function ($query) use ($request) {
             return $request->from ?
