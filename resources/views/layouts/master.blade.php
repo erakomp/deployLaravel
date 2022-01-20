@@ -230,8 +230,11 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
                 
                 Hi, {{Auth::user()->name}} </span></a>
                 
-            <a href="/" class=" list-group-item" data-parent="#MainMenu"><i
-                        class="fa fa-home sidebar-icon"></i><span id="menu-txt" style="font-size: 16px!important;" >{{ __('Dashboard') }} </span></a>
+                @if(Auth::user()->user_flag == 1)
+                <a href="/chart" class=" list-group-item" data-parent="#MainMenu"><i class="fas fa-chart-line sidebar-icon"></i><span id="menu-txt" style="font-size: 16px!important;" >Graph </span></a>
+                @else
+                <a href="/dass" class=" list-group-item" data-parent="#MainMenu"><i class="fas fa-chart-line sidebar-icon"></i><span id="menu-txt" style="font-size: 16px!important;" >Graph </span></a>
+                @endif
                         <a href="/searching" class=" list-group-item" data-parent="#MainMenu"><i class="fas fa-search sidebar-icon"></i><span id="menu-txt" style="font-size: 16px!important;" >Find Tasks </span></a>
                         
                         <a href="/userr" class=" list-group-item" data-parent="#MainMenu"><i class="fas fa-user-edit sidebar-icon"></i><span id="menu-txt" style="font-size: 16px!important;" >Edit Profile</span></a>
@@ -400,11 +403,7 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
                                 class="bullet-point"><span></span></i> {{ __('Integrations') }}</a>-->
                 </div>
             @endif
-            @if(Auth::user()->user_flag == 1)
-            <a href="/chart" class=" list-group-item" data-parent="#MainMenu"><i class="fas fa-chart-line sidebar-icon"></i><span id="menu-txt" style="font-size: 16px!important;" >Graph </span></a>
-            @else
-            <a href="/dass" class=" list-group-item" data-parent="#MainMenu"><i class="fas fa-chart-line sidebar-icon"></i><span id="menu-txt" style="font-size: 16px!important;" >Graph </span></a>
-            @endif
+           
         </div>
     </nav>
 
