@@ -17,7 +17,7 @@
                         </form>
                     
                     
-                        <table class="table table-stripped" style="padding:5%!important;">
+                        <table class="table table-stripped col-md-7" style="padding:5%!important;">
                             <thead>
                                 <tr>
                                     <th>No</th>
