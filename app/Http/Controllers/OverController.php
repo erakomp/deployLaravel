@@ -69,6 +69,8 @@ class OverController extends Controller
 
     public function overdue(Request $request){
         $product = DB::table('tasks')
+        ->join('projects', 'tasks.project_id', '=', 'projects.id')
+
         ->where('tasks.deleted_at', '=', NULL)
         ->where('projects.deleted_at', '=', NULL)
         ->where('tasks.flag', '=', Auth::user()->flag)
