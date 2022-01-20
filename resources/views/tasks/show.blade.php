@@ -202,7 +202,7 @@
                             @method('PATCH')
                             @csrf
                             <div class="form-group">
-                                <label for="deadline_date" class="control-label thin-weight">@lang('Change deadline')</label>
+                            <label for="deadline_date" class="control-label thin-weight">@lang('Change deadline')</label>
                                 <input type="datetime-local" step="any"
                                 id="cal" name="deadline_date" value="{{old('deadline')?? date('Y-m-d\TH:i:s', strtotime($tasks->deadline)) }}" class="form-control">
                             </div>
@@ -233,7 +233,7 @@
             $('#deadline_date').pickadate({
                 hiddenName:true,
                 format: "{{frontendDate()}}",
-                formatSubmit: 'yyyy/mm/dd',
+                formatSubmit: 'yyyy/mm/dd H:i:s',
                 closeOnClear: false,
             });
 
