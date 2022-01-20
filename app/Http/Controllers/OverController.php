@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Auth;
 
 class OverController extends Controller
 {
@@ -24,6 +25,9 @@ class OverController extends Controller
         ->where('tasks.deleted_at', '=', NULL)
         ->join('projects', 'tasks.project_id', '=', 'projects.id')
         ->join('users', 'tasks.user_assigned_id', '=', 'users.id')
+        ->where('projects.deleted_at', '=', NULL)
+        ->where('tasks.flag', '=', Auth::user()->flag)
+        ->where('projects.flag', '=', Auth::user()->flag)
         ->select('projects.title as pt', 'tasks.project_id' ,'tasks.external_id','tasks.title as tt', 'users.name as ui', 'tasks.created_at', 'tasks.status_id', 'tasks.updated_at', 'tasks.created_at', DB::raw('TIMESTAMPDIFF(HOUR, tasks.created_at, tasks.updated_at) AS timediff'))
         
         // ->select(DATEDIFF)
@@ -65,7 +69,10 @@ class OverController extends Controller
 
     public function overdue(Request $request){
         $product = DB::table('tasks')
-        ->where('deleted_at', '=', NULL)
+        ->where('tasks.deleted_at', '=', NULL)
+        ->where('projects.deleted_at', '=', NULL)
+        ->where('tasks.flag', '=', Auth::user()->flag)
+        ->where('projects.flag', '=', Auth::user()->flag)
         ->where( function($query) use($request){
             return $request->from ?
                    $query->from('tasks')->whereBetween('deadline', [$request->from . ' 00:00:00', $request->to . ' 23:59:59']) : '';
