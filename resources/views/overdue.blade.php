@@ -17,7 +17,7 @@
                         </form>
                     
                     
-                        <table class="table table-stripped">
+                        <table class="table table-stripped" style="margin:5%!important;">
                             <thead>
                                 <tr>
                                     <th>No</th>
