@@ -12,7 +12,7 @@ class SaController extends Controller
     {
         //Users
         $getDataProject = DB::table('projects')->join('users','projects.user_assigned_id','=','users.id')->where('projects.deleted_at', '=', NULL)->count();
-        $getDataTask = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->join('projects','tasks.project_id','=','projects.id')->where('projects.deleted_at','=',NULL)->count();
+        $getDataTask = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->join('projects','tasks.project_id','=','projects.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted','=',NULL)->count();
         $getIncTask = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->join('projects','tasks.project_id','=','projects.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted_at', '=', NULL)->where('tasks.status_id','!=',7)->count();
         $getCompTask = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->join('projects','tasks.project_id','=','projects.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted_at', '=', NULL)->where('tasks.status_id','=',7)->count();
         $getOv = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->join('projects','tasks.project_id','=','projects.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted_at', '=', NULL)->where('tasks.deadline', '<', Carbon::today())->where('tasks.status_id', '!=', 7)->count();
