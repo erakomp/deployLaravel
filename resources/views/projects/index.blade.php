@@ -55,7 +55,7 @@
             <div class="inner" style="min-height: 100px">
                 
                 <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important; max-width:40px!important;">
-                    {{$item->title}}
+                    {!! \Illuminate\Support\Str::limit($item->title, 15, $end='...') !!}
                 </h3>
 
                 <p style="color:rgb(63, 63, 63)!important; font-size:15px!important;"> {{date('l, d-m-Y H:i:s', strtotime($item->created_at))}}</p>
@@ -90,7 +90,7 @@
             <div class="inner" style="min-height: 100px">
                 
                 <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important; max-width:40px!important;">
-                    {{$item->title}}
+                    {!! \Illuminate\Support\Str::limit($item->title, 15, $end='...') !!}
                 </h3>
 
                 <p style="color:rgb(63, 63, 63)!important; font-size:15px!important;"> {{date('l, d-m-Y H:i:s', strtotime($item->created_at))}}</p>
@@ -125,7 +125,7 @@
             <div class="inner" style="min-height: 100px">
                 
                 <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important; max-width:40px!important;">
-                    {{$item->title}}
+                    {!! \Illuminate\Support\Str::limit($item->title, 15, $end='...') !!}
                 </h3>
 
                 <p style="color:rgb(63, 63, 63)!important; font-size:15px!important;"> {{date('l, d-m-Y H:i:s', strtotime($item->created_at))}}</p>
@@ -160,7 +160,7 @@
             <div class="inner" style="min-height: 100px">
                 
                 <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important; max-width:40px!important;">
-                    {{$item->title}}
+                    {!! \Illuminate\Support\Str::limit($item->title, 15, $end='...') !!}
                 </h3>
 
                 <p style="color:rgb(63, 63, 63)!important; font-size:15px!important;"> {{date('l, d-m-Y H:i:s', strtotime($item->created_at))}}</p>
@@ -195,7 +195,7 @@
             <div class="inner" style="min-height: 100px">
                 
                 <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important; max-width:40px!important;">
-                    {{$item->title}}
+                    {!! \Illuminate\Support\Str::limit($item->title, 15, $end='...') !!}
                 </h3>
 
                 <p style="color:rgb(63, 63, 63)!important; font-size:15px!important;"> {{date('l, d-m-Y H:i:s', strtotime($item->created_at))}}</p>
@@ -230,7 +230,7 @@
             <div class="inner" style="min-height: 100px">
                 
                 <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important; max-width:40px!important;">
-                    {{$item->title}}
+                    {!! \Illuminate\Support\Str::limit($item->title, 15, $end='...') !!}
                 </h3>
 
                 <p style="color:rgb(63, 63, 63)!important; font-size:15px!important;"> {{date('l, d-m-Y H:i:s', strtotime($item->created_at))}}</p>
@@ -265,7 +265,7 @@
             <div class="inner" style="min-height: 100px">
                 
                 <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important; max-width:40px!important;">
-                    {{$item->title}}
+                    {!! \Illuminate\Support\Str::limit($item->title, 15, $end='...') !!}
                 </h3>
 
                 <p style="color:rgb(63, 63, 63)!important; font-size:15px!important;"> {{date('l, d-m-Y H:i:s', strtotime($item->created_at))}}</p>
@@ -300,7 +300,7 @@
             <div class="inner" style="min-height: 100px">
                 
                 <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important; max-width:40px!important;">
-                    {{$item->title}}
+                    {!! \Illuminate\Support\Str::limit($item->title, 15, $end='...') !!}
                 </h3>
 
                 <p style="color:rgb(63, 63, 63)!important; font-size:15px!important;"> {{date('l, d-m-Y H:i:s', strtotime($item->created_at))}}</p>
@@ -335,7 +335,7 @@
             <div class="inner" style="min-height: 100px">
                 
                 <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important; max-width:40px!important;">
-                    {{$item->title}}
+                    {!! \Illuminate\Support\Str::limit($item->title, 15, $end='...') !!}
                 </h3>
 
                 <p style="color:rgb(63, 63, 63)!important; font-size:15px!important;"> {{date('l, d-m-Y H:i:s', strtotime($item->created_at))}}</p>
@@ -370,7 +370,7 @@
             <div class="inner" style="min-height: 100px">
                 
                 <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important; max-width:40px!important;">
-                    {{$item->title}}
+                    {!! \Illuminate\Support\Str::limit($item->title, 15, $end='...') !!}
                 </h3>
 
                 <p style="color:rgb(63, 63, 63)!important; font-size:15px!important;"> {{date('l, d-m-Y H:i:s', strtotime($item->created_at))}}</p>
@@ -405,7 +405,7 @@
             <div class="inner" style="min-height: 100px">
                 
                 <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important; max-width:40px!important;">
-                    {{$item->title}}
+                    {!! \Illuminate\Support\Str::limit($item->title, 15, $end='...') !!}
                 </h3>
 
                 <p style="color:rgb(63, 63, 63)!important; font-size:15px!important;"> {{date('l, d-m-Y H:i:s', strtotime($item->created_at))}}</p>
@@ -440,7 +440,7 @@
             <div class="inner" style="min-height: 100px">
                 
                 <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important; max-width:40px!important;">
-                    {{$item->title}}
+                    {!! \Illuminate\Support\Str::limit($item->title, 15, $end='...') !!}
                 </h3>
 
                 <p style="color:rgb(63, 63, 63)!important; font-size:15px!important;"> {{date('l, d-m-Y H:i:s', strtotime($item->created_at))}}</p>
@@ -475,7 +475,7 @@
             <div class="inner" style="min-height: 100px">
                 
                 <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important; max-width:40px!important;">
-                    {{$item->title}}
+                    {!! \Illuminate\Support\Str::limit($item->title, 15, $end='...') !!}
                 </h3>
 
                 <p style="color:rgb(63, 63, 63)!important; font-size:15px!important;"> {{date('l, d-m-Y H:i:s', strtotime($item->created_at))}}</p>
