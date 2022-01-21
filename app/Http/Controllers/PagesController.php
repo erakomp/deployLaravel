@@ -31,7 +31,7 @@ class PagesController extends Controller
         $getProjects_all = DB::table('projects')->where('deleted_at','=',NULL)
         
         ->count();
-        $getTasks_all = DB::table('tasks')->join('projects','tasks.projects_id','=','tasks.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted_at','=',NULL)
+        $getTasks_all = DB::table('tasks')->join('projects','tasks.project_id','=','tasks.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted_at','=',NULL)
        
         ->count();
    
