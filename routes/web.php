@@ -19,6 +19,7 @@ Route::get('/ajax', 'AjaxController@ajax')->name('ajax');
 Route::auth();
 Route::get('/dass', 'DashboardController@index');
 Route::get('chart','ChartController@index');
+Route::get('/superadmin', 'SaController@index');
 
 Route::post('/home', 'HomeController@upload')->name('avatar.upload');
 Route::get('images/{filename}', 'HomeController@displayImage')->name('image.displayImage');
