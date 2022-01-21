@@ -32,14 +32,14 @@ class SaController extends Controller
             $user[] = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->join('projects','tasks.project_id','=','projects.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted_at', '=', NULL) ->where(DB::raw("DATE_FORMAT(tasks.created_at, '%Y-%m')"),$value)->count();
         }
 
-        $record = DB::table('users')->select(DB::raw("COUNT(*) as count"), DB::raw("flag as day_name"))
+        $record = DB::table('tasks')->select(DB::raw("COUNT(*) as count"), DB::raw("flag as day_name"), 'divs.division')->join('divs', 'tasks.flag', '=', 'divs.id')
     ->groupBy('day_name')
     ->get();
   
      $data = [];
  
      foreach($record as $row) {
-        $data['label'][] = $row->day_name;
+        $data['division'][] = $row->division;
         $data['data'][] = (int) $row->count;
       }
  

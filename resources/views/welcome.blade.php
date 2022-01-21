@@ -782,10 +782,10 @@ showTime();
  
       //pie chart data
       var data = {
-        labels: ['IT', 'Legal', 'Sales'],
+        labels: cData.division,
         datasets: [
           {
-            label: "Users Count",
+            label: "Task Count",
             data: cData.data,
             backgroundColor: [
               "#DEB887",

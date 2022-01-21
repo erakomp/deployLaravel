@@ -786,7 +786,7 @@ showTime();
         labels: cData.division,
         datasets: [
           {
-            label: "Users Count",
+            label: "Task Count",
             data: cData.data,
             backgroundColor: [
               "#DEB887",
@@ -812,9 +812,9 @@ showTime();
         title: {
           display: true,
           position: "top",
-          text: "Total Users Based On Divisions",
+          text: "Total Tasks Based On Divisions",
           fontSize: 21,
-          marginBottom:15,
+          marginBottom:0,
           fontColor: "#111"
         },
         legend: {
