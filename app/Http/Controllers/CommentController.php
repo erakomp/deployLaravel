@@ -5,6 +5,7 @@ use Session;
 use App\Models\User;
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CommentController extends Controller
 {
@@ -69,8 +70,12 @@ class CommentController extends Controller
     }
     public function edit($id)
     {
-        $comment = Comment::findOrFail($id);
-
+        
+        $comment = Comment::with(['task'])
+        ->where('id', $id)
+        ->first();
+       
+        
         return view('comments.edit',compact('comment'));
     }
     public function update($comment,Request $request )

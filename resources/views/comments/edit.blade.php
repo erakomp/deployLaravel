@@ -6,6 +6,7 @@
         <div class="container" style="padding: 5%;">
             <div class="row" style="margin-bottom: 20px;">
                 <div class="col-lg-12 margin-tb">
+                    <a href="/tasks/{{$comment->task->external_id}}"><div class="btn btn-md btn-brand movedown">Back</div></a>
                     <div class="">
                         <h1 style="text-transform: uppercase; font-weight:bold; text-align:center">Edit Comment</h1>
                     </div>
@@ -37,10 +38,11 @@
                         <div class="form-group">
                             {{-- {!! $comment->description !!} --}}
                             {{-- {{strip_tags($comment->description)}} --}}
-                       <input type="text" value="{{strip_tags($comment->description)}}" name="description">
+                       <input type="text" placeholder="{{strip_tags($comment->description)}}" value="{{strip_tags($comment->description)}}" name="description" style="width: 400px;">
                         </div>
                     </div>
                 </div>
+               
                 <div class="row">
                     {{-- <div class="col-sm-6">
                         <div class="form-group">
@@ -54,14 +56,13 @@
                             <input type="text" name="source_type" value="{{ $comment->source_type }}" class="form-control">
                         </div>
                     </div> --}}
-                   
+                
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                        <button onclick="history.back()" class="btn btn-md btn-brand movedown">Back</button>
+                       
 
-                        <button type="submit" class="btn btn-md btn-brand movedown">Update</button>
+                        <button type="submit" class="btn btn-md btn-brand movedown">Update</button> 
                     </div>
                 </div>
-        
             </form>
         </div>
     </div>
