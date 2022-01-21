@@ -15,7 +15,7 @@
         <a href="/projects">
             <div class="card-body" style="margin:5%; text-align:center; color:black; ">
                 <p>Total Projects</p>
-                <h1>@if(Auth::user()->flag == 10){{$getProjects}}@else{{$totalProjects}}@endif
+                <h1>@if(Auth::user()->user_flag == 2){{$getProjects_all}}@else{{$getTasks}}@endif
                 </h1>
             </div>
         </a>
@@ -26,7 +26,7 @@
         <div class="card-body" style="margin:5%; text-align:center; color:black!important;">
             <a href="/importExportView" style="color:black!important;">
             <p>Total Tasks</p>
-            <h1>@if(Auth::user()->flag == 10){{$getTasks}}@else                            {{$totalTasks}}@endif
+            <h1>@if(Auth::user()->user_flag == 2){{$getTasks_all}}@else                            {{$getTasks}}@endif
             </h1>
         </a>
         </div>

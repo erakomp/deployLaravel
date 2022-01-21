@@ -28,6 +28,12 @@ class PagesController extends Controller
         $getTasks = DB::table('tasks')->where('deleted_at','=',NULL)
         ->where('flag', '=', Auth::user()->flag)
         ->count();
+        $getProjects_all = DB::table('projects')->where('deleted_at','=',NULL)
+        
+        ->count();
+        $getTasks_all = DB::table('tasks')->where('deleted_at','=',NULL)
+       
+        ->count();
    
         $today = today();
         $startDate = today()->subdays(14);
@@ -57,7 +63,7 @@ class PagesController extends Controller
             $absences = Absence::with('user')->groupBy('user_id')->where('start_at', '>=', today())->orWhere('end_at', '>', today())->get();
         }
 
-        return view('pages.dashboard', compact('getTasks', 'getProjects'))
+        return view('pages.dashboard', compact('getTasks', 'getProjects', 'getTasks_all', 'getProjects_all'))
             ->withUsers(User::with(['department'])->get())
             ->withDatasheet($datasheet)
             ->withTotalTasks(DB::table('tasks')
