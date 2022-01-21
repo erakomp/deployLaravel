@@ -15,10 +15,13 @@
         <!-- small box -->
         <div class="small-box " style="border-radius: 20px; background-color:rgba(255, 255, 255, 0.5); padding:5%;">
             <div class="inner" style="min-height: 100px">
+                <div class="" style="width:30px;">
+                    <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important; width:40px!important;">
+                    
+                        {!! \Illuminate\Support\Str::limit($item->title, 18, $end='...') !!}
+                    </h3>
+                </div>
                 
-                <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important;">
-                    {{$item->title}}
-                </h3>
 
                 <p style="color:rgb(63, 63, 63)!important; font-size:15px!important;"> {{date('l, d-m-Y H:i:s', strtotime($item->created_at))}}</p>
                 <form action="{{ route('projects.destroy',$item->external_id) }}" method="POST" style="display:flex; justify-content:right; ">
@@ -51,7 +54,7 @@
         <div class="small-box " style="border-radius: 20px; background-color:rgba(255, 255, 255, 0.5); padding:5%;">
             <div class="inner" style="min-height: 100px">
                 
-                <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important;">
+                <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important; max-width:40px!important;">
                     {{$item->title}}
                 </h3>
 
@@ -86,7 +89,7 @@
         <div class="small-box " style="border-radius: 20px; background-color:rgba(255, 255, 255, 0.5); padding:5%;">
             <div class="inner" style="min-height: 100px">
                 
-                <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important;">
+                <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important; max-width:40px!important;">
                     {{$item->title}}
                 </h3>
 
@@ -121,7 +124,7 @@
         <div class="small-box " style="border-radius: 20px; background-color:rgba(255, 255, 255, 0.5); padding:5%;">
             <div class="inner" style="min-height: 100px">
                 
-                <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important;">
+                <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important; max-width:40px!important;">
                     {{$item->title}}
                 </h3>
 
@@ -156,7 +159,7 @@
         <div class="small-box " style="border-radius: 20px; background-color:rgba(255, 255, 255, 0.5); padding:5%;">
             <div class="inner" style="min-height: 100px">
                 
-                <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important;">
+                <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important; max-width:40px!important;">
                     {{$item->title}}
                 </h3>
 
@@ -191,7 +194,7 @@
         <div class="small-box " style="border-radius: 20px; background-color:rgba(255, 255, 255, 0.5); padding:5%;">
             <div class="inner" style="min-height: 100px">
                 
-                <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important;">
+                <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important; max-width:40px!important;">
                     {{$item->title}}
                 </h3>
 
@@ -226,7 +229,7 @@
         <div class="small-box " style="border-radius: 20px; background-color:rgba(255, 255, 255, 0.5); padding:5%;">
             <div class="inner" style="min-height: 100px">
                 
-                <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important;">
+                <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important; max-width:40px!important;">
                     {{$item->title}}
                 </h3>
 
@@ -261,7 +264,7 @@
         <div class="small-box " style="border-radius: 20px; background-color:rgba(255, 255, 255, 0.5); padding:5%;">
             <div class="inner" style="min-height: 100px">
                 
-                <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important;">
+                <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important; max-width:40px!important;">
                     {{$item->title}}
                 </h3>
 
@@ -296,7 +299,7 @@
         <div class="small-box " style="border-radius: 20px; background-color:rgba(255, 255, 255, 0.5); padding:5%;">
             <div class="inner" style="min-height: 100px">
                 
-                <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important;">
+                <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important; max-width:40px!important;">
                     {{$item->title}}
                 </h3>
 
@@ -331,7 +334,7 @@
         <div class="small-box " style="border-radius: 20px; background-color:rgba(255, 255, 255, 0.5); padding:5%;">
             <div class="inner" style="min-height: 100px">
                 
-                <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important;">
+                <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important; max-width:40px!important;">
                     {{$item->title}}
                 </h3>
 
@@ -366,7 +369,7 @@
         <div class="small-box " style="border-radius: 20px; background-color:rgba(255, 255, 255, 0.5); padding:5%;">
             <div class="inner" style="min-height: 100px">
                 
-                <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important;">
+                <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important; max-width:40px!important;">
                     {{$item->title}}
                 </h3>
 
@@ -401,7 +404,7 @@
         <div class="small-box " style="border-radius: 20px; background-color:rgba(255, 255, 255, 0.5); padding:5%;">
             <div class="inner" style="min-height: 100px">
                 
-                <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important;">
+                <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important; max-width:40px!important;">
                     {{$item->title}}
                 </h3>
 
@@ -436,7 +439,7 @@
         <div class="small-box " style="border-radius: 20px; background-color:rgba(255, 255, 255, 0.5); padding:5%;">
             <div class="inner" style="min-height: 100px">
                 
-                <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important;">
+                <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important; max-width:40px!important;">
                     {{$item->title}}
                 </h3>
 
@@ -471,7 +474,7 @@
         <div class="small-box " style="border-radius: 20px; background-color:rgba(255, 255, 255, 0.5); padding:5%;">
             <div class="inner" style="min-height: 100px">
                 
-                <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important;">
+                <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important; max-width:40px!important;">
                     {{$item->title}}
                 </h3>
 
