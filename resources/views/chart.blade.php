@@ -778,11 +778,12 @@ showTime();
   $(function(){
       //get the pie chart canvas
       var cData = JSON.parse(`<?php echo $chart_data; ?>`);
+
       var ctx = $("#pie-chart");
  
       //pie chart data
       var data = {
-        labels: ['IT', 'Legal', 'Sales'],
+        labels: cData.division,
         datasets: [
           {
             label: "Users Count",
