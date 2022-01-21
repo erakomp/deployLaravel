@@ -35,8 +35,9 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            {!! $comment->description !!}
-                        <textarea type="text" name="description" value="" class="form-control" ></textarea>
+                            {{-- {!! $comment->description !!} --}}
+                            {{-- {{strip_tags($comment->description)}} --}}
+                       <input type="text" value="{{strip_tags($comment->description)}}" name="description">
                         </div>
                     </div>
                 </div>
