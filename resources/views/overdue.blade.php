@@ -26,7 +26,7 @@
                                     <th>Assigned To</th>
                                     <th>Task Status</th>
                                     <th>Deadline</th>
-                                    <th>Duration</th>
+                                    <th>Duration(H:M:S)</th>
         
                                 </tr>
                             </thead>
@@ -45,7 +45,7 @@
                                     <td style="color:red; font-weight:bold;">{{$product->st}}</td>
 
                                     <td style="color:red; font-weight:bold;"><strong>{{date('l, d/m/y H:i:s', strtotime($product->deadline))}}</strong></td>
-                                    <td style="color:red;">{{(Carbon::parse($product->created_at)) -> diff((Carbon::parse($product->deadline))) -> format('%D : %H : %I : %S')}}</td>
+                                    <td style="color:red;"><strong>{{(Carbon::parse($product->created_at)) -> diff((Carbon::parse($product->deadline))) -> format('%D : %H : %I : %S')}}</strong></td>
                                     @else
                                     <td style="color:black;">{{ $loop->index+1 }}</td>
                                     <td ><a href="/tasks/{{$product->external_id}}" style="color:black;">{{ $product->tt }}</a></td>
@@ -54,7 +54,7 @@
                                     
                                     <td>{{$product->st}}</td>
                                     <td >{{date('l, d/m/y H:i:s', strtotime($product->deadline))}}</td>
-                                    <td>{{(Carbon::parse($product->created_at)) -> diff((Carbon::parse($product->deadline))) -> format('%D : %H : %I : %S')}}</td>
+                                    <td><strong>{{(Carbon::parse($product->created_at)) -> diff((Carbon::parse($product->deadline))) -> format('%D : %H : %I : %S')}}</strong></td>
                                     
                                     @endif
                                 </tr>
