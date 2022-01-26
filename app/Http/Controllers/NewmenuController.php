@@ -143,7 +143,9 @@ $all_pro =  Activity::join('tasks', 'activities.source_id', '=', 'tasks.id')
                 ->join('divs', 'tasks.flag', '=', 'divs.id')
                 ->where('tasks.deleted_at', '=', NULL)
                 ->where('tasks.status_id', '=', 7)
-
+                ->where('tasks.flag', '=', Auth::user()->flag)
+                ->where('projects.flag', '=', Auth::user()->flag)
+        
                 ->where('projects.deleted_at', '=', NULL)
                 ->select('tasks.title', 'tasks.id' , 'divs.division')
                 ->get();
