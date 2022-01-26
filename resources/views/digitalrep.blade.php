@@ -93,7 +93,7 @@
 
                                         <td>{{date('l, d/m/y H:i:s', strtotime( $product->created_at))}}</td>
                                         <td>{{date('l, d/m/y H:i:s', strtotime( $product->updated_at))}}</td>
-                                        <td>{{round(abs(strtotime( $product->updated_at) - strtotime( $product->created_at)) / 3600,1)}}</td>
+                                        <td>{{(Carbon::parse($product->created_at)) -> diff((Carbon::parse($product->updated_at))) -> format('%D : %H : %I : %S')}}</td>
                                         
                                     </tr>
                                     @empty
