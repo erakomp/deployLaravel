@@ -118,7 +118,7 @@
                                 @forelse($all_pro as $product )
                                 <tr>
                                     <td>{{ $loop->index+1 }}</td>
-                                    <td><a href="tasks/{{$products->external_id}}">{{ $product->title }}</a></td>
+                                    <td><a href="tasks/{{$product->external_id}}">{{ $product->title }}</a></td>
                                     <td>{{$product->pt}}</td>
                                     <td>{{ $product->text }}</td>
                                     <td>{{$product->name}}</td>
