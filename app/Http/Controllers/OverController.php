@@ -82,7 +82,7 @@ class OverController extends Controller
                    $query->from('tasks')->whereBetween('deadline', [$request->from . ' 00:00:00', $request->to . ' 23:59:59']) : '';
        
        })
-       ->select('tasks.title as tt', 'projects.title as pt', 'users.name','tasks.deadline', 'tasks.external_id','statuses.title as st')
+       ->select('tasks.title as tt', 'projects.title as pt', 'users.name','tasks.deadline', 'tasks.created_at', 'tasks.external_id','statuses.title as st')
        ->get();
     
     $selected_id = [];
