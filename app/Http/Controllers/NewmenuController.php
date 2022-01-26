@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Task;
 use App\Div;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\Activity;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +21,9 @@ $all_pro =  Activity::join('tasks', 'activities.source_id', '=', 'tasks.id')
         ->select('activities.id', 'activities.text', 'activities.log_name', 'activities.created_at','users.name', 'tasks.title', 'projects.title as pt', 'tasks.status_id', 'tasks.updated_at', 'tasks.created_at as tc', 'tasks.flag', 'divs.division')
         // ->where('tasks.status_id', '=', 7)
         ->where('tasks.deleted_at', '=', NULL)
+        ->where('tasks.flag', '=', Auth::user()->flag)
+        ->where('projects.flag', '=', Auth::user()->flag)
+
         ->where('projects.deleted_at', '=', NULL)
         ->where('activities.source_type','=','App\Models\Task')
     ->where('activities.deleted_at','=',NULL)
