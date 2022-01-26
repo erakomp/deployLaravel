@@ -107,7 +107,7 @@
 
                                         <td>{{date('l, d/m/y H:i:s', strtotime( $product->created_at))}}</td>
                                         <td>{{date('l, d/m/y H:i:s', strtotime( $product->updated_at))}}</td>
-                                        <td><strong>{{(Carbon::parse($product->created_at)) -> diff((Carbon::parse($product->deadline))) -> format('%D : %H : %I : %S')}}</strong></td>
+                                        <td><strong>{{(Carbon::parse($product->created_at)) -> diff((Carbon::parse($product->updated_at))) -> format('%D : %H : %I : %S')}}</strong></td>
                                         
                                     </tr>
                                     @empty
