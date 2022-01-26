@@ -56,7 +56,7 @@
                         <input type="datetime-local" name="to" id="input" style="margin-right:2%;" value="" my-date-format="DD/MM/YYYY, hh:mm:ss" >
                         <input type="submit"  class="btn btn-md btn-brand movedown" value="Filter" style="font-size: 16px; ">
                         <a href="/test">
-                            <div  class="btn btn-md btn-brand movedown" value="Reset" style="font-size: 16px;  margin-left:50%;">Reset</div></a>
+                            <div  class="btn btn-md btn-brand movedown" value="Reset" style="font-size: 16px;">Reset</div></a>
                         </form>
                         
                         <div class="row" style="text-align: center;">
