@@ -89,7 +89,7 @@
                                         <th>Assigned To</th>
                                         <th>Created Date</th>
                                         <th>Updated Date</th>
-                                        <th>Total Time(in hours)</th>
+                                        <th>Duration(H:m:s)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -107,7 +107,7 @@
 
                                         <td>{{date('l, d/m/y H:i:s', strtotime( $product->created_at))}}</td>
                                         <td>{{date('l, d/m/y H:i:s', strtotime( $product->updated_at))}}</td>
-                                        <td>{{round(abs(strtotime( $product->updated_at) - strtotime( $product->created_at)) / 3600,1)}}</td>
+                                        <td><strong>{{(Carbon::parse($product->created_at)) -> diff((Carbon::parse($product->deadline))) -> format('%D : %H : %I : %S')}}</strong></td>
                                         
                                     </tr>
                                     @empty
