@@ -25,10 +25,11 @@ class OverController extends Controller
         ->where('tasks.deleted_at', '=', NULL)
         ->join('projects', 'tasks.project_id', '=', 'projects.id')
         ->join('users', 'tasks.user_assigned_id', '=', 'users.id')
+        ->join('statuses', 'tasks.status_id', '=', 'statuses.id')
         ->where('projects.deleted_at', '=', NULL)
         ->where('tasks.flag', '=', Auth::user()->flag)
         ->where('projects.flag', '=', Auth::user()->flag)
-        ->select('projects.title as pt', 'tasks.project_id' ,'tasks.external_id','tasks.title as tt', 'users.name as ui', 'tasks.created_at', 'tasks.status_id', 'tasks.updated_at', 'tasks.created_at', DB::raw('TIMESTAMPDIFF(HOUR, tasks.created_at, tasks.updated_at) AS timediff'))
+        ->select('projects.title as pt', 'tasks.project_id' ,'tasks.external_id','tasks.title as tt', 'users.name as ui', 'tasks.created_at', 'tasks.status_id', 'tasks.updated_at', 'statuses.title as st','tasks.created_at', DB::raw('TIMESTAMPDIFF(HOUR, tasks.created_at, tasks.updated_at) AS timediff'))
         
         // ->select(DATEDIFF)
         
