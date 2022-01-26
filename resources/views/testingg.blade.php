@@ -18,7 +18,7 @@
                             @endforeach
                         </select> --}}
                         <div class="row">
-                            <div class="col-sm-3">
+                            <div class="col-sm-3" style="display:none;">
                                 <div class="form-group">
                                     <label style="font-size: 15px!important;">Choose Division:</label>
                                 <select name="price_id" id="input">
