@@ -32,7 +32,7 @@
     </div>
 </div>
 <div class="row margin-top-10">
-    <div class="col-md-4" style="font-size:14px!important;">Created Date:</div>
+    <div class="col-md-4" style="font-size:14px!important;">Created Date</div>
     <div class="col-md-8" style="font-size:14px!important;">
         {{date('l, d/m/y H:i:s', strtotime($tasks->created_at))}}
     </div>
