@@ -359,7 +359,7 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
                    @if(Auth::user()->user_flag == 2)
                    <a href="/digitalrepsup"
                    class="list-group-item childlist" style="font-size: 13px!important;" > <i
-                            class="bullet-point"><span></span></i>Digital Report</a>
+                   class="bullet-point"><span></span></i>Digital Report</a>
                             @else
 
                             <a href="/digitalrep"
