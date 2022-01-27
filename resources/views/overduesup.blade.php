@@ -25,6 +25,7 @@
                                     <th>Project Title</th>
                                     <th>Assigned To</th>
                                     <th>Task Status</th>
+                                    <th>Created Date</th>
                                     <th>Deadline</th>
                                     <th>Duration(H:M:S)</th>
         
@@ -43,7 +44,7 @@
                                     <td style="color:red; font-weight:bold;">{{$product->name}}</td>
                                     
                                     <td style="color:red; font-weight:bold;">{{$product->st}}</td>
-
+                                    <td style="color:red; font-weight:bold;"><strong>{{date('l, d/m/y H:i:s', strtotime($product->created_at))}}</strong></td>
                                     <td style="color:red; font-weight:bold;"><strong>{{date('l, d/m/y H:i:s', strtotime($product->deadline))}}</strong></td>
                                     <td style="color:red;"><strong>{{(Carbon::parse($product->created_at)) -> diff((Carbon::parse($product->deadline))) -> format('%D : %H : %I : %S')}}</strong></td>
                                     @else
@@ -53,6 +54,8 @@
                                     <td>{{$product->name}}</td>
                                     
                                     <td>{{$product->st}}</td>
+                                    <td >{{date('l, d/m/y H:i:s', strtotime($product->created_at))}}</td>
+
                                     <td >{{date('l, d/m/y H:i:s', strtotime($product->deadline))}}</td>
                                     <td><strong>{{(Carbon::parse($product->created_at)) -> diff((Carbon::parse($product->deadline))) -> format('%D : %H : %I : %S')}}</strong></td>
                                     
