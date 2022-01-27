@@ -44,8 +44,8 @@
                                     <td style="color:red; font-weight:bold;">{{$product->name}}</td>
                                     
                                     <td style="color:red; font-weight:bold;">{{$product->st}}</td>
-
                                     <td style="color:red; font-weight:bold;"><strong>{{date('l, d/m/y H:i:s', strtotime($product->created_at))}}</strong></td>
+                                    <td style="color:red; font-weight:bold;"><strong>{{date('l, d/m/y H:i:s', strtotime($product->deadline))}}</strong></td>
 
                                     <td style="color:red;"><strong>{{(Carbon::parse($product->created_at)) -> diff((Carbon::parse($product->deadline))) -> format('%D : %H : %I : %S')}}</strong></td>
                                     @else
