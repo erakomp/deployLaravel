@@ -11,7 +11,7 @@
                     <div class="card">
                         <div class="card-header"></div>
         
-                        <form action="{{ route('filter') }}" method="GET"   onchange="postdata(this.value)" style="margin-top: 5%; margin-bottom:5%; display:flex; justify-content:center;">
+                        <form action="{{ route('filtersup') }}" method="GET"   onchange="postdata(this.value)" style="margin-top: 5%; margin-bottom:5%; display:flex; justify-content:center;">
                             <div class="m-5 w-50">
                                 <div class="mb-3">
                                   
