@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-class OverController extends Controller
+class OversupController extends Controller
 {
     public function test(Request $request){
         $countries = DB::table('projects')
