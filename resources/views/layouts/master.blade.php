@@ -356,10 +356,19 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
                        class="list-group-item childlist"> <i
                                 class="bullet-point"><span></span></i> {{ __('Overall Settings') }}</a>
                    -->
-                    <a href="/digitalrep"
+                   @if(Auth::user()->user_flag == 2)
+
+                    <a href="/digitalrepsup"
                        class="list-group-item childlist" style="font-size: 13px!important;" > <i
                                 class="bullet-point"><span></span></i> Digital Report</a>
-                                <a href="/report"
+                                @else
+
+                                <a href="/digitalrep"
+                                class="list-group-item childlist" style="font-size: 13px!important;" > <i
+                                         class="bullet-point"><span></span></i> Digital Report</a>
+                                         
+                                         @endif
+                                         <a href="/report"
                        class="list-group-item childlist" style="font-size: 13px!important;" > <i
                                 class="bullet-point"><span></span></i>Get Excel Report</a>
                                 @if(Auth::user()->user_flag == 2)
@@ -371,10 +380,17 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
                                 class="list-group-item childlist" style="font-size: 13px!important;" > <i
                                          class="bullet-point"><span></span></i>Get QC & Done KPI Report</a>
                               @endif
-                                         <a href="/overdue"
+                              @if(Auth::user()->user_flag == 2)
+                                         <a href="/overduesup"
                                          class="list-group-item childlist" style="font-size: 13px!important;" > <i
                                                   class="bullet-point"><span></span></i>Get Deadline Tasks Report</a>
-                                                  <a href="/menuss"
+                                                  @else
+
+                                                  <a href="/overdue"
+                                                  class="list-group-item childlist" style="font-size: 13px!important;" > <i
+                                                           class="bullet-point"><span></span></i>Get Deadline Tasks Report</a>
+                                                           @endif
+                                                                                                         <a href="/menuss"
                                          class="list-group-item childlist" style="font-size: 13px!important;" > <i
                                                   class="bullet-point"><span></span></i>Get Duration Progressing-Done</a>
                     <!--<a href="{{ route('integrations.index')}}"
