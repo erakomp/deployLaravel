@@ -18,7 +18,7 @@
                 <div class="" style="width:30px;">
                     <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important; width:40px!important;">
                     
-                        {!! \Illuminate\Support\Str::limit($item->title, 15, $end='...') !!}
+                        {!! $item->title!!}
                     </h3>
                 </div>
                 
