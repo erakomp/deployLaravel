@@ -77,15 +77,15 @@ class OversupController extends Controller
       
         ->where( function($query) use($request){
             return $request->from ?
-                   $query->from('tasks')->whereBetween('deadline', [$request->from . ' 00:00:00', $request->to . ' 23:59:59']) : '';
+                   $query->from('tasks')->whereBetween('tasks.deadline', [$request->from . ' 00:00:00', $request->to . ' 23:59:59']) : '';
        
        })
        ->select('tasks.title as tt', 'projects.title as pt', 'users.name','tasks.deadline', 'tasks.created_at', 'tasks.external_id','statuses.title as st')
        ->get();
     
     $selected_id = [];
-    $selected_id['deadline'] = $request->from;
-    $selected_id['deadline'] = $request->to;
+    $selected_id['tasks.deadline'] = $request->from;
+    $selected_id['tasks.deadline'] = $request->to;
     
     return view('overduesup',compact('product','selected_id' ));
     }
