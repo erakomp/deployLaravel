@@ -1224,7 +1224,7 @@ a.list-group-item:hover i.sidebar-icon {
   font-size: 38px;
   font-weight: bold;
   margin: 0 0 10px 0;
-  white-space: nowrap;
+  white-space: none;
   padding: 0;
   color: #3d4465;
 }
