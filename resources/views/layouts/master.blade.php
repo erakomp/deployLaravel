@@ -362,10 +362,15 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
                                 <a href="/report"
                        class="list-group-item childlist" style="font-size: 13px!important;" > <i
                                 class="bullet-point"><span></span></i>Get Excel Report</a>
+                                @if(Auth::user()->user_flag == 2)
+                                <a href="/testsup"
+                                class="list-group-item childlist" style="font-size: 13px!important;" > <i
+                                         class="bullet-point"><span></span></i>Get QC & Done KPI Report</a>
+                                @else
                                 <a href="/test"
                                 class="list-group-item childlist" style="font-size: 13px!important;" > <i
                                          class="bullet-point"><span></span></i>Get QC & Done KPI Report</a>
-
+                              @endif
                                          <a href="/overdue"
                                          class="list-group-item childlist" style="font-size: 13px!important;" > <i
                                                   class="bullet-point"><span></span></i>Get Deadline Tasks Report</a>
