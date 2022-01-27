@@ -196,7 +196,7 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
     }
     
     .small-box h3{
-        white-space: none!important;
+        white-space: nowrap!important;
     }
 </style>
            
