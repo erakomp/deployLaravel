@@ -9,7 +9,10 @@
             <div class="row justify-content-center">
                 <div class="col-md-10">
                     <div class="card">
-                        <div class="card-header"></div>
+                        <div class="card-header">
+                            <h1 style="text-align: center;">Digital Report</h1>
+
+                        </div>
         
                         <form action="{{ route('filterrep') }}" method="GET"   onchange="postdata(this.value)" style="margin-top: 5%; margin-bottom:5%; display:flex; justify-content:center;">
                             
