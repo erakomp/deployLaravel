@@ -9,7 +9,7 @@
     @if(Auth::check() && Auth::user()->flag == 1)
     @foreach ($getProject->where('flag', 1) as $item)
     
-    <a href="{{route("projects.show", $item->external_id)}}" class="">
+    <a href="{{route("projects.show", $item->external_id)}}" class="" title="{{$item->title}}">
 
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
@@ -18,7 +18,7 @@
                 <div class="" style="width:30px;">
                     <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important; width:40px!important;">
                     
-                        {!! $item->title!!}
+                        {!! \Illuminate\Support\Str::limit($item->title, 15, $end='...') !!}
                     </h3>
                 </div>
                 
