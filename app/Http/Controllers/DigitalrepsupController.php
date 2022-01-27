@@ -7,7 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-class DigitalrepController extends Controller
+class DigitalrepsupController extends Controller
 {
     public function test(Request $request)
     {
