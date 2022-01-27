@@ -194,8 +194,12 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
     #text{
         max-width:100px!important;
     }
-
-            </style>
+    
+    .small-box h3{
+        white-space: none!important;
+    }
+</style>
+           
     
     <?php if(isDemo()) { ?>
         <!-- Global site tag (gtag.js) - Google Analytics -->

@@ -2,11 +2,7 @@
 @section('heading')
     
 @stop
-<style>
-    .small-box h3{
-        white-space: none!important;
-    }
-</style>
+
 @section('content')
 
 <div class="row">
