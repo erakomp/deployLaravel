@@ -80,6 +80,8 @@ Route::get('/digitalrep', 'DigitalrepController@test')->name('filterrep');
 
     Route::get('/test', 'OverController@test')->name('filter');
     Route::get('/overdue', 'OverController@overdue')->name('filtering');
+    Route::get('/testsup', 'OversupController@test')->name('filter');
+    Route::get('/overduesup', 'OversupController@overdue')->name('filtering');
 
     Route::get('/div', 'DivController@index');
     Route::get('/div/tambah', 'DivController@tambah');
