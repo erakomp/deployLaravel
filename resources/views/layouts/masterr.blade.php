@@ -226,9 +226,15 @@ background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+
                                        class="list-group-item childlist" style="font-size: 13px!important;" > <i
                                                 class="bullet-point"><span></span></i>Get Deadline Tasks Report</a>
                                                 @endif
-                                                  <a href="/menuss"
-                                         class="list-group-item childlist" style="font-size: 13px!important;" > <i
-                                                  class="bullet-point"><span></span></i>Get Duration Progressing-Done</a>
+                                                @if(Auth::user()->user_flag == 2)
+                                                <a href="/menusssup"
+                              class="list-group-item childlist" style="font-size: 13px!important;" > <i
+                                       class="bullet-point"><span></span></i>Get Duration Progressing-Done</a>
+                                       @else
+                                       <a href="/menuss"
+                                       class="list-group-item childlist" style="font-size: 13px!important;" > <i
+                                                class="bullet-point"><span></span></i>Get Duration Progressing-Done</a>
+                                                @endif
                     <!--<a href="{{ route('integrations.index')}}"
                        class="list-group-item childlist"> <i
                                 class="bullet-point"><span></span></i> {{ __('Integrations') }}</a>-->
