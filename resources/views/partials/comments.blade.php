@@ -14,7 +14,7 @@
     @if($subject->image != NULL)
     {{-- <img src="{{$subject->image}}" alt="" style="max-width: 200px; margin-left:3%;"> --}}
     <!-- <img id="myImg" src="{{$subject->image}}" style="width:100%;max-width:300px; margin-left:5%!important; margin-bottom:5%!important;"> -->
-    <embed id="myImg" src="{{$subject->image}}" style="width:100%;height:600px; max-width:500px; margin-left:5%!important; margin-bottom:5%!important;">
+    <embed id="myImg" src="{{$subject->image}}" style="width:100%;height:300px; max-width:500px; margin-left:5%!important; margin-bottom:5%!important;">
     <div id="myModal" class="modals">
         <span class="closes" style="font-size:20px; color:red; opacity:100%; font-weight:bold;">close</span>
         <img class="modal-content" id="img01">
