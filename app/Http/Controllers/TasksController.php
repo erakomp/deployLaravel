@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Document;
@@ -53,7 +54,7 @@ class TasksController extends Controller
     public function index()
     {
         return view('tasks.index')
-        ->withStatuses(Status::typeOfTask()->get());
+            ->withStatuses(Status::typeOfTask()->get());
     }
 
     public function anyData()
@@ -87,11 +88,10 @@ class TasksController extends Controller
                     $tasks->status->title . '</span>';
             })
             ->addColumn('view', function ($tasks) {
-                return '<a href="' . route("tasks.show", $tasks->external_id) . '" class="btn btn-link">' . __('View') .'</a>'
-                . '<a data-toggle="modal" data-id="'. route('tasks.destroy', $tasks->external_id) . '" data-target="#deletion" class="btn btn-link">' . __('Delete') .'</a>'
-                ;
+                return '<a href="' . route("tasks.show", $tasks->external_id) . '" class="btn btn-link">' . __('View') . '</a>'
+                    . '<a data-toggle="modal" data-id="' . route('tasks.destroy', $tasks->external_id) . '" data-target="#deletion" class="btn btn-link">' . __('Delete') . '</a>';
             })
-            ->rawColumns(['titlelink','view', 'status_id'])
+            ->rawColumns(['titlelink', 'view', 'status_id'])
             ->make(true);
     }
 
@@ -129,7 +129,7 @@ class TasksController extends Controller
      */
     public function store(Request $request) // uses __contrust request
     {
-        
+
         $project = null;
         if ($request->client_external_id) {
             $client = Client::whereExternalId($request->client_external_id);
@@ -144,9 +144,9 @@ class TasksController extends Controller
         );
 
         $name = null;
- 
-        if($request->has('image')){
-        
+
+        if ($request->has('image')) {
+
             $fileUpload = $request->file('image');
             // dd($fileUpload->clientExtension());
             $timestamp = Carbon::now()->timestamp;
@@ -155,27 +155,26 @@ class TasksController extends Controller
             $name =  "https://cdn.erakomp.co.id/$filePath";
             //dd($name);
             Storage::disk('oss')->put($filePath, file_get_contents($fileUpload));
-
         }
 
         $task = Task::create(
             [
-            'title' => $request->title,
-            'description' => clean($request->description),
-            'user_assigned_id' => $request->user_assigned_id,
-            'deadline' => Carbon::parse($request->deadline),
-            'status_id' => $request->status_id,
-            'user_created_id' => auth()->id(),
-            'external_id' => Uuid::uuid4()->toString(),
-            'client_id' => $client->id,
-            'project_id' => optional($project)->id,
-            'task_status' => $request->task_status,
-            'getlabel' => $request->getlabel,
-            'getcolor' => $request->getcolor,
-            'image' => ($request->has('image')) ?  $name : NULL,
-            'flag' => Auth::user()->flag,
+                'title' => $request->title,
+                'description' => clean($request->description),
+                'user_assigned_id' => $request->user_assigned_id,
+                'deadline' => Carbon::parse($request->deadline),
+                'status_id' => $request->status_id,
+                'user_created_id' => auth()->id(),
+                'external_id' => Uuid::uuid4()->toString(),
+                'client_id' => $client->id,
+                'project_id' => optional($project)->id,
+                'task_status' => $request->task_status,
+                'getlabel' => $request->getlabel,
+                'getcolor' => $request->getcolor,
+                'image' => ($request->has('image')) ?  $name : NULL,
+                'flag' => Auth::user()->flag,
 
-        ]
+            ]
         );
 
         $insertedExternalId = $task->external_id;
@@ -189,13 +188,13 @@ class TasksController extends Controller
         //     }
         // }
         //Hack to make dropzone js work, as it only called with AJAX and not form submit
-       
+
         return redirect()->route("tasks.show", $insertedExternalId);
     }
 
     public function destroy(Task $task)
     {
-        
+
         $task->delete();
         $insertedExternalId = $task->project->external_id;
         // dd($insertedExternalId);
@@ -237,7 +236,7 @@ class TasksController extends Controller
             'integration_type' => get_class($fileSystem)
         ]);
     }
-    
+
 
     /**
      * @param Request $request
@@ -253,6 +252,7 @@ class TasksController extends Controller
         }
         $label = DB::table('labels')->get();
         \LogActivity::addToLog('just visited');
+        // return $task;
 
         return view('tasks.show', compact('label'))
             ->withTasks($task)
@@ -280,21 +280,21 @@ class TasksController extends Controller
             session()->flash('flash_message_warning', __('You do not have permission to change task status'));
             return redirect()->route('tasks.show', $external_id);
         }
-        
-       
-            $input = $request->all();
-            if (!auth()->user()->hasRole('owner')) {
-                if ($request->ajax() && isset($input["statusExternalId"])) {
-                    $input["status_id"] = Status::whereExternalId($input["statusExternalId"])->where('id', '!=', 7)->where('id', '!=', 6)-> first()->id;
-                }
+
+
+        $input = $request->all();
+        if (!auth()->user()->hasRole('owner')) {
+            if ($request->ajax() && isset($input["statusExternalId"])) {
+                $input["status_id"] = Status::whereExternalId($input["statusExternalId"])->where('id', '!=', 7)->where('id', '!=', 6)->first()->id;
             }
-            if (auth()->user()->hasRole('owner')) {
-                if ($request->ajax() && isset($input["statusExternalId"])) {
-                    $input["status_id"] = Status::whereExternalId($input["statusExternalId"])-> first()->id;
-                }
+        }
+        if (auth()->user()->hasRole('owner')) {
+            if ($request->ajax() && isset($input["statusExternalId"])) {
+                $input["status_id"] = Status::whereExternalId($input["statusExternalId"])->first()->id;
             }
-            
-        
+        }
+
+
         $task = $this->findByExternalId($external_id);
         $task->fill($input)->save();
         event(new \App\Events\TaskAction($task, self::UPDATED_STATUS));
@@ -364,14 +364,14 @@ class TasksController extends Controller
      */
     public function updateDeadline(Request $request, $external_id)
     {
-         //return $request->all();
+        //return $request->all();
         if (!auth()->user()->can('task-update-deadline')) {
             session()->flash('flash_message_warning', __('You do not have permission to change task deadline'));
             return redirect()->route('tasks.show', $external_id);
         }
         $task = $this->findByExternalId($external_id);
         $task->fill(['deadline' => Carbon::parse($request->deadline_date)])->save();
-        
+
         event(new \App\Events\TaskAction($task, self::UPDATED_DEADLINE));
         Session()->flash('flash_message', 'New deadline is set');
         return redirect()->back();
@@ -381,7 +381,7 @@ class TasksController extends Controller
         $task = $this->findByExternalId($external_id);
         $task->fill(['getlabel' => $request->getlabel], ['getcolor' => $request->getcolor])->save();
 
-        
+
         return redirect()->refresh();
     }
 
@@ -433,13 +433,13 @@ class TasksController extends Controller
     }
     // public function editTaskie($id){
     //     $subject = Task::find($id);
-  
+
     //     return view('edit.edit')->with('subject',$subject);
     //  }
-  
+
     //  public function updateTaskie(Request $request,$id){
     //     $data = $request->except('_method','_token','submit');
-  
+
     //     $validator = Validator::make($request->all(), [
     //         'title' => 'sometimes',
     //         'description' => 'sometimes',
@@ -454,14 +454,14 @@ class TasksController extends Controller
     //         'getlabel' => 'sometimes',
     //         'getcolor' => 'sometimes',
     //     ]);
-  
+
     //     if ($validator->fails()) {
     //        return redirect()->Back()->withInput()->withErrors($validator);
     //     }
     //     $subject = Task::find($id);
-  
+
     //     if($subject->update($data)){
-  
+
     //        Session::flash('message', 'Update successfully!');
     //        Session::flash('alert-class', 'alert-success');
     //        return redirect()->route('subjects');
@@ -469,7 +469,7 @@ class TasksController extends Controller
     //        Session::flash('message', 'Data not updated!');
     //        Session::flash('alert-class', 'alert-danger');
     //     }
-  
+
     //     return Back()->withInput();
     //  }
 }
