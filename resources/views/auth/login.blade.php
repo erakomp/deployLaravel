@@ -20,7 +20,7 @@
                         <img src="https://cdn.erakomp.co.id/assets/img/Logo%20Erakomp-01.png" alt="" style="max-width:100px;  ">
                     </p>
 
-                    <h1 class="text-center" style="font-size:50px; font-family: 'Fredericka the Great', cursive!important;">Era Project Management</h1>
+                    <h1 class="text-center" style="font-size:50px; font-family: 'Fredericka the Great', cursive!important;">Era Project Management Test</h1>
 
 
                     <br>
