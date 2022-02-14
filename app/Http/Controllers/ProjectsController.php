@@ -321,4 +321,5 @@ class ProjectsController extends Controller
         $logs = \LogActivity::logActivityLists();
         return view('logActivity', compact('logs'));
     }
+
 }

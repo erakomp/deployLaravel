@@ -33,6 +33,8 @@ Route::get('/searching', 'CariController@index');
 
 Route::get('query', 'CariController@index');
 Route::get('/testt', 'CariController@index');
+Route::post('/uploadFile', 'UploadController@uploadFile');
+Route::get('/getFileUploaded', 'UploadController@uploadFile');
 Route::group(['middleware' => ['auth']], function () {
 
     /**
@@ -71,7 +73,7 @@ Route::group(['middleware' => ['auth']], function () {
     //     $selected_id['created_at'] = $request->to;
     //     return view('test',compact('product','selected_id', 'countries'));
     
-    // })->name('filter');
+    // })->name('filter');f
     Route::get('/filtermenu','NewmenuController@index2');
 
     Route::get('/menuss','NewmenuController@index')->name('filteringg');
@@ -248,8 +250,7 @@ Route::get('/digitalrepsup', 'DigitalrepsupController@test')->name('filterrepsup
      * Projects
      */
     Route::group(['prefix' => 'projects'], function () {
-        Route::get('/data', 'ProjectsController@indexData')->name('projects.index.data');
-        
+        // Route::get('/data', 'ProjectsController@indexData')->name('projects.index.data');
         Route::patch('/updatestatus/{external_id}', 'ProjectsController@updateStatus')->name('project.update.status');
         Route::patch('/updateassign/{external_id}', 'ProjectsController@updateAssign')->name('project.update.assignee');
         Route::post('/updatestatus/{external_id}', 'ProjectsController@updateStatus');
