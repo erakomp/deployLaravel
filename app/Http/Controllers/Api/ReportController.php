@@ -102,6 +102,8 @@ class ReportController extends Controller
 
     public function totalTask(Request $request)
     {
+        $firstMonth = ($request->firstDate) ? Carbon::createFromFormat('Y-m-d', $request->firstDate)->firstOfMonth() : null;
+        $endMonth = ($request->endDate) ? Carbon::createFromFormat('Y-m-d', $request->endDate)->endOfMonth() : null;
         return response()->json([
             "message" => "Succesfully",
             "data" => DB::table('tasks')
@@ -113,12 +115,17 @@ class ReportController extends Controller
                 ->when($request->division, function ($query) use ($request) {
                     $query->where('divs.id', $request->division);
                 })
+                ->when($request->firstDate && $request->endDate, function ($query) use ($firstMonth, $endMonth) {
+                    $query->whereBetween('tasks.created_at', [$firstMonth, $endMonth]);
+                })
                 ->count()
         ]);
     }
 
     public function taskCompleted(Request $request)
     {
+        $firstMonth = ($request->firstDate) ? Carbon::createFromFormat('Y-m-d', $request->firstDate)->firstOfMonth() : null;
+        $endMonth = ($request->endDate) ? Carbon::createFromFormat('Y-m-d', $request->endDate)->endOfMonth() : null;
         return response()->json([
             "message" => "Succesfully",
             "data" => DB::table('tasks')
@@ -131,12 +138,17 @@ class ReportController extends Controller
                 ->when($request->division, function ($query) use ($request) {
                     $query->where('divs.id', $request->division);
                 })
+                ->when($request->firstDate && $request->endDate, function ($query) use ($firstMonth, $endMonth) {
+                    $query->whereBetween('tasks.created_at', [$firstMonth, $endMonth]);
+                })
                 ->count()
         ]);
     }
 
     public function taskIncomplete(Request $request)
     {
+        $firstMonth = ($request->firstDate) ? Carbon::createFromFormat('Y-m-d', $request->firstDate)->firstOfMonth() : null;
+        $endMonth = ($request->endDate) ? Carbon::createFromFormat('Y-m-d', $request->endDate)->endOfMonth() : null;
         return response()->json([
             "message" => "Succesfully",
             "data" => DB::table('tasks')
@@ -149,12 +161,17 @@ class ReportController extends Controller
                 ->when($request->division, function ($query) use ($request) {
                     $query->where('divs.id', $request->division);
                 })
+                ->when($request->firstDate && $request->endDate, function ($query) use ($firstMonth, $endMonth) {
+                    $query->whereBetween('tasks.created_at', [$firstMonth, $endMonth]);
+                })
                 ->count()
         ]);
     }
 
     public function taskOverdue(Request $request)
     {
+        $firstMonth = ($request->firstDate) ? Carbon::createFromFormat('Y-m-d', $request->firstDate)->firstOfMonth() : null;
+        $endMonth = ($request->endDate) ? Carbon::createFromFormat('Y-m-d', $request->endDate)->endOfMonth() : null;
         return response()->json(
             [
                 "message" => "Succesfully",
@@ -164,10 +181,21 @@ class ReportController extends Controller
                     ->join('projects', 'tasks.project_id', '=', 'projects.id')
                     ->where('projects.deleted_at', '=', NULL)
                     ->where('tasks.deleted_at', '=', NULL)
-                    ->where('tasks.deadline', '<', Carbon::today())
+                    //->where('tasks.deadline', '<', Carbon::today())
+                    ->where(function ($query) use ($firstMonth, $endMonth) {
+                        // $query->when()
+                        if ($firstMonth && $endMonth) {
+                            $query->whereBetween('tasks.deadline', [$firstMonth, $endMonth]);
+                        } else {
+                            $query->where('tasks.deadline', '<', Carbon::today());
+                        }
+                    })
                     ->where('tasks.status_id', '!=', 7)
                     ->when($request->division, function ($query) use ($request) {
                         $query->where('divs.id', $request->division);
+                    })
+                    ->when($request->firstDate && $request->endDate, function ($query) use ($firstMonth, $endMonth) {
+                        $query->whereBetween('tasks.created_at', [$firstMonth, $endMonth]);
                     })
                     ->count()
             ]
@@ -176,6 +204,8 @@ class ReportController extends Controller
 
     public function totalProject(Request $request)
     {
+        $firstMonth = ($request->firstDate) ? Carbon::createFromFormat('Y-m-d', $request->firstDate)->firstOfMonth() : null;
+        $endMonth = ($request->endDate) ? Carbon::createFromFormat('Y-m-d', $request->endDate)->endOfMonth() : null;
         return response()->json(
             [
                 "message" => "Succesfully",
@@ -185,6 +215,9 @@ class ReportController extends Controller
                     ->where('projects.deleted_at', '=', NULL)
                     ->when($request->division, function ($query) use ($request) {
                         $query->where('divs.id', $request->division);
+                    })
+                    ->when($request->firstDate && $request->endDate, function ($query) use ($firstMonth, $endMonth) {
+                        $query->whereBetween('projects.created_at', [$firstMonth, $endMonth]);
                     })
                     ->count()
             ]
