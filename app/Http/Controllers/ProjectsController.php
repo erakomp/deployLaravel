@@ -228,9 +228,7 @@ class ProjectsController extends Controller
             })->count();
             $completionPercentage = round($completedTasks / $tasks * 100);
         }
-
-
-
+        
         $collaborators = collect();
 
         $collaborators->push($project->assignee);
@@ -248,7 +246,6 @@ class ProjectsController extends Controller
             ->withUsers(User::with(['department'])->get()->pluck('nameAndDepartmentEagerLoading', 'id'))
             ->withFiles($project->documents)
             ->with('filesystem_integration', Integration::whereApiType('file')->first());
-        ;
     }
 
     public function updateStatus($external_id, Request $request)
