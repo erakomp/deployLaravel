@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+
 class DashboardController extends Controller
 {
     /**
@@ -16,46 +17,58 @@ class DashboardController extends Controller
     public function index()
     {
         //Users
-        $getDataProject = DB::table('projects')->join('users','projects.user_assigned_id','=','users.id')->where('projects.deleted_at', '=', NULL)->where('projects.user_assigned_id','=', Auth::user()->id)->count();
-        $getDataTask = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->join('projects','tasks.project_id','=','projects.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted_at', '=', NULL)->where('tasks.user_assigned_id','=', Auth::user()->id)->count();
-        $getIncTask = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->join('projects','tasks.project_id','=','projects.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted_at', '=', NULL)->where('tasks.user_assigned_id','=', Auth::user()->id)->where('tasks.status_id','!=',7)-> where('tasks.status_id','!=',1)->where('tasks.status_id','!=',3)->count();
-        $getCompTask = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->join('projects','tasks.project_id','=','projects.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted_at', '=', NULL) ->where('tasks.user_assigned_id','=', Auth::user()->id)->where('tasks.status_id','=',7)->count();
-        $getOv = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->join('projects','tasks.project_id','=','projects.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted_at', '=', NULL)->where('tasks.user_assigned_id','=', Auth::user()->id)->where('tasks.deadline', '<', Carbon::today())->where('tasks.status_id', '!=', 7)->count();
+        $getDataProject = DB::table('projects')->join('users', 'projects.user_assigned_id', '=', 'users.id')->where('projects.deleted_at', '=', null)->where('projects.user_assigned_id', '=', Auth::user()->id)->count();
+        $getDataTask = DB::table('tasks')->join('users', 'tasks.user_assigned_id', '=', 'users.id')->join('projects', 'tasks.project_id', '=', 'projects.id')->where('projects.deleted_at', '=', null)->where('tasks.deleted_at', '=', null)->where('tasks.user_assigned_id', '=', Auth::user()->id)->count();
+        $getIncTask = DB::table('tasks')->join('users', 'tasks.user_assigned_id', '=', 'users.id')->join('projects', 'tasks.project_id', '=', 'projects.id')->where('projects.deleted_at', '=', null)->where('tasks.deleted_at', '=', null)->where('tasks.user_assigned_id', '=', Auth::user()->id)->where('tasks.status_id', '!=', 7)->where('tasks.status_id', '!=', 1)->where('tasks.status_id', '!=', 3)->count();
+        $getCompTask = DB::table('tasks')->join('users', 'tasks.user_assigned_id', '=', 'users.id')->join('projects', 'tasks.project_id', '=', 'projects.id')->where('projects.deleted_at', '=', null)->where('tasks.deleted_at', '=', null)->where('tasks.user_assigned_id', '=', Auth::user()->id)->where('tasks.status_id', '=', 7)->count();
+        $getOv = DB::table('tasks')->join('users', 'tasks.user_assigned_id', '=', 'users.id')->join('projects', 'tasks.project_id', '=', 'projects.id')->where('projects.deleted_at', '=', null)->where('tasks.deleted_at', '=', null)->where('tasks.user_assigned_id', '=', Auth::user()->id)->where('tasks.deadline', '<', Carbon::today())->where('tasks.status_id', '!=', 7)->count();
         //EOUSERS
         //Manager
-        $getDataProject_man = DB::table('projects')->join('users','projects.user_assigned_id','=','users.id')->where('projects.deleted_at', '=', NULL)->where('projects.flag','=', Auth::user()->flag)->count();
-        $getDataTask_man = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->join('projects','tasks.project_id','=','projects.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted_at', '=', NULL)->where('tasks.flag','=', Auth::user()->flag)->count();
-        $getIncTask_man = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->join('projects','tasks.project_id','=','projects.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted_at', '=', NULL)->where('tasks.flag','=', Auth::user()->flag)->where('tasks.status_id','!=',7)-> where('tasks.status_id','!=',1)->where('tasks.status_id','!=',3)->count();
-        $getCompTask_man = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->join('projects','tasks.project_id','=','projects.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted_at', '=', NULL) ->where('tasks.flag','=', Auth::user()->flag)->where('tasks.status_id','=',7)->count();
-        $getOv_man = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->join('projects','tasks.project_id','=','projects.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted_at', '=', NULL)->where('tasks.flag','=', Auth::user()->flag)->where('tasks.deadline', '<', Carbon::today())->where('tasks.status_id', '!=', 7)->count();
+        $getDataProject_man = DB::table('projects')->join('users', 'projects.user_assigned_id', '=', 'users.id')->where('projects.deleted_at', '=', null)->where('projects.flag', '=', Auth::user()->flag)->count();
+        $getDataTask_man = DB::table('tasks')->join('users', 'tasks.user_assigned_id', '=', 'users.id')->join('projects', 'tasks.project_id', '=', 'projects.id')->where('projects.deleted_at', '=', null)->where('tasks.deleted_at', '=', null)->where('tasks.flag', '=', Auth::user()->flag)->count();
+        $getIncTask_man = DB::table('tasks')->join('users', 'tasks.user_assigned_id', '=', 'users.id')->join('projects', 'tasks.project_id', '=', 'projects.id')->where('projects.deleted_at', '=', null)->where('tasks.deleted_at', '=', null)->where('tasks.flag', '=', Auth::user()->flag)->where('tasks.status_id', '!=', 7)->where('tasks.status_id', '!=', 1)->where('tasks.status_id', '!=', 3)->count();
+        $getCompTask_man = DB::table('tasks')->join('users', 'tasks.user_assigned_id', '=', 'users.id')->join('projects', 'tasks.project_id', '=', 'projects.id')->where('projects.deleted_at', '=', null)->where('tasks.deleted_at', '=', null)->where('tasks.flag', '=', Auth::user()->flag)->where('tasks.status_id', '=', 7)->count();
+        $getOv_man = DB::table('tasks')->join('users', 'tasks.user_assigned_id', '=', 'users.id')->join('projects', 'tasks.project_id', '=', 'projects.id')->where('projects.deleted_at', '=', null)->where('tasks.deleted_at', '=', null)->where('tasks.flag', '=', Auth::user()->flag)->where('tasks.deadline', '<', Carbon::today())->where('tasks.status_id', '!=', 7)->count();
         $getUserList = DB::table('users')->count();
         //EOMAN
         $getUser = DB::table('users')->get();
         $most = DB::table('activities')
-        ->join('users', 'activities.causer_id', '=', 'users.id')
-        ->select('users.name', 'users.image', 'users.email', 'activities.created_at')->distinct()
-        ->paginate(5);
-        $year = ['2021-01','2021-02','2021-03','2021-04','2021-05','2021-06', '2021-07','2021-08','2021-09','2021-10','2021-11', '2021-12', '2022-01'] ;
+            ->join('users', 'activities.causer_id', '=', 'users.id')
+            ->select('users.name', 'users.image', 'users.email', 'activities.created_at')->distinct()
+            ->paginate(5);
+
+        $period = now()->subMonths(12)->monthsUntil(now());
+        $data = [];
+        foreach ($period as $date) {
+            $data[] = [
+                'month' => $date->month,
+                'year' => $date->year,
+            ];
+        }
+        foreach ($data as $key => $value) {
+            $year[] = $value['year'].'-0'.$value['month'];
+        }
+        // $year = ['2021-01','2021-02','2021-03','2021-04','2021-05','2021-06', '2021-07','2021-08','2021-09','2021-10','2021-11', '2021-12', '2022-01'] ;
 
         $user = [];
         foreach ($year as $key => $value) {
-            $user[] = DB::table('tasks')->join('users','tasks.user_assigned_id','=','users.id')->join('projects','tasks.project_id','=','projects.id')->where('projects.deleted_at','=',NULL)->where('tasks.deleted_at', '=', NULL) ->where('tasks.user_assigned_id','=', Auth::user()->id)->where(DB::raw("DATE_FORMAT(tasks.created_at, '%Y-%m')"),$value)->count();
+            $user[] = DB::table('tasks')->join('users', 'tasks.user_assigned_id', '=', 'users.id')->join('projects', 'tasks.project_id', '=', 'projects.id')->where('projects.deleted_at', '=', null)->where('tasks.deleted_at', '=', null)->where('tasks.user_assigned_id', '=', Auth::user()->id)->where(DB::raw("DATE_FORMAT(tasks.created_at, '%Y-%m')"), $value)->count();
         }
 
         $record = DB::table('tasks')->select(DB::raw("COUNT(*) as count"), DB::raw("flag as day_name"), 'divs.division')->join('divs', 'tasks.flag', '=', 'divs.id')
-        ->groupBy('day_name')
-        ->get();
-      
-         $data = [];
-     
-         foreach($record as $row) {
+            ->groupBy('day_name')
+            ->get();
+
+        $data = [];
+
+        foreach ($record as $row) {
             $data['division'][] = $row->division;
             $data['data'][] = (int) $row->count;
-          }
-     
+        }
+
         $data['chart_data'] = json_encode($data);
-    
-        return view('welcome', $data,compact('getDataProject','getDataTask','getIncTask', 'getCompTask', 'getOv','getDataProject_man','getDataTask_man','getIncTask_man', 'getCompTask_man', 'getOv_man', 'getUserList', 'getUser', 'most'))->with('year',json_encode($year,JSON_NUMERIC_CHECK))->with('user',json_encode($user,JSON_NUMERIC_CHECK));
+
+        return view('welcome', $data, compact('getDataProject', 'getDataTask', 'getIncTask', 'getCompTask', 'getOv', 'getDataProject_man', 'getDataTask_man', 'getIncTask_man', 'getCompTask_man', 'getOv_man', 'getUserList', 'getUser', 'most'))->with('year', json_encode($year, JSON_NUMERIC_CHECK))->with('user', json_encode($user, JSON_NUMERIC_CHECK));
     }
 
     /**
