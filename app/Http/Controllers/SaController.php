@@ -34,7 +34,12 @@ class SaController extends Controller
             ];
         }
         foreach ($data as $key => $value) {
-            $year[] = $value['year'].'-0'.$value['month'];
+            if(strlen($value['year'])<2){
+                $year[] = $value['year'].'-0'.$value['month'];
+            }
+            else{
+                $year[] = $value['year'].'-'.$value['month'];
+            }
         }
         // $year = ['2021-01','2021-02','2021-03','2021-04','2021-05','2021-06', '2021-07','2021-08','2021-09','2021-10','2021-11', '2021-12', '2022-01'] ;
 
