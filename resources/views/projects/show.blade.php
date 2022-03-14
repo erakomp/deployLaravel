@@ -85,10 +85,10 @@
 
                         @foreach ($tasks as $task)
                         {{-- rubah task --}}
-                        <li data-task-id="{{ $task->external_id }}">
+                        <li data-task-id="{{ $task->id }}">
                             @if ($task->status_id == $status->id)
                             <div class="project-board-card-wrapper">
-                                <a href="{{ route('tasks.show', $task->external_id) }}" class=""
+                                <a href="{{ route('tasks.show', $task->id).'-'.str_slug($task->title, "-") }}" class=""
                                     style="text-decoration: none;">
                                     <div class="project-board-card">
                                         <div class="position-relative">
