@@ -30,14 +30,24 @@
                         <select name="price_id" id="input" style="margin-right:2%;" >
                             <option value="0" >Select Status</option>
                             @foreach (DB::table('statuses')
-                            ->select('id', 'title')->where('source_type','=','App\Models\Task')->orderBy('id')->get() as $country)
-                            <option value="{{ $country->id }}" @if($country->id == $price_id) selected @endif>{{ $country->title }} </option>
+                            ->select('id', 'title')->orderBy('id')->get() as $country)
+                            <option value="{{ $country->id }}" @if($country->id == $price_id) selected @endif>
+                            {{ $country->title }} </option>
                             @endforeach 
                             {{-- @foreach (DB::table('users')->select('id', 'name')->orderBy('id')->get() as $color)
                             <option value="{{ $color->id }}" {{ $color->id == $selected_id['causer_id'] ? 'selected' : '' }}>
                             {{ $color->name }}
                             </option>
                             @endforeach --}}
+                        </select>
+
+                        <select name="name_id" id="input" style="margin-right:2%;" >
+                            <option value="0" >Select Name</option>
+                            @foreach (DB::table('users')
+                            ->select('id', 'name')->orderBy('id')->get() as $color)
+                            <option value="{{ $color->id }}" @if($color->id == $name_id) selected @endif>
+                            {{ $color->name }} </option>
+                            @endforeach
                         </select>
                         
                         <input type="date" name="from" id="input" value="{{Carbon\Carbon::now()->toDatetimelocalString()}}" style="margin-right:2%;">
@@ -71,7 +81,6 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Status</th>
-
                                         <th>Title</th>
                                         <th>Project Title</th>
                                         <th>Assigned To</th>
@@ -93,7 +102,6 @@
                                         <td><a href="/tasks/{{$product->external_id}}">{{ $product->tt }}</a></td>
                                         <td>{{$product->pt}}</td>
                                         <td>{{$product->ui}}</td>
-
                                         <td>{{date('l, d/m/y H:i:s', strtotime( $product->created_at))}}</td>
                                         <td>{{date('l, d/m/y H:i:s', strtotime( $product->updated_at))}}</td>
                                         <td>{{(Carbon::parse($product->created_at)) -> diff((Carbon::parse($product->updated_at))) -> format('%D : %H : %I : %S')}}</td>

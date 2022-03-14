@@ -244,9 +244,9 @@ class TasksController extends Controller
      * @return mixed
      * @throws \Exception
      */
-    public function show(Request $request, $id)
+    public function show(Request $request, $external_id)
     {
-        $task = $this->findByExternalId($id);
+        $task = $this->findByExternalId($external_id);
         if (!$task) {
             abort(404);
         }
@@ -411,9 +411,9 @@ class TasksController extends Controller
      * @param $id
      * @return mixed
      */
-    public function findByExternalId($id)
+    public function findByExternalId($external_id)
     {
-        return Task::whereId($id)->firstOrFail();
+        return Task::whereExternalId($external_id)->firstOrFail();
     }
 
     /**

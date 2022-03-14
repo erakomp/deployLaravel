@@ -40,6 +40,11 @@ class DigitalrepController extends Controller
                                 $query->from('tasks')->where('tasks.status_id', $request->price_id) : '';
             // })
         })
+        ->where(function ($query) use ($request) {
+            return $request->name_id ?
+                                $query->from('users')->where('users.id', $request->name_id) : '';
+            // })
+        })
                     ->where(function ($query) use ($request) {
                         return $request->from ?
                         $query->from('tasks')->whereBetween('tasks.updated_at', [$request->from .' 00:00:00', $request->to .' 23:59:59']) : '';
@@ -48,7 +53,7 @@ class DigitalrepController extends Controller
                     ->get();
                 
         $price_id = $request->price_id;
-        // $color_id = $request->color_id;
+        $name_id = $request->name_id;
        
        
         // $from = !empty($from) ? date('d-M-Y', strtotime($request->from)) : 0 ;
@@ -59,12 +64,12 @@ class DigitalrepController extends Controller
         //           return $from;
         $selected_id = [];
         $selected_id['project_id'] = $request->price_id;
-        // $selected_id['status_id'] = $request->color_id;
+        $selected_id['status_id'] = $request->name_id;
         $selected_id['updated_at'] = $request->from;
         $selected_id['updated_at'] = $request->to;
 
         $startDate = Carbon::today()->toDateString();
-        return view('digitalrep', compact('product', 'startDate', 'selected_id', 'countries', 'price_id'));
+        return view('digitalrep', compact('product', 'startDate', 'selected_id', 'countries', 'price_id', 'name_id'));
     }
 
     public function overdue(Request $request)

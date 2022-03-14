@@ -56,7 +56,7 @@ class Task extends Model implements Commentable
 
     public function getRouteKeyName()
     {
-        return 'id';
+        return 'external_id';
     }
 
     public function displayValue()

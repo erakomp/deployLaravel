@@ -73,7 +73,7 @@ Route::group(['middleware' => ['auth']], function () {
     //     $selected_id['created_at'] = $request->to;
     //     return view('test',compact('product','selected_id', 'countries'));
     
-    // })->name('filter');f
+    // })->name('filter');
     Route::get('/filtermenu','NewmenuController@index2');
 
     Route::get('/menuss','NewmenuController@index')->name('filteringg');
