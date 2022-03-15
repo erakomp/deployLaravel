@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use App\Observers\ElasticSearchObserver;
@@ -56,14 +57,14 @@ class Task extends Model implements Commentable
 
     public function getRouteKeyName()
     {
-        return 'external_id';
+        return 'id';
     }
 
     public function displayValue()
     {
         return $this->title;
     }
-    
+
     public function pegawai()
     {
         return $this->belongsTo(Pegawai::class, 'getlabel');
@@ -142,7 +143,7 @@ class Task extends Model implements Commentable
         return $this->morphMany(Document::class, 'source');
     }
 
-   
+
     public function isClosed()
     {
         return $this->status == self::TASK_STATUS_CLOSED;
