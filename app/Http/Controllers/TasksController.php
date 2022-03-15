@@ -411,9 +411,9 @@ class TasksController extends Controller
      * @param $id
      * @return mixed
      */
-    public function findByExternalId($external_id)
+    public function findByExternalId($id)
     {
-        return Task::whereExternalId($external_id)->firstOrFail();
+        return Task::whereId($id)->firstOrFail();
     }
 
     /**
