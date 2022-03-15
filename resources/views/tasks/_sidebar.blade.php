@@ -136,7 +136,7 @@
         @else
         <button class="btn" style="background-color: {{$tasks->getcolor}}; color:white; border-radius:50px; width:120px; font-weight:800; height:20px; padding:1px; margin-right:5px;pointer-events:none; ">{{$tasks->getlabel}}</button>  <a href="{{ route('taskss.edit',$tasks->id) }}"><i class="fas fa-edit"></i></a>
         @endif
-        <form action="{{ route('tasks.destroy',$tasks->external_id) }}" method="POST" style="display:flex; margin-top:5%; ">
+        <form action="{{ route('tasks.destroy',$tasks->id).'-'.str_slug($tasks->title, "-") }}" method="POST" style="display:flex; margin-top:5%; ">
                                         @csrf
                                             @method('DELETE')
                               

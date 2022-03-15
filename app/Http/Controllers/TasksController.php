@@ -88,8 +88,8 @@ class TasksController extends Controller
                     $tasks->status->title . '</span>';
             })
             ->addColumn('view', function ($tasks) {
-                return '<a href="' . route("tasks.show", $tasks->external_id) . '" class="btn btn-link">' . __('View') . '</a>'
-                    . '<a data-toggle="modal" data-id="' . route('tasks.destroy', $tasks->external_id) . '" data-target="#deletion" class="btn btn-link">' . __('Delete') . '</a>';
+                return '<a href="' . route("tasks.show", $tasks->id) . '" class="btn btn-link">' . __('View') . '</a>'
+                    . '<a data-toggle="modal" data-id="' . route('tasks.destroy', $tasks->id) . '" data-target="#deletion" class="btn btn-link">' . __('Delete') . '</a>';
             })
             ->rawColumns(['titlelink', 'view', 'status_id'])
             ->make(true);
@@ -177,7 +177,7 @@ class TasksController extends Controller
             ]
         );
 
-        $insertedExternalId = $task->external_id;
+        $insertedExternalId = $task->id.'-'.str_slug($task->title, "-");
 
         Session()->flash('flash_message', __('Task successfully added'));
         event(new \App\Events\TaskAction($task, self::CREATED));
@@ -194,9 +194,8 @@ class TasksController extends Controller
 
     public function destroy(Task $task)
     {
-
         $task->delete();
-        $insertedExternalId = $task->project->external_id;
+        $insertedExternalId = $task->project->id.'-'.str_slug($task->title, "-").'-deleted';
         // dd($insertedExternalId);
         return redirect()->route("projects.show", $insertedExternalId);
     }
@@ -220,7 +219,7 @@ class TasksController extends Controller
             return redirect()->back();
         }
 
-        $folder = $task->external_id;
+        $folder = $task->external_id.'-'.str_slug($task->title, "-");
         $fileSystem = GetStorageProvider::getStorage();
         $fileData = $fileSystem->upload($folder, $filename, $file);
 
