@@ -93,7 +93,7 @@
                                     <div class="project-board-card">
                                         <div class="position-relative">
                                         </div>
-                                        <p class="project-board-card-title"
+                                        <p data-task-title="{{ $task->title }}" class="project-board-card-title"
                                             style="font-size:14px!important; font-weight:bold; width:180px!important; max-width:180px!important;">
                                             {{ $task->title }}
                                             {{--
@@ -382,7 +382,7 @@
 
                 {!! Form::model($project, [
                 'method' => 'PATCH',
-                'route' => ['project.update.deadline', $project->external_id],
+                'route' => ['project.update.deadline', $project->id],
                 ]) !!}
                 {!! Form::label('deadline_date', __('Change deadline'), ['class' => 'control-label']) !!}
                 {!! Form::date('deadline_date', \Carbon\Carbon::now()->addDays(7), ['class' => 'form-control']) !!}
@@ -420,8 +420,9 @@
         connectWith: '.sortable',
         receive: function (event, ui,) {
             var taskExternalId = ui.item.attr('data-task-id');
+            var taskExternalTitle = ui.item.attr('data-task-title');
             var statusExternalId = $(this).attr('data-status-external-id')
-            var url = '{{ route('task.update.status', ': taskExternalId') }}';
+            var url = '{{ route('task.update.status', ':taskExternalId' .'-' .'taskExternalTitle') }}';
         url = url.replace(':taskExternalId', taskExternalId);
         // POST to server using $.post or $.ajax
         $.ajax({

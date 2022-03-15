@@ -69,7 +69,7 @@
         @if(Entrust::can('task-update-status'))
             @if(!$tasks->isClosed())
                 <span id="status-picker" class="hidden">
-                    <form method="POST" action="{{url('tasks/updatestatus', $tasks->external_id)}}">
+                    <form method="POST" action="{{url('tasks/updatestatus', $tasks->id)}}">
                         {{csrf_field()}}
                         <select name="status_id"
                                 class="small-form-control bootstrap-select status-selectpicker dropdown-user-selecter"
