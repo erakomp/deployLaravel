@@ -249,17 +249,17 @@ class ProjectsController extends Controller
             ->with('filesystem_integration', Integration::whereApiType('file')->first());
     }
 
-    public function updateStatus($external_id, Request $request)
+    public function updateStatus($id, Request $request)
     {
         if (!auth()->user()->can('task-update-status')) {
             session()->flash('flash_message_warning', __('You do not have permission to change task status'));
-            return redirect()->route('tasks.show', $external_id);
+            return redirect()->route('tasks.show', $id);
         }
         $input = $request->all();
-        if ($request->ajax() && isset($input["statusExternalId"])) {
-            $input["status_id"] = Status::whereExternalId($input["statusExternalId"])->first()->id;
+        if ($request->ajax() && isset($input["statusId"])) {
+            $input["status_id"] = Status::whereId($input["statusId"])->first()->id;
         }
-        $project = $this->findByExternalId($external_id);
+        $project = $this->findByExternalId($id);
         $project->fill($input)->save();
 
         event(new \App\Events\ProjectAction($project, self::UPDATED_STATUS));
@@ -309,9 +309,9 @@ class ProjectsController extends Controller
      * @param $id
      * @return mixed
      */
-    public function findByExternalId($external_id)
+    public function findByExternalId($id)
     {
-        return Project::whereExternalId($external_id)->firstOrFail();
+        return Project::whereId($id)->firstOrFail();
     }
 
     public function logActivity()
