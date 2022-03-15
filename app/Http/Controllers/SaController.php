@@ -24,7 +24,24 @@ class SaController extends Controller
         ->join('users', 'activities.causer_id', '=', 'users.id')
         ->select('users.name', 'users.image', 'users.email', 'activities.created_at')->distinct()
         ->paginate(5);
-        $year = ['2021-01','2021-02','2021-03','2021-04','2021-05','2021-06', '2021-07','2021-08','2021-09','2021-10','2021-11', '2021-12', '2022-01'] ;
+
+        $period = now()->subMonths(12)->monthsUntil(now());
+        $data = [];
+        foreach ($period as $date) {
+            $data[] = [
+                'month' => $date->month,
+                'year' => $date->year,
+            ];
+        }
+        foreach ($data as $key => $value) {
+            if(strlen($value['year'])<2){
+                $year[] = $value['year'].'-0'.$value['month'];
+            }
+            else{
+                $year[] = $value['year'].'-'.$value['month'];
+            }
+        }
+        // $year = ['2021-01','2021-02','2021-03','2021-04','2021-05','2021-06', '2021-07','2021-08','2021-09','2021-10','2021-11', '2021-12', '2022-01'] ;
 
 
         $user = [];

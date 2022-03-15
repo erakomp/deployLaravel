@@ -8,8 +8,9 @@
 <div class="row">
     @if(Auth::check() && Auth::user()->flag == 1)
     @foreach ($getProject->where('flag', 1) as $item)
-    
-    <a href="{{route("projects.show", $item->external_id)}}" class="" title="{{$item->title}}">
+    {{-- ganti nama project --}}
+    {{-- <a href="{{route("projects.show", $item->id)}}"> --}}
+    <a href="{{route("projects.show", $item->id).'-'.str_slug($item->title, "-")}}">
 
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
@@ -17,12 +18,10 @@
             <div class="inner" style="min-height: 100px">
                 <div class="" style="width:30px;">
                     <h3 style="color:rgb(63, 63, 63)!important; font-size:25px!important; width:40px!important;">
-                    
                         {!! \Illuminate\Support\Str::limit($item->title, 15, $end='...') !!}
                     </h3>
                 </div>
                 
-
                 <p style="color:rgb(63, 63, 63)!important; font-size:15px!important;"> {{date('l, d-m-Y H:i:s', strtotime($item->created_at))}}</p>
                 <form action="{{ route('projects.destroy',$item->external_id) }}" method="POST" style="display:flex; justify-content:right; ">
                 @csrf

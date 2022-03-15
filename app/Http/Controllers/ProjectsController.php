@@ -19,6 +19,7 @@ use App\Div;
 use App\Http\Requests\Project\StoreProjectRequest;
 use Ramsey\Uuid\Uuid;
 use App\Repositories\FilesystemIntegration\FilesystemIntegration;
+use Elasticsearch\Endpoints\Security\GetUser;
 
 class ProjectsController extends Controller
 {
@@ -318,4 +319,5 @@ class ProjectsController extends Controller
         $logs = \LogActivity::logActivityLists();
         return view('logActivity', compact('logs'));
     }
+
 }
