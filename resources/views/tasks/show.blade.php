@@ -198,7 +198,7 @@
 
                     <div class="modal-body">
 
-                        <form action="{{route('task.update.deadline', $tasks->external_id)}}" method="POST">
+                        <form action="{{route('task.update.deadline', $tasks->id)}}" method="POST">
                             @method('PATCH')
                             @csrf
                             <div class="form-group">
