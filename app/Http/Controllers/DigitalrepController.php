@@ -30,7 +30,7 @@ class DigitalrepController extends Controller
 
             ->join('projects', 'tasks.project_id', '=', 'projects.id')
             ->join('users', 'tasks.user_assigned_id', '=', 'users.id')
-            ->select('statuses.title as jo', 'projects.title as pt', 'tasks.project_id', 'tasks.external_id', 'tasks.title as tt', 'users.name as ui', 'tasks.created_at', 'tasks.status_id', 'tasks.updated_at', 'tasks.created_at', DB::raw('TIMESTAMPDIFF(HOUR, tasks.created_at, tasks.updated_at) AS timediff'))
+            ->select('statuses.title as jo', 'projects.title as pt', 'tasks.project_id', 'tasks.id', 'tasks.title as tt', 'users.name as ui', 'tasks.created_at', 'tasks.status_id', 'tasks.updated_at', 'tasks.created_at', DB::raw('TIMESTAMPDIFF(HOUR, tasks.created_at, tasks.updated_at) AS timediff'))
             ->where('projects.deleted_at', '=', null)
 
             // ->select(DATEDIFF)
