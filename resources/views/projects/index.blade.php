@@ -46,7 +46,7 @@
     @elseif(Auth::check() && Auth::user()->flag == 2)
     @foreach ($getProject->where('flag', 2) as $item)
     
-    <a href="{{route("projects.show", $item->external_id)}}" class="">
+    <a href="{{route("projects.show", $item->id).'-'.str_slug($item->title, " -")}}" class="">
 
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
@@ -81,7 +81,7 @@
     @elseif(Auth::check() && Auth::user()->flag == 3)
     @foreach ($getProject->where('flag', 3) as $item)
     
-    <a href="{{route("projects.show", $item->external_id)}}" class="">
+    <a href="{{route("projects.show", $item->id).'-'.str_slug($item->title, " -")}}" class="">
 
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
@@ -116,7 +116,7 @@
     @elseif(Auth::check() && Auth::user()->flag == 4)
     @foreach ($getProject->where('flag', 4) as $item)
     
-    <a href="{{route("projects.show", $item->external_id)}}" class="">
+    <a href="{{route("projects.show", $item->id).'-'.str_slug($item->title, " -")}}" class="">
 
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
@@ -151,7 +151,7 @@
     @elseif(Auth::check() && Auth::user()->flag == 5)
     @foreach ($getProject->where('flag', 5) as $item)
     
-    <a href="{{route("projects.show", $item->external_id)}}" class="">
+    <a href="{{route("projects.show", $item->id).'-'.str_slug($item->title, " -")}}" class="">
 
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
@@ -186,7 +186,7 @@
     @elseif(Auth::check() && Auth::user()->flag == 6)
     @foreach ($getProject->where('flag', 6) as $item)
     
-    <a href="{{route("projects.show", $item->external_id)}}" class="">
+    <a href="{{route("projects.show", $item->id).'-'.str_slug($item->title, " -")}}" class="">
 
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
@@ -221,7 +221,7 @@
     @elseif(Auth::check() && Auth::user()->flag == 7)
     @foreach ($getProject->where('flag', 7) as $item)
     
-    <a href="{{route("projects.show", $item->external_id)}}" class="">
+    <a href="{{route("projects.show", $item->id).'-'.str_slug($item->title, " -")}}" class="">
 
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
@@ -256,7 +256,7 @@
     @elseif(Auth::check() && Auth::user()->flag == 8)
     @foreach ($getProject->where('flag', 8) as $item)
     
-    <a href="{{route("projects.show", $item->external_id)}}" class="">
+    <a href="{{route("projects.show", $item->id).'-'.str_slug($item->title, " -")}}" class="">
 
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
@@ -291,7 +291,7 @@
     @elseif(Auth::check() && Auth::user()->flag == 9)
     @foreach ($getProject->where('flag', 9) as $item)
     
-    <a href="{{route("projects.show", $item->external_id)}}" class="">
+    <a href="{{route("projects.show", $item->id).'-'.str_slug($item->title, " -")}}" class="">
 
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
@@ -326,7 +326,7 @@
     @elseif(Auth::check() && Auth::user()->flag == 10)
     @foreach ($getProject as $item)
     
-    <a href="{{route("projects.show", $item->external_id)}}" class="">
+    <a href="{{route("projects.show", $item->id).'-'.str_slug($item->title, " -")}}" class="">
 
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
@@ -361,7 +361,7 @@
     @elseif(Auth::check() && Auth::user()->flag == 11)
     @foreach ($getProject->where('flag', 11) as $item)
     
-    <a href="{{route("projects.show", $item->external_id)}}" class="">
+    <a href="{{route("projects.show", $item->id).'-'.str_slug($item->title, " -")}}" class="">
 
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
@@ -396,7 +396,7 @@
     @elseif(Auth::check() && Auth::user()->flag == 12)
     @foreach ($getProject->where('flag', 12) as $item)
     
-    <a href="{{route("projects.show", $item->external_id)}}" class="">
+    <a href="{{route("projects.show", $item->id).'-'.str_slug($item->title, " -")}}" class="">
 
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
@@ -431,7 +431,7 @@
     @elseif(Auth::check() && Auth::user()->flag == 13)
     @foreach ($getProject->where('flag', 13) as $item)
     
-    <a href="{{route("projects.show", $item->external_id)}}" class="">
+    <a href="{{route("projects.show", $item->id).'-'.str_slug($item->title, " -")}}" class="">
 
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
@@ -466,7 +466,7 @@
     @elseif(Auth::check() && Auth::user()->flag == 14)
     @foreach ($getProject->where('flag', 14) as $item)
     
-    <a href="{{route("projects.show", $item->external_id)}}" class="">
+    <a href="{{route("projects.show", $item->id).'-'.str_slug($item->title, " -")}}" class="">
 
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
