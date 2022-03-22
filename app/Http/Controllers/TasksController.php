@@ -151,6 +151,7 @@ class TasksController extends Controller
             // dd($fileUpload->clientExtension());
             $timestamp = Carbon::now()->timestamp;
             $extension = $fileUpload->clientExtension();
+            $filename = $fileUpload->getClientOriginalName();
             $filePath = "promag/tasks/uploaded-$timestamp.$extension";
             $name =  "https://cdn.erakomp.co.id/$filePath";
             //dd($name);
@@ -173,7 +174,7 @@ class TasksController extends Controller
                 'getcolor' => $request->getcolor,
                 'image' => ($request->has('image')) ?  $name : NULL,
                 'flag' => Auth::user()->flag,
-
+                'filename' => $filename,
             ]
         );
 
@@ -384,7 +385,36 @@ class TasksController extends Controller
         return redirect()->refresh();
     }
 
+    public function uploadFile(Request $request)
+    {
+        $fileUpload = $request->file('file');
+        $timestamp = Carbon::now()->timestamp;
+        $extension = $fileUpload->clientExtension();
+        $filename = $fileUpload->getClientOriginalName();
+        $name = "assets/files/uploaded-$filename";
+        
+        Storage::disk('oss')->put($name, file_get_contents($fileUpload));
 
+        if (Storage::disk('oss')->exists($name)) {
+            $fileUrl = "https://cdn.erakomp.co.id/$name";
+            User::Where('id',Auth::id())->update([
+                'image' => $fileUrl
+            ]);
+            return response()->json([
+                'url' => $fileUrl,
+            ]);
+            if($fileUrl == null){
+                $fileUrl = "no attachment";
+                return view('getFileUploaded', compact('fileUrl'));
+            }else{
+                return view('getFileUploaded', compact('fileUrl'));
+            }
+        }
+
+        return response()->json([
+            'error' => 'Failed to upload file',
+        ]);
+    }
 
     /**public function updateLabels(Request $request, $external_id)
     {
