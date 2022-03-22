@@ -80,15 +80,12 @@
                     </header>
                     <ul class="sortable" id="{{ $status->title }}" data-status-external-id="{{ $status->external_id }}"
                         style="max-height: 25em; min-height:30em;">
-
-
-
                         @foreach ($tasks as $task)
                         {{-- rubah task --}}
                         <li data-task-id="{{ $task->id }}">
                             @if ($task->status_id == $status->id)
                             <div class="project-board-card-wrapper">
-                                <a href="{{ route('tasks.show', $task->id).'-'.str_slug($task->title, "-") }}" class=""
+                                <a href="{{ route('tasks.show', $task->id).'-'.str_slug($task->title, " -") }}" class=""
                                     style="text-decoration: none;">
                                     <div class="project-board-card">
                                         <div class="position-relative">
@@ -122,8 +119,8 @@
                                         </div>
                                         </p>
                                         @if ($task->image != null)
-                                        <h1 style="text-align: ceter;"><img src="{{ $task->image }}"
-                                                style="width: 100%; " class="" alt="">
+                                        <h1 style="text-align: ceter;">
+                                            <embed src='{!! $task->image !!}' width="100%" height="100%">
                                         </h1>
                                         @else
                                         <span>

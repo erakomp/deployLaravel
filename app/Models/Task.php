@@ -38,7 +38,8 @@ class Task extends Model implements Commentable
         'getlabel',
         'getcolor',
         'image',
-        'flag'
+        'flag',
+        'filename'
     ];
     protected $dates = ['deadline'];
 
