@@ -17,7 +17,7 @@
                     <div class="form-group">
                         <label for="description" class="control-label thin-weight">@lang('Description')</label>
                         <textarea name="description" id="description" cols="50" rows="10"
-                            class="form-control">{{$fileUrl}}</textarea>
+                            class="form-control"></textarea>
                     </div>
                 </div>
             </div>
@@ -124,7 +124,7 @@
                 ['color', ['color']],
                 ['para', ['ol', 'ul', 'paragraph']],
                 ['table', ['table']],
-                ['insert', ['link', 'picture', 'file']],
+                ['insert', ['link', 'picture']],
                 ['view', ['fullscreen']]
             ],
             height: 300,

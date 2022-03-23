@@ -203,7 +203,7 @@ class ProjectsController extends Controller
         $client =  Client::whereExternalId($client_external_id);
         $getDiv = Div::all();
         return view('projects.create', compact('getDiv', 'users'))
-            ->withUsers(User::with(['department'])->get()->pluck('nameAndDepartmentEagerLoading', 'id'))
+            ->withUsers(User::with(['department'])->orderBy('name')->get()->pluck('nameAndDepartmentEagerLoading', 'id'))
             ->withClients(Client::pluck('company_name', 'external_id'))
             ->withClient($client ?: null)
             ->withStatuses(Status::typeOfProject()->pluck('title', 'id'))
