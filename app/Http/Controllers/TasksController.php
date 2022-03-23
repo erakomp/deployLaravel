@@ -174,7 +174,7 @@ class TasksController extends Controller
                 'getcolor' => $request->getcolor,
                 'image' => ($request->has('image')) ?  $name : NULL,
                 'flag' => Auth::user()->flag,
-                'filename' => $filename,
+                'filename' => ($request->has('filename')) ? $name : NULL,
             ]
         );
 
