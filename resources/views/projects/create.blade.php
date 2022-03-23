@@ -124,7 +124,7 @@
                 ['color', ['color']],
                 ['para', ['ol', 'ul', 'paragraph']],
                 ['table', ['table']],
-                ['insert', ['link', 'picture', 'file']],
+                ['insert', ['link', 'picture']],
                 ['view', ['fullscreen']]
             ],
             height: 300,
