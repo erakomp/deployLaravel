@@ -33,12 +33,15 @@ class CommentController extends Controller
             return redirect()->back();
         }
 
-        $fileUpload = $request->file('image');
-        $filename = $fileUpload->getClientOriginalName();
-        $name = "assets/files/uploaded-$filename";
-        Storage::disk('oss')->put($name, file_get_contents($fileUpload));
-
-        $fileUrl = "https://cdn.erakomp.co.id/$name";
+        if ($request->has('image')) {
+            $fileUpload = $request->file('image');
+            $filename = $fileUpload->getClientOriginalName();
+            $name = "assets/files/uploaded-$filename";
+            Storage::disk('oss')->put($name, file_get_contents($fileUpload));
+            $fileUrl = "https://cdn.erakomp.co.id/$name";
+        }else{
+            $fileUrl = 'NULL';
+        }
 
         $model = $modelsMapping[$request->type];
         $source = $model::whereExternalId($request->external_id)->first();

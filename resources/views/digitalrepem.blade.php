@@ -13,43 +13,15 @@
                             <h1 style="text-align: center;">Digital Report</h1>
                         </div>
 
-                        <form action="{{ route('filterrep') }}" method="GET" onchange="postdata(this.value)"
+                        <form action="{{ route('filterrepem') }}" method="GET" onchange="postdata(this.value)"
                             style="margin-top: 5%; margin-bottom:5%; display:flex; justify-content:center;">
-                            {{-- <select name="price_id" id="input" style="margin-right:2%;">
-                                <option value="0">Select Task</option>
-                                @foreach (DB::table('tasks')
-                                ->join('projects', 'tasks.project_id', '=', 'projects.id')
-                                ->where('projects.flag', '=', Auth::user()->flag)
-                                ->select('tasks.id',
-                                'tasks.title')->where('tasks.deleted_at','=',NULL)->orderBy('id')->get() as $price)
-                                <option value="{{ $price->id }}" {{ $price->id == $selected_id['source_id'] ? 'selected'
-                                    : '' }}>
-                                    {{ $price->title }}
-                                </option>
-                                @endforeach
-                            </select> --}}
+
                             <select name="price_id" id="input" style="margin-right:2%;">
                                 <option value="0">Select Status</option>
                                 @foreach (DB::table('statuses')
                                 ->select('id', 'title')->orderBy('id')->get() as $country)
                                 <option value="{{ $country->id }}" @if($country->id == $price_id) selected @endif>
                                     {{ $country->title }} </option>
-                                @endforeach
-                                {{-- @foreach (DB::table('users')->select('id', 'name')->orderBy('id')->get() as $color)
-                                <option value="{{ $color->id }}" {{ $color->id == $selected_id['causer_id'] ? 'selected'
-                                    : '' }}>
-                                    {{ $color->name }}
-                                </option>
-                                @endforeach --}}
-                            </select>
-
-                            <select name="name_id" id="input" style="margin-right:2%;">
-                                <option value="0">Select Name</option>
-                                @foreach (DB::table('users')
-                                ->select('id', 'name')->where('flag', '=', Auth::user()->flag)->orderBy('id')->get() as
-                                $color)
-                                <option value="{{ $color->id }}" @if($color->id == $name_id) selected @endif>
-                                    {{ $color->name }} </option>
                                 @endforeach
                             </select>
 
@@ -67,22 +39,6 @@
                                     style="font-size: 16px;  margin-left:20%;">Reset</div>
                             </a>
                         </form>
-
-                        {{-- <div class="row" style="text-align: center;">
-                            <div class="col-sm-6">
-                                <p> <strong> From :
-                                        @if($from == '1970-01-01 07:00:00') No specific date selected
-                                        @else
-                                        {{$from}}</strong>@endif
-                                </p>
-                            </div>
-                            <div class="col-sm-6">
-                                <p>To :@if($to == '1970-01-01 07:00:00') <strong>No specific date selected
-                                        @else
-                                        {{$to}}</strong>@endif
-                                </p>
-                            </div>
-                        </div> --}}
 
                         <div class="table-responsive">
                             <table class="table" style="margin-left:5%;">
@@ -103,11 +59,6 @@
                                     <tr>
                                         <td>{{ $loop->index+1 }}</td>
                                         <td>{{$product->jo}}</td>
-                                        {{-- @if($product->status_id == 7)
-                                        <td>DONE KPI</td>
-                                        @elseif($product->status_id == 5)
-                                        <td>QC</td>
-                                        @endif --}}
                                         <td><a href="/tasks/{{$product->id}}">{{ $product->tt }}</a></td>
                                         <td>{{$product->pt}}</td>
                                         <td>{{$product->ui}}</td>
@@ -116,12 +67,10 @@
                                         <td>{{(Carbon::parse($product->created_at)) ->
                                             diff((Carbon::parse($product->updated_at))) -> format('%D : %H : %I : %S')}}
                                         </td>
-
                                     </tr>
                                     @empty
-                                    <p> There is no data to be shown </p>
+                                    <p> There is no data to be shown</p>
                                     @endforelse
-
                                 </tbody>
                             </table>
                         </div>
@@ -137,9 +86,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        
         $('#country').on('change', function () {
-            
             var countryId = this.value;
             $('#state').html('');
             $.ajax({
@@ -180,14 +127,6 @@
         }
     }
 </script>
-
-{{-- <script>
-    function postdata(data) {
-       $.post("{{ URL::to('/test') }}", { input:data }, function(returned){
-       $('.products').html(returned);
-       });
-    }   
-</script> --}}
 
 <script>
     function formatDate(date) {

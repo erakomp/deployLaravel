@@ -25,10 +25,10 @@ class DigitalrepsupController extends Controller
         ->join('statuses', 'tasks.status_id', '=', 'statuses.id')
         // ->whereIn('tasks.status_id', [5,7])
         ->where('tasks.deleted_at', '=', null)
-        
         ->join('projects', 'tasks.project_id', '=', 'projects.id')
         ->join('users', 'tasks.user_assigned_id', '=', 'users.id')
-        ->select('statuses.title as jo', 'projects.title as pt', 'tasks.project_id', 'tasks.external_id', 'tasks.title as tt', 'users.name as ui', 'tasks.created_at', 'tasks.status_id', 'tasks.updated_at', 'tasks.created_at', DB::raw('TIMESTAMPDIFF(HOUR, tasks.created_at, tasks.updated_at) AS timediff'))
+        ->join('divs', 'tasks.flag', '=', 'divs.id')
+        ->select('statuses.title as jo', 'projects.title as pt', 'tasks.project_id', 'tasks.external_id', 'tasks.title as tt', 'users.name as ui', 'tasks.created_at', 'tasks.status_id', 'tasks.flag','tasks.updated_at', 'tasks.created_at', DB::raw('TIMESTAMPDIFF(HOUR, tasks.created_at, tasks.updated_at) AS timediff'))
         ->where('projects.deleted_at', '=', null)
         
         // ->select(DATEDIFF)
@@ -38,14 +38,19 @@ class DigitalrepsupController extends Controller
                                 $query->from('tasks')->where('tasks.status_id', $request->price_id) : '';
             // })
         })
-                    ->where(function ($query) use ($request) {
-                        return $request->from ?
-                        $query->from('tasks')->whereBetween('tasks.updated_at', [$request->from .' 00:00:00', $request->to .' 23:59:59']) : '';
-                    })
-                    //->with('prices','colors')
-                    ->get();
+        ->where(function ($query) use ($request) {
+            return $request->divs_id ?
+                $query->from('divs')->where('divs.id', $request->divs_id) : '';
+        })
+        ->where(function ($query) use ($request) {
+            return $request->from ?
+                $query->from('tasks')->whereBetween('tasks.updated_at', [$request->from .' 00:00:00', $request->to .' 23:59:59']) : '';
+        })
+        //->with('prices','colors')
+        ->get();
                 
         $price_id = $request->price_id;
+        $divs_id = $request->divs_id;
         // $color_id = $request->color_id;
        
        
@@ -57,12 +62,13 @@ class DigitalrepsupController extends Controller
         //           return $from;
         $selected_id = [];
         $selected_id['project_id'] = $request->price_id;
+        $selected_id['flag'] = $request->divs_id;
         // $selected_id['status_id'] = $request->color_id;
         $selected_id['updated_at'] = $request->from;
         $selected_id['updated_at'] = $request->to;
 
         $startDate = Carbon::today()->toDateString();
-        return view('digitalrep', compact('product', 'startDate', 'selected_id', 'countries', 'price_id'));
+        return view('digitalrepsup', compact('product', 'startDate', 'selected_id', 'countries', 'price_id', 'divs_id'));
     }
 
     public function overdue(Request $request)
