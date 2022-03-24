@@ -40,7 +40,7 @@ class CommentController extends Controller
             Storage::disk('oss')->put($name, file_get_contents($fileUpload));
             $fileUrl = "https://cdn.erakomp.co.id/$name";
         }else{
-            $fileUrl = 'NULL';
+            $fileUrl = NULL;
         }
 
         $model = $modelsMapping[$request->type];

@@ -117,7 +117,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     Route::resource('userr','UserrController');
-        Route::resource('taskss', 'TaskssController');
+    Route::resource('taskss', 'TaskssController');
         ## View
     Route::get('/subjects', 'SubjectsController@index')->name('subjects');
     ## Create
