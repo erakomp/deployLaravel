@@ -1,7 +1,13 @@
 @extends('layouts.masterr')
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<<<<<<< Updated upstream
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+=======
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="{{ asset('js/help.js') }}"></script>
+>>>>>>> Stashed changes
 @section('content')
 <div class="card shadow" style="background-color: white;">
     <div class="card-body">
@@ -25,6 +31,7 @@
                                 <option value="{{ $price->id }}" {{ $price->id == $selected_id['source_id'] ? 'selected' : '' }}>
                                 {{ $price->title }}
                                 </option>
+<<<<<<< Updated upstream
                             @endforeach
                         </select> --}}
                         <select name="price_id" id="input" style="margin-right:2%;" >
@@ -43,6 +50,33 @@
                         <input type="date" name="from" id="input" value="{{Carbon\Carbon::now()->toDatetimelocalString()}}" style="margin-right:2%;">
                         <input type="date" name="to" id="input" value="{{Carbon\Carbon::now()->toDatetimelocalString()}}" style="margin-right:2%;">
                         <input type="submit"  class="btn btn-md btn-brand movedown" value="Filter" style="font-size: 16px; ">
+=======
+                                @endforeach --}}
+                            </select>
+
+                            <select name="divs_id" id="input" style="margin-right:2%;">
+                                <option value="0">Select Division</option>
+                                @foreach (DB::table('divs')
+                                ->select('id', 'division')->orderBy('id')->get() as $color)
+                                <option value="{{ $color->id }}" @if($color->id == $divs_id) selected @endif>
+                                    {{ $color->division }} </option>
+                                @endforeach
+                            </select>
+
+                            <input type="date" name="from" class="waktu" id="input"
+                                value="{{Carbon\Carbon::now()->toDatetimelocalString()}}" style="margin-right:2%;">
+                                
+                            <input type="date" name="to" class="waktu" id="input"
+                                value="{{Carbon\Carbon::now()->toDatetimelocalString()}}" style="margin-right:2%;">
+
+                            <input type="submit" onclick="tgl(event)" class="btn btn-md btn-brand movedown" value="Filter"
+                                style="font-size: 16px;">
+
+                            <a href="/digitalrep">
+                                <div class="btn btn-md btn-brand movedown" value="Reset"
+                                    style="font-size: 16px;  margin-left:20%;">Reset</div>
+                            </a>
+>>>>>>> Stashed changes
                         </form>
                         
                         <div class="row" style="text-align: center;">
