@@ -17,10 +17,9 @@ class DigitalrepemController extends Controller
             $this->product = DB::table('tasks')
                 ->join('statuses', 'tasks.status_id', '=', 'statuses.id')
                 ->where('tasks.deleted_at', '=', null)
-                ->where('tasks.flag', '=', Auth::user()->flag)
-                ->where('projects.flag', '=', Auth::user()->flag)
                 ->join('projects', 'tasks.project_id', '=', 'projects.id')
                 ->join('users', 'tasks.user_assigned_id', '=', 'users.id')
+                ->join('divs', 'tasks.flag', '=', 'divs.id')
                 ->select('statuses.title as jo', 
                         'projects.title as pt', 
                         'tasks.project_id', 
@@ -37,6 +36,10 @@ class DigitalrepemController extends Controller
                     return $request->price_id ? $query->from('tasks')->where('tasks.status_id', $request->price_id) : '';
                 })
                 ->where(function ($query) use ($request) {
+                    return $request->divs_id ?
+                        $query->from('divs')->where('divs.id', $request->divs_id) : '';
+                })
+                ->where(function ($query) use ($request) {
                     return $request->name_id ? $query->from('users')->where('users.id', $request->name_id) : '';
                 })
                 ->where(function ($query) use ($request) {
@@ -46,6 +49,7 @@ class DigitalrepemController extends Controller
                 ->get();
             $this->price_id = $request->price_id;
             $this->name_id = $request->name_id;
+            $this->divs_id = $request->divs_id;
             $this->startDate = Carbon::today()->toDateString();
             return $next($request);
         });
@@ -53,23 +57,13 @@ class DigitalrepemController extends Controller
 
     public function test(Request $request)
     {
-        if (count($this->states) > 0) {
-            return response()->json($this->states);
-        }
-
-        if($this->roleGlob['flag'] == '4'){
-            $product = $this->product;
-            $startDate = $this->startDate;
-            $countries = $this->countries;
-            $price_id = $this->price_id;
-            $name_id = $this->name_id;
-            return view('digitalrepem', compact('product', 'startDate', 'countries', 'price_id', 'name_id'));
-        }elseif($this->roleGlob['flag'] == '1'){
-            $this->manager();
-        }else{
-            $this->superAdmin();
-        }
-
+        $product = $this->product;
+        $startDate = $this->startDate;
+        $countries = $this->countries;
+        $price_id = $this->price_id;
+        $divs_id = $this->divs_id;
+        $name_id = $this->name_id;
+        return view('digitalrepem', compact('product', 'startDate', 'countries', 'price_id', 'name_id', 'divs_id'));
     }
 
     public function overdue(Request $request)
@@ -93,16 +87,6 @@ class DigitalrepemController extends Controller
         $selected_id['deadline'] = $request->to;
 
         return view('overdue', compact('product', 'selected_id'));
-    }
-
-    public function superAdmin()
-    {
-        dd($this->roleGlob['flag']);
-    }
-
-    public function manager()
-    {
-        dd($this->roleGlob['flag']);
     }
 
     public function employee()

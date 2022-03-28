@@ -76,9 +76,10 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/menuss','NewmenuController@index')->name('filteringg');
     Route::get('/menusssup','NewmenusupController@index')->name('filteringgsup');
-Route::get('get-states', 'DropdownController@getStates')->name('getStates');
-Route::get('/digitalrep', 'DigitalrepController@test')->name('filterrep');
-Route::get('/digitalrepsup', 'DigitalrepsupController@test')->name('filterrepsup');
+    Route::get('get-states', 'DropdownController@getStates')->name('getStates');
+    Route::get('/digitalrep', 'DigitalrepController@test')->name('filterrep');
+    Route::get('/digitalrepsup', 'DigitalrepsupController@test')->name('filterrepsup');
+    Route::get('/digitalrepem', 'DigitalrepemController@test')->name('filterrepem');
 
     Route::get('/test', 'OverController@test')->name('filter');
     Route::get('/overdue', 'OverController@overdue')->name('filtering');
@@ -116,7 +117,7 @@ Route::get('/digitalrepsup', 'DigitalrepsupController@test')->name('filterrepsup
 
 
     Route::resource('userr','UserrController');
-        Route::resource('taskss', 'TaskssController');
+    Route::resource('taskss', 'TaskssController');
         ## View
     Route::get('/subjects', 'SubjectsController@index')->name('subjects');
     ## Create
