@@ -421,16 +421,9 @@
                        class="list-group-item childlist"> <i
                                 class="bullet-point"><span></span></i> {{ __('Overall Settings') }}</a>
                    -->
-                    @if(Auth::user()->user_flag == 2)
-                    <a href="/digitalrepsup" class="list-group-item childlist" style="font-size: 13px!important;"> <i
-                            class="bullet-point"><span></span></i>Digital Report</a>
-                    @elseif(Auth::user()->user_flag == 1)
-                    <a href="/digitalrep" class="list-group-item childlist" style="font-size: 13px!important;"> <i
-                            class="bullet-point"><span></span></i>Digital Report</a>
-                    @else
+
                     <a href="/digitalrepem" class="list-group-item childlist" style="font-size: 13px!important;"> <i
-                        class="bullet-point"><span></span></i>Digital Report</a>
-                    @endif
+                            class="bullet-point"><span></span></i>Digital Report</a>
                     <a href="/report" class="list-group-item childlist" style="font-size: 13px!important;"> <i
                             class="bullet-point"><span></span></i>Get Excel Report</a>
                     @if(Auth::user()->user_flag == 2)

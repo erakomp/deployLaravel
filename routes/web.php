@@ -8,8 +8,9 @@
 | by your application. Just tell Laravel the URIs it should respond
 | to using a Closure or controller method. Build something great!
 |
-*/
+*/use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 
 
 // Route::get('usersie', ['uses'=>'UserController@index', 'as'=>'users.index']);
@@ -32,7 +33,6 @@ Route::get('/searching', 'CariController@index');
 
 Route::get('query', 'CariController@index');
 Route::get('/testt', 'CariController@index');
-// Route::post('/uploadFile', 'UploadController@uploadFile');
 Route::group(['middleware' => ['auth']], function () {
 
     /**
@@ -77,9 +77,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/menuss','NewmenuController@index')->name('filteringg');
     Route::get('/menusssup','NewmenusupController@index')->name('filteringgsup');
     Route::get('get-states', 'DropdownController@getStates')->name('getStates');
-    Route::get('/digitalrep', 'DigitalrepController@test')->name('filterrep');
-    Route::get('/digitalrepsup', 'DigitalrepsupController@test')->name('filterrepsup');
     Route::get('/digitalrepem', 'DigitalrepemController@test')->name('filterrepem');
+    Route::get('/filterdigitalprint', 'DigitalrepemController@filter')->name('filterdigitalprint');
 
     Route::get('/test', 'OverController@test')->name('filter');
     Route::get('/overdue', 'OverController@overdue')->name('filtering');
@@ -212,7 +211,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/create/{client_external_id}/{project_external_id}', 'TasksController@create')->name('client.project.task.create');
         Route::post('/updateproject/{external_id}', 'TasksController@updateProject')->name('tasks.update.project');
     });
-    Route::post('/uploadFile', 'TasksController@uploadFile');
     Route::resource('tasks', 'TasksController');
 
     /**
@@ -230,7 +228,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::delete('/{lead}/json', 'LeadsController@destroyJson');
     });
     Route::resource('leads', 'LeadsController');
-    Route::post('{type}/{external_id}', 'CommentController@store')->name('comments.create');
+     Route::post('{type}/{external_id}', 'CommentController@store')->name('comments.create');
     Route::delete('/{comment}', 'CommentController@destroy')->name('comments.destroy');
 
 
@@ -250,7 +248,8 @@ Route::group(['middleware' => ['auth']], function () {
      * Projects
      */
     Route::group(['prefix' => 'projects'], function () {
-        // Route::get('/data', 'ProjectsController@indexData')->name('projects.index.data');
+        Route::get('/data', 'ProjectsController@indexData')->name('projects.index.data');
+        
         Route::patch('/updatestatus/{external_id}', 'ProjectsController@updateStatus')->name('project.update.status');
         Route::patch('/updateassign/{external_id}', 'ProjectsController@updateAssign')->name('project.update.assignee');
         Route::post('/updatestatus/{external_id}', 'ProjectsController@updateStatus');
