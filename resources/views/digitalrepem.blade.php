@@ -11,7 +11,7 @@
         </div>
 
         <div class="container">
-            <form action="{{ route('filterrepem') }}" method="GET" onchange="postdata(this.value)"
+            <form action="{{ route('filterdigitalprint') }}" method="GET"
                 class="row justify-content-md-center">
                 @if (Auth::user()->flag == 2)
                 <div class="col-auto">
@@ -49,21 +49,24 @@
                     </select>
                 </div>
                 <div class="col-auto">
-                    <input class="waktu form-control" type="date" name="from" id="input"
-                        value="{{Carbon\Carbon::now()->toDatetimelocalString()}}">
+                    <input class="waktu form-control" type="text" name="from" id="input"
+                        value="{{$fromDate}}" placeholder="Waktu Mulai" onfocus="(this.type='date')" onblur="(this.type='text')">
                 </div>
                 <div class="col-auto">
-                    <input class="waktu form-control" type="date" name="to" id="input"
-                        value="{{Carbon\Carbon::now()->toDatetimelocalString()}}">
+                    <input class="waktu form-control" type="text" name="to" id="input"
+                        value="{{$toDate}}" placeholder="Waktu Tujuan" onfocus="(this.type='date')" onblur="(this.type='text')">
                 </div>
                 <div class="col-auto">
-                    <input onclick="tgl(event)" type="submit" class="btn btn-success" value="Filter">
+                    <button onclick="tgl(event)" type="submit" name="action" class="btn btn-success" value="filter">Filter</button>
                 </div>
                 <div class="col-auto">
-                    <a class="btn btn-success" style="font-size: 16px;">By Created</a>
+                    <a class="btn btn-success">By Created</a>
                 </div>
                 <div class="col-auto">
-                    <a href="/digitalrepem" class="btn btn-success" value="Reset" style="font-size: 16px;">Reset</a>
+                    <a href="/digitalrepem" class="btn btn-success" value="Reset">Reset</a>
+                </div>
+                <div class="col-auto">
+                    <p class="btn btn-success" name="action" onclick="alert('feature is coming soon')" value="print">Print</p>
                 </div>
             </form>
         </div>

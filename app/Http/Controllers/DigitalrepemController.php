@@ -6,12 +6,15 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Exports\ReportExport;
 
 class DigitalrepemController extends Controller
 {
     public function __construct(){
         $this->middleware(function($request, $next){
             $this->roleGlob = Auth::user();
+            $this->fromDate = $request->input('from');
+            $this->toDate = $request->input('to');
             $this->countries = DB::table('projects')->get();
             $this->states = DB::table('tasks')->where('project_id', $request->country_id)->get();
             $this->product = DB::table('tasks')
@@ -55,6 +58,18 @@ class DigitalrepemController extends Controller
         });
     }
 
+    public function filter(Request $request)
+    {
+        switch ($request->input('action')) {
+            case 'print':
+                return $this->printExcel();
+                break;
+            case 'filter':
+                return $this->test($request);
+                break;
+        }
+    }
+
     public function test(Request $request)
     {
         $product = $this->product;
@@ -63,7 +78,9 @@ class DigitalrepemController extends Controller
         $price_id = $this->price_id;
         $divs_id = $this->divs_id;
         $name_id = $this->name_id;
-        return view('digitalrepem', compact('product', 'startDate', 'countries', 'price_id', 'name_id', 'divs_id'));
+        $fromDate = $this->fromDate;
+        $toDate = $this->toDate;
+        return view('digitalrepem', compact('product', 'startDate', 'countries', 'price_id', 'name_id', 'divs_id', 'fromDate', 'toDate'));
     }
 
     public function overdue(Request $request)
@@ -97,6 +114,11 @@ class DigitalrepemController extends Controller
         $price_id = $this->price_id;
         $name_id = $this->name_id;
         return view('digitalrepem', compact('product', 'startDate', 'countries', 'price_id', 'name_id'));
+    }
+
+    public function printExcel()
+    {
+        return \Excel::download(new ReportExport, 'exportduration.xls');
     }
 
 }
