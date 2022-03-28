@@ -13,7 +13,7 @@
         <div class="container">
             <form action="{{ route('filterdigitalprint') }}" method="GET"
                 class="row justify-content-md-center">
-                @if (Auth::user()->flag == 2)
+                @if (Auth::user()->user_flag == 2)
                 <div class="col-auto">
                     <select class="form-control" name="divs_id" id="input">
                         <option value="0">Select Division</option>
@@ -25,7 +25,7 @@
                     </select>
                 </div>
                 @endif
-                @if (Auth::user()->flag == 1)
+                @if (Auth::user()->user_flag == 1)
                 <div class="col-auto">
                     <select class="form-control" name="name_id" id="input">
                         <option value="0">Select Name</option>
