@@ -66,7 +66,7 @@
                     <a href="/digitalrepem" class="btn btn-success" value="Reset">Reset</a>
                 </div>
                 <div class="col-auto">
-                    <p class="btn btn-success" name="action" onclick="alert('feature is coming soon')" value="print">Print</p>
+                    <input class="btn btn-success" name="action" type="submit" value="print">
                 </div>
             </form>
         </div>

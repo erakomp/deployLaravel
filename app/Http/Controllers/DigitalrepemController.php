@@ -39,15 +39,14 @@ class DigitalrepemController extends Controller
                     return $request->price_id ? $query->from('tasks')->where('tasks.status_id', $request->price_id) : '';
                 })
                 ->where(function ($query) use ($request) {
-                    return $request->divs_id ?
-                        $query->from('divs')->where('divs.id', $request->divs_id) : '';
+                    return $request->divs_id ? $query->from('divs')->where('divs.id', $request->divs_id) : '';
                 })
                 ->where(function ($query) use ($request) {
                     return $request->name_id ? $query->from('users')->where('users.id', $request->name_id) : '';
                 })
                 ->where(function ($query) use ($request) {
                     return $request->from ? $query->from('tasks')
-                    ->whereBetween('tasks.updated_at', [$request->from . ' 00:00:00', $request->to . ' 23:59:59']) : '';
+                    ->whereBetween('tasks.created_at', [$request->from . ' 00:00:00', $request->to . ' 23:59:59']) : '';
                 })
                 ->get();
             $this->price_id = $request->price_id;
@@ -90,7 +89,6 @@ class DigitalrepemController extends Controller
             ->where('projects.flag', '=', auth()->user()->flag)
             ->where('projects.deleted_at', '=', null)
             ->where('tasks.deleted_at', '=', null)
-
             ->where('tasks.flag', '=', auth()->user()->flag)
             ->where(function ($query) use ($request) {
                 return $request->from ?
