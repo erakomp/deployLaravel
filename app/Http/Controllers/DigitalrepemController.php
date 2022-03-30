@@ -15,6 +15,7 @@ class DigitalrepemController extends Controller
             $this->roleGlob = Auth::user();
             $this->fromDate = $request->input('from');
             $this->toDate = $request->input('to');
+            $this->ordDate = $request->input('reqDate');
             $this->countries = DB::table('projects')->get();
             $this->states = DB::table('tasks')->where('project_id', $request->country_id)->get();
             $this->product = DB::table('tasks')
@@ -46,7 +47,7 @@ class DigitalrepemController extends Controller
                 })
                 ->where(function ($query) use ($request) {
                     return $request->from ? $query->from('tasks')
-                    ->whereBetween('tasks.created_at', [$request->from . ' 00:00:00', $request->to . ' 23:59:59']) : '';
+                    ->whereBetween($this->ordDate, [$request->from . ' 00:00:00', $request->to . ' 23:59:59']) : '';
                 })
                 ->get();
             $this->price_id = $request->price_id;
@@ -79,7 +80,8 @@ class DigitalrepemController extends Controller
         $name_id = $this->name_id;
         $fromDate = $this->fromDate;
         $toDate = $this->toDate;
-        return view('digitalrepem', compact('product', 'startDate', 'countries', 'price_id', 'name_id', 'divs_id', 'fromDate', 'toDate'));
+        $ordDate = $this->ordDate;
+        return view('digitalrepem', compact('product', 'startDate', 'countries', 'price_id', 'name_id', 'divs_id', 'fromDate', 'toDate', 'ordDate'));
     }
 
     public function overdue(Request $request)
@@ -96,11 +98,9 @@ class DigitalrepemController extends Controller
             })
             ->select('tasks.*')
             ->get();
-
         $selected_id = [];
         $selected_id['deadline'] = $request->from;
         $selected_id['deadline'] = $request->to;
-
         return view('overdue', compact('product', 'selected_id'));
     }
 

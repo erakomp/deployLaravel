@@ -76,8 +76,8 @@ class ReportExport implements FromCollection, WithHeadings, WithMapping, WithEve
             $transaction->taskTitle,
             $transaction->projectTitle,
             $transaction->userName,
-            $transaction->taskCreated,
-            $transaction->taskUpdated,
+            date('l, d/m/y H:i:s', strtotime( $transaction->taskCreated )),
+            date('l, d/m/y H:i:s', strtotime( $transaction->taskUpdated )),
             (Carbon::parse($transaction->taskCreated)) -> diff((Carbon::parse($transaction->taskUpdated))) -> format('%D : %H : %I : %S'),
         ];
     }

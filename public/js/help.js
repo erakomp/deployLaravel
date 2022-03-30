@@ -17,3 +17,33 @@ function tgl(event) {
         alert(`Tanggal tidak boleh mundur`);
     }
 }
+
+function testToggle() {
+    let btnToggle = document.getElementsByName("reqDate");
+    let roww = document.getElementById("table")
+    let colStart = document.getElementsByClassName("dStart");
+    let colEnd = document.getElementsByClassName("dEnd");
+    let angka = []
+    for (let i = 0; i < roww.rows.length; i++) {
+        angka.push(i)
+    }
+    if (btnToggle[0].value == "tasks.created_at") {
+        btnToggle[0].value = "tasks.updated_at"
+        btnToggle[1].innerHTML = "Date Updated"
+        angka.forEach(element => {
+            colStart[element].style.backgroundColor = "white";
+            colEnd[element].style.backgroundColor = "pink";
+        });
+    } else {
+        btnToggle[0].value = "tasks.created_at"
+        btnToggle[1].innerHTML = "Date Created"
+        angka.forEach(element => {
+            colStart[element].style.backgroundColor = "pink";
+            colEnd[element].style.backgroundColor = "white";
+        });
+    }
+}
+
+$(function() {
+    $('div[onload]').trigger('onload');
+});
