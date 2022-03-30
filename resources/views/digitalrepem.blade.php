@@ -30,7 +30,11 @@
                     <select class="form-control" name="name_id" id="input">
                         <option value="0">Select Name</option>
                         @foreach (DB::table('users')
-                        ->select('id', 'name')->where('flag', '=', Auth::user()->flag)->orderBy('id')->get() as $color)
+                        ->select('id', 'name')
+                        ->where('flag', '=', Auth::user()->flag)
+                        ->where('users.deleted_at', '=', null)
+                        ->orderBy('id')
+                        ->get() as $color)
                         <option value="{{ $color->id }}" @if($color->id == $name_id) selected @endif>
                             {{ $color->name }} </option>
                         @endforeach

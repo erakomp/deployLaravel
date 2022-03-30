@@ -36,6 +36,7 @@ class DigitalrepemController extends Controller
                         'tasks.created_at', 
                         DB::raw('TIMESTAMPDIFF(HOUR, tasks.created_at, tasks.updated_at) AS timediff'))
                 ->where('projects.deleted_at', '=', null)
+                ->where('users.deleted_at', '=', null)
                 ->where(function ($query) use ($request) {
                     return $request->price_id ? $query->from('tasks')->where('tasks.status_id', $request->price_id) : '';
                 })
