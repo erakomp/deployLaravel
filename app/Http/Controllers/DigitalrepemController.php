@@ -15,6 +15,7 @@ class DigitalrepemController extends Controller
             $this->roleGlob = Auth::user();
             $this->fromDate = $request->input('from');
             $this->toDate = $request->input('to');
+            $this->ordDate = $request->input('reqDate');
             $this->countries = DB::table('projects')->get();
             $this->states = DB::table('tasks')->where('project_id', $request->country_id)->get();
             $this->product = DB::table('tasks')
@@ -35,19 +36,19 @@ class DigitalrepemController extends Controller
                         'tasks.created_at', 
                         DB::raw('TIMESTAMPDIFF(HOUR, tasks.created_at, tasks.updated_at) AS timediff'))
                 ->where('projects.deleted_at', '=', null)
+                ->where('users.deleted_at', '=', null)
                 ->where(function ($query) use ($request) {
                     return $request->price_id ? $query->from('tasks')->where('tasks.status_id', $request->price_id) : '';
                 })
                 ->where(function ($query) use ($request) {
-                    return $request->divs_id ?
-                        $query->from('divs')->where('divs.id', $request->divs_id) : '';
+                    return $request->divs_id ? $query->from('divs')->where('divs.id', $request->divs_id) : '';
                 })
                 ->where(function ($query) use ($request) {
                     return $request->name_id ? $query->from('users')->where('users.id', $request->name_id) : '';
                 })
                 ->where(function ($query) use ($request) {
                     return $request->from ? $query->from('tasks')
-                    ->whereBetween('tasks.updated_at', [$request->from . ' 00:00:00', $request->to . ' 23:59:59']) : '';
+                    ->whereBetween($this->ordDate, [$request->from . ' 00:00:00', $request->to . ' 23:59:59']) : '';
                 })
                 ->get();
             $this->price_id = $request->price_id;
@@ -80,7 +81,8 @@ class DigitalrepemController extends Controller
         $name_id = $this->name_id;
         $fromDate = $this->fromDate;
         $toDate = $this->toDate;
-        return view('digitalrepem', compact('product', 'startDate', 'countries', 'price_id', 'name_id', 'divs_id', 'fromDate', 'toDate'));
+        $ordDate = $this->ordDate;
+        return view('digitalrepem', compact('product', 'startDate', 'countries', 'price_id', 'name_id', 'divs_id', 'fromDate', 'toDate', 'ordDate'));
     }
 
     public function overdue(Request $request)
@@ -90,7 +92,6 @@ class DigitalrepemController extends Controller
             ->where('projects.flag', '=', auth()->user()->flag)
             ->where('projects.deleted_at', '=', null)
             ->where('tasks.deleted_at', '=', null)
-
             ->where('tasks.flag', '=', auth()->user()->flag)
             ->where(function ($query) use ($request) {
                 return $request->from ?
@@ -98,11 +99,9 @@ class DigitalrepemController extends Controller
             })
             ->select('tasks.*')
             ->get();
-
         $selected_id = [];
         $selected_id['deadline'] = $request->from;
         $selected_id['deadline'] = $request->to;
-
         return view('overdue', compact('product', 'selected_id'));
     }
 

@@ -30,8 +30,11 @@
                     <select class="form-control" name="name_id" id="input">
                         <option value="0">Select Name</option>
                         @foreach (DB::table('users')
-                        ->select('id', 'name')->where('flag', '=', Auth::user()->flag)->orderBy('id')->get() as
-                        $color)
+                        ->select('id', 'name')
+                        ->where('flag', '=', Auth::user()->flag)
+                        ->where('users.deleted_at', '=', null)
+                        ->orderBy('id')
+                        ->get() as $color)
                         <option value="{{ $color->id }}" @if($color->id == $name_id) selected @endif>
                             {{ $color->name }} </option>
                         @endforeach
@@ -44,7 +47,8 @@
                         @foreach (DB::table('statuses')
                         ->select('id', 'title')->orderBy('id')->get() as $country)
                         <option value="{{ $country->id }}" @if($country->id == $price_id) selected @endif>
-                            {{ $country->title }} </option>
+                            {{ $country->title }}
+                        </option>
                         @endforeach
                     </select>
                 </div>
@@ -59,20 +63,21 @@
                 <div class="col-auto">
                     <button onclick="tgl(event)" type="submit" name="action" class="btn btn-success" value="filter">Filter</button>
                 </div>
-                <div class="col-auto">
-                    <a class="btn btn-success">By Created</a>
+                <div onload="testToggle()" class="col-auto">
+                    <input type="hidden" value="{{$ordDate}}" id="input" name="reqDate" onclick="testToggle()" readonly>
+                    <button class="btn btn-success" type="button" value="{{$ordDate}}" id="input" name="reqDate" onclick="testToggle()" readonly>Date Created</button>
                 </div>
                 <div class="col-auto">
                     <a href="/digitalrepem" class="btn btn-success" value="Reset">Reset</a>
                 </div>
                 <div class="col-auto">
-                    <p class="btn btn-success" name="action" onclick="alert('feature is coming soon')" value="print">Print</p>
+                    <input class="btn btn-success" name="action" type="submit" value="print">
                 </div>
             </form>
         </div>
 
         <div class="table-responsive">
-            <table class="table">
+            <table id="table">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -80,21 +85,21 @@
                         <th>Title</th>
                         <th>Project Title</th>
                         <th>Assigned To</th>
-                        <th>Created Date</th>
-                        <th>Updated Date</th>
+                        <th class="dStart">Created Date</th>
+                        <th class="dEnd">Updated Date</th>
                         <th>Duration(D:H:M:S)</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse($product->sortByDesc('id') as $product )
-                    <tr>
+                    <tr id="rowT">
                         <td>{{ $loop->index+1 }}</td>
                         <td>{{$product->jo}}</td>
                         <td><a href="/tasks/{{$product->id}}">{{ $product->tt }}</a></td>
                         <td>{{$product->pt}}</td>
                         <td>{{$product->ui}}</td>
-                        <td>{{date('l, d/m/y H:i:s', strtotime( $product->created_at))}}</td>
-                        <td>{{date('l, d/m/y H:i:s', strtotime( $product->updated_at))}}</td>
+                        <td class="dStart">{{date('l, d/m/y H:i:s', strtotime( $product->created_at))}}</td>
+                        <td class="dEnd">{{date('l, d/m/y H:i:s', strtotime( $product->updated_at))}}</td>
                         <td>{{(Carbon::parse($product->created_at)) ->
                             diff((Carbon::parse($product->updated_at))) -> format('%D : %H : %I : %S')}}
                         </td>
