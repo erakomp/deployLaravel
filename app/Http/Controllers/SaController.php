@@ -21,10 +21,18 @@ class SaController extends Controller
         $getUserList = DB::table('users')->count();
         //EOMAN
         $getUser = DB::table('users')->get();
-        $most = DB::table('activities')
-            ->join('users', 'activities.causer_id', '=', 'users.id')
-            ->select('users.name', 'users.image', 'users.email', 'activities.created_at')->distinct()
-            ->paginate(5);
+        $most = DB::table('tasks')
+            ->join('users', 'tasks.user_assigned_id', '=', 'users.id')
+            ->join('divs', 'users.flag', 'divs.id')
+            ->join('statuses', 'tasks.status_id', 'statuses.id')
+            ->when(Auth::user()->user_flag != "2", function ($query) {
+                return $query->where('divs.id', '=', Auth::user()->flag);
+            })
+            ->select('users.name', 'users.image', 'users.email', 'tasks.created_at')
+            ->groupBy('users.id')
+            ->orderByDesc('tasks.status_id')
+            ->where('tasks.status_id', '7')
+            ->get();
 
         $period = now()->subMonths(12)->monthsUntil(now());
         $data = [];
