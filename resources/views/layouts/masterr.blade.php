@@ -69,19 +69,9 @@
                         style="font-size: 16px!important; font-size:21px!important;color:white; font-weight:400;">
 
                         Hi, {{ Auth::user()->name }} </span></a>
-                @if (Auth::user()->user_flag == 1)
-                <a href="/chart" class=" list-group-item" data-parent="#MainMenu"><i
-                        class="fas fa-chart-line sidebar-icon"></i><span id="menu-txt"
-                        style="font-size: 16px!important;">Dashboard </span></a>
-                @elseif(Auth::user()->user_flag == 2)
                 <a href="/superadmin" class=" list-group-item" data-parent="#MainMenu"><i
                         class="fas fa-chart-line sidebar-icon"></i><span id="menu-txt"
                         style="font-size: 16px!important;">Dashboard </span></a>
-                @else
-                <a href="/dass" class=" list-group-item" data-parent="#MainMenu"><i
-                        class="fas fa-chart-line sidebar-icon"></i><span id="menu-txt"
-                        style="font-size: 16px!important;">Dashboard </span></a>
-                @endif
                 <a href="/searching" class=" list-group-item" data-parent="#MainMenu"><i
                         class="fas fa-search sidebar-icon"></i><span id="menu-txt"
                         style="font-size: 16px!important;">Find Tasks </span></a>
@@ -116,7 +106,8 @@
                 </div>
 
                 <a href="#user" class=" list-group-item" data-toggle="collapse" data-parent="#MainMenu"><i
-                        class="fa fa-users sidebar-icon"></i><span id="menu-txt" style="font-size: 16px!important;" style="font-size: 16px!important;" style = 'font-size: 16px!important;'> {{__('Users') }}</span>
+                        class="fa fa-users sidebar-icon"></i><span id="menu-txt" style="font-size: 16px!important;"
+                        style="font-size: 16px!important;" style='font-size: 16px!important;'> {{__('Users') }}</span>
                     <i class="icon ion-md-arrow-dropup arrow-side sidebar-arrow"></i></a>
                 <div class="collapse" id="user">
                     <a href="{{ route('productss.index') }}" class="list-group-item childlist"
