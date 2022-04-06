@@ -29,7 +29,6 @@ class DashboardController extends Controller
         $getDataTask = DB::table('tasks')
             ->join('users', 'tasks.user_assigned_id', '=', 'users.id')
             ->join('projects', 'tasks.project_id', '=', 'projects.id')
-            ->where('projects.deleted_at', '=', null)
             ->where('tasks.deleted_at', '=', null)
             ->when(Auth::user()->user_flag == '1', function ($query) {
                 return $query->where('tasks.flag', '=', Auth::user()->flag);
@@ -41,20 +40,18 @@ class DashboardController extends Controller
         $getIncTask = DB::table('tasks')
             ->join('users', 'tasks.user_assigned_id', '=', 'users.id')
             ->join('projects', 'tasks.project_id', '=', 'projects.id')
-            ->where('projects.deleted_at', '=', null)
             ->where('tasks.deleted_at', '=', null)
-            ->when(Auth::user()->user_flag != '1', function ($query) {
-                return $query->where('tasks.user_assigned_id', '=', Auth::user()->id)
-                    ->where('tasks.status_id', '!=', 7)
-                    ->where('tasks.status_id', '!=', 1)
-                    ->where('tasks.status_id', '!=', 3);
+            ->when(Auth::user()->user_flag == '1', function ($query) {
+                return $query->where('tasks.flag', '=', Auth::user()->flag);
+            })
+            ->when(Auth::user()->user_flag == '4', function ($query) {
+                return $query->where('tasks.user_assigned_id', '=', Auth::user()->id);
             })
             ->where('tasks.status_id', '!=', 7)
             ->count();
         $getCompTask = DB::table('tasks')
             ->join('users', 'tasks.user_assigned_id', '=', 'users.id')
             ->join('projects', 'tasks.project_id', '=', 'projects.id')
-            ->where('projects.deleted_at', '=', null)
             ->where('tasks.deleted_at', '=', null)
             ->when(Auth::user()->user_flag == '1', function ($query) {
                 return $query->where('tasks.flag', '=', Auth::user()->flag);
@@ -67,7 +64,6 @@ class DashboardController extends Controller
         $getOv = DB::table('tasks')
             ->join('users', 'tasks.user_assigned_id', '=', 'users.id')
             ->join('projects', 'tasks.project_id', '=', 'projects.id')
-            ->where('projects.deleted_at', '=', null)
             ->where('tasks.deleted_at', '=', null)
             ->when(Auth::user()->user_flag == '1', function ($query) {
                 return $query->where('tasks.flag', '=', Auth::user()->flag);
@@ -83,15 +79,19 @@ class DashboardController extends Controller
         $most = DB::table('tasks')
             ->join('users', 'tasks.user_assigned_id', '=', 'users.id')
             ->join('divs', 'users.flag', 'divs.id')
-            ->when(Auth::user()->user_flag != '2', function ($query) {
+            ->where('tasks.deleted_at', null)
+            ->when(Auth::user()->user_flag == '1', function ($query) {
                 return $query->where('divs.id', '=', Auth::user()->flag);
             })
-            ->select('users.name', 'users.image', 'users.email', 'tasks.created_at')
-            ->groupBy('users.id')
-            ->orderByDesc('tasks.status_id')
-            ->where('tasks.status_id', '7')
+            ->when(Auth::user()->user_flag == '4', function ($query) {
+                return $query->where('user_assigned_id', '=', Auth::user()->id);
+            })
+            ->select('users.name', 'users.image', 'users.email', 'tasks.created_at', 
+                DB::raw("SUM(tasks.status_id = 7) as finish_tasks"), DB::raw("COUNT(tasks.deleted_at is NULL) as total_tasks"),
+                DB::raw('SUM(tasks.status_id = 7) / COUNT(tasks.deleted_at is NULL)*100 as jml'))
+            ->groupBy('tasks.user_assigned_id')
+            ->orderByDesc('jml')
             ->paginate(5);
-
         $period = now()->subMonths(12)->monthsUntil(now());
         $data = [];
         foreach ($period as $date) {
@@ -114,7 +114,6 @@ class DashboardController extends Controller
             $user[] = DB::table('tasks')
                 ->join('users', 'tasks.user_assigned_id', '=', 'users.id')
                 ->join('projects', 'tasks.project_id', '=', 'projects.id')
-                ->where('projects.deleted_at', '=', null)
                 ->where('tasks.deleted_at', '=', null)
                 ->when(Auth::user()->user_flag == '1', function ($query) {
                     return $query->where('tasks.flag', '=', Auth::user()->flag);
