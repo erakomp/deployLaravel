@@ -90,7 +90,7 @@ class ProjectsController extends Controller
         ->withStatuses(Status::typeOfProject()->get());
     }
     
-    public function destroy(Project $project, Request $request)
+    public function destroy($external_id)
     {
         /**$deleteTasks = $request->delete_tasks ? true : false;
         if ($project->tasks && $deleteTasks) {
@@ -100,7 +100,8 @@ class ProjectsController extends Controller
         }
 
         $project->delete();**/
-        $project->delete();
+        // $project->delete();
+        DB::table('projects')->where('external_id', $external_id)->delete();
         
         Session()->flash('flash_message', __('Project deleted'));
         return redirect()->back();
