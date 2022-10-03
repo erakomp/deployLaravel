@@ -40,6 +40,21 @@
                         @endforeach
                     </select>
                 </div>
+                @else
+                <div class="col-auto">
+                    <select class="form-control" name="name_id" id="input">
+                        <option value="0">Select Name</option>
+                        @foreach (DB::table('users')
+                        ->select('id', 'name')
+                        ->where('id', '=', Auth::user()->id)
+                        ->where('users.deleted_at', '=', null)
+                        ->orderBy('id')
+                        ->get() as $color)
+                        <option value="{{ $color->id }}" @if($color->id == $name_id) selected @endif>
+                            {{ $color->name }} </option>
+                        @endforeach
+                    </select>
+                </div>
                 @endif
                 <div class="col-auto">
                     <select class="form-control" name="price_id" id="input">
