@@ -75,7 +75,10 @@ class DashboardController extends Controller
             ->where('tasks.status_id', '!=', 7)
             ->count();
         $getUserList = DB::table('users')->count();
-        $getUser = DB::table('users')->get();
+        $getUser = DB::table('users')
+            ->whereNull('deleted_at')
+            ->orderBy('name','ASC')
+            ->get();
         $most = DB::table('tasks')
             ->join('users', 'tasks.user_assigned_id', '=', 'users.id')
             ->join('divs', 'users.flag', 'divs.id')
