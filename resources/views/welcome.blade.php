@@ -449,7 +449,7 @@
                                                                             @foreach ($most as $i)
                                                                             <div class="align-items-center">
                                                                                 <div class="card" style="margin-top:7%;">
-                                                                                    <img class="card-img-top " src="{{ $i->image }}" alt="profile">
+                                                                                    <img class="card-img-top " style="max-height: 300px !important; height: 50%" src="{{ $i->image }}" alt="profile">
                                                                                     <div class="card-body">
                                                                                         <h5 class="card-title">{{ $i->name }}</h5>
                                                                                         <p class="card-text">
