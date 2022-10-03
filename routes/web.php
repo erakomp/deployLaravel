@@ -136,7 +136,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/getcomm', 'CommentlogController@getComment');
     Route::get('/', 'PagesController@dashboard');
-    Route::get('dashboard', 'PagesController@dashboard')->name('dashboard');
+    Route::get('dashboards', 'PagesController@dashboard')->name('dashboards');
     Route::get('report', 'ExcelController@importExportView')->name('report');
     Route::get('exportExcel/{type}', 'ExcelController@exportExcel')->name('exportExcel');
     Route::get('exportExcelcalc/{type}', 'ExcelController@exportExcel2')->name('exportExcel2');
