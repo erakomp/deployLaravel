@@ -36,6 +36,7 @@ class DashboardController extends Controller
             ->when(Auth::user()->user_flag == '4', function ($query) {
                 return $query->where('tasks.user_assigned_id', '=', Auth::user()->id);
             })
+            ->whereIn('tasks.status_id', array(2, 4, 5, 6, 7))
             ->count();
         $getIncTask = DB::table('tasks')
             ->join('users', 'tasks.user_assigned_id', '=', 'users.id')
@@ -47,7 +48,7 @@ class DashboardController extends Controller
             ->when(Auth::user()->user_flag == '4', function ($query) {
                 return $query->where('tasks.user_assigned_id', '=', Auth::user()->id);
             })
-            ->where('tasks.status_id', '!=', 7)
+            ->whereIn('tasks.status_id', array(2, 4, 5, 6))
             ->count();
         $getCompTask = DB::table('tasks')
             ->join('users', 'tasks.user_assigned_id', '=', 'users.id')
@@ -72,12 +73,12 @@ class DashboardController extends Controller
                 return $query->where('tasks.user_assigned_id', '=', Auth::user()->id);
             })
             ->where('tasks.deadline', '<', Carbon::today())
-            ->where('tasks.status_id', '!=', 7)
+            ->whereIn('tasks.status_id', array(2, 4, 5, 6))
             ->count();
         $getUserList = DB::table('users')->count();
         $getUser = DB::table('users')
             ->whereNull('deleted_at')
-            ->orderBy('name','ASC')
+            ->orderBy('name', 'ASC')
             ->get();
         $most = DB::table('tasks')
             ->join('users', 'tasks.user_assigned_id', '=', 'users.id')
@@ -89,9 +90,15 @@ class DashboardController extends Controller
             ->when(Auth::user()->user_flag == '4', function ($query) {
                 return $query->where('user_assigned_id', '=', Auth::user()->id);
             })
-            ->select('users.name', 'users.image', 'users.email', 'tasks.created_at', 
-                DB::raw("SUM(tasks.status_id = 7) as finish_tasks"), DB::raw("COUNT(tasks.deleted_at is NULL) as total_tasks"),
-                DB::raw('SUM(tasks.status_id = 7) / COUNT(tasks.deleted_at is NULL)*100 as jml'))
+            ->select(
+                'users.name',
+                'users.image',
+                'users.email',
+                'tasks.created_at',
+                DB::raw("SUM(tasks.status_id = 7) as finish_tasks"),
+                DB::raw("COUNT(tasks.deleted_at is NULL) as total_tasks"),
+                DB::raw('SUM(tasks.status_id = 7) / COUNT(tasks.deleted_at is NULL)*100 as jml')
+            )
             ->groupBy('tasks.user_assigned_id')
             ->orderByDesc('jml')
             ->paginate(5);
@@ -104,11 +111,10 @@ class DashboardController extends Controller
             ];
         }
         foreach ($data as $key => $value) {
-            if(strlen($value['month'])<2){
-                $year[] = $value['year'].'-0'.$value['month'];
-            }
-            else{
-                $year[] = $value['year'].'-'.$value['month'];
+            if (strlen($value['month']) < 2) {
+                $year[] = $value['year'] . '-0' . $value['month'];
+            } else {
+                $year[] = $value['year'] . '-' . $value['month'];
             }
         }
 
@@ -145,5 +151,4 @@ class DashboardController extends Controller
 
         return view('welcome', $data, compact('getDataProject', 'getDataTask', 'getIncTask', 'getCompTask', 'getOv', 'getUserList', 'getUser', 'most'))->with('year', json_encode($year, JSON_NUMERIC_CHECK))->with('user', json_encode($user, JSON_NUMERIC_CHECK));
     }
-
 }
